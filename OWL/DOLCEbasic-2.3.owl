@@ -1,0 +1,3363 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="https://www.w3id.org/DOLCE/OWL/DOLCEbasic"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="https://www.w3id.org/DOLCE/OWL/DOLCEbasic"
+     versionIRI="https://www.w3id.org/DOLCE/OWL/DOLCEbasic/2.3">
+    <Prefix name="" IRI="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="terms" IRI="http://purl.org/dc/terms/"/>
+    <Prefix name="ace_lexicon" IRI="http://attempto.ifi.uzh.ch/ace_lexicon#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:contributor"/>
+        <Literal>Stefano Borgo, Francesco Compagno, Claudio Masolo, Emilio M. Sanfilippo, Walter Terkaj</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:creator"/>
+        <Literal>Laure Vieu and Daniele Porello</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal>DOLCE-basic in OWL. OWL version engineered by Laure Vieu and Daniele Porello, based on DOLCE from Wonderweb Deliverable D18 and on more recent work by Claudio Masolo and the LOA. Reference to numbered axioms from D18.
+DOLCE-basic does not include the n-ary, n&gt;2, relations of DOLCE. For some of these relations with a time argument, a constant variant (already in DOLCE or not) is included.
+NB: DOLCE-basic is a module of another version of DOLCE in OWL which includes n-ary, n&gt;2, relations of DOLCE using the W3C-recommended approach of reifying relation instances.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal>Beta version. 
+
+We seek feedback especially regarding whether users understand or not what are the classes and the relations and how to use them.
+Feedback regarding possible incoherences would be extremely useful as well.
+Annotation of the axioms is very patchy, we are still working on it, so we do not currently seek feedback on these annotations.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal>2.3 --- Modified the axioms verbalisations related to inverse of part-of and similar to make them more clear, idem for direct-quality-of; and version IRI</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Abstract"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AbstractQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AbstractRegion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Accomplishment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Achievement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AgentivePhysicalObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AgentiveSocialObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AmountOfMatter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ArbitrarySum"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Endurant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Feature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MentalObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonAgentivePhysicalObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonAgentiveSocialObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonPhysicalEndurant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonPhysicalObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Particular"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Perdurant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalEndurant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalRegion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Process"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Quality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Region"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialAgent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Society"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpaceRegion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpatialLocation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#State"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Stative"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporalLocation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporalQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporalRegion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TimeInterval"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constantConstituentOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constantPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constantParticipantOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constantProperPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constantQualeOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constantlyOverlaps"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#directQualityOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#overlaps"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#partOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#presentAt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#properPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#qualeOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temporalPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temporallyLocatedAt"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:contributor"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:creator"/>
+    </Declaration>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every atom is a particular.</Literal>
+        </Annotation>
+        <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
+        <Class IRI="#Particular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every atom is something that is an abstract or that is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
+        <ObjectUnionOf>
+            <Class IRI="#Abstract"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Dd16</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No atom has a particular as proper part.</Literal>
+        </Annotation>
+        <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
+        <ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectInverseOf>
+                    <ObjectProperty IRI="#properPartOf"/>
+                </ObjectInverseOf>
+                <Class IRI="#Particular"/>
+            </ObjectSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every abstract is a particular.</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Particular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is overlapped by an abstract is an abstract.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>from Dd15, Ad3</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#overlaps"/>
+            <Class IRI="#Abstract"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad3 (half)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has an abstract as part is an abstract.</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#partOf"/>
+            <Class IRI="#Abstract"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that overlaps an abstract is an abstract.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>from Dd15, Ad3</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#overlaps"/>
+            </ObjectInverseOf>
+            <Class IRI="#Abstract"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad3 (half)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is part of an abstract is an abstract.</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#Abstract"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every abstract quality is a quality.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractQuality"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad48 for dQt</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has an abstract quality as direct quality is a non physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractQuality"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#directQualityOf"/>
+            <Class IRI="#NonPhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant quale of an abstract quality is an abstract region.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractQuality"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantQualeOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#AbstractRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every abstract region is a region.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractRegion"/>
+        <Class IRI="#Region"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is the value of the constant quale relation taken by an abstract region is an abstract quality.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantQualeOf"/>
+            <Class IRI="#AbstractQuality"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that an abstract region as part is an abstract region.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#partOf"/>
+            <Class IRI="#AbstractRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is part of an abstract region is an abstract region.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#AbstractRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every accomplishment is an event.</Literal>
+        </Annotation>
+        <Class IRI="#Accomplishment"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every achievement is an event.</Literal>
+        </Annotation>
+        <Class IRI="#Achievement"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every agentive physical object is a physical object.</Literal>
+        </Annotation>
+        <Class IRI="#AgentivePhysicalObject"/>
+        <Class IRI="#PhysicalObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every agentive social object is a social object.</Literal>
+        </Annotation>
+        <Class IRI="#AgentiveSocialObject"/>
+        <Class IRI="#SocialObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every amount of matter is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#AmountOfMatter"/>
+        <Class IRI="#PhysicalEndurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every arbitrary sum is an endurant.</Literal>
+        </Annotation>
+        <Class IRI="#ArbitrarySum"/>
+        <Class IRI="#Endurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every endurant is a particular.</Literal>
+        </Annotation>
+        <Class IRI="#Endurant"/>
+        <Class IRI="#Particular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every endurant is temporally located at a particular.</Literal>
+        </Annotation>
+        <Class IRI="#Endurant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#temporallyLocatedAt"/>
+            <Class IRI="#Particular"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every event is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Event"/>
+        <Class IRI="#Perdurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every feature is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#Feature"/>
+        <Class IRI="#PhysicalEndurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every mental object is a non physical object.</Literal>
+        </Annotation>
+        <Class IRI="#MentalObject"/>
+        <Class IRI="#NonPhysicalObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every mental object specifically depends on an agentive physical object.</Literal>
+        </Annotation>
+        <Class IRI="#MentalObject"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#specificallyDependsOn"/>
+            <Class IRI="#AgentivePhysicalObject"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every non agentive physical object is a physical object.</Literal>
+        </Annotation>
+        <Class IRI="#NonAgentivePhysicalObject"/>
+        <Class IRI="#PhysicalObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every non agentive social object is a social object.</Literal>
+        </Annotation>
+        <Class IRI="#NonAgentiveSocialObject"/>
+        <Class IRI="#SocialObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every non physical endurant is an endurant.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <Class IRI="#Endurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constantly constituted by a non physical endurant is a non physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantConstituentOf"/>
+            <Class IRI="#NonPhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that a non physical endurant as a constant part is a non physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantPartOf"/>
+            <Class IRI="#NonPhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant constituent of a non physical endurant is a non physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantConstituentOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#NonPhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant part of a non physical endurant is a non physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantPartOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#NonPhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Approximation of Ad51</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is direct quality of a non physical endurant is an abstract quality.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#directQualityOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#AbstractQuality"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every non physical object is a non physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalObject"/>
+        <Class IRI="#NonPhysicalEndurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every perdurant is a particular.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <Class IRI="#Particular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every perdurant is temporally located at a particular.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#temporallyLocatedAt"/>
+            <Class IRI="#Particular"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every perdurant has a temporal location as direct quality.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#directQualityOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#TemporalLocation"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constantly constituted by a perdurant is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantConstituentOf"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is overlapped by a perdurant is a perdurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>from Dd15, Ad2</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#overlaps"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad2  (half)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has a perdurant as part is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#partOf"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant constituent of a perdurant is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantConstituentOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#Perdurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad49 for dQt</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is direct quality of a perdurant is a temporal quality.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#directQualityOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#TemporalQuality"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that overlaps a perdurant is a perdurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>from Dd15, Ad2</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#overlaps"/>
+            </ObjectInverseOf>
+            <Class IRI="#Perdurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad2 (half)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is part of a perdurant is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#Perdurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every physical endurant is an endurant.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalEndurant"/>
+        <Class IRI="#Endurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every physical endurant has a spatial location as direct quality.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalEndurant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#directQualityOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#SpatialLocation"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constantly constituted by a physical endurant is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantConstituentOf"/>
+            <Class IRI="#PhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is a physical endurant as a constant part is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantPartOf"/>
+            <Class IRI="#PhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant constituent of a physical endurant is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantConstituentOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#PhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant part of a physical endurant is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantPartOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#PhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Approximation of Ad50</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is direct quality of a physical endurant is a physical quality.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalEndurant"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#directQualityOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#PhysicalQuality"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every physical object is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalObject"/>
+        <Class IRI="#PhysicalEndurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every physical quality is a quality.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalQuality"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad47 for dQt</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has a physical quality as direct quality is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalQuality"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#directQualityOf"/>
+            <Class IRI="#PhysicalEndurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant quale of a physical quality is a physical region.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalQuality"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantQualeOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#PhysicalRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every physical region is a region.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalRegion"/>
+        <Class IRI="#Region"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is the value of the constant quale relation taken by a physical region is a physical quality.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantQualeOf"/>
+            <Class IRI="#PhysicalQuality"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every process is a stative.</Literal>
+        </Annotation>
+        <Class IRI="#Process"/>
+        <Class IRI="#Stative"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every quality is a particular.</Literal>
+        </Annotation>
+        <Class IRI="#Quality"/>
+        <Class IRI="#Particular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every quality is direct quality of a particular.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Q(x)→ ∃y DQT(x,y)</Literal>
+        </Annotation>
+        <Class IRI="#Quality"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#directQualityOf"/>
+            <Class IRI="#Particular"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every quality is temporally located at a particular.</Literal>
+        </Annotation>
+        <Class IRI="#Quality"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#temporallyLocatedAt"/>
+            <Class IRI="#Particular"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every region is an abstract.</Literal>
+        </Annotation>
+        <Class IRI="#Region"/>
+        <Class IRI="#Abstract"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every social agent is an agentive social object.</Literal>
+        </Annotation>
+        <Class IRI="#SocialAgent"/>
+        <Class IRI="#AgentiveSocialObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every social object is a non physical object.</Literal>
+        </Annotation>
+        <Class IRI="#SocialObject"/>
+        <Class IRI="#NonPhysicalObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every society is an agentive social object.</Literal>
+        </Annotation>
+        <Class IRI="#Society"/>
+        <Class IRI="#AgentiveSocialObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every space region is a physical region.</Literal>
+        </Annotation>
+        <Class IRI="#SpaceRegion"/>
+        <Class IRI="#PhysicalRegion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is the value of the constant quale relation taken by a space region is a spatial location.</Literal>
+        </Annotation>
+        <Class IRI="#SpaceRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#constantQualeOf"/>
+            <Class IRI="#SpatialLocation"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has a space region as part is a space region.</Literal>
+        </Annotation>
+        <Class IRI="#SpaceRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#partOf"/>
+            <Class IRI="#SpaceRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is part of a space region is a space region.</Literal>
+        </Annotation>
+        <Class IRI="#SpaceRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#SpaceRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every spatial location is a physical quality.</Literal>
+        </Annotation>
+        <Class IRI="#SpatialLocation"/>
+        <Class IRI="#PhysicalQuality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every state is a stative.</Literal>
+        </Annotation>
+        <Class IRI="#State"/>
+        <Class IRI="#Stative"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is part of a state is a state.</Literal>
+        </Annotation>
+        <Class IRI="#State"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#State"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every stative is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Stative"/>
+        <Class IRI="#Perdurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every temporal location is a temporal quality.</Literal>
+        </Annotation>
+        <Class IRI="#TemporalLocation"/>
+        <Class IRI="#TemporalQuality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad53  (**check**)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every temporal location is valorized through the is quale of relation by a time interval.</Literal>
+        </Annotation>
+        <Class IRI="#TemporalLocation"/>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#qualeOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#TimeInterval"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every temporal quality is a quality.</Literal>
+        </Annotation>
+        <Class IRI="#TemporalQuality"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad55</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every temporal quality is valorized through the is quale of relation by a particular.</Literal>
+        </Annotation>
+        <Class IRI="#TemporalQuality"/>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#qualeOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#Particular"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad46 for dQt</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has a temporal quality as direct quality is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#TemporalQuality"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#directQualityOf"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every temporal region is a region.</Literal>
+        </Annotation>
+        <Class IRI="#TemporalRegion"/>
+        <Class IRI="#Region"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Every time interval is a temporal region.</Literal>
+        </Annotation>
+        <Class IRI="#TimeInterval"/>
+        <Class IRI="#TemporalRegion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has a time interval as part is a time interval.</Literal>
+        </Annotation>
+        <Class IRI="#TimeInterval"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#partOf"/>
+            <Class IRI="#TimeInterval"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is valorized through the is quale of relation by a time interval is a temporal location.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>ql(x,y) &amp; T(x) -&gt; TL(y)</Literal>
+        </Annotation>
+        <Class IRI="#TimeInterval"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#qualeOf"/>
+            <Class IRI="#TemporalLocation"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is part of a time interval is a time interval.</Literal>
+        </Annotation>
+        <Class IRI="#TimeInterval"/>
+        <ObjectAllValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <Class IRI="#TimeInterval"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No abstract is an endurant.</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Endurant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No abstract is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Perdurant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No abstract is a quality.</Literal>
+        </Annotation>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Quality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No abstract quality is a physical quality.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractQuality"/>
+        <Class IRI="#PhysicalQuality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No abstract quality is a temporal quality.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractQuality"/>
+        <Class IRI="#TemporalQuality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No abstract region is a physical region.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractRegion"/>
+        <Class IRI="#PhysicalRegion"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No abstract region is a temporal region.</Literal>
+        </Annotation>
+        <Class IRI="#AbstractRegion"/>
+        <Class IRI="#TemporalRegion"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No accomplishment is an achievement.</Literal>
+        </Annotation>
+        <Class IRI="#Accomplishment"/>
+        <Class IRI="#Achievement"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No agentive social object is a non agentive social object.</Literal>
+        </Annotation>
+        <Class IRI="#AgentiveSocialObject"/>
+        <Class IRI="#NonAgentiveSocialObject"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No amount of matter is a feature.</Literal>
+        </Annotation>
+        <Class IRI="#AmountOfMatter"/>
+        <Class IRI="#Feature"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No amount of matter is a physical object.</Literal>
+        </Annotation>
+        <Class IRI="#AmountOfMatter"/>
+        <Class IRI="#PhysicalObject"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No arbitrary sum is a non physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#ArbitrarySum"/>
+        <Class IRI="#NonPhysicalEndurant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No arbitrary sum is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#ArbitrarySum"/>
+        <Class IRI="#PhysicalEndurant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No endurant is a perdurant.</Literal>
+        </Annotation>
+        <Class IRI="#Endurant"/>
+        <Class IRI="#Perdurant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No endurant is a quality.</Literal>
+        </Annotation>
+        <Class IRI="#Endurant"/>
+        <Class IRI="#Quality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No event is a stative.</Literal>
+        </Annotation>
+        <Class IRI="#Event"/>
+        <Class IRI="#Stative"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No feature is a physical object.</Literal>
+        </Annotation>
+        <Class IRI="#Feature"/>
+        <Class IRI="#PhysicalObject"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No mental object is a social object.</Literal>
+        </Annotation>
+        <Class IRI="#MentalObject"/>
+        <Class IRI="#SocialObject"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No non physical endurant is a physical endurant.</Literal>
+        </Annotation>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <Class IRI="#PhysicalEndurant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No perdurant is a quality.</Literal>
+        </Annotation>
+        <Class IRI="#Perdurant"/>
+        <Class IRI="#Quality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No physical quality is a temporal quality.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalQuality"/>
+        <Class IRI="#TemporalQuality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No physical region is a temporal region.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalRegion"/>
+        <Class IRI="#TemporalRegion"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No process is a state.</Literal>
+        </Annotation>
+        <Class IRI="#Process"/>
+        <Class IRI="#State"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>No social agent is a society.</Literal>
+        </Annotation>
+        <Class IRI="#SocialAgent"/>
+        <Class IRI="#Society"/>
+    </DisjointClasses>
+    <DisjointUnion>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>The classes Endurant, ArbitrarySum, PhysicalEndurantare all disjoint.</Literal>
+        </Annotation>
+        <Class IRI="#Endurant"/>
+        <Class IRI="#ArbitrarySum"/>
+        <Class IRI="#NonPhysicalEndurant"/>
+        <Class IRI="#PhysicalEndurant"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>The classes Particular, Abstract, Endurant, Qualityare all disjoint.</Literal>
+        </Annotation>
+        <Class IRI="#Particular"/>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Endurant"/>
+        <Class IRI="#Perdurant"/>
+        <Class IRI="#Quality"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>The classes PhysicalObject, NonAgentivePhysicalObjectare all disjoint.</Literal>
+        </Annotation>
+        <Class IRI="#PhysicalObject"/>
+        <Class IRI="#AgentivePhysicalObject"/>
+        <Class IRI="#NonAgentivePhysicalObject"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>The classes Quality, AbstractQuality, TemporalQualityare all disjoint.</Literal>
+        </Annotation>
+        <Class IRI="#Quality"/>
+        <Class IRI="#AbstractQuality"/>
+        <Class IRI="#PhysicalQuality"/>
+        <Class IRI="#TemporalQuality"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>The classes Region, AbstractRegion, TemporalRegionare all disjoint.</Literal>
+        </Annotation>
+        <Class IRI="#Region"/>
+        <Class IRI="#AbstractRegion"/>
+        <Class IRI="#PhysicalRegion"/>
+        <Class IRI="#TemporalRegion"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>The classes SocialObject, NonAgentiveSocialObjectare all disjoint.</Literal>
+        </Annotation>
+        <Class IRI="#SocialObject"/>
+        <Class IRI="#AgentiveSocialObject"/>
+        <Class IRI="#NonAgentiveSocialObject"/>
+    </DisjointUnion>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant constituent of Y then Y specifically depends on X.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantConstituentOf"/>
+        <ObjectInverseOf>
+            <ObjectProperty IRI="#specificallyDependsOn"/>
+        </ObjectInverseOf>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant part of Y then X constantly overlaps Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantPartOf"/>
+        <ObjectProperty IRI="#constantlyOverlaps"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant participant of Y then X specifically depends on Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantParticipantOf"/>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant participant of Y then Y specifically depends on X.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantParticipantOf"/>
+        <ObjectInverseOf>
+            <ObjectProperty IRI="#specificallyDependsOn"/>
+        </ObjectInverseOf>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant proper part of Y then X is constant part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantProperPartOf"/>
+        <ObjectProperty IRI="#constantPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is direct quality of Y then X specifically depends on Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#directQualityOf"/>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Ad5 and Dd15</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is part of Y then X overlaps Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#partOf"/>
+        <ObjectProperty IRI="#overlaps"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>D14 (half)
+irreflexivity impossible (property implies domain=Thing, and use of Self incompatible with transitivity)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is proper part of Y then X is part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#properPartOf"/>
+        <ObjectProperty IRI="#partOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Dd54 (third)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is temporal part of Y then X is part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporalPartOf"/>
+        <ObjectProperty IRI="#partOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is temporally located at Y then X is present at Y.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>definition of pre + reflexivity of p</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporallyLocatedAt"/>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything is direct quality of at most 1 thing.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#directQualityOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything is temporally located at at most 1 thing.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporallyLocatedAt"/>
+    </FunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X constantly overlaps Y then Y constantly overlaps X.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantlyOverlaps"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X overlaps Y then Y overlaps X.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#overlaps"/>
+    </SymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant constituent of something that is constant constituent of Y then X is constant constituent of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantConstituentOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant part of something that is constant part of Y then X is constant part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantPartOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant proper part of something that is constant proper part of Y then X is constant proper part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantProperPartOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is part of something that is part of Y then X is part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#partOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is proper part of something that is proper part of Y then X is proper part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#properPartOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X specifically depends on something that specifically depends on Y then X specifically depends on Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is temporal part of something that is temporal part of Y then X is temporal part of Y.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporalPartOf"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant constituent of something is something that is a non physical endurant or that is a perdurant or that is a physical endurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantConstituentOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#NonPhysicalEndurant"/>
+            <Class IRI="#Perdurant"/>
+            <Class IRI="#PhysicalEndurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant part of something is an endurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd25, Ad10</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantPartOf"/>
+        <Class IRI="#Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant participant of something is an endurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantParticipantOf"/>
+        <Class IRI="#Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant proper part of something is an endurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantProperPartOf"/>
+        <Class IRI="#Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constant quale of something is something that is an abstract region or that is a physical region.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantQualeOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#AbstractRegion"/>
+            <Class IRI="#PhysicalRegion"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that constantly overlaps something is an endurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantlyOverlaps"/>
+        <Class IRI="#Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constantly spatially located at something is something that is a non physical endurant or that is a perdurant or that is a physical endurant or that is a physical quality.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
+        <ObjectUnionOf>
+            <Class IRI="#NonPhysicalEndurant"/>
+            <Class IRI="#Perdurant"/>
+            <Class IRI="#PhysicalEndurant"/>
+            <Class IRI="#PhysicalQuality"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Dd28, Ad38</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is direct quality of something is a quality.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#directQualityOf"/>
+        <Class IRI="#Quality"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that overlaps something is something that is an abstract or that is a perdurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Ad1 and Dd15</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#overlaps"/>
+        <ObjectUnionOf>
+            <Class IRI="#Abstract"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad1 (half)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is part of something is something that is an abstract or that is a perdurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#partOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Abstract"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is present at something is something that is an endurant or that is a perdurant or that is a quality.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd40, Dd30, Dd31, Dd32, Dd33</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#presentAt"/>
+        <ObjectUnionOf>
+            <Class IRI="#Endurant"/>
+            <Class IRI="#Perdurant"/>
+            <Class IRI="#Quality"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is proper part of something is something that is an abstract or that is a perdurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#properPartOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Abstract"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad52</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is quale of something is a temporal region.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#qualeOf"/>
+        <Class IRI="#TemporalRegion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that specifically depends on something is something that is an endurant or that is a perdurant or that is a quality.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd69</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+        <ObjectUnionOf>
+            <Class IRI="#Endurant"/>
+            <Class IRI="#Perdurant"/>
+            <Class IRI="#Quality"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Dd54 (third)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is temporal part of something is a perdurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporalPartOf"/>
+        <Class IRI="#Perdurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is temporally located at something is something that is an endurant or that is a perdurant or that is a quality.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporallyLocatedAt"/>
+        <ObjectUnionOf>
+            <Class IRI="#Endurant"/>
+            <Class IRI="#Perdurant"/>
+            <Class IRI="#Quality"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constantly constituted by something is something that is a non physical endurant or that is a perdurant or that is a physical endurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantConstituentOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#NonPhysicalEndurant"/>
+            <Class IRI="#Perdurant"/>
+            <Class IRI="#PhysicalEndurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has something as constant part is an endurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd25, Ad10</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantPartOf"/>
+        <Class IRI="#Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constantly participated by something is a perdurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantParticipantOf"/>
+        <Class IRI="#Perdurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has something as a constant proper part is an endurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantProperPartOf"/>
+        <Class IRI="#Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is the value of the constant quale relation taken by something is something that is an abstract quality or that is a physical quality.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantQualeOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#AbstractQuality"/>
+            <Class IRI="#PhysicalQuality"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is constantly overlapped by something is an endurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantlyOverlaps"/>
+        <Class IRI="#Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is the constant spatial location taken by something is a space region.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
+        <Class IRI="#SpaceRegion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has something as direct quality is something that is an endurant or that is a perdurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd28, Ad38, Ad43, Ad46, Ad47, Ad48</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#directQualityOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Endurant"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is overlapped by something is something that is an abstract or that is a perdurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Ad1 and Dd15</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#overlaps"/>
+        <ObjectUnionOf>
+            <Class IRI="#Abstract"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad1 (half)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is has something as part is something that is an abstract or that is a perdurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#partOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Abstract"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is the value of the present at relation taken by something is a time interval.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd40, Dd30, Dd31, Dd32, Dd33</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#presentAt"/>
+        <Class IRI="#TimeInterval"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has something as proper part is something that is an abstract or that is a perdurant.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#properPartOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Abstract"/>
+            <Class IRI="#Perdurant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Ad52</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is valorized through the is quale of relation by something is a temporal quality.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#qualeOf"/>
+        <Class IRI="#TemporalQuality"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is specifically depended on by something is something that is an endurant or that is a perdurant or that is a quality.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd69</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+        <ObjectUnionOf>
+            <Class IRI="#Endurant"/>
+            <Class IRI="#Perdurant"/>
+            <Class IRI="#Quality"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that has something as temporal part is a perdurant.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>From Dd54 and Ad2</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporalPartOf"/>
+        <Class IRI="#Perdurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Everything that is the value of the temporal location relation taken by something is a time interval.</Literal>
+        </Annotation>
+        <ObjectProperty IRI="#temporallyLocatedAt"/>
+        <Class IRI="#TimeInterval"/>
+    </ObjectPropertyRange>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant constituent of something that is constantly spatially located at Y then X is constantly spatially located at Y.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>K(x,y,t)∧SLC(x,s,t)∧SLC(y,r,t) → s = r</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#constantConstituentOf"/>
+            <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant constituent of something that is present at Y then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#constantConstituentOf"/>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant part of something that is present at Y then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#constantPartOf"/>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant participant of something that is present at Y then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#constantParticipantOf"/>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constant proper part of something that is present at Y then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#constantProperPartOf"/>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X constantly overlaps something that is present at Y then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#constantlyOverlaps"/>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is present at something that has Y as part then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#presentAt"/>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is temporally located at something that has Y as part then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#temporallyLocatedAt"/>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constantly constituted by something that is constantly spatially located at Y then X is constantly spatially located at Y.</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>K(x,y,t)∧SLC(x,s,t)∧SLC(y,r,t) → s = r</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantConstituentOf"/>
+            </ObjectInverseOf>
+            <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X has something that is a constant part of Y as constant part then X constantly overlaps Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantPartOf"/>
+            </ObjectInverseOf>
+            <ObjectProperty IRI="#constantPartOf"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#constantlyOverlaps"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is constantly overlapped by something that is present at Y then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#constantlyOverlaps"/>
+            </ObjectInverseOf>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is has something that is present at Y as direct quality then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#directQualityOf"/>
+            </ObjectInverseOf>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>D15 (half)</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X has something that is part of Y as part then X overlaps Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <ObjectProperty IRI="#partOf"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#overlaps"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X has something that is present at Y as part then X is present at Y.</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#partOf"/>
+            </ObjectInverseOf>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Approximation of Dd69</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>If X is specifically depended on by something that is present at Y then X is present at Y.
+</Literal>
+        </Annotation>
+        <ObjectPropertyChain>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#specificallyDependsOn"/>
+            </ObjectInverseOf>
+            <ObjectProperty IRI="#presentAt"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#presentAt"/>
+    </SubObjectPropertyOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <Literal>atoms</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <Literal>atom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <Literal>Atom (atomic Abstract or Perdurant)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <Literal>Atom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Abstract</IRI>
+        <Literal>abstracts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Abstract</IRI>
+        <Literal>abstract</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Abstract</IRI>
+        <Literal>An Abstract entity is an entity that has neither spatial nor temporal qualities and is not a quality itself (examples: a number, a set, a quality space).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Abstract</IRI>
+        <Literal>Abstract</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#AbstractQuality</IRI>
+        <Literal>abstract qualities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#AbstractQuality</IRI>
+        <Literal>abstract quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AbstractQuality</IRI>
+        <Literal>An Abstract Quality is a quality that directly inheres to a non-physical endurant (examples: the value of an asset, the rights of the UN general secretary).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AbstractQuality</IRI>
+        <Literal>Warning: Abstract qualities are not qualities of abstract entities, but of non-physical endurants</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AbstractQuality</IRI>
+        <Literal>Abstract Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#AbstractRegion</IRI>
+        <Literal>abstract regions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#AbstractRegion</IRI>
+        <Literal>abstract region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AbstractRegion</IRI>
+        <Literal>An Abstract Region is a region in the abstract quality space for abstract qualities (example: the conventional value of 1 Euro).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AbstractRegion</IRI>
+        <Literal>Abstract Region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Accomplishment</IRI>
+        <Literal>accomplishments</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Accomplishment</IRI>
+        <Literal>accomplishment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Accomplishment</IRI>
+        <Literal>An Accomplishment is an event which is mereologically non-atomic (examples: a conference, an ascent, a performance).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Accomplishment</IRI>
+        <Literal>Accomplishment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Achievement</IRI>
+        <Literal>achievements</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Achievement</IRI>
+        <Literal>achievement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Achievement</IRI>
+        <Literal>An Achievement is an event which is mereologically atomic (examples: reaching the summit of K2, a departure, a death).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Achievement</IRI>
+        <Literal>Achievement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#AgentivePhysicalObject</IRI>
+        <Literal>agentive physical objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#AgentivePhysicalObject</IRI>
+        <Literal>agentive physical object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AgentivePhysicalObject</IRI>
+        <Literal>An Agentive Physical Object is a physical object to which intentions, believes and desires are ascribed (examples: a human person as opposed to a legal person).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AgentivePhysicalObject</IRI>
+        <Literal>Agentive Physical Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#AgentiveSocialObject</IRI>
+        <Literal>agentive social objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#AgentiveSocialObject</IRI>
+        <Literal>agentive social object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AgentiveSocialObject</IRI>
+        <Literal>An Agentive Social Object is a social object to which intentions, believes and desires are ascribed (examples: a teacher, a president, a software agent, a nation).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AgentiveSocialObject</IRI>
+        <Literal>Agentive Social Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#AmountOfMatter</IRI>
+        <Literal>amounts of matter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#AmountOfMatter</IRI>
+        <Literal>amount of matter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AmountOfMatter</IRI>
+        <Literal>An Amount Of Matter is a physical endurant which has no unity criterion and is mereologically invariant, that is, all its part are essential parts (examples: the gold of my wedding ring, the sand used to make this glass).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AmountOfMatter</IRI>
+        <Literal>Amount of Matter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#ArbitrarySum</IRI>
+        <Literal>arbitrary sums</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#ArbitrarySum</IRI>
+        <Literal>arbitrary sum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ArbitrarySum</IRI>
+        <Literal>An Arbitrary Sum is an endurant which is the mereological sum of at least a physical and a non-physical endurant.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ArbitrarySum</IRI>
+        <Literal>Arbitrary Sum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Endurant</IRI>
+        <Literal>endurants</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Endurant</IRI>
+        <Literal>endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Endurant</IRI>
+        <Literal>An Endurant is an entity wholly present, i.e., all its proper parts are present, at any time that it is present (examples: a person, a tree, an atom, an idea).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Endurant</IRI>
+        <Literal>Endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Event</IRI>
+        <Literal>events</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Event</IRI>
+        <Literal>event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Event</IRI>
+        <Literal>An Event is an anti-cumulative perdurant, i.e., a perdurant that when summed to another perdurant of the same type, gives a perdurant of a different type (examples: closing a door, reaching the top of a mountain, breaking a seal).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Event</IRI>
+        <Literal>Event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Feature</IRI>
+        <Literal>features</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Feature</IRI>
+        <Literal>feature</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Feature</IRI>
+        <Literal>A Feature is a physical endurant which has a unity criterion and is existentially dependent on another physical endurant, its host (examples: a hole, a bump, an object’s boundary, a stain on a t-shirt).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Feature</IRI>
+        <Literal>Feature</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#MentalObject</IRI>
+        <Literal>mental objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#MentalObject</IRI>
+        <Literal>mental object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#MentalObject</IRI>
+        <Literal>A Mental Object is a non-physical object which existentially depends on an agentive physical object (examples: a percept, a sense datum).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MentalObject</IRI>
+        <Literal>Mental Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#NonAgentivePhysicalObject</IRI>
+        <Literal>non agentive physical objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#NonAgentivePhysicalObject</IRI>
+        <Literal>non agentive physical object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#NonAgentivePhysicalObject</IRI>
+        <Literal>A Non-Agentive Physical Object is a physical object to which intentions, believes and desires are not ascribed (examples: a pebble, a house, a computer, a human body).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NonAgentivePhysicalObject</IRI>
+        <Literal>Non-Agentive Physical Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#NonAgentiveSocialObject</IRI>
+        <Literal>non agentive social objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#NonAgentiveSocialObject</IRI>
+        <Literal>non agentive social object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#NonAgentiveSocialObject</IRI>
+        <Literal>A Non-Agentive Social Object is a social object to which intentions, believes and desires are not ascribed (examples: a law, an economic system, a currency, an asset).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NonAgentiveSocialObject</IRI>
+        <Literal>Non-Agentive Social Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#NonPhysicalEndurant</IRI>
+        <Literal>non physical endurants</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#NonPhysicalEndurant</IRI>
+        <Literal>non physical endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#NonPhysicalEndurant</IRI>
+        <Literal>A Non-Physical Endurant is an endurant with no direct spatial quality (examples: democracy, the United Nations, the general secretary of Amnesty International).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NonPhysicalEndurant</IRI>
+        <Literal>Non-Physical Endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#NonPhysicalObject</IRI>
+        <Literal>non physical objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#NonPhysicalObject</IRI>
+        <Literal>non physical object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#NonPhysicalObject</IRI>
+        <Literal>A Non-Physical Object is a non-physical endurant with unity criterion (examples: a theory, a topic, a concept).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NonPhysicalObject</IRI>
+        <Literal>Non-Physical Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Particular</IRI>
+        <Literal>particulars</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Particular</IRI>
+        <Literal>particular</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Particular</IRI>
+        <Literal>A Particular is an entity that cannot have instances, in this sense it is opposed to universals (examples: a person, a soccer game, a plan, the color red, a feeling, a fact, a theory, number forty-two).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Particular</IRI>
+        <Literal>Particular</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Perdurant</IRI>
+        <Literal>perdurants</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Perdurant</IRI>
+        <Literal>perdurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Perdurant</IRI>
+        <Literal>A Perdurant is an entity that happens in time (examples: a person’s life, a soccer game, the reading of a book, the state of feeling happy). Some perdurants are temporally atomic (example: the change of a letter’s state due to the breaking of the seal).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Perdurant</IRI>
+        <Literal>Perdurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#PhysicalEndurant</IRI>
+        <Literal>physical endurants</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#PhysicalEndurant</IRI>
+        <Literal>physical endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PhysicalEndurant</IRI>
+        <Literal>A Physical Endurant is an endurant with direct spatial quality (examples: a person, a tree, an atom, the water in a glass, a hole in a wall, the center of the Earth).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PhysicalEndurant</IRI>
+        <Literal>Physical Endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#PhysicalObject</IRI>
+        <Literal>physical objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#PhysicalObject</IRI>
+        <Literal>physical object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PhysicalObject</IRI>
+        <Literal>A Physical Object is a physical endurant with unity criterion (examples: a person, a human body, a house, a computer).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PhysicalObject</IRI>
+        <Literal>Physical Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#PhysicalQuality</IRI>
+        <Literal>physical qualities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#PhysicalQuality</IRI>
+        <Literal>physical quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PhysicalQuality</IRI>
+        <Literal>A Physical Quality is a quality that directly inheres to a physical endurant (examples: the weight of a pen, the color of an apple).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PhysicalQuality</IRI>
+        <Literal>Physical Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#PhysicalRegion</IRI>
+        <Literal>physical regions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#PhysicalRegion</IRI>
+        <Literal>physical region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PhysicalRegion</IRI>
+        <Literal>A Physical Region is a region in a quality space for physical qualities (examples: the physical space, an area in the color quality space, 80Kg).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PhysicalRegion</IRI>
+        <Literal>Physical Region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Process</IRI>
+        <Literal>processes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Process</IRI>
+        <Literal>process</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Process</IRI>
+        <Literal>A Process is a stative perdurant such that at some temporal scale some parts are of a different type  (examples: running, writing).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Process</IRI>
+        <Literal>Process</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Quality</IRI>
+        <Literal>qualities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Quality</IRI>
+        <Literal>quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Quality</IRI>
+        <Literal>A Quality is an entity that inheres in an endurant or a perdurant, and that can be perceived or measured (examples: the shape of a book, the color of a car, the size of a t-shirt, the electrical charge of a battery).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Quality</IRI>
+        <Literal>Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Region</IRI>
+        <Literal>regions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Region</IRI>
+        <Literal>region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Region</IRI>
+        <Literal>A Region is an abstract entity classified by a quality type and with mereological structure, the sum of all the regions of a quality type is called a quality space (examples: the color red is a region in the quality space of color, the red of a rose is a (sub)region of the red region in the quality space of color, the commercial value of 1 Euro is a region in the quality space of commercial values).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Region</IRI>
+        <Literal>Region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#SocialAgent</IRI>
+        <Literal>social agents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#SocialAgent</IRI>
+        <Literal>social agent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SocialAgent</IRI>
+        <Literal>A Social Agent is an individual agentive social object (examples: a teacher, a president, a software agent).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SocialAgent</IRI>
+        <Literal>Social Agent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#SocialObject</IRI>
+        <Literal>social objects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#SocialObject</IRI>
+        <Literal>social object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SocialObject</IRI>
+        <Literal>A Social Object is a non-physical object which is generically dependent on a community of agents (examples: a person in the legal sense, a client, a law, an economic system).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SocialObject</IRI>
+        <Literal>Social Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Society</IRI>
+        <Literal>societies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Society</IRI>
+        <Literal>society</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Society</IRI>
+        <Literal>A Society is a collective agentive social object (examples: a nation, the FCA Group, Apple, the European Central Bank).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Society</IRI>
+        <Literal>Society</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#SpaceRegion</IRI>
+        <Literal>space regions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#SpaceRegion</IRI>
+        <Literal>space region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpaceRegion</IRI>
+        <Literal>A Space Region is a physical region, possibly disconnected, for spatial locations (examples: the region occupied by Earth in this moment, the region where it snowed in the year 1900).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpaceRegion</IRI>
+        <Literal>Space Region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#SpatialLocation</IRI>
+        <Literal>spatial locations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#SpatialLocation</IRI>
+        <Literal>spatial location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatialLocation</IRI>
+        <Literal>A Spatial Location is the individual spatial quality of a physical endurant (examples: the spatial quality of the Earth, the spatial quality of a hole, the spatial quality of Adolf Anderssen).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpatialLocation</IRI>
+        <Literal>Spatial Location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#State</IRI>
+        <Literal>states</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#State</IRI>
+        <Literal>state</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#State</IRI>
+        <Literal>A State is a stative perdurant such that all its parts are of the same type (examples: being sitting, being open, being happy, being red).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#State</IRI>
+        <Literal>State</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#Stative</IRI>
+        <Literal>statives</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#Stative</IRI>
+        <Literal>stative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Stative</IRI>
+        <Literal>A Stative is a cumulative perdurant, i.e., a perdurant that when summed to another perdurant of the same type, gives a perdurant of the same type (examples: sitting, walking, waiting).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Stative</IRI>
+        <Literal>Stative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#TemporalLocation</IRI>
+        <Literal>temporal locations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#TemporalLocation</IRI>
+        <Literal>temporal location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalLocation</IRI>
+        <Literal>A Temporal Location is the temporal quality of a perdurant and is specific to that perdurant, that is, two concurrent perdurants have distinct temporal locations (examples: the temporal quality of World War I, the temporal quality of the Anderssen-Kieseritzky chess play in 1851, the summers of the 20th century).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TemporalLocation</IRI>
+        <Literal>Temporal Location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#TemporalQuality</IRI>
+        <Literal>temporal qualities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#TemporalQuality</IRI>
+        <Literal>temporal quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalQuality</IRI>
+        <Literal>A Temporal Quality is a quality that directly inheres to a perdurant (example: the duration of World War I, the starting time of the 2000 Olympics).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TemporalQuality</IRI>
+        <Literal>Temporal Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal>temporal regions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal>temporal region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal>A Temporal Region is a region in a quality space for temporal qualities (examples: a time interval, a historical period, a velocity).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal>Temporal Region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
+        <IRI>#TimeInterval</IRI>
+        <Literal>time intervals</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
+        <IRI>#TimeInterval</IRI>
+        <Literal>time interval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TimeInterval</IRI>
+        <Literal>A Time Interval is a temporal region which is an interval or a sum of intervals (examples: the first second of your life,  the Cretaceous time period, the time interval of all winters of the third millennium).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TimeInterval</IRI>
+        <Literal>Time Interval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#constantConstituentOf</IRI>
+        <Literal>are constant constituent of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#constantConstituentOf</IRI>
+        <Literal>is constant constituent of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#constantConstituentOf</IRI>
+        <Literal>constantly constituted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constantConstituentOf</IRI>
+        <Literal>constantConstituentOf is the constant version of Constitution which is a ternary relation between two endurants x, y and time interval t or between two perdurants x, y and time interval t. The intended interpretation is that x constitutes y over the time interval t.
+In this constant version, the entity x constitutes y during the whole existence of y.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constantConstituentOf</IRI>
+        <Literal>constant constituent of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#constantPartOf</IRI>
+        <Literal>are constant part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#constantPartOf</IRI>
+        <Literal>is constant part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#constantPartOf</IRI>
+        <Literal>constantly divided into parts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constantPartOf</IRI>
+        <Literal>ConstantPartOf is the constant version of Temporary Parthood which is a ternary relation between two endurants x, y and a time interval t. The intended interpretation is that the endurant x is a part of the endurant y over the time interval t.
+In this constant version, the endurant x is part of the endurant y during the whole existence of y.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constantPartOf</IRI>
+        <Literal>constant part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#constantParticipantOf</IRI>
+        <Literal>are constant participants of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#constantParticipantOf</IRI>
+        <Literal>is constant participant of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#constantParticipantOf</IRI>
+        <Literal>constantly participated</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constantParticipantOf</IRI>
+        <Literal>constantParticipantOf is the constant version of Participation which is a ternary relation between an endurant x, a perdurant y, and a time interval t. The intended interpretation is that x participates in y at time t. Every perdurant has at least an endurant that participates in it, and every endurant participates in some perdurant. 
+In this constant version, the endurant x participates in the perdurant y during the whole existence of y.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constantParticipantOf</IRI>
+        <Literal>constant participation of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#constantProperPartOf</IRI>
+        <Literal>are constant proper part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#constantProperPartOf</IRI>
+        <Literal>is constant proper part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#constantProperPartOf</IRI>
+        <Literal>constantly divided into proper parts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constantProperPartOf</IRI>
+        <Literal>constantProperPartOf is the irreflexive specialization of the constantPartOf relation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constantProperPartOf</IRI>
+        <Literal>constant proper part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#constantQualeOf</IRI>
+        <Literal>are constant quale of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#constantQualeOf</IRI>
+        <Literal>is constant quale of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#constantQualeOf</IRI>
+        <Literal>the value of the constant quale relation taken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constantQualeOf</IRI>
+        <Literal>constantQualeOf is the constant version of Temporary Quale Of which is a ternary relation among a physical region x, a physical quality y and a time interval t or among an abstract region x, an abstract quality y and a time interval t. It relates the quality to its quale (position) at a certain time.
+In this constant version, the region x is the quale of the quality y during the whole existence of y.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constantQualeOf</IRI>
+        <Literal>constant quale of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#constantlyOverlaps</IRI>
+        <Literal>constantly overlaps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#constantlyOverlaps</IRI>
+        <Literal>constantly overlaps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#constantlyOverlaps</IRI>
+        <Literal>constantly overlapped</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constantlyOverlaps</IRI>
+        <Literal>constantlyOverlaps holds between two endurants that share a constant part.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constantlyOverlaps</IRI>
+        <Literal>constantly overlaps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#constantlySpatiallyLocatedAt</IRI>
+        <Literal>are constantly spatially located at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#constantlySpatiallyLocatedAt</IRI>
+        <Literal>is constantly spatially located at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#constantlySpatiallyLocatedAt</IRI>
+        <Literal>the constant spatial location taken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constantlySpatiallyLocatedAt</IRI>
+        <Literal>constantlySpatiallyLocatedAt is a binary relation between a physical or non-physical endurant or a perdurant or a physical quality and the unique space region it is constantly located in.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constantlySpatiallyLocatedAt</IRI>
+        <Literal>constantly spatially located at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#directQualityOf</IRI>
+        <Literal>are direct quality of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#directQualityOf</IRI>
+        <Literal>is direct quality of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#directQualityOf</IRI>
+        <Literal>qualified</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#directQualityOf</IRI>
+        <Literal>directQualityOf is a binary relation between a quality and the unique entity it inheres in, which is an endurant or a perdurant. It implies specific constant dependence.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#directQualityOf</IRI>
+        <Literal>direct quality of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#overlaps</IRI>
+        <Literal>overlap</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#overlaps</IRI>
+        <Literal>overlaps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#overlaps</IRI>
+        <Literal>overlapped</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#overlaps</IRI>
+        <Literal>overlaps holds between two abstracts or two perdurants when they both share a part.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#overlaps</IRI>
+        <Literal>overlaps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#partOf</IRI>
+        <Literal>are part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#partOf</IRI>
+        <Literal>is part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#partOf</IRI>
+        <Literal>divided into parts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#partOf</IRI>
+        <Literal>PartOf is a binary relation that is a partial ordering between abstract entities or between perdurants. It founds an extensional mereology on each of these two categories.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#partOf</IRI>
+        <Literal>part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#presentAt</IRI>
+        <Literal>are present at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#presentAt</IRI>
+        <Literal>is present at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#presentAt</IRI>
+        <Literal>the value of the present at relation taken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#presentAt</IRI>
+        <Literal>presentAt is a binary relation between an endurant or a perdurant or a quality x and a time interval t which is part of x&apos;s temporal location.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#presentAt</IRI>
+        <Literal>present at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#properPartOf</IRI>
+        <Literal>are proper part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#properPartOf</IRI>
+        <Literal>is proper part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#properPartOf</IRI>
+        <Literal>divided into proper parts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#properPartOf</IRI>
+        <Literal>properPartOf is the irreflexive specialization of the partOf relation. (Irreflexivity not captured here, as transitivity is favored)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#properPartOf</IRI>
+        <Literal>proper part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#qualeOf</IRI>
+        <Literal>are quale of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#qualeOf</IRI>
+        <Literal>is quale of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#qualeOf</IRI>
+        <Literal>valorized through the is quale of relation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#qualeOf</IRI>
+        <Literal>aka immediate quale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#qualeOf</IRI>
+        <Literal>qualeOf is a binary relation between a temporal region and a temporal quality, relating the quality to its quale (position in the quality space).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#qualeOf</IRI>
+        <Literal>quale of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#specificallyDependsOn</IRI>
+        <Literal>specifically depends on</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#specificallyDependsOn</IRI>
+        <Literal>specifically depends on</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#specificallyDependsOn</IRI>
+        <Literal>specifically depended on</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#specificallyDependsOn</IRI>
+        <Literal>Specific Constant Dependence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#specificallyDependsOn</IRI>
+        <Literal>specificallyDependsOn is a binary relation between two entities x, y present in time, i.e., endurants, perdurants or qualities, with the intended interpretation that the existence of x specifically and constantly depends on the existence of y.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#specificallyDependsOn</IRI>
+        <Literal>specifically depends on</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#temporalPartOf</IRI>
+        <Literal>are temporal parts of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#temporalPartOf</IRI>
+        <Literal>is temporal part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#temporalPartOf</IRI>
+        <Literal>divided into temporal parts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#temporalPartOf</IRI>
+        <Literal>temporalPartOf is the specialisation of the partOf relation between two perdurants x and y, x being a temporal slice of y, that is, a maximal part of y during some time interval.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#temporalPartOf</IRI>
+        <Literal>temporal part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_pl"/>
+        <IRI>#temporallyLocatedAt</IRI>
+        <Literal>are temporally located at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_sg"/>
+        <IRI>#temporallyLocatedAt</IRI>
+        <Literal>is temporally located at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
+        <IRI>#temporallyLocatedAt</IRI>
+        <Literal>the value of the temporal location relation taken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#temporallyLocatedAt</IRI>
+        <Literal>temporallyLocatedAt is a binary relation between an endurant or a perdurant or a quality and the unique time interval it is located in.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#temporallyLocatedAt</IRI>
+        <Literal>temporally located at</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
