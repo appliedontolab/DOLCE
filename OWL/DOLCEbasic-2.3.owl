@@ -39,7 +39,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
     </Annotation>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
-        <Literal>2.3 --- Modified the axioms verbalisations related to inverse of part-of and similar to make them more clear, idem for direct-quality-of; and version IRI</Literal>
+        <Literal>2.3.1 --- modified additional verbalisations for the quale of and constant quale of relations</Literal>
     </Annotation>
     <Declaration>
         <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
@@ -381,7 +381,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
     <SubClassOf>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that is the value of the constant quale relation taken by an abstract region is an abstract quality.</Literal>
+            <Literal>Everything that has an abstract region as a constant quale is an abstract quality.</Literal>
         </Annotation>
         <Class IRI="#AbstractRegion"/>
         <ObjectAllValuesFrom>
@@ -392,7 +392,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
     <SubClassOf>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that an abstract region as part is an abstract region.</Literal>
+            <Literal>Everything that has an abstract region as part is an abstract region.</Literal>
         </Annotation>
         <Class IRI="#AbstractRegion"/>
         <ObjectAllValuesFrom>
@@ -890,7 +890,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
     <SubClassOf>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that is the value of the constant quale relation taken by a physical region is a physical quality.</Literal>
+            <Literal>Everything that has a physical region as constant quale is a physical quality.</Literal>
         </Annotation>
         <Class IRI="#PhysicalRegion"/>
         <ObjectAllValuesFrom>
@@ -983,7 +983,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
     <SubClassOf>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that is the value of the constant quale relation taken by a space region is a spatial location.</Literal>
+            <Literal>Everything that has a space region as constant quale is a spatial location.</Literal>
         </Annotation>
         <Class IRI="#SpaceRegion"/>
         <ObjectAllValuesFrom>
@@ -1067,7 +1067,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
         </Annotation>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Every temporal location is valorized through the is quale of relation by a time interval.</Literal>
+            <Literal>Every temporal location has some time interval has quale.</Literal>
         </Annotation>
         <Class IRI="#TemporalLocation"/>
         <ObjectSomeValuesFrom>
@@ -1092,7 +1092,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
         </Annotation>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Every temporal quality is valorized through the is quale of relation by a particular.</Literal>
+            <Literal>Every temporal quality has some particular as quale.</Literal>
         </Annotation>
         <Class IRI="#TemporalQuality"/>
         <ObjectSomeValuesFrom>
@@ -1147,7 +1147,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
     <SubClassOf>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that is valorized through the is quale of relation by a time interval is a temporal location.</Literal>
+            <Literal>Everything that has a time interval as quale is a temporal location.</Literal>
         </Annotation>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1837,7 +1837,7 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <ObjectPropertyRange>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that is the value of the constant quale relation taken by something is something that is an abstract quality or that is a physical quality.</Literal>
+            <Literal>Everything that has something as constant quale is something that is an abstract quality or that is a physical quality.</Literal>
         </Annotation>
         <ObjectProperty IRI="#constantQualeOf"/>
         <ObjectUnionOf>
@@ -1856,7 +1856,7 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <ObjectPropertyRange>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that is the constant spatial location taken by something is a space region.</Literal>
+            <Literal>Everything that is the value of the constant spatial location taken by something is a space region.</Literal>
         </Annotation>
         <ObjectProperty IRI="#constantlySpatiallyLocatedAt"/>
         <Class IRI="#SpaceRegion"/>
@@ -1936,7 +1936,7 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         </Annotation>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal>Everything that is valorized through the is quale of relation by something is a temporal quality.</Literal>
+            <Literal>Everything has something as a quale is a temporal quality.</Literal>
         </Annotation>
         <ObjectProperty IRI="#qualeOf"/>
         <Class IRI="#TemporalQuality"/>
@@ -3109,7 +3109,7 @@ In this constant version, the region x is the quale of the quality y during the 
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="ace_lexicon:TV_vbg"/>
         <IRI>#constantlySpatiallyLocatedAt</IRI>
-        <Literal>the constant spatial location taken</Literal>
+        <Literal>the value of the constant spatial location taken</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
