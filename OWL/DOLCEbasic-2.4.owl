@@ -229,7 +229,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
             <Literal>Every atom is a particular.</Literal>
         </Annotation>
-        <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
+        <Class IRI="#Atom"/>
         <Class IRI="#Particular"/>
     </SubClassOf>
     <SubClassOf>
@@ -237,7 +237,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
             <Literal>Every atom is something that is an abstract or that is a perdurant.</Literal>
         </Annotation>
-        <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
+        <Class IRI="#Atom"/>
         <ObjectUnionOf>
             <Class IRI="#Abstract"/>
             <Class IRI="#Perdurant"/>
@@ -252,7 +252,7 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
             <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
             <Literal>No atom has a particular as proper part.</Literal>
         </Annotation>
-        <Class IRI="http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom"/>
+        <Class IRI="#Atom"/>
         <ObjectComplementOf>
             <ObjectSomeValuesFrom>
                 <ObjectInverseOf>
@@ -2179,22 +2179,22 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     </SubObjectPropertyOf>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_pl"/>
-        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <IRI>#Atom</IRI>
         <Literal>atoms</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="ace_lexicon:CN_sg"/>
-        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <IRI>#Atom</IRI>
         <Literal>atom</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <IRI>#Atom</IRI>
         <Literal>Atom (atomic Abstract or Perdurant)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>http://www.loa.istc.cnr.it/dolce/dolce-owl/dolceV5.owl#Atom</IRI>
+        <IRI>#Atom</IRI>
         <Literal>Atom</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
