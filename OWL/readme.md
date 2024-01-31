@@ -6,7 +6,7 @@ Upload a file called DUMMY-n.m (but also DUMMY-n.m.p, or DUMMY-nm, ecc.) to uplo
 
 For instance, the last version of DOLCEbasic should always be accessible at https://www.w3id.org/DOLCE/OWL/DOLCEbasic.owl
 
-###Current rules for versioning
+### Current rules for versioning
 Semantic versioning is employed, with the following conventions:
 - The version number can either be in the form *n.m* or *n.m.r*. The form *n.m* is a shortcut for *n.m.0*
 - Only versions like *n.m* are published as version IRIs, while forms like *n.m.r* are used internally to track minor changes
