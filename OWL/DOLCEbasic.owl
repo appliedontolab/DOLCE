@@ -9,18 +9,18 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
     <owl:Ontology rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic">
-        <owl:versionIRI rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic/2.4"/>
+        <owl:versionIRI rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic/2.5"/>
         <terms:contributor>Stefano Borgo, Francesco Compagno, Claudio Masolo, Emilio M. Sanfilippo, Walter Terkaj</terms:contributor>
         <terms:creator>Laure Vieu and Daniele Porello</terms:creator>
         <rdfs:comment>DOLCE-basic in OWL. OWL version engineered by Laure Vieu and Daniele Porello, based on DOLCE from Wonderweb Deliverable D18 and on more recent work by Claudio Masolo and the LOA. Reference to numbered axioms from D18.
 DOLCE-basic does not include the n-ary, n&gt;2, relations of DOLCE. For some of these relations with a time argument, a constant variant (already in DOLCE or not) is included.
 NB: DOLCE-basic is a module of another version of DOLCE in OWL which includes n-ary, n&gt;2, relations of DOLCE using the W3C-recommended approach of reifying relation instances.</rdfs:comment>
+        <owl:versionInfo>2.5 --- Modified serialization format into RDF/XML; and version IRI</owl:versionInfo>
         <owl:versionInfo>Beta version. 
 
 We seek feedback especially regarding whether users understand or not what are the classes and the relations and how to use them.
 Feedback regarding possible incoherences would be extremely useful as well.
 Annotation of the axioms is very patchy, we are still working on it, so we do not currently seek feedback on these annotations.</owl:versionInfo>
-        <owl:versionInfo>2.4.1 --- Modified serialization format into RDF/XML;</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -89,13 +89,72 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
     
 
 
+    <!-- https://www.w3id.org/DOLCE/OWL/DOLCEbasic#atomicPartOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#atomicPartOf">
+        <rdfs:subPropertyOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Atom"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantAtomicPartOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantAtomicPartOf">
+        <rdfs:subPropertyOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#ConstantAtom"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf -->
 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf">
-        <rdfs:subPropertyOf rdf:nodeID="genid1"/>
+        <rdfs:subPropertyOf>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
+            </rdf:Description>
+        </rdfs:subPropertyOf>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:nodeID="genid4"/>
-        <rdfs:range rdf:nodeID="genid9"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <ace_lexicon:TV_pl>are constant constituent of</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>is constant constituent of</ace_lexicon:TV_sg>
         <ace_lexicon:TV_vbg>constantly constituted</ace_lexicon:TV_vbg>
@@ -103,33 +162,42 @@ Annotation of the axioms is very patchy, we are still working on it, so we do no
 In this constant version, the entity x constitutes y during the whole existence of y.</rdfs:comment>
         <rdfs:label>constant constituent of</rdfs:label>
     </owl:ObjectProperty>
-    <rdf:Description rdf:nodeID="genid1">
-        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
-    </rdf:Description>
-    <owl:Class rdf:nodeID="genid4">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-        </owl:unionOf>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid9">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-        </owl:unionOf>
-    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
+        <rdfs:comment>Everything that is constant constituent of something is something that is a non physical endurant or that is a perdurant or that is a physical endurant.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:nodeID="genid9"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constantly constituted by something is something that is a non physical endurant or that is a perdurant or that is a physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid1"/>
+        <owl:annotatedTarget>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
+            </rdf:Description>
+        </owl:annotatedTarget>
         <rdfs:comment>If X is constant constituent of Y then Y specifically depends on X.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -137,12 +205,6 @@ In this constant version, the entity x constitutes y during the whole existence 
         <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
         <owl:annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:comment>If X is constant constituent of something that is constant constituent of Y then X is constant constituent of Y.</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid4"/>
-        <rdfs:comment>Everything that is constant constituent of something is something that is a non physical endurant or that is a perdurant or that is a physical endurant.</rdfs:comment>
     </owl:Axiom>
     
 
@@ -194,7 +256,11 @@ In this constant version, the endurant x is part of the endurant y during the wh
 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantParticipantOf">
         <rdfs:subPropertyOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
-        <rdfs:subPropertyOf rdf:nodeID="genid19"/>
+        <rdfs:subPropertyOf>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
+            </rdf:Description>
+        </rdfs:subPropertyOf>
         <rdfs:domain rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:range rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <ace_lexicon:TV_pl>are constant participants of</ace_lexicon:TV_pl>
@@ -204,9 +270,6 @@ In this constant version, the endurant x is part of the endurant y during the wh
 In this constant version, the endurant x participates in the perdurant y during the whole existence of y.</rdfs:comment>
         <rdfs:label>constant participation of</rdfs:label>
     </owl:ObjectProperty>
-    <rdf:Description rdf:nodeID="genid19">
-        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
-    </rdf:Description>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantParticipantOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
@@ -216,7 +279,11 @@ In this constant version, the endurant x participates in the perdurant y during 
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantParticipantOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid19"/>
+        <owl:annotatedTarget>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
+            </rdf:Description>
+        </owl:annotatedTarget>
         <rdfs:comment>If X is constant participant of Y then Y specifically depends on X.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -277,8 +344,22 @@ In this constant version, the endurant x participates in the perdurant y during 
     <!-- https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf -->
 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf">
-        <rdfs:domain rdf:nodeID="genid27"/>
-        <rdfs:range rdf:nodeID="genid31"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <ace_lexicon:TV_pl>are constant quale of</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>is constant quale of</ace_lexicon:TV_sg>
         <ace_lexicon:TV_vbg>the value of the constant quale relation taken</ace_lexicon:TV_vbg>
@@ -286,28 +367,30 @@ In this constant version, the endurant x participates in the perdurant y during 
 In this constant version, the region x is the quale of the quality y during the whole existence of y.</rdfs:comment>
         <rdfs:label>constant quale of</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid27">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
-        </owl:unionOf>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid31">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid27"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant quale of something is something that is an abstract region or that is a physical region.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:nodeID="genid31"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has something as constant quale is something that is an abstract quality or that is a physical quality.</rdfs:comment>
     </owl:Axiom>
     
@@ -366,7 +449,16 @@ In this constant version, the region x is the quale of the quality y during the 
     <!-- https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantlySpatiallyLocatedAt -->
 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantlySpatiallyLocatedAt">
-        <rdfs:domain rdf:nodeID="genid42"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
@@ -384,18 +476,19 @@ In this constant version, the region x is the quale of the quality y during the 
         <rdfs:comment>constantlySpatiallyLocatedAt is a binary relation between a physical or non-physical endurant or a perdurant or a physical quality and the unique space region it is constantly located in.</rdfs:comment>
         <rdfs:label>constantly spatially located at</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid42">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantlySpatiallyLocatedAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid42"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constantly spatially located at something is something that is a non physical endurant or that is a perdurant or that is a physical endurant or that is a physical quality.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -435,19 +528,20 @@ In this constant version, the region x is the quale of the quality y during the 
         <rdfs:subPropertyOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        <rdfs:range rdf:nodeID="genid59"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <ace_lexicon:TV_pl>are direct quality of</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>is direct quality of</ace_lexicon:TV_sg>
         <ace_lexicon:TV_vbg>qualified</ace_lexicon:TV_vbg>
         <rdfs:comment>directQualityOf is a binary relation between a quality and the unique entity it inheres in, which is an endurant or a perdurant. It implies specific constant dependence.</rdfs:comment>
         <rdfs:label>direct quality of</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid59">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
@@ -470,7 +564,14 @@ In this constant version, the region x is the quale of the quality y during the 
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:nodeID="genid59"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has something as direct quality is something that is an endurant or that is a perdurant.</rdfs:comment>
         <rdfs:comment>From Dd28, Ad38, Ad43, Ad46, Ad47, Ad48</rdfs:comment>
     </owl:Axiom>
@@ -481,8 +582,22 @@ In this constant version, the region x is the quale of the quality y during the 
 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
-        <rdfs:domain rdf:nodeID="genid64"/>
-        <rdfs:range rdf:nodeID="genid68"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description>
                 <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
@@ -495,18 +610,6 @@ In this constant version, the region x is the quale of the quality y during the 
         <rdfs:comment>overlaps holds between two abstracts or two perdurants when they both share a part.</rdfs:comment>
         <rdfs:label>overlaps</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid64">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid68">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
@@ -516,14 +619,28 @@ In this constant version, the region x is the quale of the quality y during the 
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid64"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that overlaps something is something that is an abstract or that is a perdurant.</rdfs:comment>
         <rdfs:comment>From Ad1 and Dd15</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:nodeID="genid68"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is overlapped by something is something that is an abstract or that is a perdurant.</rdfs:comment>
         <rdfs:comment>From Ad1 and Dd15</rdfs:comment>
     </owl:Axiom>
@@ -547,26 +664,28 @@ In this constant version, the region x is the quale of the quality y during the 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf">
         <rdfs:subPropertyOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:nodeID="genid78"/>
-        <rdfs:range rdf:nodeID="genid82"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <ace_lexicon:TV_pl>are part of</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>is part of</ace_lexicon:TV_sg>
         <ace_lexicon:TV_vbg>divided into parts</ace_lexicon:TV_vbg>
         <rdfs:comment>PartOf is a binary relation that is a partial ordering between abstract entities or between perdurants. It founds an extensional mereology on each of these two categories.</rdfs:comment>
         <rdfs:label>part of</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid78">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid82">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
@@ -583,14 +702,28 @@ In this constant version, the region x is the quale of the quality y during the 
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid78"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad1 (half)</rdfs:comment>
         <rdfs:comment>Everything that is part of something is something that is an abstract or that is a perdurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:nodeID="genid82"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad1 (half)</rdfs:comment>
         <rdfs:comment>Everything that is has something as part is something that is an abstract or that is a perdurant.</rdfs:comment>
     </owl:Axiom>
@@ -600,7 +733,15 @@ In this constant version, the region x is the quale of the quality y during the 
     <!-- https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt -->
 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt">
-        <rdfs:domain rdf:nodeID="genid86"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
@@ -664,13 +805,15 @@ In this constant version, the region x is the quale of the quality y during the 
         <rdfs:comment>presentAt is a binary relation between an endurant or a perdurant or a quality x and a time interval t which is part of x&apos;s temporal location.</rdfs:comment>
         <rdfs:label>present at</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid86">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        </owl:unionOf>
-    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>If X is constant part of something that is present at Y then X is present at Y.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
@@ -769,7 +912,15 @@ In this constant version, the region x is the quale of the quality y during the 
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid86"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is present at something is something that is an endurant or that is a perdurant or that is a quality.</rdfs:comment>
         <rdfs:comment>From Dd40, Dd30, Dd31, Dd32, Dd33</rdfs:comment>
     </owl:Axiom>
@@ -789,15 +940,6 @@ In this constant version, the region x is the quale of the quality y during the 
         </owl:annotatedTarget>
         <rdfs:comment>If X is constant constituent of something that is present at Y then X is present at Y.</rdfs:comment>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
-        <owl:annotatedTarget rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-        </owl:annotatedTarget>
-        <rdfs:comment>If X is constant part of something that is present at Y then X is present at Y.</rdfs:comment>
-    </owl:Axiom>
     
 
 
@@ -806,26 +948,28 @@ In this constant version, the region x is the quale of the quality y during the 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#properPartOf">
         <rdfs:subPropertyOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:nodeID="genid133"/>
-        <rdfs:range rdf:nodeID="genid137"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <ace_lexicon:TV_pl>are proper part of</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>is proper part of</ace_lexicon:TV_sg>
         <ace_lexicon:TV_vbg>divided into proper parts</ace_lexicon:TV_vbg>
         <rdfs:comment>properPartOf is the irreflexive specialization of the partOf relation. (Irreflexivity not captured here, as transitivity is favored)</rdfs:comment>
         <rdfs:label>proper part of</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid133">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid137">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#properPartOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
@@ -843,13 +987,27 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#properPartOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid133"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is proper part of something is something that is an abstract or that is a perdurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#properPartOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:nodeID="genid137"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has something as proper part is something that is an abstract or that is a perdurant.</rdfs:comment>
     </owl:Axiom>
     
@@ -888,8 +1046,24 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:nodeID="genid144"/>
-        <rdfs:range rdf:nodeID="genid149"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <ace_lexicon:TV_pl>specifically depends on</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>specifically depends on</ace_lexicon:TV_sg>
         <ace_lexicon:TV_vbg>specifically depended on</ace_lexicon:TV_vbg>
@@ -897,20 +1071,6 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>specificallyDependsOn is a binary relation between two entities x, y present in time, i.e., endurants, perdurants or qualities, with the intended interpretation that the existence of x specifically and constantly depends on the existence of y.</rdfs:comment>
         <rdfs:label>specifically depends on</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid144">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        </owl:unionOf>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid149">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
@@ -920,14 +1080,30 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid144"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that specifically depends on something is something that is an endurant or that is a perdurant or that is a quality.</rdfs:comment>
         <rdfs:comment>From Dd69</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:nodeID="genid149"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is specifically depended on by something is something that is an endurant or that is a perdurant or that is a quality.</rdfs:comment>
         <rdfs:comment>From Dd69</rdfs:comment>
     </owl:Axiom>
@@ -982,7 +1158,15 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:ObjectProperty rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt">
         <rdfs:subPropertyOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:nodeID="genid160"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <ace_lexicon:TV_pl>are temporally located at</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>is temporally located at</ace_lexicon:TV_sg>
@@ -990,13 +1174,6 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>temporallyLocatedAt is a binary relation between an endurant or a perdurant or a quality and the unique time interval it is located in.</rdfs:comment>
         <rdfs:label>temporally located at</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Class rdf:nodeID="genid160">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        </owl:unionOf>
-    </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
@@ -1013,7 +1190,15 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:nodeID="genid160"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is temporally located at something is something that is an endurant or that is a perdurant or that is a quality.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -1040,10 +1225,38 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-        <rdfs:subClassOf rdf:nodeID="genid167"/>
-        <rdfs:subClassOf rdf:nodeID="genid169"/>
-        <rdfs:subClassOf rdf:nodeID="genid171"/>
-        <rdfs:subClassOf rdf:nodeID="genid174"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
@@ -1052,30 +1265,6 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>An Abstract entity is an entity that has neither spatial nor temporal qualities and is not a quality itself (examples: a number, a set, a quality space).</rdfs:comment>
         <rdfs:label>Abstract</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid167">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid169">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid171">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid174">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1085,28 +1274,56 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid167"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is overlapped by an abstract is an abstract.</rdfs:comment>
         <rdfs:comment>from Dd15, Ad3</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid169"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad3 (half)</rdfs:comment>
         <rdfs:comment>Everything that has an abstract as part is an abstract.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid171"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that overlaps an abstract is an abstract.</rdfs:comment>
         <rdfs:comment>from Dd15, Ad3</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid174"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad3 (half)</rdfs:comment>
         <rdfs:comment>Everything that is part of an abstract is an abstract.</rdfs:comment>
     </owl:Axiom>
@@ -1135,8 +1352,22 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        <rdfs:subClassOf rdf:nodeID="genid181"/>
-        <rdfs:subClassOf rdf:nodeID="genid183"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
         <ace_lexicon:CN_pl>abstract qualities</ace_lexicon:CN_pl>
@@ -1145,18 +1376,6 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>Warning: Abstract qualities are not qualities of abstract entities, but of non-physical endurants</rdfs:comment>
         <rdfs:label>Abstract Quality</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid181">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid183">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
-    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1166,14 +1385,28 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid181"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad48 for dQt</rdfs:comment>
         <rdfs:comment>Everything that has an abstract quality as direct quality is a non physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid183"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant quale of an abstract quality is an abstract region.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -1195,9 +1428,28 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Region"/>
-        <rdfs:subClassOf rdf:nodeID="genid189"/>
-        <rdfs:subClassOf rdf:nodeID="genid191"/>
-        <rdfs:subClassOf rdf:nodeID="genid193"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalRegion"/>
         <ace_lexicon:CN_pl>abstract regions</ace_lexicon:CN_pl>
@@ -1205,22 +1457,6 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>An Abstract Region is a region in the abstract quality space for abstract qualities (example: the conventional value of 1 Euro).</rdfs:comment>
         <rdfs:label>Abstract Region</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid189">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid191">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid193">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
-    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1230,19 +1466,38 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid189"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has an abstract region as a constant quale is an abstract quality.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid191"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has an abstract region as part is an abstract region.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid193"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is part of an abstract region is an abstract region.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -1294,6 +1549,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>An Achievement is an event which is mereologically atomic (examples: reaching the summit of K2, a departure, a death).</rdfs:comment>
         <rdfs:label>Achievement</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Accomplishment"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Achievement"/>
+        <rdfs:comment>No accomplishment is an achievement.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Achievement"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1414,30 +1675,32 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Atom">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-        <rdfs:subClassOf rdf:nodeID="genid211"/>
-        <rdfs:subClassOf rdf:nodeID="genid215"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#properPartOf"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
         <ace_lexicon:CN_pl>atoms</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>atom</ace_lexicon:CN_sg>
         <rdfs:comment>Atom (atomic Abstract or Perdurant)</rdfs:comment>
         <rdfs:label>Atom</rdfs:label>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid211">
-        <owl:unionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
-            <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-        </owl:unionOf>
-    </owl:Class>
-    <owl:Class rdf:nodeID="genid215">
-        <owl:complementOf>
-            <owl:Restriction>
-                <owl:onProperty>
-                    <rdf:Description>
-                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#properPartOf"/>
-                    </rdf:Description>
-                </owl:onProperty>
-                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-            </owl:Restriction>
-        </owl:complementOf>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Atom"/>
@@ -1448,16 +1711,58 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Atom"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid211"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Every atom is something that is an abstract or that is a perdurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Atom"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid215"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#properPartOf"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <rdfs:comment>Dd16</rdfs:comment>
         <rdfs:comment>No atom has a particular as proper part.</rdfs:comment>
     </owl:Axiom>
+    
+
+
+    <!-- https://www.w3id.org/DOLCE/OWL/DOLCEbasic#ConstantAtom -->
+
+    <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#ConstantAtom">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantProperPartOf"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -1465,7 +1770,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-        <rdfs:subClassOf rdf:nodeID="genid220"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
         <owl:disjointUnionOf rdf:parseType="Collection">
@@ -1478,10 +1788,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>An Endurant is an entity wholly present, i.e., all its proper parts are present, at any time that it is present (examples: a person, a tree, an atom, an idea).</rdfs:comment>
         <rdfs:label>Endurant</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid220">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>No abstract is an endurant.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1491,7 +1803,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid220"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Every endurant is temporally located at a particular.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -1555,6 +1872,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:label>Feature</rdfs:label>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AmountOfMatter"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Feature"/>
+        <rdfs:comment>No amount of matter is a feature.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Feature"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
@@ -1573,17 +1896,18 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#MentalObject">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalObject"/>
-        <rdfs:subClassOf rdf:nodeID="genid233"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AgentivePhysicalObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SocialObject"/>
         <ace_lexicon:CN_pl>mental objects</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>mental object</ace_lexicon:CN_sg>
         <rdfs:comment>A Mental Object is a non-physical object which existentially depends on an agentive physical object (examples: a percept, a sense datum).</rdfs:comment>
         <rdfs:label>Mental Object</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid233">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AgentivePhysicalObject"/>
-    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#MentalObject"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1593,7 +1917,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#MentalObject"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid233"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AgentivePhysicalObject"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Every mental object specifically depends on an agentive physical object.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -1633,6 +1962,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:label>Non-Agentive Social Object</rdfs:label>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AgentiveSocialObject"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentiveSocialObject"/>
+        <rdfs:comment>No agentive social object is a non agentive social object.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentiveSocialObject"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SocialObject"/>
@@ -1645,49 +1980,60 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-        <rdfs:subClassOf rdf:nodeID="genid239"/>
-        <rdfs:subClassOf rdf:nodeID="genid241"/>
-        <rdfs:subClassOf rdf:nodeID="genid243"/>
-        <rdfs:subClassOf rdf:nodeID="genid246"/>
-        <rdfs:subClassOf rdf:nodeID="genid249"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <ace_lexicon:CN_pl>non physical endurants</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>non physical endurant</ace_lexicon:CN_sg>
         <rdfs:comment>A Non-Physical Endurant is an endurant with no direct spatial quality (examples: democracy, the United Nations, the general secretary of Amnesty International).</rdfs:comment>
         <rdfs:label>Non-Physical Endurant</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid239">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid241">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid243">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid246">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid249">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#ArbitrarySum"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+        <rdfs:comment>No arbitrary sum is a non physical endurant.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1697,31 +2043,68 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid239"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constantly constituted by a non physical endurant is a non physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid241"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that a non physical endurant as a constant part is a non physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid243"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant constituent of a non physical endurant is a non physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid246"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant part of a non physical endurant is a non physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid249"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Approximation of Ad51</rdfs:comment>
         <rdfs:comment>Everything that is direct quality of a non physical endurant is an abstract quality.</rdfs:comment>
     </owl:Axiom>
@@ -1784,77 +2167,98 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-        <rdfs:subClassOf rdf:nodeID="genid260"/>
-        <rdfs:subClassOf rdf:nodeID="genid262"/>
-        <rdfs:subClassOf rdf:nodeID="genid265"/>
-        <rdfs:subClassOf rdf:nodeID="genid267"/>
-        <rdfs:subClassOf rdf:nodeID="genid269"/>
-        <rdfs:subClassOf rdf:nodeID="genid271"/>
-        <rdfs:subClassOf rdf:nodeID="genid274"/>
-        <rdfs:subClassOf rdf:nodeID="genid277"/>
-        <rdfs:subClassOf rdf:nodeID="genid280"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
         <ace_lexicon:CN_pl>perdurants</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>perdurant</ace_lexicon:CN_sg>
         <rdfs:comment>A Perdurant is an entity that happens in time (examples: a person’s life, a soccer game, the reading of a book, the state of feeling happy). Some perdurants are temporally atomic (example: the change of a letter’s state due to the breaking of the seal).</rdfs:comment>
         <rdfs:label>Perdurant</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid260">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid262">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid265">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid267">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid269">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid271">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid274">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid277">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid280">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+        <rdfs:comment>No abstract is a perdurant.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+        <rdfs:comment>No endurant is a perdurant.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1864,59 +2268,124 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid260"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Every perdurant is temporally located at a particular.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid262"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Every perdurant has a temporal location as direct quality.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid265"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constantly constituted by a perdurant is a perdurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid267"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is overlapped by a perdurant is a perdurant.</rdfs:comment>
         <rdfs:comment>from Dd15, Ad2</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid269"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad2  (half)</rdfs:comment>
         <rdfs:comment>Everything that has a perdurant as part is a perdurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid271"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant constituent of a perdurant is a perdurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid274"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad49 for dQt</rdfs:comment>
         <rdfs:comment>Everything that is direct quality of a perdurant is a temporal quality.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid277"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#overlaps"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that overlaps a perdurant is a perdurant.</rdfs:comment>
         <rdfs:comment>from Dd15, Ad2</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid280"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad2 (half)</rdfs:comment>
         <rdfs:comment>Everything that is part of a perdurant is a perdurant.</rdfs:comment>
     </owl:Axiom>
@@ -1933,57 +2402,75 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-        <rdfs:subClassOf rdf:nodeID="genid285"/>
-        <rdfs:subClassOf rdf:nodeID="genid288"/>
-        <rdfs:subClassOf rdf:nodeID="genid290"/>
-        <rdfs:subClassOf rdf:nodeID="genid292"/>
-        <rdfs:subClassOf rdf:nodeID="genid295"/>
-        <rdfs:subClassOf rdf:nodeID="genid298"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpatialLocation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <ace_lexicon:CN_pl>physical endurants</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>physical endurant</ace_lexicon:CN_sg>
         <rdfs:comment>A Physical Endurant is an endurant with direct spatial quality (examples: a person, a tree, an atom, the water in a glass, a hole in a wall, the center of the Earth).</rdfs:comment>
         <rdfs:label>Physical Endurant</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid285">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpatialLocation"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid288">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid290">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid292">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid295">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid298">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#ArbitrarySum"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+        <rdfs:comment>No arbitrary sum is a physical endurant.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+        <rdfs:comment>No non physical endurant is a physical endurant.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -1993,37 +2480,83 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid285"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpatialLocation"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Every physical endurant has a spatial location as direct quality.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid288"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constantly constituted by a physical endurant is a physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid290"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is a physical endurant as a constant part is a physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid292"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant constituent of a physical endurant is a physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid295"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant part of a physical endurant is a physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid298"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Approximation of Ad50</rdfs:comment>
         <rdfs:comment>Everything that is direct quality of a physical endurant is a physical quality.</rdfs:comment>
     </owl:Axiom>
@@ -2043,6 +2576,18 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>A Physical Object is a physical endurant with unity criterion (examples: a person, a human body, a house, a computer).</rdfs:comment>
         <rdfs:label>Physical Object</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AmountOfMatter"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+        <rdfs:comment>No amount of matter is a physical object.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Feature"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+        <rdfs:comment>No feature is a physical object.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2065,26 +2610,34 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        <rdfs:subClassOf rdf:nodeID="genid306"/>
-        <rdfs:subClassOf rdf:nodeID="genid308"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
         <ace_lexicon:CN_pl>physical qualities</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>physical quality</ace_lexicon:CN_sg>
         <rdfs:comment>A Physical Quality is a quality that directly inheres to a physical endurant (examples: the weight of a pen, the color of an apple).</rdfs:comment>
         <rdfs:label>Physical Quality</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid306">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid308">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+        <rdfs:comment>No abstract quality is a physical quality.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2094,14 +2647,28 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid306"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad47 for dQt</rdfs:comment>
         <rdfs:comment>Everything that has a physical quality as direct quality is a physical endurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid308"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is constant quale of a physical quality is a physical region.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -2117,17 +2684,24 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Region"/>
-        <rdfs:subClassOf rdf:nodeID="genid313"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalRegion"/>
         <ace_lexicon:CN_pl>physical regions</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>physical region</ace_lexicon:CN_sg>
         <rdfs:comment>A Physical Region is a region in a quality space for physical qualities (examples: the physical space, an area in the color quality space, 80Kg).</rdfs:comment>
         <rdfs:label>Physical Region</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid313">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+        <rdfs:comment>No abstract region is a physical region.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2137,7 +2711,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid313"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has a physical region as constant quale is a physical quality.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -2178,8 +2757,18 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-        <rdfs:subClassOf rdf:nodeID="genid319"/>
-        <rdfs:subClassOf rdf:nodeID="genid321"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointUnionOf rdf:parseType="Collection">
             <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
             <rdf:Description rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
@@ -2190,14 +2779,24 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:comment>A Quality is an entity that inheres in an endurant or a perdurant, and that can be perceived or measured (examples: the shape of a book, the color of a car, the size of a t-shirt, the electrical charge of a battery).</rdfs:comment>
         <rdfs:label>Quality</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid319">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid321">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+        <rdfs:comment>No abstract is a quality.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+        <rdfs:comment>No endurant is a quality.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+        <rdfs:comment>No perdurant is a quality.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2207,14 +2806,24 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid319"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Every quality is direct quality of a particular.</rdfs:comment>
         <rdfs:comment>Q(x)→ ∃y DQT(x,y)</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid321"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Every quality is temporally located at a particular.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
@@ -2302,6 +2911,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:label>Social Object</rdfs:label>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#MentalObject"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SocialObject"/>
+        <rdfs:comment>No mental object is a social object.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SocialObject"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalObject"/>
@@ -2329,6 +2944,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:label>Society</rdfs:label>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SocialAgent"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Society"/>
+        <rdfs:comment>No social agent is a society.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Society"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AgentiveSocialObject"/>
@@ -2341,30 +2962,33 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
-        <rdfs:subClassOf rdf:nodeID="genid340"/>
-        <rdfs:subClassOf rdf:nodeID="genid342"/>
-        <rdfs:subClassOf rdf:nodeID="genid344"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpatialLocation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <ace_lexicon:CN_pl>space regions</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>space region</ace_lexicon:CN_sg>
         <rdfs:comment>A Space Region is a physical region, possibly disconnected, for spatial locations (examples: the region occupied by Earth in this moment, the region where it snowed in the year 1900).</rdfs:comment>
         <rdfs:label>Space Region</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid340">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpatialLocation"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid342">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid344">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
-    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2374,19 +2998,38 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid340"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#constantQualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpatialLocation"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has a space region as constant quale is a spatial location.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid342"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has a space region as part is a space region.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid344"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is part of a space region is a space region.</rdfs:comment>
     </owl:Axiom>
     
@@ -2414,20 +3057,27 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#State">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Stative"/>
-        <rdfs:subClassOf rdf:nodeID="genid349"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#State"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <ace_lexicon:CN_pl>states</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>state</ace_lexicon:CN_sg>
         <rdfs:comment>A State is a stative perdurant such that all its parts are of the same type (examples: being sitting, being open, being happy, being red).</rdfs:comment>
         <rdfs:label>State</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid349">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#State"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Process"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#State"/>
+        <rdfs:comment>No process is a state.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#State"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2437,7 +3087,16 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#State"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid349"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#State"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is part of a state is a state.</rdfs:comment>
     </owl:Axiom>
     
@@ -2453,6 +3112,12 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:label>Stative</rdfs:label>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Event"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Stative"/>
+        <rdfs:comment>No event is a stative.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Stative"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
@@ -2465,20 +3130,21 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
-        <rdfs:subClassOf rdf:nodeID="genid354"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <ace_lexicon:CN_pl>temporal locations</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>temporal location</ace_lexicon:CN_sg>
         <rdfs:comment>A Temporal Location is the temporal quality of a perdurant and is specific to that perdurant, that is, two concurrent perdurants have distinct temporal locations (examples: the temporal quality of World War I, the temporal quality of the Anderssen-Kieseritzky chess play in 1851, the summers of the 20th century).</rdfs:comment>
         <rdfs:label>Temporal Location</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid354">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
-    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2488,7 +3154,16 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid354"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad53  (**check**)</rdfs:comment>
         <rdfs:comment>Every temporal location has some time interval has quale.</rdfs:comment>
     </owl:Axiom>
@@ -2499,25 +3174,39 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-        <rdfs:subClassOf rdf:nodeID="genid358"/>
-        <rdfs:subClassOf rdf:nodeID="genid361"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <ace_lexicon:CN_pl>temporal qualities</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>temporal quality</ace_lexicon:CN_sg>
         <rdfs:comment>A Temporal Quality is a quality that directly inheres to a perdurant (example: the duration of World War I, the starting time of the 2000 Olympics).</rdfs:comment>
         <rdfs:label>Temporal Quality</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid358">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid361">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
+        <rdfs:comment>No abstract quality is a temporal quality.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
+        <rdfs:comment>No physical quality is a temporal quality.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2527,14 +3216,28 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid358"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad55</rdfs:comment>
         <rdfs:comment>Every temporal quality has some particular as quale.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid361"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Ad46 for dQt</rdfs:comment>
         <rdfs:comment>Everything that has a temporal quality as direct quality is a perdurant.</rdfs:comment>
     </owl:Axiom>
@@ -2551,6 +3254,18 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <rdfs:label>Temporal Region</rdfs:label>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalRegion"/>
+        <rdfs:comment>No abstract region is a temporal region.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalRegion"/>
+        <rdfs:comment>No physical region is a temporal region.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalRegion"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#Region"/>
@@ -2563,30 +3278,33 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
 
     <owl:Class rdf:about="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval">
         <rdfs:subClassOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalRegion"/>
-        <rdfs:subClassOf rdf:nodeID="genid365"/>
-        <rdfs:subClassOf rdf:nodeID="genid367"/>
-        <rdfs:subClassOf rdf:nodeID="genid369"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <ace_lexicon:CN_pl>time intervals</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>time interval</ace_lexicon:CN_sg>
         <rdfs:comment>A Time Interval is a temporal region which is an interval or a sum of intervals (examples: the first second of your life,  the Cretaceous time period, the time interval of all winters of the third millennium).</rdfs:comment>
         <rdfs:label>Time Interval</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid365">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid367">
-        <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
-    </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid369">
-        <owl:onProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-            </rdf:Description>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
-    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -2596,24 +3314,43 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid365"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has a time interval as part is a time interval.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid367"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that has a time interval as quale is a temporal location.</rdfs:comment>
         <rdfs:comment>ql(x,y) &amp; T(x) -&gt; TL(y)</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid369"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="https://www.w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <rdfs:comment>Everything that is part of a time interval is a time interval.</rdfs:comment>
     </owl:Axiom>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
