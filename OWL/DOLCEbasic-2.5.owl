@@ -15,7 +15,7 @@
         <rdfs:comment>DOLCE-basic in OWL. OWL version engineered by Laure Vieu and Daniele Porello, based on DOLCE from Wonderweb Deliverable D18 and on more recent work by Claudio Masolo and the LOA. Reference to numbered axioms from D18.
 DOLCE-basic does not include the n-ary, n&gt;2, relations of DOLCE. For some of these relations with a time argument, a constant variant (already in DOLCE or not) is included.
 NB: DOLCE-basic is a module of another version of DOLCE in OWL which includes n-ary, n&gt;2, relations of DOLCE using the W3C-recommended approach of reifying relation instances.</rdfs:comment>
-        <owl:versionInfo>2.5 --- Modified serialization format into RDF/XML; and version IRI</owl:versionInfo>
+        <owl:versionInfo>2.5</owl:versionInfo>
         <owl:versionInfo>Beta version. 
 
 We seek feedback especially regarding whether users understand or not what are the classes and the relations and how to use them.
