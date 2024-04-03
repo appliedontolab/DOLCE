@@ -9,7 +9,7 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
     <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic">
-        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic/2.6"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic/2.7"/>
         <terms:contributor>Stefano Borgo, Francesco Compagno, Claudio Masolo, Emilio M. Sanfilippo, Walter Terkaj</terms:contributor>
         <terms:creator>Laure Vieu and Daniele Porello</terms:creator>
         <rdfs:comment>DOLCE-basic in OWL. OWL version engineered by Laure Vieu and Daniele Porello, based on DOLCE from Wonderweb Deliverable D18 and on more recent work by Claudio Masolo and the LOA. Reference to numbered axioms from D18.
