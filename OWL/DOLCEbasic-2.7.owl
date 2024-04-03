@@ -1543,6 +1543,7 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <ace_lexicon:CN_pl>constant atoms</ace_lexicon:CN_pl>
         <ace_lexicon:CN_sg>constant atom</ace_lexicon:CN_sg>
         <rdfs:label>Constant Atom</rdfs:label>
+        <rdfs:comment>A constant atom is an endurant that has no constant proper parts</rdfs:comment>
     </owl:Class>
     
 
