@@ -1,0 +1,133 @@
+@prefix : <https://w3id.org/DOLCE/OWL/UC/Case01#> .
+@prefix db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@base <https://w3id.org/DOLCE/OWL/UC/Case01> .
+
+<https://w3id.org/DOLCE/OWL/UC/Case01> rdf:type owl:Ontology ;
+                                        owl:imports <https://w3id.org/DOLCE/OWL/DOLCEbasic> ;
+                                        vann:preferredNamespacePrefix "c01" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Artefact
+:Artefact rdf:type owl:Class ;
+          rdfs:subClassOf db:PhysicalObject .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Table
+:Table rdf:type owl:Class ;
+       rdfs:subClassOf :Artefact .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#TableLeg
+:TableLeg rdf:type owl:Class ;
+          rdfs:subClassOf :Artefact .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#TableTop
+:TableTop rdf:type owl:Class ;
+          rdfs:subClassOf :Artefact .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Wood
+:Wood rdf:type owl:Class ;
+      rdfs:subClassOf db:AmountOfMatter .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Leg1
+:Leg1 rdf:type owl:NamedIndividual ,
+               :TableLeg .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Leg2
+:Leg2 rdf:type owl:NamedIndividual ,
+               :TableLeg .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Leg3
+:Leg3 rdf:type owl:NamedIndividual ,
+               :TableLeg .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Leg4
+:Leg4 rdf:type owl:NamedIndividual ,
+               :TableLeg .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Leg4new
+:Leg4new rdf:type owl:NamedIndividual ,
+                  :TableLeg .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#T
+:T rdf:type owl:NamedIndividual ,
+            :Table .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Ttop
+:Ttop rdf:type owl:NamedIndividual ,
+               :TableTop .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#W1
+:W1 rdf:type owl:NamedIndividual ,
+             :Wood .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#W2
+:W2 rdf:type owl:NamedIndividual ,
+             :Wood .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#W3
+:W3 rdf:type owl:NamedIndividual ,
+             :Wood .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#W4
+:W4 rdf:type owl:NamedIndividual ,
+             :Wood .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#W4new
+:W4new rdf:type owl:NamedIndividual ,
+                :Wood .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#Wtop
+:Wtop rdf:type owl:NamedIndividual ,
+               :Wood .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#t0
+:t0 rdf:type owl:NamedIndividual ,
+             db:TimeInterval .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#t1
+:t1 rdf:type owl:NamedIndividual ,
+             db:TimeInterval .
+
+
+###  https://w3id.org/DOLCE/OWL/UC/Case01#t2
+:t2 rdf:type owl:NamedIndividual ,
+             db:TimeInterval .
