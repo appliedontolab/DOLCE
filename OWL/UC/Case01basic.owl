@@ -13,7 +13,11 @@
     <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic">
         <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic"/>
         <vann:preferredNamespacePrefix>c01</vann:preferredNamespacePrefix>
+		<terms:contributor>Laure Vieu, Daniele Porello, Stefano Borgo, Francesco Compagno, Claudio Masolo, Emilio M. Sanfilippo </terms:contributor>
+        <terms:creator>Walter Terkaj</terms:creator>
+		<rdfs:comment>Use case n.1, static version, derived from Borgo S. et al. (2022) 'DOLCE: A Descriptive Ontology for Linguistic and Cognitive Engineering', Applied Ontology, 17(1):45-69</rdfs:comment>
     </owl:Ontology>
+
     
 
 
