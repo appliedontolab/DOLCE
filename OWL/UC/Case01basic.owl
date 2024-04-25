@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/DOLCE/OWL/UC/Case01basic#"
+     xml:base="https://w3id.org/DOLCE/OWL/UC/Case01basic"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:DOLCEbasic="https://w3id.org/DOLCE/OWL/DOLCEbasic#"
+     xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
+    <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic">
+        <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic"/>
+        <vann:preferredNamespacePrefix>c01</vann:preferredNamespacePrefix>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Artefact -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Artefact">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Table -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Table">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#TableLeg -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#TableLeg">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#TableTop -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#TableTop">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Wood -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Wood">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AmountOfMatter"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg1">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#TableLeg"/>
+        <DOLCEbasic:constantProperPartOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#T"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg2">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#TableLeg"/>
+        <DOLCEbasic:constantProperPartOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#T"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg3">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#TableLeg"/>
+        <DOLCEbasic:constantProperPartOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#T"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg4 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg4">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#TableLeg"/>
+        <DOLCEbasic:constantProperPartOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#T"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#T -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#T">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Table"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Ttop -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Ttop">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#TableTop"/>
+        <DOLCEbasic:constantProperPartOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#T"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#W1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#W1">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Wood"/>
+        <DOLCEbasic:constantConstituentOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg1"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#W2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#W2">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Wood"/>
+        <DOLCEbasic:constantConstituentOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg2"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#W3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#W3">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Wood"/>
+        <DOLCEbasic:constantConstituentOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg3"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#W4 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#W4">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Wood"/>
+        <DOLCEbasic:constantConstituentOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Leg4"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#Wtop -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#Wtop">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Wood"/>
+        <DOLCEbasic:constantConstituentOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#Ttop"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/UC/Case01basic#t0 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Case01basic#t0">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
