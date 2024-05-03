@@ -9,13 +9,13 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
     <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic">
-        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic/3.1"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic/3.2"/>
         <terms:contributor>Stefano Borgo, Francesco Compagno, Claudio Masolo, Emilio M. Sanfilippo, Walter Terkaj</terms:contributor>
         <terms:creator>Laure Vieu and Daniele Porello</terms:creator>
         <rdfs:comment>DOLCE-basic in OWL. OWL version engineered by Laure Vieu and Daniele Porello, based on DOLCE from Wonderweb Deliverable D18 and on more recent work by Claudio Masolo and the LOA. Reference to numbered axioms from D18.
 DOLCE-basic does not include the n-ary, n&gt;2, relations of DOLCE. For some of these relations with a time argument, a constant variant (already in DOLCE or not) is included.
 NB: DOLCE-basic is a module of another version of DOLCE in OWL which includes n-ary, n&gt;2, relations of DOLCE using the W3C-recommended approach of reifying relation instances.</rdfs:comment>
-        <owl:versionInfo>3.1 --- review of temporal issues</owl:versionInfo>
+        <owl:versionInfo>3.2 --- elimination of irregolarity and other fixes such as ternary property chains unsupported by Pellet</owl:versionInfo>
         <owl:versionInfo>Beta version. 
 
 We seek feedback especially regarding whether users understand or not what are the classes and the relations and how to use them.
@@ -249,7 +249,6 @@ In this constant version, the endurant x is part of the endurant y during the wh
     <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#constantParticipantOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantParticipantOf">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
         <rdfs:subPropertyOf>
             <rdf:Description>
                 <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
@@ -264,12 +263,6 @@ In this constant version, the endurant x is part of the endurant y during the wh
 In this constant version, the endurant x participates in the perdurant y during the whole existence of y.</rdfs:comment>
         <rdfs:label>constant participation of</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantParticipantOf"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
-        <rdfs:comment>If X is constant participant of Y then X specifically depends on Y.</rdfs:comment>
-    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantParticipantOf"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
@@ -600,9 +593,8 @@ In this constant version, the region x is the quale of the quality y during the 
         </owl:propertyChainAxiom>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
             </rdf:Description>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantlyOverlaps"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
         </owl:propertyChainAxiom>
         <ace_lexicon:TV_pl>overlap</ace_lexicon:TV_pl>
@@ -662,23 +654,13 @@ In this constant version, the region x is the quale of the quality y during the 
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
         <owl:annotatedTarget rdf:parseType="Collection">
             <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
             </rdf:Description>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantlyOverlaps"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
         </owl:annotatedTarget>
-        <rdfs:comment>the time intervals at which are located two endurants that constantly overlap are overlapping.</rdfs:comment>
+        <rdfs:comment>Approximation of half of Dd40</rdfs:comment>
+        <rdfs:comment>If X is a time of presence of something which is temporally located at Y then X overlaps Y.</rdfs:comment>
     </owl:Axiom>
-    
-
-
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation">
-        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
-        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
-        <rdfs:comment>technical property added to overcome OWL expressivity limitations: the property which holds only for pairs (X,X) such that X is a TemporalRegion</rdfs:comment>
-    </owl:ObjectProperty>
     
 
 
@@ -703,12 +685,6 @@ In this constant version, the region x is the quale of the quality y during the 
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
-        </owl:propertyChainAxiom>
         <ace_lexicon:TV_pl>are part of</ace_lexicon:TV_pl>
         <ace_lexicon:TV_sg>is part of</ace_lexicon:TV_sg>
         <ace_lexicon:TV_vbg>divided into parts</ace_lexicon:TV_vbg>
@@ -756,18 +732,6 @@ In this constant version, the region x is the quale of the quality y during the 
         <rdfs:comment>Ad1 (half)</rdfs:comment>
         <rdfs:comment>Everything that is has something as part is something that is an abstract or that is a perdurant.</rdfs:comment>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
-        <owl:annotatedTarget rdf:parseType="Collection">
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#temporallyLocatedAt"/>
-        </owl:annotatedTarget>
-        <rdfs:comment>Dd40 (half)</rdfs:comment>
-        <rdfs:comment>If X is a time of presence of something which is temporally located at Y then X is part of Y.</rdfs:comment>
-    </owl:Axiom>
     
 
 
@@ -805,24 +769,9 @@ In this constant version, the region x is the quale of the quality y during the 
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         </owl:propertyChainAxiom>
         <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation"/>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
-            </rdf:Description>
-        </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
             <rdf:Description>
                 <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
-            </rdf:Description>
-        </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation"/>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
             </rdf:Description>
         </owl:propertyChainAxiom>
         <owl:propertyChainAxiom rdf:parseType="Collection">
@@ -849,28 +798,6 @@ In this constant version, the region x is the quale of the quality y during the 
         <rdfs:comment>presentAt is a binary relation between an endurant or a perdurant or a quality x and a time interval t which is part of x&apos;s temporal location.</rdfs:comment>
         <rdfs:label>present at</rdfs:label>
     </owl:ObjectProperty>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
-                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
-                </owl:unionOf>
-            </owl:Class>
-        </owl:annotatedTarget>
-        <rdfs:comment>Everything that is present at something is something that is an endurant or that is a perdurant or that is a quality.</rdfs:comment>
-        <rdfs:comment>From Dd40, Dd30, Dd31, Dd32, Dd33</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
-        <rdfs:comment>Everything that is the value of the present at relation is a time interval.</rdfs:comment>
-        <rdfs:comment>From Dd40, Dd30, Dd31, Dd32, Dd33</rdfs:comment>
-    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
@@ -921,17 +848,6 @@ In this constant version, the region x is the quale of the quality y during the 
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
         <owl:annotatedTarget rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation"/>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
-            </rdf:Description>
-        </owl:annotatedTarget>
-        <rdfs:comment>If a temporal location X has for quale Y then X is present at Y.</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
-        <owl:annotatedTarget rdf:parseType="Collection">
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
             <rdf:Description>
                 <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
@@ -939,20 +855,6 @@ In this constant version, the region x is the quale of the quality y during the 
         </owl:annotatedTarget>
         <rdfs:comment>If X is present at something that has Y as part then X is present at Y.</rdfs:comment>
         <rdfs:comment>Td17</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
-        <owl:annotatedTarget rdf:parseType="Collection">
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation"/>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#qualeOf"/>
-            </rdf:Description>
-        </owl:annotatedTarget>
-        <rdfs:comment>if X has for direct quality a temporal location Y that has for quale Z then X is present at Z</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
@@ -988,6 +890,28 @@ In this constant version, the region x is the quale of the quality y during the 
         </owl:annotatedTarget>
         <rdfs:comment>Approximation of Dd69</rdfs:comment>
         <rdfs:comment>If X is specifically depended on by something that is present at Y then X is present at Y.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Quality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
+        <rdfs:comment>Everything that is present at something is something that is an endurant or that is a perdurant or that is a quality.</rdfs:comment>
+        <rdfs:comment>From Dd40, Dd30, Dd31, Dd32, Dd33</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+        <rdfs:comment>Everything that is the value of the present at relation is a time interval.</rdfs:comment>
+        <rdfs:comment>From Dd40, Dd30, Dd31, Dd32, Dd33</rdfs:comment>
     </owl:Axiom>
     
 
@@ -1257,17 +1181,6 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
         <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <rdfs:comment>Everything that is the value of the temporal location relation is a time interval.</rdfs:comment>
     </owl:Axiom>
-    
-
-
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#tlDirectQualityOf -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#tlDirectQualityOf">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
-        <rdfs:comment>subproperty of directQualityOf, restriction to TemporalLocation. Introduced to be able to enforce the unicity of the TemporalLocation of a Perdurant</rdfs:comment>
-    </owl:ObjectProperty>
     
 
 
@@ -3240,19 +3153,7 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation -->
 
     <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation"/>
-                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#tlDirectQualityOf"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty>
@@ -3270,31 +3171,9 @@ irreflexivity impossible (property implies domain=Thing, and use of Self incompa
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#pTemporalLocation"/>
-                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:comment>Characterization of the technical property pTemporalLocation, the property which holds only for pairs (X,X) such that X is a TemporalRegion</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalQuality"/>
         <rdfs:comment>Every temporal location is a temporal quality.</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#tlDirectQualityOf"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:comment>Every TemporalLocation is tlDirectQuality of some Perdurant.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TemporalLocation"/>
