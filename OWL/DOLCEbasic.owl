@@ -749,6 +749,10 @@ In this constant version, the region x is the quale of the quality y during the 
         </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantAtomicPartOf"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         </owl:propertyChainAxiom>
@@ -798,6 +802,15 @@ In this constant version, the region x is the quale of the quality y during the 
         <rdfs:comment>presentAt is a binary relation between an endurant or a perdurant or a quality x and a time interval t which is part of x&apos;s temporal location.</rdfs:comment>
         <rdfs:label>present at</rdfs:label>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantAtomicPartOf"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>If X is constant atomic part of something that is present at Y then X is present at Y.</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
