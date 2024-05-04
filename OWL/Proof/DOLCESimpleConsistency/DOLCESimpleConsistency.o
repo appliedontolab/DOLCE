@@ -1,0 +1,3588 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 94043 was started by danieleporello on Porello-MacBook.homenet.telecomitalia.it,
+Sat May  4 12:06:54 2024
+The command was "mace4".
+============================== end of head ===========================
+
+============================== INPUT =================================
+set(prolog_style_variables).
+assign(max_megs,2000).
+
+formulas(assumptions).
+(all X (ab(X) | ed(X) | pd(X) | q(X) <-> pt(X))).
+(all X (as(X) | nped(X) | ped(X) <-> ed(X))).
+(all X (pro(X) | st(X) <-> stv(X))).
+(all X (ev(X) | stv(X) <-> pd(X))).
+(all X (aq(X) | pq(X) | tq(X) <-> q(X))).
+(all X (acc(X) | ach(X) <-> ev(X))).
+(all X (apo(X) | napo(X) <-> pob(X))).
+(all X (sag(X) | sc(X) <-> aso(X))).
+(all X (aso(X) | naso(X) <-> sob(X))).
+(all X (sob(X) | mob(X) <-> npob(X))).
+(all X (ar(X) | pr(X) | tr(X) <-> r(X))).
+(all X (r(X) -> ab(X))).
+(all X (f(X) | m(X) | pob(X) <-> ped(X))).
+(all X (npob(X) -> nped(X))).
+(all X (s(X) -> pr(X))).
+(all X (sl(X) -> pq(X))).
+(all X (t(X) -> tr(X))).
+(all X (tl(X) -> tq(X))).
+-(exists X (ab(X) & ed(X))).
+-(exists X (ab(X) & pd(X))).
+-(exists X (ab(X) & q(X))).
+-(exists X (ed(X) & pd(X))).
+-(exists X (pd(X) & q(X))).
+-(exists X (ed(X) & q(X))).
+-(exists X (ped(X) & nped(X))).
+-(exists X (ped(X) & as(X))).
+-(exists X (nped(X) & as(X))).
+-(exists X (m(X) & f(X))).
+-(exists X (f(X) & pob(X))).
+-(exists X (m(X) & pob(X))).
+-(exists X (mob(X) & sob(X))).
+-(exists X (aso(X) & naso(X))).
+-(exists X (sag(X) & sc(X))).
+-(exists X (apo(X) & napo(X))).
+-(exists X (ev(X) & stv(X))).
+-(exists X (ach(X) & acc(X))).
+-(exists X (st(X) & pro(X))).
+-(exists X (tq(X) & pq(X))).
+-(exists X (pq(X) & aq(X))).
+-(exists X (tq(X) & aq(X))).
+-(exists X (tr(X) & pr(X))).
+-(exists X (pr(X) & ar(X))).
+-(exists X (tr(X) & ar(X))).
+(all X all Y (p(X,Y) -> (ab(X) | pd(X)) & (ab(Y) | pd(Y)))) # label(parthood_Argument_restrictions_Ad1).
+(all X all Y (p(X,Y) -> (pd(X) <-> pd(Y)))) # label(parthood_argument_restrictions_Ad2).
+(all X all Y (p(X,Y) -> (ab(X) <-> ab(Y)))) # label(parthood_argument_restrictions_Ad3).
+(all X all Y (p(X,Y) -> (t(X) <-> t(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_1).
+(all X all Y (p(X,Y) -> (s(X) <-> s(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_2).
+(all X all Y (p(X,Y) -> (ar(X) <-> ar(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_3).
+(all X (ab(X) | pd(X) -> p(X,X))) # label(parthood_reflexivity_Ad5).
+(all X all Y (p(X,Y) & p(Y,X) -> X = Y)) # label(parthood_antysymmetry_Ad6).
+(all X all Y all Z (p(X,Y) & p(Y,Z) -> p(X,Z))) # label(parthood_transitivity_Ad7).
+(all X all Y (pp(X,Y) <-> p(X,Y) & -p(Y,X))) # label(proper_part_definition_Dd14).
+(all X all Y (ov(X,Y) <-> (exists Z (p(Z,X) & p(Z,Y))))) # label(overlap_definition_Dd15).
+(all X (at(X) <-> (pd(X) | ab(X)) & -(exists Y pp(Y,X)))) # label(atom_definition_Dd16_corrected).
+(all X all Y (atp(X,Y) <-> p(X,Y) & at(X))) # label(atomic_part_definition_Dd17).
+(all X all Y all Z (sum(Z,X,Y) <-> (ab(Z) & ab(X) & ab(Y) | pd(Z) & pd(X) & pd(Y)) & (all W (ov(W,Z) <-> ov(W,X) | ov(W,Y))))) # label(binary_sum_definition_Dd18).
+(all X all Y all Z (dif(Z,X,Y) <-> (ab(Z) & ab(X) & ab(Y) | pd(Z) & pd(X) & pd(Y)) & (all W (p(W,Z) <-> p(W,X) & -ov(W,Y))))) # label(binary_difference_definition).
+(all X all Y (ab(X) & ab(Y) & -p(X,Y) -> (exists Z dif(Z,X,Y)))) # label(binary_difference_existence_from_Ad8_1).
+(all X all Y (pd(X) & pd(Y) & -p(X,Y) -> (exists Z dif(Z,X,Y)))) # label(binary_difference_existence_from_Ad8_2).
+(all X all T (pre(X,T) -> (ed(X) | pd(X) | q(X)) & t(T))) # label(present_at_partial_definition_Dd40).
+(all X all T all S (pre(X,T) & p(S,T) -> pre(X,S))) # label(present_at_dissectivity_Td17).
+(all X all Y all T (pre(X,T) & p(X,Y) -> pre(Y,T))) # label(present_at_part_of_Ad13).
+(all X all Y all T (tp(X,Y,T) -> ed(X) & ed(Y) & t(T))) # label(temporary_parthood_argument_restrictions_Ad10).
+(all X all Y all T (tp(X,Y,T) -> (ped(X) <-> ped(Y)))) # label(temporary_parthood_argument_restrictions_Ad11).
+(all X all Y all T (tp(X,Y,T) -> (nped(X) <-> nped(Y)))) # label(temporary_parthood_argument_restrictions_Ad12).
+(all X all Y all Z all T (tp(X,Y,T) & tp(Y,Z,T) -> tp(X,Z,T))) # label(temporary_parthood_transitivity_Ad13).
+(all X all T (ed(X) & pre(X,T) -> tp(X,X,T))) # label(temporary_parthood_reflexivity_Ad16).
+(all X all Y all T (tov(X,Y,T) <-> (exists Z (tp(Z,X,T) & tp(Z,Y,T))))) # label(temporary_overlap_definition_Dd21).
+(all X all Y all T (tpp(X,Y,T) <-> tp(X,Y,T) & -tp(Y,X,T))) # label(temporary_proper_part_definition_Dd20).
+(all X all Y all T (ed(X) & ed(Y) & pre(X,T) & pre(Y,T) & -tp(X,Y,T) -> (exists Z (tp(Z,X,T) & -tov(Z,Y,T))))) # label(temporary_proper_part_supplementation_Ad14).
+(all X all Y all T (tp(X,Y,T) -> pre(X,T) & pre(Y,T))) # label(temporary_parthood_Ad17).
+(all X all Y all T (tp(X,Y,T) -> (all S (p(S,T) -> tp(X,Y,S))))) # label(temporary_parthood_Ad18).
+(all X all T (tat(X,T) <-> ed(X) & t(T) & -(exists Y tpp(Y,X,T)))) # label(temporary_proper_part_definition_Dd22_corrected).
+(all X all Y all T (tatp(X,Y,T) <-> tp(X,Y,T) & tat(X,T))) # label(temporary_atomic_part_definition_Dd23).
+(all X all Y all Z (tsum(Z,X,Y) <-> (ped(Z) & ped(X) & ped(Y) | nped(Z) & nped(X) & nped(Y)) & (all W all T (tov(W,Z,T) <-> tov(W,X,T) | tov(W,Y,T))))) # label(temporary_sum_definition_from_Dd26).
+(all X all Y (temporalPart(X,Y) <-> pd(X) & pd(Y) & p(X,Y) & (all Z (pd(Z) & p(Z,Y) & (all T (pre(Z,T) -> pre(X,T))) -> p(Z,X))))).
+(all X all Y all T (k(X,Y,T) -> (ed(X) | pd(X)) & (ed(Y) | pd(Y)) & t(T))) # label(constitution_argument_restrictions_Ad20).
+(all X all Y all T (k(X,Y,T) -> (ped(X) <-> ped(Y)))) # label(constitution__argument_restrictions_Ad21).
+(all X all Y all T (k(X,Y,T) -> (nped(X) <-> nped(Y)))) # label(constitution__argument_restrictions_Ad22).
+(all X all Y all T (k(X,Y,T) -> (pd(X) <-> pd(Y)))) # label(constitution_argument_restrictions_Ad23).
+(all X all Y all T (k(X,Y,T) -> -k(Y,X,T))) # label(constitution__ground_axiom_Ad24).
+(all X all Y all Z all T (k(X,Y,T) & k(Y,Z,T) -> k(X,Z,T))) # label(constitution__ground_axiom_Ad25).
+(all X all Y all T (k(X,Y,T) -> pre(X,T) & pre(Y,T))) # label(constitution_Ad26).
+(all X all Y all T (k(X,Y,T) -> (all S (p(S,T) -> k(X,Y,S))))) # label(constitution_Ad27_weakened).
+(all X all Y all V all T (k(X,Y,T) & tp(V,Y,T) -> (exists U (tp(U,X,T) & k(U,V,T))))) # label(constitution_Ad29).
+(all X all Y all T (pc(X,Y,T) -> ed(X) & pd(Y) & t(T))) # label(participation_argument_restrictions_Ad33).
+(all X all T (pd(X) & pre(X,T) -> (exists Y pc(Y,X,T)))) # label(participation_existential_Ad34).
+(all X (ed(X) -> (exists Y exists T pc(X,Y,T)))) # label(participation_existential_Ad35_corrected).
+(all X all Y all T (pc(X,Y,T) -> pre(X,T) & pre(Y,T))) # label(participation_present_Ad36).
+(all X all Y all T (pc(X,Y,T) -> (all S (p(S,T) -> pc(X,Y,S))))) # label(participation_present_Ad37).
+(all X all Y (dqt(X,Y) -> q(X) & (ed(Y) | pd(Y)))) # label(direct_quality_argument_restrictions_Ad38_simplified).
+(all X all Y (dqt(X,Y) -> (tq(X) <-> pd(Y)))) # label(direct_quality_argument_restrictions_Ad39_for_dqt).
+(all X all Y (dqt(X,Y) -> (pq(X) <-> ped(Y)))) # label(direct_quality_argument_restrictions_Ad40_for_dqt).
+(all X all Y (dqt(X,Y) -> (aq(X) <-> nped(Y)))) # label(direct_quality_argument_restrictions_Ad41_for_dqt).
+(all X all Y all V (dqt(X,Y) & dqt(X,V) -> Y = V)) # label(direct_quality_Ad43).
+(all X all U all Y (dqt(X,Y) & dqt(U,Y) & tl(X) & tl(U) -> X = U)) # label(direct_quality_unicity_Ad44_1).
+(all X all U all Y (dqt(X,Y) & dqt(U,Y) & sl(X) & sl(U) -> X = U)) # label(direct_quality_unicity_Ad44_2).
+(all X (tq(X) -> (exists Y (dqt(X,Y) & pd(Y))))) # label(direct_quality_existential_Ad46).
+(all X (pq(X) -> (exists Y (dqt(X,Y) & ped(Y))))) # label(direct_quality_existential_Ad47).
+(all X (aq(X) -> (exists Y (dqt(X,Y) & nped(Y))))) # label(direct_quality_existential_Ad48).
+(all X (pd(X) -> (exists Y (dqt(Y,X) & tl(Y))))) # label(direct_quality_existential_Ad49).
+(all X (ped(X) -> (exists Y (dqt(Y,X) & sl(Y))))) # label(direct_quality_existential_Ad50).
+(all X (nped(X) -> (exists Y (dqt(Y,X) & aq(Y))))) # label(direct_quality_existential_Ad51).
+(all X all Q all T (dqt(Q,X) & pre(Q,T) -> pre(X,T))) # label(direct_quality_present_at).
+(all X all Q all T (dqt(Q,X) & pre(X,T) -> pre(Q,T))) # label(direct_quality_present_at).
+(all X all Y (ql(X,Y) -> tr(X) & tq(Y))) # label(immediate_quale_argument_restrictions_Ad52).
+(all X all Y (ql(X,Y) & tl(Y) -> t(X))) # label(immediate_quale_argument_restrictions_Ad53).
+(all X all Y all U (ql(X,Y) & ql(U,Y) -> X = U)) # label(immediate_quale_ground_Ad54).
+(all X (tq(X) -> (exists Y ql(Y,X)))) # label(immediate_quale_existential_Ad55).
+(all X all Y all T (tql(X,Y,T) -> (pr(X) | ar(X)) & (pq(Y) | aq(Y)) & t(T))) # label(temporary_quale_argument_restrictions_Ad58).
+(all X all Y all T (tql(X,Y,T) -> (pr(X) <-> pq(Y)))) # label(temporary_quale_argument_restrictions_Ad59).
+(all X all Y all T (tql(X,Y,T) -> (ar(X) <-> aq(Y)))) # label(temporary_quale_argument_restrictions_Ad60).
+(all X all Y all T (tql(X,Y,T) & sl(Y) -> s(X))) # label(temporary_quale_argument_restrictions_Ad61).
+(all X all Y all T (tql(X,Y,T) & s(X) -> sl(Y))) # label(temporary_quale_argument_restrictions_Ad61).
+(all X all T ((pq(X) | aq(X)) & pre(X,T) -> (exists Y tql(Y,X,T)))) # label(temporary_quale_existential_Ad62).
+(all X all Y all T (tql(X,Y,T) -> pre(Y,T))) # label(temporary_quale_present_Ad65).
+(all X all Y all T (tql(X,Y,T) -> (all S (p(S,T) -> tql(X,Y,S))))) # label(temporary_quale_present_Ad66).
+(all X all Y (sd(X,Y) <-> (exists T pre(X,T)) & (all T (pre(X,T) -> pre(Y,T))))) # label(specific_dependence_Dd69).
+(all X0 all X1 (ach(X0) & temporallyLocatedAt(X0,X1) -> at(X1))) # label(achievemants_atomic_Ad75).
+(all X0 all X1 (acc(X0) & temporallyLocatedAt(X0,X1) -> -at(X1))) # label(achievemants_non_atomic_Ad76).
+(all X0 (st(X0) -> (all X1 (p(X1,X0) -> st(X1))))) # label(states_parts_Ad77).
+(all X0 (mob(X0) -> (exists X1 (sd(X0,X1) & apo(X1))))) # label(mental_objects_agentive_Ad71).
+(all X (ed(X) -> (exists Y exists T pc(X,Y,T)))) # label(endurant_perdurant_participation_Ad35).
+(all X (pt(X) -> thing(X))) # label(owl).
+(all X (cat(X) <-> ed(X) & (exists T1 pre(X,T1)) & (all T (pre(X,T) -> tat(X,T))))) # label(constant_atom).
+(all X all Y (catp(X,Y) <-> ed(X) & ed(Y) & (exists T1 pre(X,T1)) & (all T (pre(Y,T) -> tatp(X,Y,T))))) # label(constant_atomic_part).
+(all X all Y (cp(X,Y) <-> ed(X) & ed(Y) & (exists T1 pre(Y,T1)) & (all T (pre(Y,T) -> tp(X,Y,T))))) # label(constant_part_Dd25).
+(all X all Y (cpp(X,Y) <-> ed(X) & ed(Y) & (exists T1 pre(Y,T1)) & (all T (pre(Y,T) -> tp(X,Y,T) & -tp(Y,X,T))))) # label(constant_proper_part_definition).
+(all X all Y (cov(X,Y) <-> ed(X) & ed(Y) & (exists T1 (pre(X,T1) & pre(Y,T1))) & (exists Z (cp(Z,X) & cp(Z,Y))))) # label(constant_overlap_definition).
+(all X all Y (constantParticipantOf(X,Y) <-> ed(X) & pd(Y) & (exists T pre(Y,T)) & (all T (pre(Y,T) -> pc(X,Y,T))))) # label(definition_constant_participant_of).
+(all X all Y (constantConstituentOf(X,Y) <-> (ped(X) & ped(Y) | nped(X) & nped(Y) | pd(X) & pd(Y)) & (exists T pre(Y,T)) & (all T (pre(Y,T) -> k(X,Y,T))))) # label(definition_constant_constituent_of).
+(all X all Y (constantQualeOf(X,Y) <-> (pr(X) & pq(Y) | tr(X) & tq(Y) | ar(X) & aq(Y)) & (all T (pre(Y,T) -> tql(X,Y,T))))) # label(definition_constant_quale_of).
+(all X all Y (constantlySpatiallyLocatedAt(X,Y) <-> (ped(X) | nped(X) | pd(X) | pq(X)) & s(Y) & (all T (pre(X,T) -> tql(X,Y,T))))) # label(definition_constantlySpatiallyLocatedAt).
+(all X all T (temporallyLocatedAt(X,T) -> (ed(X) | pd(X) | q(X)) & t(T))) # label(definition_partial_temporallyLocatedAt_Dd31).
+(all X0 all X1 all X2 (temporallyLocatedAt(X0,X1) & temporallyLocatedAt(X0,X2) -> X1 = X2)) # label(definition_unicity_from_Dd31).
+(all X (ed(X) -> (exists T temporallyLocatedAt(X,T)))) # label(endurant_temporal_location).
+(all X (q(X) -> (exists T temporallyLocatedAt(X,T)))) # label(quality_temporal_location).
+(all X (pd(X) -> (exists T temporallyLocatedAt(X,T)))) # label(perdurant_temporal_location).
+(all X all T (temporallyLocatedAt(X,T) -> pre(X,T))) # label(temporallyLocatedAt_and_presentAt_partially_Dd40_Ad5).
+(all X all Y (tl(X) & ql(Y,X) -> temporallyLocatedAt(X,Y))) # label(temporallyLocatedAt_ql_tl).
+(all X all T all T1 (pre(X,T) & temporallyLocatedAt(X,T1) -> p(T,T1))) # label(pre_temporallyLocatedAt_Dd40).
+ped(iped1).
+ped(iped2).
+nped(inped1).
+nped(inped2).
+nped(inped3).
+ev(ie1).
+ev(ie2).
+ev(ie3).
+tq(itq1).
+aq(iaq1).
+pq(ipq1).
+t(it1).
+r(ir1).
+ar(iar1).
+at(iatom).
+cat(icat).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all X (ab(X) | ed(X) | pd(X) | q(X) <-> pt(X))) # label(non_clause).  [assumption].
+2 (all X (as(X) | nped(X) | ped(X) <-> ed(X))) # label(non_clause).  [assumption].
+3 (all X (pro(X) | st(X) <-> stv(X))) # label(non_clause).  [assumption].
+4 (all X (ev(X) | stv(X) <-> pd(X))) # label(non_clause).  [assumption].
+5 (all X (aq(X) | pq(X) | tq(X) <-> q(X))) # label(non_clause).  [assumption].
+6 (all X (acc(X) | ach(X) <-> ev(X))) # label(non_clause).  [assumption].
+7 (all X (apo(X) | napo(X) <-> pob(X))) # label(non_clause).  [assumption].
+8 (all X (sag(X) | sc(X) <-> aso(X))) # label(non_clause).  [assumption].
+9 (all X (aso(X) | naso(X) <-> sob(X))) # label(non_clause).  [assumption].
+10 (all X (sob(X) | mob(X) <-> npob(X))) # label(non_clause).  [assumption].
+11 (all X (ar(X) | pr(X) | tr(X) <-> r(X))) # label(non_clause).  [assumption].
+12 (all X (r(X) -> ab(X))) # label(non_clause).  [assumption].
+13 (all X (f(X) | m(X) | pob(X) <-> ped(X))) # label(non_clause).  [assumption].
+14 (all X (npob(X) -> nped(X))) # label(non_clause).  [assumption].
+15 (all X (s(X) -> pr(X))) # label(non_clause).  [assumption].
+16 (all X (sl(X) -> pq(X))) # label(non_clause).  [assumption].
+17 (all X (t(X) -> tr(X))) # label(non_clause).  [assumption].
+18 (all X (tl(X) -> tq(X))) # label(non_clause).  [assumption].
+19 -(exists X (ab(X) & ed(X))) # label(non_clause).  [assumption].
+20 -(exists X (ab(X) & pd(X))) # label(non_clause).  [assumption].
+21 -(exists X (ab(X) & q(X))) # label(non_clause).  [assumption].
+22 -(exists X (ed(X) & pd(X))) # label(non_clause).  [assumption].
+23 -(exists X (pd(X) & q(X))) # label(non_clause).  [assumption].
+24 -(exists X (ed(X) & q(X))) # label(non_clause).  [assumption].
+25 -(exists X (ped(X) & nped(X))) # label(non_clause).  [assumption].
+26 -(exists X (ped(X) & as(X))) # label(non_clause).  [assumption].
+27 -(exists X (nped(X) & as(X))) # label(non_clause).  [assumption].
+28 -(exists X (m(X) & f(X))) # label(non_clause).  [assumption].
+29 -(exists X (f(X) & pob(X))) # label(non_clause).  [assumption].
+30 -(exists X (m(X) & pob(X))) # label(non_clause).  [assumption].
+31 -(exists X (mob(X) & sob(X))) # label(non_clause).  [assumption].
+32 -(exists X (aso(X) & naso(X))) # label(non_clause).  [assumption].
+33 -(exists X (sag(X) & sc(X))) # label(non_clause).  [assumption].
+34 -(exists X (apo(X) & napo(X))) # label(non_clause).  [assumption].
+35 -(exists X (ev(X) & stv(X))) # label(non_clause).  [assumption].
+36 -(exists X (ach(X) & acc(X))) # label(non_clause).  [assumption].
+37 -(exists X (st(X) & pro(X))) # label(non_clause).  [assumption].
+38 -(exists X (tq(X) & pq(X))) # label(non_clause).  [assumption].
+39 -(exists X (pq(X) & aq(X))) # label(non_clause).  [assumption].
+40 -(exists X (tq(X) & aq(X))) # label(non_clause).  [assumption].
+41 -(exists X (tr(X) & pr(X))) # label(non_clause).  [assumption].
+42 -(exists X (pr(X) & ar(X))) # label(non_clause).  [assumption].
+43 -(exists X (tr(X) & ar(X))) # label(non_clause).  [assumption].
+44 (all X all Y (p(X,Y) -> (ab(X) | pd(X)) & (ab(Y) | pd(Y)))) # label(parthood_Argument_restrictions_Ad1) # label(non_clause).  [assumption].
+45 (all X all Y (p(X,Y) -> (pd(X) <-> pd(Y)))) # label(parthood_argument_restrictions_Ad2) # label(non_clause).  [assumption].
+46 (all X all Y (p(X,Y) -> (ab(X) <-> ab(Y)))) # label(parthood_argument_restrictions_Ad3) # label(non_clause).  [assumption].
+47 (all X all Y (p(X,Y) -> (t(X) <-> t(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_1) # label(non_clause).  [assumption].
+48 (all X all Y (p(X,Y) -> (s(X) <-> s(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_2) # label(non_clause).  [assumption].
+49 (all X all Y (p(X,Y) -> (ar(X) <-> ar(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_3) # label(non_clause).  [assumption].
+50 (all X (ab(X) | pd(X) -> p(X,X))) # label(parthood_reflexivity_Ad5) # label(non_clause).  [assumption].
+51 (all X all Y (p(X,Y) & p(Y,X) -> X = Y)) # label(parthood_antysymmetry_Ad6) # label(non_clause).  [assumption].
+52 (all X all Y all Z (p(X,Y) & p(Y,Z) -> p(X,Z))) # label(parthood_transitivity_Ad7) # label(non_clause).  [assumption].
+53 (all X all Y (pp(X,Y) <-> p(X,Y) & -p(Y,X))) # label(proper_part_definition_Dd14) # label(non_clause).  [assumption].
+54 (all X all Y (ov(X,Y) <-> (exists Z (p(Z,X) & p(Z,Y))))) # label(overlap_definition_Dd15) # label(non_clause).  [assumption].
+55 (all X (at(X) <-> (pd(X) | ab(X)) & -(exists Y pp(Y,X)))) # label(atom_definition_Dd16_corrected) # label(non_clause).  [assumption].
+56 (all X all Y (atp(X,Y) <-> p(X,Y) & at(X))) # label(atomic_part_definition_Dd17) # label(non_clause).  [assumption].
+57 (all X all Y all Z (sum(Z,X,Y) <-> (ab(Z) & ab(X) & ab(Y) | pd(Z) & pd(X) & pd(Y)) & (all W (ov(W,Z) <-> ov(W,X) | ov(W,Y))))) # label(binary_sum_definition_Dd18) # label(non_clause).  [assumption].
+58 (all X all Y all Z (dif(Z,X,Y) <-> (ab(Z) & ab(X) & ab(Y) | pd(Z) & pd(X) & pd(Y)) & (all W (p(W,Z) <-> p(W,X) & -ov(W,Y))))) # label(binary_difference_definition) # label(non_clause).  [assumption].
+59 (all X all Y (ab(X) & ab(Y) & -p(X,Y) -> (exists Z dif(Z,X,Y)))) # label(binary_difference_existence_from_Ad8_1) # label(non_clause).  [assumption].
+60 (all X all Y (pd(X) & pd(Y) & -p(X,Y) -> (exists Z dif(Z,X,Y)))) # label(binary_difference_existence_from_Ad8_2) # label(non_clause).  [assumption].
+61 (all X all T (pre(X,T) -> (ed(X) | pd(X) | q(X)) & t(T))) # label(present_at_partial_definition_Dd40) # label(non_clause).  [assumption].
+62 (all X all T all S (pre(X,T) & p(S,T) -> pre(X,S))) # label(present_at_dissectivity_Td17) # label(non_clause).  [assumption].
+63 (all X all Y all T (pre(X,T) & p(X,Y) -> pre(Y,T))) # label(present_at_part_of_Ad13) # label(non_clause).  [assumption].
+64 (all X all Y all T (tp(X,Y,T) -> ed(X) & ed(Y) & t(T))) # label(temporary_parthood_argument_restrictions_Ad10) # label(non_clause).  [assumption].
+65 (all X all Y all T (tp(X,Y,T) -> (ped(X) <-> ped(Y)))) # label(temporary_parthood_argument_restrictions_Ad11) # label(non_clause).  [assumption].
+66 (all X all Y all T (tp(X,Y,T) -> (nped(X) <-> nped(Y)))) # label(temporary_parthood_argument_restrictions_Ad12) # label(non_clause).  [assumption].
+67 (all X all Y all Z all T (tp(X,Y,T) & tp(Y,Z,T) -> tp(X,Z,T))) # label(temporary_parthood_transitivity_Ad13) # label(non_clause).  [assumption].
+68 (all X all T (ed(X) & pre(X,T) -> tp(X,X,T))) # label(temporary_parthood_reflexivity_Ad16) # label(non_clause).  [assumption].
+69 (all X all Y all T (tov(X,Y,T) <-> (exists Z (tp(Z,X,T) & tp(Z,Y,T))))) # label(temporary_overlap_definition_Dd21) # label(non_clause).  [assumption].
+70 (all X all Y all T (tpp(X,Y,T) <-> tp(X,Y,T) & -tp(Y,X,T))) # label(temporary_proper_part_definition_Dd20) # label(non_clause).  [assumption].
+71 (all X all Y all T (ed(X) & ed(Y) & pre(X,T) & pre(Y,T) & -tp(X,Y,T) -> (exists Z (tp(Z,X,T) & -tov(Z,Y,T))))) # label(temporary_proper_part_supplementation_Ad14) # label(non_clause).  [assumption].
+72 (all X all Y all T (tp(X,Y,T) -> pre(X,T) & pre(Y,T))) # label(temporary_parthood_Ad17) # label(non_clause).  [assumption].
+73 (all X all Y all T (tp(X,Y,T) -> (all S (p(S,T) -> tp(X,Y,S))))) # label(temporary_parthood_Ad18) # label(non_clause).  [assumption].
+74 (all X all T (tat(X,T) <-> ed(X) & t(T) & -(exists Y tpp(Y,X,T)))) # label(temporary_proper_part_definition_Dd22_corrected) # label(non_clause).  [assumption].
+75 (all X all Y all T (tatp(X,Y,T) <-> tp(X,Y,T) & tat(X,T))) # label(temporary_atomic_part_definition_Dd23) # label(non_clause).  [assumption].
+76 (all X all Y all Z (tsum(Z,X,Y) <-> (ped(Z) & ped(X) & ped(Y) | nped(Z) & nped(X) & nped(Y)) & (all W all T (tov(W,Z,T) <-> tov(W,X,T) | tov(W,Y,T))))) # label(temporary_sum_definition_from_Dd26) # label(non_clause).  [assumption].
+77 (all X all Y (temporalPart(X,Y) <-> pd(X) & pd(Y) & p(X,Y) & (all Z (pd(Z) & p(Z,Y) & (all T (pre(Z,T) -> pre(X,T))) -> p(Z,X))))) # label(non_clause).  [assumption].
+78 (all X all Y all T (k(X,Y,T) -> (ed(X) | pd(X)) & (ed(Y) | pd(Y)) & t(T))) # label(constitution_argument_restrictions_Ad20) # label(non_clause).  [assumption].
+79 (all X all Y all T (k(X,Y,T) -> (ped(X) <-> ped(Y)))) # label(constitution__argument_restrictions_Ad21) # label(non_clause).  [assumption].
+80 (all X all Y all T (k(X,Y,T) -> (nped(X) <-> nped(Y)))) # label(constitution__argument_restrictions_Ad22) # label(non_clause).  [assumption].
+81 (all X all Y all T (k(X,Y,T) -> (pd(X) <-> pd(Y)))) # label(constitution_argument_restrictions_Ad23) # label(non_clause).  [assumption].
+82 (all X all Y all T (k(X,Y,T) -> -k(Y,X,T))) # label(constitution__ground_axiom_Ad24) # label(non_clause).  [assumption].
+83 (all X all Y all Z all T (k(X,Y,T) & k(Y,Z,T) -> k(X,Z,T))) # label(constitution__ground_axiom_Ad25) # label(non_clause).  [assumption].
+84 (all X all Y all T (k(X,Y,T) -> pre(X,T) & pre(Y,T))) # label(constitution_Ad26) # label(non_clause).  [assumption].
+85 (all X all Y all T (k(X,Y,T) -> (all S (p(S,T) -> k(X,Y,S))))) # label(constitution_Ad27_weakened) # label(non_clause).  [assumption].
+86 (all X all Y all V all T (k(X,Y,T) & tp(V,Y,T) -> (exists U (tp(U,X,T) & k(U,V,T))))) # label(constitution_Ad29) # label(non_clause).  [assumption].
+87 (all X all Y all T (pc(X,Y,T) -> ed(X) & pd(Y) & t(T))) # label(participation_argument_restrictions_Ad33) # label(non_clause).  [assumption].
+88 (all X all T (pd(X) & pre(X,T) -> (exists Y pc(Y,X,T)))) # label(participation_existential_Ad34) # label(non_clause).  [assumption].
+89 (all X (ed(X) -> (exists Y exists T pc(X,Y,T)))) # label(participation_existential_Ad35_corrected) # label(non_clause).  [assumption].
+90 (all X all Y all T (pc(X,Y,T) -> pre(X,T) & pre(Y,T))) # label(participation_present_Ad36) # label(non_clause).  [assumption].
+91 (all X all Y all T (pc(X,Y,T) -> (all S (p(S,T) -> pc(X,Y,S))))) # label(participation_present_Ad37) # label(non_clause).  [assumption].
+92 (all X all Y (dqt(X,Y) -> q(X) & (ed(Y) | pd(Y)))) # label(direct_quality_argument_restrictions_Ad38_simplified) # label(non_clause).  [assumption].
+93 (all X all Y (dqt(X,Y) -> (tq(X) <-> pd(Y)))) # label(direct_quality_argument_restrictions_Ad39_for_dqt) # label(non_clause).  [assumption].
+94 (all X all Y (dqt(X,Y) -> (pq(X) <-> ped(Y)))) # label(direct_quality_argument_restrictions_Ad40_for_dqt) # label(non_clause).  [assumption].
+95 (all X all Y (dqt(X,Y) -> (aq(X) <-> nped(Y)))) # label(direct_quality_argument_restrictions_Ad41_for_dqt) # label(non_clause).  [assumption].
+96 (all X all Y all V (dqt(X,Y) & dqt(X,V) -> Y = V)) # label(direct_quality_Ad43) # label(non_clause).  [assumption].
+97 (all X all U all Y (dqt(X,Y) & dqt(U,Y) & tl(X) & tl(U) -> X = U)) # label(direct_quality_unicity_Ad44_1) # label(non_clause).  [assumption].
+98 (all X all U all Y (dqt(X,Y) & dqt(U,Y) & sl(X) & sl(U) -> X = U)) # label(direct_quality_unicity_Ad44_2) # label(non_clause).  [assumption].
+99 (all X (tq(X) -> (exists Y (dqt(X,Y) & pd(Y))))) # label(direct_quality_existential_Ad46) # label(non_clause).  [assumption].
+100 (all X (pq(X) -> (exists Y (dqt(X,Y) & ped(Y))))) # label(direct_quality_existential_Ad47) # label(non_clause).  [assumption].
+101 (all X (aq(X) -> (exists Y (dqt(X,Y) & nped(Y))))) # label(direct_quality_existential_Ad48) # label(non_clause).  [assumption].
+102 (all X (pd(X) -> (exists Y (dqt(Y,X) & tl(Y))))) # label(direct_quality_existential_Ad49) # label(non_clause).  [assumption].
+103 (all X (ped(X) -> (exists Y (dqt(Y,X) & sl(Y))))) # label(direct_quality_existential_Ad50) # label(non_clause).  [assumption].
+104 (all X (nped(X) -> (exists Y (dqt(Y,X) & aq(Y))))) # label(direct_quality_existential_Ad51) # label(non_clause).  [assumption].
+105 (all X all Q all T (dqt(Q,X) & pre(Q,T) -> pre(X,T))) # label(direct_quality_present_at) # label(non_clause).  [assumption].
+106 (all X all Q all T (dqt(Q,X) & pre(X,T) -> pre(Q,T))) # label(direct_quality_present_at) # label(non_clause).  [assumption].
+107 (all X all Y (ql(X,Y) -> tr(X) & tq(Y))) # label(immediate_quale_argument_restrictions_Ad52) # label(non_clause).  [assumption].
+108 (all X all Y (ql(X,Y) & tl(Y) -> t(X))) # label(immediate_quale_argument_restrictions_Ad53) # label(non_clause).  [assumption].
+109 (all X all Y all U (ql(X,Y) & ql(U,Y) -> X = U)) # label(immediate_quale_ground_Ad54) # label(non_clause).  [assumption].
+110 (all X (tq(X) -> (exists Y ql(Y,X)))) # label(immediate_quale_existential_Ad55) # label(non_clause).  [assumption].
+111 (all X all Y all T (tql(X,Y,T) -> (pr(X) | ar(X)) & (pq(Y) | aq(Y)) & t(T))) # label(temporary_quale_argument_restrictions_Ad58) # label(non_clause).  [assumption].
+112 (all X all Y all T (tql(X,Y,T) -> (pr(X) <-> pq(Y)))) # label(temporary_quale_argument_restrictions_Ad59) # label(non_clause).  [assumption].
+113 (all X all Y all T (tql(X,Y,T) -> (ar(X) <-> aq(Y)))) # label(temporary_quale_argument_restrictions_Ad60) # label(non_clause).  [assumption].
+114 (all X all Y all T (tql(X,Y,T) & sl(Y) -> s(X))) # label(temporary_quale_argument_restrictions_Ad61) # label(non_clause).  [assumption].
+115 (all X all Y all T (tql(X,Y,T) & s(X) -> sl(Y))) # label(temporary_quale_argument_restrictions_Ad61) # label(non_clause).  [assumption].
+116 (all X all T ((pq(X) | aq(X)) & pre(X,T) -> (exists Y tql(Y,X,T)))) # label(temporary_quale_existential_Ad62) # label(non_clause).  [assumption].
+117 (all X all Y all T (tql(X,Y,T) -> pre(Y,T))) # label(temporary_quale_present_Ad65) # label(non_clause).  [assumption].
+118 (all X all Y all T (tql(X,Y,T) -> (all S (p(S,T) -> tql(X,Y,S))))) # label(temporary_quale_present_Ad66) # label(non_clause).  [assumption].
+119 (all X all Y (sd(X,Y) <-> (exists T pre(X,T)) & (all T (pre(X,T) -> pre(Y,T))))) # label(specific_dependence_Dd69) # label(non_clause).  [assumption].
+120 (all X0 all X1 (ach(X0) & temporallyLocatedAt(X0,X1) -> at(X1))) # label(achievemants_atomic_Ad75) # label(non_clause).  [assumption].
+121 (all X0 all X1 (acc(X0) & temporallyLocatedAt(X0,X1) -> -at(X1))) # label(achievemants_non_atomic_Ad76) # label(non_clause).  [assumption].
+122 (all X0 (st(X0) -> (all X1 (p(X1,X0) -> st(X1))))) # label(states_parts_Ad77) # label(non_clause).  [assumption].
+123 (all X0 (mob(X0) -> (exists X1 (sd(X0,X1) & apo(X1))))) # label(mental_objects_agentive_Ad71) # label(non_clause).  [assumption].
+124 (all X (ed(X) -> (exists Y exists T pc(X,Y,T)))) # label(endurant_perdurant_participation_Ad35) # label(non_clause).  [assumption].
+125 (all X (pt(X) -> thing(X))) # label(owl) # label(non_clause).  [assumption].
+126 (all X (cat(X) <-> ed(X) & (exists T1 pre(X,T1)) & (all T (pre(X,T) -> tat(X,T))))) # label(constant_atom) # label(non_clause).  [assumption].
+127 (all X all Y (catp(X,Y) <-> ed(X) & ed(Y) & (exists T1 pre(X,T1)) & (all T (pre(Y,T) -> tatp(X,Y,T))))) # label(constant_atomic_part) # label(non_clause).  [assumption].
+128 (all X all Y (cp(X,Y) <-> ed(X) & ed(Y) & (exists T1 pre(Y,T1)) & (all T (pre(Y,T) -> tp(X,Y,T))))) # label(constant_part_Dd25) # label(non_clause).  [assumption].
+129 (all X all Y (cpp(X,Y) <-> ed(X) & ed(Y) & (exists T1 pre(Y,T1)) & (all T (pre(Y,T) -> tp(X,Y,T) & -tp(Y,X,T))))) # label(constant_proper_part_definition) # label(non_clause).  [assumption].
+130 (all X all Y (cov(X,Y) <-> ed(X) & ed(Y) & (exists T1 (pre(X,T1) & pre(Y,T1))) & (exists Z (cp(Z,X) & cp(Z,Y))))) # label(constant_overlap_definition) # label(non_clause).  [assumption].
+131 (all X all Y (constantParticipantOf(X,Y) <-> ed(X) & pd(Y) & (exists T pre(Y,T)) & (all T (pre(Y,T) -> pc(X,Y,T))))) # label(definition_constant_participant_of) # label(non_clause).  [assumption].
+132 (all X all Y (constantConstituentOf(X,Y) <-> (ped(X) & ped(Y) | nped(X) & nped(Y) | pd(X) & pd(Y)) & (exists T pre(Y,T)) & (all T (pre(Y,T) -> k(X,Y,T))))) # label(definition_constant_constituent_of) # label(non_clause).  [assumption].
+133 (all X all Y (constantQualeOf(X,Y) <-> (pr(X) & pq(Y) | tr(X) & tq(Y) | ar(X) & aq(Y)) & (all T (pre(Y,T) -> tql(X,Y,T))))) # label(definition_constant_quale_of) # label(non_clause).  [assumption].
+134 (all X all Y (constantlySpatiallyLocatedAt(X,Y) <-> (ped(X) | nped(X) | pd(X) | pq(X)) & s(Y) & (all T (pre(X,T) -> tql(X,Y,T))))) # label(definition_constantlySpatiallyLocatedAt) # label(non_clause).  [assumption].
+135 (all X all T (temporallyLocatedAt(X,T) -> (ed(X) | pd(X) | q(X)) & t(T))) # label(definition_partial_temporallyLocatedAt_Dd31) # label(non_clause).  [assumption].
+136 (all X0 all X1 all X2 (temporallyLocatedAt(X0,X1) & temporallyLocatedAt(X0,X2) -> X1 = X2)) # label(definition_unicity_from_Dd31) # label(non_clause).  [assumption].
+137 (all X (ed(X) -> (exists T temporallyLocatedAt(X,T)))) # label(endurant_temporal_location) # label(non_clause).  [assumption].
+138 (all X (q(X) -> (exists T temporallyLocatedAt(X,T)))) # label(quality_temporal_location) # label(non_clause).  [assumption].
+139 (all X (pd(X) -> (exists T temporallyLocatedAt(X,T)))) # label(perdurant_temporal_location) # label(non_clause).  [assumption].
+140 (all X all T (temporallyLocatedAt(X,T) -> pre(X,T))) # label(temporallyLocatedAt_and_presentAt_partially_Dd40_Ad5) # label(non_clause).  [assumption].
+141 (all X all Y (tl(X) & ql(Y,X) -> temporallyLocatedAt(X,Y))) # label(temporallyLocatedAt_ql_tl) # label(non_clause).  [assumption].
+142 (all X all T all T1 (pre(X,T) & temporallyLocatedAt(X,T1) -> p(T,T1))) # label(pre_temporallyLocatedAt_Dd40) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-ab(A) | pt(A).
+-ed(A) | pt(A).
+-pd(A) | pt(A).
+-q(A) | pt(A).
+ab(A) | ed(A) | pd(A) | q(A) | -pt(A).
+-as(A) | ed(A).
+-nped(A) | ed(A).
+-ped(A) | ed(A).
+as(A) | nped(A) | ped(A) | -ed(A).
+-pro(A) | stv(A).
+-st(A) | stv(A).
+pro(A) | st(A) | -stv(A).
+-ev(A) | pd(A).
+-stv(A) | pd(A).
+ev(A) | stv(A) | -pd(A).
+-aq(A) | q(A).
+-pq(A) | q(A).
+-tq(A) | q(A).
+aq(A) | pq(A) | tq(A) | -q(A).
+-acc(A) | ev(A).
+-ach(A) | ev(A).
+acc(A) | ach(A) | -ev(A).
+-apo(A) | pob(A).
+-napo(A) | pob(A).
+apo(A) | napo(A) | -pob(A).
+-sag(A) | aso(A).
+-sc(A) | aso(A).
+sag(A) | sc(A) | -aso(A).
+-aso(A) | sob(A).
+-naso(A) | sob(A).
+aso(A) | naso(A) | -sob(A).
+-sob(A) | npob(A).
+-mob(A) | npob(A).
+sob(A) | mob(A) | -npob(A).
+-ar(A) | r(A).
+-pr(A) | r(A).
+-tr(A) | r(A).
+ar(A) | pr(A) | tr(A) | -r(A).
+-r(A) | ab(A).
+-f(A) | ped(A).
+-m(A) | ped(A).
+-pob(A) | ped(A).
+f(A) | m(A) | pob(A) | -ped(A).
+-npob(A) | nped(A).
+-s(A) | pr(A).
+-sl(A) | pq(A).
+-t(A) | tr(A).
+-tl(A) | tq(A).
+-ab(A) | -ed(A).
+-ab(A) | -pd(A).
+-ab(A) | -q(A).
+-ed(A) | -pd(A).
+-pd(A) | -q(A).
+-ed(A) | -q(A).
+-ped(A) | -nped(A).
+-ped(A) | -as(A).
+-nped(A) | -as(A).
+-m(A) | -f(A).
+-f(A) | -pob(A).
+-m(A) | -pob(A).
+-mob(A) | -sob(A).
+-aso(A) | -naso(A).
+-sag(A) | -sc(A).
+-apo(A) | -napo(A).
+-ev(A) | -stv(A).
+-ach(A) | -acc(A).
+-st(A) | -pro(A).
+-tq(A) | -pq(A).
+-pq(A) | -aq(A).
+-tq(A) | -aq(A).
+-tr(A) | -pr(A).
+-pr(A) | -ar(A).
+-tr(A) | -ar(A).
+-p(A,B) | ab(A) | pd(A) # label(parthood_Argument_restrictions_Ad1).
+-p(A,B) | ab(B) | pd(B) # label(parthood_Argument_restrictions_Ad1).
+-p(A,B) | -pd(A) | pd(B) # label(parthood_argument_restrictions_Ad2).
+-p(A,B) | pd(A) | -pd(B) # label(parthood_argument_restrictions_Ad2).
+-p(A,B) | -ab(A) | ab(B) # label(parthood_argument_restrictions_Ad3).
+-p(A,B) | ab(A) | -ab(B) # label(parthood_argument_restrictions_Ad3).
+-p(A,B) | -t(A) | t(B) # label(parthood_argument_restrictions_instance_of_Ad4_1).
+-p(A,B) | t(A) | -t(B) # label(parthood_argument_restrictions_instance_of_Ad4_1).
+-p(A,B) | -s(A) | s(B) # label(parthood_argument_restrictions_instance_of_Ad4_2).
+-p(A,B) | s(A) | -s(B) # label(parthood_argument_restrictions_instance_of_Ad4_2).
+-p(A,B) | -ar(A) | ar(B) # label(parthood_argument_restrictions_instance_of_Ad4_3).
+-p(A,B) | ar(A) | -ar(B) # label(parthood_argument_restrictions_instance_of_Ad4_3).
+-ab(A) | p(A,A) # label(parthood_reflexivity_Ad5).
+-pd(A) | p(A,A) # label(parthood_reflexivity_Ad5).
+-p(A,B) | -p(B,A) | B = A # label(parthood_antysymmetry_Ad6).
+-p(A,B) | -p(B,C) | p(A,C) # label(parthood_transitivity_Ad7).
+-pp(A,B) | p(A,B) # label(proper_part_definition_Dd14).
+-pp(A,B) | -p(B,A) # label(proper_part_definition_Dd14).
+pp(A,B) | -p(A,B) | p(B,A) # label(proper_part_definition_Dd14).
+-ov(A,B) | p(f1(A,B),A) # label(overlap_definition_Dd15).
+-ov(A,B) | p(f1(A,B),B) # label(overlap_definition_Dd15).
+ov(A,B) | -p(C,A) | -p(C,B) # label(overlap_definition_Dd15).
+-at(A) | pd(A) | ab(A) # label(atom_definition_Dd16_corrected).
+-at(A) | -pp(B,A) # label(atom_definition_Dd16_corrected).
+at(A) | -pd(A) | pp(f2(A),A) # label(atom_definition_Dd16_corrected).
+at(A) | -ab(A) | pp(f2(A),A) # label(atom_definition_Dd16_corrected).
+-atp(A,B) | p(A,B) # label(atomic_part_definition_Dd17).
+-atp(A,B) | at(A) # label(atomic_part_definition_Dd17).
+atp(A,B) | -p(A,B) | -at(A) # label(atomic_part_definition_Dd17).
+-sum(A,B,C) | ab(A) | pd(A) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(A) | pd(B) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(A) | pd(C) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(B) | pd(A) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(B) | pd(B) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(B) | pd(C) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(C) | pd(A) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(C) | pd(B) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ab(C) | pd(C) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | -ov(D,A) | ov(D,B) | ov(D,C) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ov(D,A) | -ov(D,B) # label(binary_sum_definition_Dd18).
+-sum(A,B,C) | ov(D,A) | -ov(D,C) # label(binary_sum_definition_Dd18).
+sum(A,B,C) | -ab(A) | -ab(B) | -ab(C) | ov(f3(B,C,A),A) | ov(f3(B,C,A),B) | ov(f3(B,C,A),C) # label(binary_sum_definition_Dd18).
+sum(A,B,C) | -ab(A) | -ab(B) | -ab(C) | -ov(f3(B,C,A),A) | -ov(f3(B,C,A),B) # label(binary_sum_definition_Dd18).
+sum(A,B,C) | -ab(A) | -ab(B) | -ab(C) | -ov(f3(B,C,A),A) | -ov(f3(B,C,A),C) # label(binary_sum_definition_Dd18).
+sum(A,B,C) | -pd(A) | -pd(B) | -pd(C) | ov(f3(B,C,A),A) | ov(f3(B,C,A),B) | ov(f3(B,C,A),C) # label(binary_sum_definition_Dd18).
+sum(A,B,C) | -pd(A) | -pd(B) | -pd(C) | -ov(f3(B,C,A),A) | -ov(f3(B,C,A),B) # label(binary_sum_definition_Dd18).
+sum(A,B,C) | -pd(A) | -pd(B) | -pd(C) | -ov(f3(B,C,A),A) | -ov(f3(B,C,A),C) # label(binary_sum_definition_Dd18).
+-dif(A,B,C) | ab(A) | pd(A) # label(binary_difference_definition).
+-dif(A,B,C) | ab(A) | pd(B) # label(binary_difference_definition).
+-dif(A,B,C) | ab(A) | pd(C) # label(binary_difference_definition).
+-dif(A,B,C) | ab(B) | pd(A) # label(binary_difference_definition).
+-dif(A,B,C) | ab(B) | pd(B) # label(binary_difference_definition).
+-dif(A,B,C) | ab(B) | pd(C) # label(binary_difference_definition).
+-dif(A,B,C) | ab(C) | pd(A) # label(binary_difference_definition).
+-dif(A,B,C) | ab(C) | pd(B) # label(binary_difference_definition).
+-dif(A,B,C) | ab(C) | pd(C) # label(binary_difference_definition).
+-dif(A,B,C) | -p(D,A) | p(D,B) # label(binary_difference_definition).
+-dif(A,B,C) | -p(D,A) | -ov(D,C) # label(binary_difference_definition).
+-dif(A,B,C) | p(D,A) | -p(D,B) | ov(D,C) # label(binary_difference_definition).
+dif(A,B,C) | -ab(A) | -ab(B) | -ab(C) | p(f4(B,C,A),A) | p(f4(B,C,A),B) # label(binary_difference_definition).
+dif(A,B,C) | -ab(A) | -ab(B) | -ab(C) | p(f4(B,C,A),A) | -ov(f4(B,C,A),C) # label(binary_difference_definition).
+dif(A,B,C) | -ab(A) | -ab(B) | -ab(C) | -p(f4(B,C,A),A) | -p(f4(B,C,A),B) | ov(f4(B,C,A),C) # label(binary_difference_definition).
+dif(A,B,C) | -pd(A) | -pd(B) | -pd(C) | p(f4(B,C,A),A) | p(f4(B,C,A),B) # label(binary_difference_definition).
+dif(A,B,C) | -pd(A) | -pd(B) | -pd(C) | p(f4(B,C,A),A) | -ov(f4(B,C,A),C) # label(binary_difference_definition).
+dif(A,B,C) | -pd(A) | -pd(B) | -pd(C) | -p(f4(B,C,A),A) | -p(f4(B,C,A),B) | ov(f4(B,C,A),C) # label(binary_difference_definition).
+-ab(A) | -ab(B) | p(A,B) | dif(f5(A,B),A,B) # label(binary_difference_existence_from_Ad8_1).
+-pd(A) | -pd(B) | p(A,B) | dif(f6(A,B),A,B) # label(binary_difference_existence_from_Ad8_2).
+-pre(A,B) | ed(A) | pd(A) | q(A) # label(present_at_partial_definition_Dd40).
+-pre(A,B) | t(B) # label(present_at_partial_definition_Dd40).
+-pre(A,B) | -p(C,B) | pre(A,C) # label(present_at_dissectivity_Td17).
+-pre(A,B) | -p(A,C) | pre(C,B) # label(present_at_part_of_Ad13).
+-tp(A,B,C) | ed(A) # label(temporary_parthood_argument_restrictions_Ad10).
+-tp(A,B,C) | ed(B) # label(temporary_parthood_argument_restrictions_Ad10).
+-tp(A,B,C) | t(C) # label(temporary_parthood_argument_restrictions_Ad10).
+-tp(A,B,C) | -ped(A) | ped(B) # label(temporary_parthood_argument_restrictions_Ad11).
+-tp(A,B,C) | ped(A) | -ped(B) # label(temporary_parthood_argument_restrictions_Ad11).
+-tp(A,B,C) | -nped(A) | nped(B) # label(temporary_parthood_argument_restrictions_Ad12).
+-tp(A,B,C) | nped(A) | -nped(B) # label(temporary_parthood_argument_restrictions_Ad12).
+-tp(A,B,C) | -tp(B,D,C) | tp(A,D,C) # label(temporary_parthood_transitivity_Ad13).
+-ed(A) | -pre(A,B) | tp(A,A,B) # label(temporary_parthood_reflexivity_Ad16).
+-tov(A,B,C) | tp(f7(A,B,C),A,C) # label(temporary_overlap_definition_Dd21).
+-tov(A,B,C) | tp(f7(A,B,C),B,C) # label(temporary_overlap_definition_Dd21).
+tov(A,B,C) | -tp(D,A,C) | -tp(D,B,C) # label(temporary_overlap_definition_Dd21).
+-tpp(A,B,C) | tp(A,B,C) # label(temporary_proper_part_definition_Dd20).
+-tpp(A,B,C) | -tp(B,A,C) # label(temporary_proper_part_definition_Dd20).
+tpp(A,B,C) | -tp(A,B,C) | tp(B,A,C) # label(temporary_proper_part_definition_Dd20).
+-ed(A) | -ed(B) | -pre(A,C) | -pre(B,C) | tp(A,B,C) | tp(f8(A,B,C),A,C) # label(temporary_proper_part_supplementation_Ad14).
+-ed(A) | -ed(B) | -pre(A,C) | -pre(B,C) | tp(A,B,C) | -tov(f8(A,B,C),B,C) # label(temporary_proper_part_supplementation_Ad14).
+-tp(A,B,C) | pre(A,C) # label(temporary_parthood_Ad17).
+-tp(A,B,C) | pre(B,C) # label(temporary_parthood_Ad17).
+-tp(A,B,C) | -p(D,C) | tp(A,B,D) # label(temporary_parthood_Ad18).
+-tat(A,B) | ed(A) # label(temporary_proper_part_definition_Dd22_corrected).
+-tat(A,B) | t(B) # label(temporary_proper_part_definition_Dd22_corrected).
+-tat(A,B) | -tpp(C,A,B) # label(temporary_proper_part_definition_Dd22_corrected).
+tat(A,B) | -ed(A) | -t(B) | tpp(f9(A,B),A,B) # label(temporary_proper_part_definition_Dd22_corrected).
+-tatp(A,B,C) | tp(A,B,C) # label(temporary_atomic_part_definition_Dd23).
+-tatp(A,B,C) | tat(A,C) # label(temporary_atomic_part_definition_Dd23).
+tatp(A,B,C) | -tp(A,B,C) | -tat(A,C) # label(temporary_atomic_part_definition_Dd23).
+-tsum(A,B,C) | ped(A) | nped(A) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(A) | nped(B) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(A) | nped(C) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(B) | nped(A) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(B) | nped(B) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(B) | nped(C) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(C) | nped(A) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(C) | nped(B) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | ped(C) | nped(C) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | -tov(D,A,E) | tov(D,B,E) | tov(D,C,E) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | tov(D,A,E) | -tov(D,B,E) # label(temporary_sum_definition_from_Dd26).
+-tsum(A,B,C) | tov(D,A,E) | -tov(D,C,E) # label(temporary_sum_definition_from_Dd26).
+tsum(A,B,C) | -ped(A) | -ped(B) | -ped(C) | tov(f10(B,C,A),A,f11(B,C,A)) | tov(f10(B,C,A),B,f11(B,C,A)) | tov(f10(B,C,A),C,f11(B,C,A)) # label(temporary_sum_definition_from_Dd26).
+tsum(A,B,C) | -ped(A) | -ped(B) | -ped(C) | -tov(f10(B,C,A),A,f11(B,C,A)) | -tov(f10(B,C,A),B,f11(B,C,A)) # label(temporary_sum_definition_from_Dd26).
+tsum(A,B,C) | -ped(A) | -ped(B) | -ped(C) | -tov(f10(B,C,A),A,f11(B,C,A)) | -tov(f10(B,C,A),C,f11(B,C,A)) # label(temporary_sum_definition_from_Dd26).
+tsum(A,B,C) | -nped(A) | -nped(B) | -nped(C) | tov(f10(B,C,A),A,f11(B,C,A)) | tov(f10(B,C,A),B,f11(B,C,A)) | tov(f10(B,C,A),C,f11(B,C,A)) # label(temporary_sum_definition_from_Dd26).
+tsum(A,B,C) | -nped(A) | -nped(B) | -nped(C) | -tov(f10(B,C,A),A,f11(B,C,A)) | -tov(f10(B,C,A),B,f11(B,C,A)) # label(temporary_sum_definition_from_Dd26).
+tsum(A,B,C) | -nped(A) | -nped(B) | -nped(C) | -tov(f10(B,C,A),A,f11(B,C,A)) | -tov(f10(B,C,A),C,f11(B,C,A)) # label(temporary_sum_definition_from_Dd26).
+-temporalPart(A,B) | pd(A).
+-temporalPart(A,B) | pd(B).
+-temporalPart(A,B) | p(A,B).
+-temporalPart(A,B) | -pd(C) | -p(C,B) | pre(C,f12(A,B,C)) | p(C,A).
+-temporalPart(A,B) | -pd(C) | -p(C,B) | -pre(A,f12(A,B,C)) | p(C,A).
+temporalPart(A,B) | -pd(A) | -pd(B) | -p(A,B) | pd(f13(A,B)).
+temporalPart(A,B) | -pd(A) | -pd(B) | -p(A,B) | p(f13(A,B),B).
+temporalPart(A,B) | -pd(A) | -pd(B) | -p(A,B) | -pre(f13(A,B),C) | pre(A,C).
+temporalPart(A,B) | -pd(A) | -pd(B) | -p(A,B) | -p(f13(A,B),A).
+-k(A,B,C) | ed(A) | pd(A) # label(constitution_argument_restrictions_Ad20).
+-k(A,B,C) | ed(B) | pd(B) # label(constitution_argument_restrictions_Ad20).
+-k(A,B,C) | t(C) # label(constitution_argument_restrictions_Ad20).
+-k(A,B,C) | -ped(A) | ped(B) # label(constitution__argument_restrictions_Ad21).
+-k(A,B,C) | ped(A) | -ped(B) # label(constitution__argument_restrictions_Ad21).
+-k(A,B,C) | -nped(A) | nped(B) # label(constitution__argument_restrictions_Ad22).
+-k(A,B,C) | nped(A) | -nped(B) # label(constitution__argument_restrictions_Ad22).
+-k(A,B,C) | -pd(A) | pd(B) # label(constitution_argument_restrictions_Ad23).
+-k(A,B,C) | pd(A) | -pd(B) # label(constitution_argument_restrictions_Ad23).
+-k(A,B,C) | -k(B,A,C) # label(constitution__ground_axiom_Ad24).
+-k(A,B,C) | -k(B,D,C) | k(A,D,C) # label(constitution__ground_axiom_Ad25).
+-k(A,B,C) | pre(A,C) # label(constitution_Ad26).
+-k(A,B,C) | pre(B,C) # label(constitution_Ad26).
+-k(A,B,C) | -p(D,C) | k(A,B,D) # label(constitution_Ad27_weakened).
+-k(A,B,C) | -tp(D,B,C) | tp(f14(A,B,D,C),A,C) # label(constitution_Ad29).
+-k(A,B,C) | -tp(D,B,C) | k(f14(A,B,D,C),D,C) # label(constitution_Ad29).
+-pc(A,B,C) | ed(A) # label(participation_argument_restrictions_Ad33).
+-pc(A,B,C) | pd(B) # label(participation_argument_restrictions_Ad33).
+-pc(A,B,C) | t(C) # label(participation_argument_restrictions_Ad33).
+-pd(A) | -pre(A,B) | pc(f15(A,B),A,B) # label(participation_existential_Ad34).
+-ed(A) | pc(A,f16(A),f17(A)) # label(participation_existential_Ad35_corrected).
+-pc(A,B,C) | pre(A,C) # label(participation_present_Ad36).
+-pc(A,B,C) | pre(B,C) # label(participation_present_Ad36).
+-pc(A,B,C) | -p(D,C) | pc(A,B,D) # label(participation_present_Ad37).
+-dqt(A,B) | q(A) # label(direct_quality_argument_restrictions_Ad38_simplified).
+-dqt(A,B) | ed(B) | pd(B) # label(direct_quality_argument_restrictions_Ad38_simplified).
+-dqt(A,B) | -tq(A) | pd(B) # label(direct_quality_argument_restrictions_Ad39_for_dqt).
+-dqt(A,B) | tq(A) | -pd(B) # label(direct_quality_argument_restrictions_Ad39_for_dqt).
+-dqt(A,B) | -pq(A) | ped(B) # label(direct_quality_argument_restrictions_Ad40_for_dqt).
+-dqt(A,B) | pq(A) | -ped(B) # label(direct_quality_argument_restrictions_Ad40_for_dqt).
+-dqt(A,B) | -aq(A) | nped(B) # label(direct_quality_argument_restrictions_Ad41_for_dqt).
+-dqt(A,B) | aq(A) | -nped(B) # label(direct_quality_argument_restrictions_Ad41_for_dqt).
+-dqt(A,B) | -dqt(A,C) | C = B # label(direct_quality_Ad43).
+-dqt(A,B) | -dqt(C,B) | -tl(A) | -tl(C) | C = A # label(direct_quality_unicity_Ad44_1).
+-dqt(A,B) | -dqt(C,B) | -sl(A) | -sl(C) | C = A # label(direct_quality_unicity_Ad44_2).
+-tq(A) | dqt(A,f18(A)) # label(direct_quality_existential_Ad46).
+-tq(A) | pd(f18(A)) # label(direct_quality_existential_Ad46).
+-pq(A) | dqt(A,f19(A)) # label(direct_quality_existential_Ad47).
+-pq(A) | ped(f19(A)) # label(direct_quality_existential_Ad47).
+-aq(A) | dqt(A,f20(A)) # label(direct_quality_existential_Ad48).
+-aq(A) | nped(f20(A)) # label(direct_quality_existential_Ad48).
+-pd(A) | dqt(f21(A),A) # label(direct_quality_existential_Ad49).
+-pd(A) | tl(f21(A)) # label(direct_quality_existential_Ad49).
+-ped(A) | dqt(f22(A),A) # label(direct_quality_existential_Ad50).
+-ped(A) | sl(f22(A)) # label(direct_quality_existential_Ad50).
+-nped(A) | dqt(f23(A),A) # label(direct_quality_existential_Ad51).
+-nped(A) | aq(f23(A)) # label(direct_quality_existential_Ad51).
+-dqt(A,B) | -pre(A,C) | pre(B,C) # label(direct_quality_present_at).
+-dqt(A,B) | -pre(B,C) | pre(A,C) # label(direct_quality_present_at).
+-ql(A,B) | tr(A) # label(immediate_quale_argument_restrictions_Ad52).
+-ql(A,B) | tq(B) # label(immediate_quale_argument_restrictions_Ad52).
+-ql(A,B) | -tl(B) | t(A) # label(immediate_quale_argument_restrictions_Ad53).
+-ql(A,B) | -ql(C,B) | C = A # label(immediate_quale_ground_Ad54).
+-tq(A) | ql(f24(A),A) # label(immediate_quale_existential_Ad55).
+-tql(A,B,C) | pr(A) | ar(A) # label(temporary_quale_argument_restrictions_Ad58).
+-tql(A,B,C) | pq(B) | aq(B) # label(temporary_quale_argument_restrictions_Ad58).
+-tql(A,B,C) | t(C) # label(temporary_quale_argument_restrictions_Ad58).
+-tql(A,B,C) | -pr(A) | pq(B) # label(temporary_quale_argument_restrictions_Ad59).
+-tql(A,B,C) | pr(A) | -pq(B) # label(temporary_quale_argument_restrictions_Ad59).
+-tql(A,B,C) | -ar(A) | aq(B) # label(temporary_quale_argument_restrictions_Ad60).
+-tql(A,B,C) | ar(A) | -aq(B) # label(temporary_quale_argument_restrictions_Ad60).
+-tql(A,B,C) | -sl(B) | s(A) # label(temporary_quale_argument_restrictions_Ad61).
+-tql(A,B,C) | -s(A) | sl(B) # label(temporary_quale_argument_restrictions_Ad61).
+-pq(A) | -pre(A,B) | tql(f25(A,B),A,B) # label(temporary_quale_existential_Ad62).
+-aq(A) | -pre(A,B) | tql(f25(A,B),A,B) # label(temporary_quale_existential_Ad62).
+-tql(A,B,C) | pre(B,C) # label(temporary_quale_present_Ad65).
+-tql(A,B,C) | -p(D,C) | tql(A,B,D) # label(temporary_quale_present_Ad66).
+-sd(A,B) | pre(A,f26(A,B)) # label(specific_dependence_Dd69).
+-sd(A,B) | -pre(A,C) | pre(B,C) # label(specific_dependence_Dd69).
+sd(A,B) | -pre(A,C) | pre(A,f27(A,B)) # label(specific_dependence_Dd69).
+sd(A,B) | -pre(A,C) | -pre(B,f27(A,B)) # label(specific_dependence_Dd69).
+-ach(A) | -temporallyLocatedAt(A,B) | at(B) # label(achievemants_atomic_Ad75).
+-acc(A) | -temporallyLocatedAt(A,B) | -at(B) # label(achievemants_non_atomic_Ad76).
+-st(A) | -p(B,A) | st(B) # label(states_parts_Ad77).
+-mob(A) | sd(A,f28(A)) # label(mental_objects_agentive_Ad71).
+-mob(A) | apo(f28(A)) # label(mental_objects_agentive_Ad71).
+-ed(A) | pc(A,f29(A),f30(A)) # label(endurant_perdurant_participation_Ad35).
+-pt(A) | thing(A) # label(owl).
+-cat(A) | ed(A) # label(constant_atom).
+-cat(A) | pre(A,f31(A)) # label(constant_atom).
+-cat(A) | -pre(A,B) | tat(A,B) # label(constant_atom).
+cat(A) | -ed(A) | -pre(A,B) | pre(A,f32(A)) # label(constant_atom).
+cat(A) | -ed(A) | -pre(A,B) | -tat(A,f32(A)) # label(constant_atom).
+-catp(A,B) | ed(A) # label(constant_atomic_part).
+-catp(A,B) | ed(B) # label(constant_atomic_part).
+-catp(A,B) | pre(A,f33(A,B)) # label(constant_atomic_part).
+-catp(A,B) | -pre(B,C) | tatp(A,B,C) # label(constant_atomic_part).
+catp(A,B) | -ed(A) | -ed(B) | -pre(A,C) | pre(B,f34(A,B)) # label(constant_atomic_part).
+catp(A,B) | -ed(A) | -ed(B) | -pre(A,C) | -tatp(A,B,f34(A,B)) # label(constant_atomic_part).
+-cp(A,B) | ed(A) # label(constant_part_Dd25).
+-cp(A,B) | ed(B) # label(constant_part_Dd25).
+-cp(A,B) | pre(B,f35(A,B)) # label(constant_part_Dd25).
+-cp(A,B) | -pre(B,C) | tp(A,B,C) # label(constant_part_Dd25).
+cp(A,B) | -ed(A) | -ed(B) | -pre(B,C) | pre(B,f36(A,B)) # label(constant_part_Dd25).
+cp(A,B) | -ed(A) | -ed(B) | -pre(B,C) | -tp(A,B,f36(A,B)) # label(constant_part_Dd25).
+-cpp(A,B) | ed(A) # label(constant_proper_part_definition).
+-cpp(A,B) | ed(B) # label(constant_proper_part_definition).
+-cpp(A,B) | pre(B,f37(A,B)) # label(constant_proper_part_definition).
+-cpp(A,B) | -pre(B,C) | tp(A,B,C) # label(constant_proper_part_definition).
+-cpp(A,B) | -pre(B,C) | -tp(B,A,C) # label(constant_proper_part_definition).
+cpp(A,B) | -ed(A) | -ed(B) | -pre(B,C) | pre(B,f38(A,B)) # label(constant_proper_part_definition).
+cpp(A,B) | -ed(A) | -ed(B) | -pre(B,C) | -tp(A,B,f38(A,B)) | tp(B,A,f38(A,B)) # label(constant_proper_part_definition).
+-cov(A,B) | ed(A) # label(constant_overlap_definition).
+-cov(A,B) | ed(B) # label(constant_overlap_definition).
+-cov(A,B) | pre(A,f39(A,B)) # label(constant_overlap_definition).
+-cov(A,B) | pre(B,f39(A,B)) # label(constant_overlap_definition).
+-cov(A,B) | cp(f40(A,B),A) # label(constant_overlap_definition).
+-cov(A,B) | cp(f40(A,B),B) # label(constant_overlap_definition).
+cov(A,B) | -ed(A) | -ed(B) | -pre(A,C) | -pre(B,C) | -cp(D,A) | -cp(D,B) # label(constant_overlap_definition).
+-constantParticipantOf(A,B) | ed(A) # label(definition_constant_participant_of).
+-constantParticipantOf(A,B) | pd(B) # label(definition_constant_participant_of).
+-constantParticipantOf(A,B) | pre(B,f41(A,B)) # label(definition_constant_participant_of).
+-constantParticipantOf(A,B) | -pre(B,C) | pc(A,B,C) # label(definition_constant_participant_of).
+constantParticipantOf(A,B) | -ed(A) | -pd(B) | -pre(B,C) | pre(B,f42(A,B)) # label(definition_constant_participant_of).
+constantParticipantOf(A,B) | -ed(A) | -pd(B) | -pre(B,C) | -pc(A,B,f42(A,B)) # label(definition_constant_participant_of).
+-constantConstituentOf(A,B) | ped(A) | nped(A) | pd(A) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | ped(A) | nped(A) | pd(B) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | ped(A) | nped(B) | pd(A) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | ped(A) | nped(B) | pd(B) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | ped(B) | nped(A) | pd(A) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | ped(B) | nped(A) | pd(B) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | ped(B) | nped(B) | pd(A) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | ped(B) | nped(B) | pd(B) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | pre(B,f43(A,B)) # label(definition_constant_constituent_of).
+-constantConstituentOf(A,B) | -pre(B,C) | k(A,B,C) # label(definition_constant_constituent_of).
+constantConstituentOf(A,B) | -ped(A) | -ped(B) | -pre(B,C) | pre(B,f44(A,B)) # label(definition_constant_constituent_of).
+constantConstituentOf(A,B) | -ped(A) | -ped(B) | -pre(B,C) | -k(A,B,f44(A,B)) # label(definition_constant_constituent_of).
+constantConstituentOf(A,B) | -nped(A) | -nped(B) | -pre(B,C) | pre(B,f44(A,B)) # label(definition_constant_constituent_of).
+constantConstituentOf(A,B) | -nped(A) | -nped(B) | -pre(B,C) | -k(A,B,f44(A,B)) # label(definition_constant_constituent_of).
+constantConstituentOf(A,B) | -pd(A) | -pd(B) | -pre(B,C) | pre(B,f44(A,B)) # label(definition_constant_constituent_of).
+constantConstituentOf(A,B) | -pd(A) | -pd(B) | -pre(B,C) | -k(A,B,f44(A,B)) # label(definition_constant_constituent_of).
+-constantQualeOf(A,B) | pr(A) | tr(A) | ar(A) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | pr(A) | tr(A) | aq(B) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | pr(A) | tq(B) | ar(A) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | pr(A) | tq(B) | aq(B) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | pq(B) | tr(A) | ar(A) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | pq(B) | tr(A) | aq(B) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | pq(B) | tq(B) | ar(A) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | pq(B) | tq(B) | aq(B) # label(definition_constant_quale_of).
+-constantQualeOf(A,B) | -pre(B,C) | tql(A,B,C) # label(definition_constant_quale_of).
+constantQualeOf(A,B) | -pr(A) | -pq(B) | pre(B,f45(A,B)) # label(definition_constant_quale_of).
+constantQualeOf(A,B) | -pr(A) | -pq(B) | -tql(A,B,f45(A,B)) # label(definition_constant_quale_of).
+constantQualeOf(A,B) | -tr(A) | -tq(B) | pre(B,f45(A,B)) # label(definition_constant_quale_of).
+constantQualeOf(A,B) | -tr(A) | -tq(B) | -tql(A,B,f45(A,B)) # label(definition_constant_quale_of).
+constantQualeOf(A,B) | -ar(A) | -aq(B) | pre(B,f45(A,B)) # label(definition_constant_quale_of).
+constantQualeOf(A,B) | -ar(A) | -aq(B) | -tql(A,B,f45(A,B)) # label(definition_constant_quale_of).
+-constantlySpatiallyLocatedAt(A,B) | ped(A) | nped(A) | pd(A) | pq(A) # label(definition_constantlySpatiallyLocatedAt).
+-constantlySpatiallyLocatedAt(A,B) | s(B) # label(definition_constantlySpatiallyLocatedAt).
+-constantlySpatiallyLocatedAt(A,B) | -pre(A,C) | tql(A,B,C) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -ped(A) | -s(B) | pre(A,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -ped(A) | -s(B) | -tql(A,B,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -nped(A) | -s(B) | pre(A,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -nped(A) | -s(B) | -tql(A,B,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -pd(A) | -s(B) | pre(A,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -pd(A) | -s(B) | -tql(A,B,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -pq(A) | -s(B) | pre(A,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+constantlySpatiallyLocatedAt(A,B) | -pq(A) | -s(B) | -tql(A,B,f46(A,B)) # label(definition_constantlySpatiallyLocatedAt).
+-temporallyLocatedAt(A,B) | ed(A) | pd(A) | q(A) # label(definition_partial_temporallyLocatedAt_Dd31).
+-temporallyLocatedAt(A,B) | t(B) # label(definition_partial_temporallyLocatedAt_Dd31).
+-temporallyLocatedAt(A,B) | -temporallyLocatedAt(A,C) | C = B # label(definition_unicity_from_Dd31).
+-ed(A) | temporallyLocatedAt(A,f47(A)) # label(endurant_temporal_location).
+-q(A) | temporallyLocatedAt(A,f48(A)) # label(quality_temporal_location).
+-pd(A) | temporallyLocatedAt(A,f49(A)) # label(perdurant_temporal_location).
+-temporallyLocatedAt(A,B) | pre(A,B) # label(temporallyLocatedAt_and_presentAt_partially_Dd40_Ad5).
+-tl(A) | -ql(B,A) | temporallyLocatedAt(A,B) # label(temporallyLocatedAt_ql_tl).
+-pre(A,B) | -temporallyLocatedAt(A,C) | p(B,C) # label(pre_temporallyLocatedAt_Dd40).
+ped(iped1).
+ped(iped2).
+nped(inped1).
+nped(inped2).
+nped(inped3).
+ev(ie1).
+ev(ie2).
+ev(ie3).
+tq(itq1).
+aq(iaq1).
+pq(ipq1).
+t(it1).
+r(ir1).
+ar(iar1).
+at(iatom).
+cat(icat).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.02 seconds).
+Ground clauses: seen=2074, kept=2008.
+Selections=1, assignments=1, propagations=71, current_models=0.
+Rewrite_terms=3, rewrite_bools=690, indexes=3.
+Rules_from_neg_clauses=5, cross_offs=5.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.03 seconds).
+Ground clauses: seen=6916, kept=6724.
+Selections=2, assignments=3, propagations=385, current_models=0.
+Rewrite_terms=6, rewrite_bools=6900, indexes=4.
+Rules_from_neg_clauses=6, cross_offs=23.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.04 seconds).
+Ground clauses: seen=17828, kept=17408.
+Selections=3, assignments=6, propagations=861, current_models=0.
+Rewrite_terms=9, rewrite_bools=19441, indexes=5.
+Rules_from_neg_clauses=7, cross_offs=41.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.08 seconds).
+Ground clauses: seen=39196, kept=38416.
+Selections=4, assignments=10, propagations=1594, current_models=0.
+Rewrite_terms=14, rewrite_bools=44751, indexes=6.
+Rules_from_neg_clauses=4, cross_offs=61.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 6 =========================
+
+============================== STATISTICS ============================
+
+For domain size 6.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.16 seconds).
+Ground clauses: seen=77230, kept=75928.
+Selections=5, assignments=15, propagations=2595, current_models=0.
+Rewrite_terms=17, rewrite_bools=88063, indexes=6.
+Rules_from_neg_clauses=2, cross_offs=91.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 7 =========================
+
+============================== STATISTICS ============================
+
+For domain size 7.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.30 seconds).
+Ground clauses: seen=140324, kept=138308.
+Selections=6, assignments=21, propagations=4043, current_models=0.
+Rewrite_terms=134, rewrite_bools=161528, indexes=14.
+Rules_from_neg_clauses=12, cross_offs=176.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 8 =========================
+
+============================== STATISTICS ============================
+
+For domain size 8.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.54 seconds).
+Ground clauses: seen=239416, kept=236464.
+Selections=10, assignments=52, propagations=6341, current_models=0.
+Rewrite_terms=803, rewrite_bools=280186, indexes=36.
+Rules_from_neg_clauses=65, cross_offs=549.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 9 =========================
+
+============================== MODEL =================================
+
+interpretation( 9, [number=1, seconds=2], [
+
+        function(iaq1, [ 0 ]),
+
+        function(iar1, [ 1 ]),
+
+        function(iatom, [ 1 ]),
+
+        function(icat, [ 2 ]),
+
+        function(ie1, [ 3 ]),
+
+        function(ie2, [ 3 ]),
+
+        function(ie3, [ 3 ]),
+
+        function(inped1, [ 2 ]),
+
+        function(inped2, [ 2 ]),
+
+        function(inped3, [ 2 ]),
+
+        function(iped1, [ 7 ]),
+
+        function(iped2, [ 7 ]),
+
+        function(ipq1, [ 4 ]),
+
+        function(ir1, [ 1 ]),
+
+        function(it1, [ 5 ]),
+
+        function(itq1, [ 6 ]),
+
+        function(f2(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f16(_), [ 0, 0, 3, 0, 0, 0, 0, 3, 0 ]),
+
+        function(f17(_), [ 0, 0, 5, 0, 0, 0, 0, 5, 0 ]),
+
+        function(f18(_), [ 0, 0, 0, 0, 0, 0, 3, 0, 0 ]),
+
+        function(f19(_), [ 0, 0, 0, 0, 7, 0, 0, 0, 0 ]),
+
+        function(f20(_), [ 2, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f21(_), [ 0, 0, 0, 6, 0, 0, 0, 0, 0 ]),
+
+        function(f22(_), [ 0, 0, 0, 0, 0, 0, 0, 4, 0 ]),
+
+        function(f23(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f24(_), [ 0, 0, 0, 0, 0, 0, 5, 0, 0 ]),
+
+        function(f28(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f29(_), [ 0, 0, 3, 0, 0, 0, 0, 3, 0 ]),
+
+        function(f30(_), [ 0, 0, 5, 0, 0, 0, 0, 5, 0 ]),
+
+        function(f31(_), [ 0, 0, 5, 0, 0, 0, 0, 5, 0 ]),
+
+        function(f32(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f47(_), [ 0, 0, 5, 0, 0, 0, 0, 5, 0 ]),
+
+        function(f48(_), [ 5, 0, 0, 0, 5, 0, 5, 0, 0 ]),
+
+        function(f49(_), [ 0, 0, 0, 5, 0, 0, 0, 0, 0 ]),
+
+        function(f1(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 3, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 5, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 8 ]),
+
+        function(f5(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 5, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 8, 0, 0, 0, 8, 0, 0, 0 ]),
+
+        function(f6(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f9(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f13(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f15(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 2, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f25(_,_), [
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 8, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f26(_,_), [
+			   5, 0, 5, 5, 5, 0, 5, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   5, 0, 5, 5, 5, 0, 5, 5, 0,
+			   5, 0, 5, 5, 5, 0, 5, 5, 0,
+			   5, 0, 5, 5, 5, 0, 5, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   5, 0, 5, 5, 5, 0, 5, 5, 0,
+			   5, 0, 5, 5, 5, 0, 5, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f27(_,_), [
+			   0, 5, 0, 0, 0, 5, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 5, 0, 0, 0, 5, 0, 0, 5,
+			   0, 5, 0, 0, 0, 5, 0, 0, 5,
+			   0, 5, 0, 0, 0, 5, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 5, 0, 0, 0, 5, 0, 0, 5,
+			   0, 5, 0, 0, 0, 5, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f33(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f34(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f35(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f36(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f37(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f38(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f39(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f40(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 2, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 7, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f41(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 5, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 5, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f42(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f43(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f44(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 5, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 5, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 5, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f45(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 5, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f46(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f3(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 5, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 8, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 5, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 8, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 8, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 8, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 5, 0, 0, 0 ]),
+
+        function(f4(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 5, 0, 0, 8,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 3, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 5, 0, 0, 8,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 5,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 5, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 5, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 5, 0, 0, 8 ]),
+
+        function(f7(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 2, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 7, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f8(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 2, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 7, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f10(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f11(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f12(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f14(_,_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(ab(_), [ 0, 1, 0, 0, 0, 1, 0, 0, 1 ]),
+
+        relation(acc(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(ach(_), [ 0, 0, 0, 1, 0, 0, 0, 0, 0 ]),
+
+        relation(apo(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(aq(_), [ 1, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(ar(_), [ 0, 1, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(as(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(aso(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(at(_), [ 0, 1, 0, 1, 0, 1, 0, 0, 1 ]),
+
+        relation(cat(_), [ 0, 0, 1, 0, 0, 0, 0, 1, 0 ]),
+
+        relation(ed(_), [ 0, 0, 1, 0, 0, 0, 0, 1, 0 ]),
+
+        relation(ev(_), [ 0, 0, 0, 1, 0, 0, 0, 0, 0 ]),
+
+        relation(f(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(m(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(mob(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(napo(_), [ 0, 0, 0, 0, 0, 0, 0, 1, 0 ]),
+
+        relation(naso(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(nped(_), [ 0, 0, 1, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(npob(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(pd(_), [ 0, 0, 0, 1, 0, 0, 0, 0, 0 ]),
+
+        relation(ped(_), [ 0, 0, 0, 0, 0, 0, 0, 1, 0 ]),
+
+        relation(pob(_), [ 0, 0, 0, 0, 0, 0, 0, 1, 0 ]),
+
+        relation(pq(_), [ 0, 0, 0, 0, 1, 0, 0, 0, 0 ]),
+
+        relation(pr(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 1 ]),
+
+        relation(pro(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(pt(_), [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ]),
+
+        relation(q(_), [ 1, 0, 0, 0, 1, 0, 1, 0, 0 ]),
+
+        relation(r(_), [ 0, 1, 0, 0, 0, 1, 0, 0, 1 ]),
+
+        relation(s(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 1 ]),
+
+        relation(sag(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(sc(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(sl(_), [ 0, 0, 0, 0, 1, 0, 0, 0, 0 ]),
+
+        relation(sob(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(st(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(stv(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(t(_), [ 0, 0, 0, 0, 0, 1, 0, 0, 0 ]),
+
+        relation(thing(_), [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ]),
+
+        relation(tl(_), [ 0, 0, 0, 0, 0, 0, 1, 0, 0 ]),
+
+        relation(tq(_), [ 0, 0, 0, 0, 0, 0, 1, 0, 0 ]),
+
+        relation(tr(_), [ 0, 0, 0, 0, 0, 1, 0, 0, 0 ]),
+
+        relation(atp(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1 ]),
+
+        relation(catp(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(constantConstituentOf(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(constantParticipantOf(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(constantQualeOf(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0 ]),
+
+        relation(constantlySpatiallyLocatedAt(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(cov(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(cp(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(cpp(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dqt(_,_), [
+			   0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(ov(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1 ]),
+
+        relation(p(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1 ]),
+
+        relation(pp(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(pre(_,_), [
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(ql(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(sd(_,_), [
+			   1, 0, 1, 1, 1, 0, 1, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 1, 1, 1, 0, 1, 1, 0,
+			   1, 0, 1, 1, 1, 0, 1, 1, 0,
+			   1, 0, 1, 1, 1, 0, 1, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 1, 1, 1, 0, 1, 1, 0,
+			   1, 0, 1, 1, 1, 0, 1, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(tat(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(temporalPart(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(temporallyLocatedAt(_,_), [
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dif(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 1, 0, 0, 0 ]),
+
+        relation(k(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(pc(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(sum(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1 ]),
+
+        relation(tatp(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(tov(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(tp(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(tpp(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(tql(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(tsum(_,_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 9.
+
+Current CPU time: 0.00 seconds (total CPU time: 2.17 seconds).
+Ground clauses: seen=388348, kept=384208.
+Selections=13654, assignments=14142, propagations=9819, current_models=1.
+Rewrite_terms=73898, rewrite_bools=452451, indexes=300.
+Rules_from_neg_clauses=323, cross_offs=2922.
+
+============================== end of statistics =====================
+
+User_CPU=2.18, System_CPU=0.09, Wall_clock=3.
+
+Exiting with 1 model.
+
+Process 94043 exit (max_models) Sat May  4 12:06:57 2024
+The process finished Sat May  4 12:06:57 2024
