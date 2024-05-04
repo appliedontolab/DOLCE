@@ -7,18 +7,19 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
     <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic">
-        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic/3.2"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic/3.3"/>
         <terms:creator>Laure Vieu and Daniele Porello</terms:creator>
         <terms:contributor>Stefano Borgo, Francesco Compagno, Claudio Masolo, Emilio M. Sanfilippo, Walter Terkaj</terms:contributor>
-	   <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+		<terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+		<vann:preferredNamespacePrefix>db</vann:preferredNamespacePrefix>
         <rdfs:comment>DOLCE-basic in OWL. OWL version engineered by Laure Vieu and Daniele Porello, based on DOLCE from Wonderweb Deliverable D18 and on more recent work by Claudio Masolo and the LOA. Reference to numbered axioms from D18.
 DOLCE-basic does not include the n-ary, n&gt;2, relations of DOLCE. For some of these relations with a time argument, a constant variant (already in DOLCE or not) is included.
 NB: DOLCE-basic is a module of another version of DOLCE in OWL which includes n-ary, n&gt;2, relations of DOLCE using the W3C-recommended approach of reifying relation instances.</rdfs:comment>
-        <owl:versionInfo>3.2 --- elimination of irregolarity and other fixes such as ternary property chains unsupported by Pellet</owl:versionInfo>
-        <owl:versionInfo>Beta version. 
-
+        <owl:versionInfo>3.3 --- added license and preferredNamespacePrefix.
+Beta version. 
 We seek feedback especially regarding whether users understand or not what are the classes and the relations and how to use them.
 Feedback regarding possible incoherences would be extremely useful as well.
 Annotation of the axioms is very patchy, we are still working on it, so we do not currently seek feedback on these annotations.</owl:versionInfo>
