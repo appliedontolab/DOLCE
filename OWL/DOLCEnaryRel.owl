@@ -1,0 +1,1392 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#"
+     xml:base="https://w3id.org/DOLCE/OWL/DOLCEnaryRel"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
+    <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel">
+        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel/4.3"/>
+        <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic"/>
+        <terms:contributor>Stefano Borgo, Francesco Compagno, Claudio Masolo, Emilio M. Sanfilippo, Walter Terkaj</terms:contributor>
+        <terms:creator>Laure Vieu and Daniele Porello</terms:creator>
+        <vann:preferredNamespacePrefix>dn</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://w3id.org/DOLCE/OWL/DOLCEnaryRel#</vann:preferredNamespaceUri>
+        <rdfs:comment>DOLCE in OWL with n-ary relations. Requires importing DOLCEbasic.
+Most of the n-ary relations are temporalised relations, e.g. mereological relations between endurants at a time (in DOLCEbasic only constant mereological relations between endurants are included), but not all, e.g., the constant sum between endurants is a ternary relation.
+
+The treatment of n-ary relations is based on the W3C reification approach.
+https://www.w3.org/TR/swbp-n-aryRelations/
+
+We introduce classes of n-ary reified relationships and an object property for each argument of the n-ary relation.
+
+E.g. for the temporalised parthood relation between two endurants at a time, the class RRelTempPart and the properties tempPart, tempWhole, rRelTime. The property rRelTime is shared by all reified temporalised relationships gathered under the class ReifiedTemporalisedRelationship</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantPartOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend1"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumResult"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend2"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumResult"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#constantProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantProperPartOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#constantlyOverlaps -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantlyOverlaps">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#directQualityOf"/>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#partOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#partOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>inferred from Dd18</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#partOf"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>inferred from Dd18</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg1"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg2"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempPart"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationPerdurant"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempWhole"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Ad26</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Ad26</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg1"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>From Dd21 and Ad17</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg2"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>From Dd21 and Ad17</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempPart"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Ad17 (half)</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Ad36</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationPerdurant"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Ad36</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Approximation of Ad65</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempWhole"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Ad17 (half)</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#specificallyDependsOn"/>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#atomAt -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#atomAt">
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicPart"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>temporary atom</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#atomAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicPart"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>Dd23 (second half)</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend1 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelConstantSum"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:range rdf:nodeID="genid55"/>
+        <rdfs:comment>second argument of the constant sum relation</rdfs:comment>
+        <rdfs:comment>see Dd26</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Restriction rdf:nodeID="genid55">
+        <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend1"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:nodeID="genid55"/>
+        <rdfs:comment>inferred from Dd25</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend2 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend2">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelConstantSum"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:range rdf:nodeID="genid57"/>
+        <rdfs:comment>see Dd26</rdfs:comment>
+        <rdfs:comment>third argument of the constant sum relation</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Restriction rdf:nodeID="genid57">
+        <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend2"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:nodeID="genid57"/>
+        <rdfs:comment>inferred from Dd25</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumResult -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumResult">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelConstantSum"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:range rdf:nodeID="genid59"/>
+        <rdfs:comment>first argument of the constant sum relation, this is the sum of the second and the third argument</rdfs:comment>
+        <rdfs:comment>see Dd26</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Restriction rdf:nodeID="genid59">
+        <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumResult"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:nodeID="genid59"/>
+        <rdfs:comment>inferred from Dd25</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+        <rdfs:comment>Time index of all time-dependant relationships.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment>second argument of the sum relation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment>third argument of the sum relation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment>first argument of the sum relation, this is the sum of the second and the third argument</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicPart -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicPart">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempAtomicPart"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>first argument of the temporary atomic part relation (RRelTempAtomicPart)</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicPart"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>From Dd23, Ad10</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicWhole -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicWhole">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempAtomicPart"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>second argument of the temporary atomic part relation (RRelTempAtomicPart)</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicWhole"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>From Dd23, Ad10</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment>first argument of the constitution relation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment>second argument of the constitution relation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg1 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>first argument of the temporary overlap relation</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg1"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>From Dd21, Ad10</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg2 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg2">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>second argument of the temporary overlap relation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempPart -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempPart">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempPart"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>first argument of the temporary part relationship defining the part</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>first argument of the participation relation</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>Ad33</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationPerdurant -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationPerdurant">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+        <rdfs:comment>second argument of the participation relation</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationPerdurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+        <rdfs:comment>Ad33</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment>second argument of the temporary quale relation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeRegion -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeRegion">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment>first argument of the temporary quale relation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend1 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>second argument of the temporary sum relation</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend1"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>From Dd21, Ad10, see also Dd26</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend2 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend2">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>third argument of the temporary sum relation</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend2"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>From Dd21, Ad10, see also Dd26</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumResult -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumResult">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>first argument of the temporary sum relation, this is the sum of the second and the third argument</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumResult"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>From Dd21, Ad10, see also Dd26</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempWhole -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempWhole">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempPart"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>second argument of the temporary part relationship defining the whole</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant">
+        <rdfs:subClassOf rdf:nodeID="genid98"/>
+    </owl:Class>
+    <owl:Restriction rdf:nodeID="genid98">
+        <owl:onProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant"/>
+            </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
+    </owl:Restriction>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:nodeID="genid98"/>
+        <rdfs:comment>Rephrasing of Ad35</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#Particular -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Particular">
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedRelationship"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelConstantSum -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelConstantSum">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend1"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumAddend2"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#constantSumResult"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:label>Reified relationship for constant sum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:label>Reified relationship for sum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSumAB -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSumAB">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSumPD"/>
+        <rdfs:comment>identifier for a sum relation restricted to abstract (AB)</rdfs:comment>
+        <rdfs:label>Reified relationship for sum of abstract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSumPD -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSumPD">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend1"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumAddend2"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#sumResult"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>identifier for a sum relation restricted to perdurant (PD)</rdfs:comment>
+        <rdfs:label>Reified relationship for sum of perdurant</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempAtomicPart -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempAtomicPart">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicPart"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicWhole"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:comment>To enable more inferences, you could add a subclass axiom such that RRelTempAtomicPart is a subclass of RRelTempProperPart.
+
+We do not include it here to avoid committment on the ontological nature of relation instances. 
+
+If you do add this axioms, don&apos;t forget to add the corresponding inclusion of object properties.</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for atomic part</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:label>Reified temporalised relationship for constitution</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionNPED -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionNPED">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPD"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED"/>
+        <rdfs:comment>identifier for a constitution relation restricted to non-physical endurant (NPED)</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for constitution of non-physical endurant</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPD -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPD">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED"/>
+        <rdfs:comment>identifier for a constitution relation restricted to perdurant (PD)</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for constitution of perdurant</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitution"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituent"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempConstitutionConstituted"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>identifier for a constitution relation restricted to physical endurant (PED)</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for constitution of physical endurant</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg1"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg2"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:label>Reified temporalised relationship for overlap</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempPart -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempPart">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempPart"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempWhole"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:comment>To enable more inferences, you could add a subclass axiom such that RRelTempPart is a subclass of RRelTempOverlap.
+
+We do not include it here to avoid committment on the ontological nature of relation instances. 
+
+If you do add this axioms, don&apos;t forget to add the corresponding inclusion of object properties (e.g. tempPart subproperty of tempOverlapArg1 etc.)</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for part</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationPerdurant"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:label>Reified temporalised relationship for participation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempPart"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempWhole"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:comment>To enable more inferences, you could add a subclass axiom such that RRelTempProperPart is a subclass of RRelTempPart.
+
+We do not include it here to avoid committment on the ontological nature of relation instances.</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for proper part</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeRegion"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:label>Reified temporalised relationship for quale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualeARAQ -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualeARAQ">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeRegion"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeRegion"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AbstractRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualePRPQ"/>
+        <rdfs:comment>Identifier for a quale relation restricted to abstract region (AR) and abstract quality (AQ).</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for quale of abstract region and abstract quality</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualePRPQ -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualePRPQ">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeRegion"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeQuality"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempQualeRegion"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Identifier for a quale relation restricted to physical region (PR) and physical quality (PQ).</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for quale of physical region and physical quality</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend1"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend2"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumResult"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Reified temporalised relationship for sum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedRelationship -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedRelationship">
+        <rdfs:comment>Identifier of an N-ary reified relationship. This class is not defined in DOLCE, but it is introduced because OWL is limited to binary relations.</rdfs:comment>
+        <rdfs:label>Reified relationship</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Identifier of a generic time-dependant N-ary relation instance. This class is not defined in DOLCE, but it is introduced to group temporalised relationships.</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
