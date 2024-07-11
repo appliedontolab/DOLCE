@@ -1,0 +1,26 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#>
+PREFIX dn: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#>
+
+SELECT DISTINCT ?constituent ?constituted ?isConstant ?timeInterval 
+WHERE { 
+
+	{
+		# Constant Constitution
+		?constituent db:constantConstituentOf ?constituted .
+		BIND("true" AS ?isConstant )
+		BIND("" AS ?timeInterval )
+	}
+	UNION{
+		# Temporalised Constitution
+		?RRTclass rdfs:subClassOf* dn:RRelTempConstitution .
+		?RRT rdf:type ?RRTclass;
+			dn:tempConstitutionConstituent ?constituent ;
+			dn:tempConstitutionConstituted ?constituted ;
+			dn:rRelTime ?timeInterval .
+		BIND("false" AS ?isConstant )
+	}
+}
