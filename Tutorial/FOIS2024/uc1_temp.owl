@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#"
+     xml:base="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:DOLCEbasic="https://w3id.org/DOLCE/OWL/DOLCEbasic#"
+     xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#"
+     xmlns:DOLCEnaryRel="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#">
+    <owl:Ontology rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp">
+        <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel"/>
+        <terms:creator>Walter Terkaj, Emilio Sanfilippo</terms:creator>
+        <terms:license>https://creativecommons.org/licenses/by/4.0/</terms:license>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrew -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrew">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentivePhysicalObject"/>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <owl:sourceIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrew"/>
+        <owl:assertionProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:targetIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrewNew -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrewNew">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentivePhysicalObject"/>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <owl:sourceIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrewNew"/>
+        <owl:assertionProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:targetIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t2"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Hinge -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Hinge">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentivePhysicalObject"/>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <owl:sourceIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Hinge"/>
+        <owl:assertionProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:targetIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t2"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC01 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC01">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t0"/>
+        <DOLCEnaryRel:tempConstitutionConstituent rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel1"/>
+        <DOLCEnaryRel:tempConstitutionConstituted rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Wing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC02 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC02">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t0"/>
+        <DOLCEnaryRel:tempConstitutionConstituent rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel2"/>
+        <DOLCEnaryRel:tempConstitutionConstituted rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrew"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC03 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC03">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1"/>
+        <DOLCEnaryRel:tempConstitutionConstituent rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel1"/>
+        <DOLCEnaryRel:tempConstitutionConstituted rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Wing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC04 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTC04">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1"/>
+        <DOLCEnaryRel:tempConstitutionConstituent rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel3"/>
+        <DOLCEnaryRel:tempConstitutionConstituted rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrewNew"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP01 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP01">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t0"/>
+        <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Wing"/>
+        <DOLCEnaryRel:tempWhole rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Hinge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP02 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP02">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t0"/>
+        <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrew"/>
+        <DOLCEnaryRel:tempWhole rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Hinge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP03 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP03">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1"/>
+        <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Wing"/>
+        <DOLCEnaryRel:tempWhole rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Hinge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP04 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#RTPP04">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1"/>
+        <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#GrubScrewNew"/>
+        <DOLCEnaryRel:tempWhole rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Hinge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel1">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AmountOfMatter"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel2">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AmountOfMatter"/>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <owl:sourceIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel2"/>
+        <owl:assertionProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:targetIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Steel3">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#AmountOfMatter"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Wing -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Wing">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentivePhysicalObject"/>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <owl:sourceIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#Wing"/>
+        <owl:assertionProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
+        <owl:targetIndividual rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t2"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t0 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t0">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t1">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#t2">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+

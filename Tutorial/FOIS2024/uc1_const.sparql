@@ -1,0 +1,32 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX terms: <http://purl.org/dc/terms/>
+PREFIX db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#>
+PREFIX : <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_const#>
+
+INSERT DATA {
+	GRAPH <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_const> {
+		
+		## Ontology
+		<https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_const> rdf:type owl:Ontology ;
+			owl:imports <https://w3id.org/DOLCE/OWL/DOLCEbasic> ;
+			terms:creator "Walter Terkaj, Emilio Sanfilippo" ;
+			terms:license "https://creativecommons.org/licenses/by/4.0/" .
+			
+		## Individuals
+		:Hinge a db:NonAgentivePhysicalObject , owl:NamedIndividual .
+		:Wing a db:NonAgentivePhysicalObject , owl:NamedIndividual .
+		:GrubScrew a db:NonAgentivePhysicalObject , owl:NamedIndividual .				
+		:Steel1 a db:AmountOfMatter , owl:NamedIndividual .
+		:Steel2 a db:AmountOfMatter , owl:NamedIndividual .				
+
+		## Constant relationships
+		:Wing db:constantProperPartOf :Hinge .
+		:GrubScrew db:constantProperPartOf :Hinge .
+		:Steel1 db:constantConstituentOf :Wing .
+		:Steel2 db:constantConstituentOf :GrubScrew .	
+	}
+}

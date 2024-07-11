@@ -1,0 +1,40 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX terms: <http://purl.org/dc/terms/>
+PREFIX db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#>
+PREFIX dn: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#>
+PREFIX : <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc3#>
+
+INSERT DATA {
+	GRAPH <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc3> {
+		
+		## Ontology
+		<https://w3id.org/DOLCE/Tutorial/FOIS2024/uc3> rdf:type owl:Ontology ;
+			owl:imports <https://w3id.org/DOLCE/OWL/DOLCEnaryRel> ;
+			terms:creator "Emilio Sanfilippo, Walter Terkaj" ;
+			terms:license "https://creativecommons.org/licenses/by/4.0/" .
+
+		:John a owl:NamedIndividual , db:PhysicalObject .
+
+		:cutting-machine1 a owl:NamedIndividual , db:PhysicalObject ;
+			db:constantParticipantOf :cutting-operation .
+
+		:cutting-operation a owl:NamedIndividual , db:Accomplishment ;
+			db:presentAt :interval1 .
+
+		:interval1 a owl:NamedIndividual , db:TimeInterval .
+
+		:interval2 a owl:NamedIndividual , db:TimeInterval ;
+			db:properPartOf :interval1 .
+
+		:participation-John a owl:NamedIndividual , dn:RRelTempParticipation ;
+			dn:rRelTime :interval2 ;
+			dn:tempParticipationParticipant :John ;
+			dn:tempParticipationPerdurant :cutting-operation .
+	}
+}
+
+

@@ -1,0 +1,108 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX terms: <http://purl.org/dc/terms/>
+PREFIX db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#>
+PREFIX dn: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#>
+PREFIX : <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp#>
+
+INSERT DATA {
+	GRAPH <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp> {
+		
+		## Ontology
+		<https://w3id.org/DOLCE/Tutorial/FOIS2024/uc1_temp> rdf:type owl:Ontology ;
+			owl:imports <https://w3id.org/DOLCE/OWL/DOLCEnaryRel> ;
+			terms:creator "Walter Terkaj, Emilio Sanfilippo" ;
+			terms:license "https://creativecommons.org/licenses/by/4.0/" .
+			
+		## Individuals
+		:Hinge a db:NonAgentivePhysicalObject , owl:NamedIndividual .
+		:Wing a db:NonAgentivePhysicalObject , owl:NamedIndividual .
+		:GrubScrew a db:NonAgentivePhysicalObject , owl:NamedIndividual .
+		:Steel1 a db:AmountOfMatter , owl:NamedIndividual .
+		:Steel2 a db:AmountOfMatter , owl:NamedIndividual .
+
+		:GrubScrewNew a db:NonAgentivePhysicalObject , owl:NamedIndividual .
+		:Steel3 a db:AmountOfMatter , owl:NamedIndividual .
+		:t0 a db:TimeInterval  , owl:NamedIndividual.
+		:t1 a db:TimeInterval  , owl:NamedIndividual.
+		:t2 a db:TimeInterval  , owl:NamedIndividual.
+
+		## Temporalised relationships
+		
+		# Parthood - t0
+		:RTPP01 a dn:RRelTempProperPart, owl:NamedIndividual;
+			dn:tempPart :Wing ;
+			dn:tempWhole :Hinge ;
+			dn:rRelTime :t0 .
+		:RTPP02 a dn:RRelTempProperPart, owl:NamedIndividual;
+			dn:tempPart :GrubScrew ;
+			dn:tempWhole :Hinge ;
+			dn:rRelTime :t0 .
+
+		# Constitution - t0
+		:RTC01 a dn:RRelTempConstitutionPED, owl:NamedIndividual;
+			dn:tempConstitutionConstituent :Steel1 ;
+			dn:tempConstitutionConstituted :Wing ;
+			dn:rRelTime :t0 .
+		:RTC02 a dn:RRelTempConstitutionPED, owl:NamedIndividual;
+			dn:tempConstitutionConstituent :Steel2 ;
+			dn:tempConstitutionConstituted :GrubScrew ;
+			dn:rRelTime :t0 .
+			
+		# Parthood - t1
+		:RTPP03 a dn:RRelTempProperPart, owl:NamedIndividual;
+			dn:tempPart :Wing ;
+			dn:tempWhole :Hinge ;
+			dn:rRelTime :t1 .
+		:RTPP04 a dn:RRelTempProperPart, owl:NamedIndividual;
+			dn:tempPart :GrubScrewNew ;
+			dn:tempWhole :Hinge ;
+			dn:rRelTime :t1 .
+
+		# Constitution - t1
+		:RTC03 a dn:RRelTempConstitutionPED, owl:NamedIndividual;
+			dn:tempConstitutionConstituent :Steel1 ;
+			dn:tempConstitutionConstituted :Wing ;
+			dn:rRelTime :t1 .
+		:RTC04 a dn:RRelTempConstitutionPED, owl:NamedIndividual;
+			dn:tempConstitutionConstituent :Steel3 ;
+			dn:tempConstitutionConstituted :GrubScrewNew ;
+			dn:rRelTime :t1 .
+			
+		# Negation of presence - t1
+		[ rdf:type owl:NegativePropertyAssertion ;
+		   owl:sourceIndividual :Steel2 ;
+		   owl:assertionProperty db:presentAt ;
+		   owl:targetIndividual :t1
+		] .	
+		[ rdf:type owl:NegativePropertyAssertion ;
+		   owl:sourceIndividual :GrubScrew ;
+		   owl:assertionProperty db:presentAt ;
+		   owl:targetIndividual :t1
+		] . 
+		 
+		# Presence - t2
+		:Steel1 db:presentAt :t2 .
+		:Steel3 db:presentAt :t2 .
+
+		# Negation of presence - t2
+		[ rdf:type owl:NegativePropertyAssertion ;
+		   owl:sourceIndividual :Hinge ;
+		   owl:assertionProperty db:presentAt ;
+		   owl:targetIndividual :t2
+		] .
+		[ rdf:type owl:NegativePropertyAssertion ;
+		   owl:sourceIndividual :Wing ;
+		   owl:assertionProperty db:presentAt ;
+		   owl:targetIndividual :t2
+		] .
+		[ rdf:type owl:NegativePropertyAssertion ;
+		   owl:sourceIndividual :GrubScrewNew ;
+		   owl:assertionProperty db:presentAt ;
+		   owl:targetIndividual :t2
+		] .
+	}
+}

@@ -1,0 +1,73 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX terms: <http://purl.org/dc/terms/>
+PREFIX db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#>
+PREFIX dn: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#>
+PREFIX : <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#>
+
+INSERT DATA {
+	GRAPH <https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2> {
+		
+		## Ontology
+		<https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2> rdf:type owl:Ontology ;
+			owl:imports <https://w3id.org/DOLCE/OWL/DOLCEnaryRel> ;
+			terms:creator "Emilio Sanfilippo, Walter Terkaj" ;
+			terms:license "https://creativecommons.org/licenses/by/4.0/" .
+			
+		## Individual
+
+		:John a owl:NamedIndividual, db:PhysicalObject .
+		:JohnEyeRx a owl:NamedIndividual, db:PhysicalObject ;  
+			db:constantProperPartOf :John.
+		:JohnEyeLx a owl:NamedIndividual, db:PhysicalObject ; 
+			db:constantProperPartOf :John.
+
+		## Constant quality
+
+		:john-eyeRx-color a owl:NamedIndividual , db:PhysicalQuality ;  
+			db:directQualityOf :JohnEyeRx  .
+			
+		:john-eyeLx-color a owl:NamedIndividual , db:PhysicalQuality ;  
+			db:directQualityOf :JohnEyeLx  .
+			
+		:color-region-blue a owl:NamedIndividual , db:PhysicalRegion; 
+			db:constantQualeOf :john-eyeRx-color, :john-eyeLx-color  ; 
+			db:partOf :color-space .
+			
+		:color-space a owl:NamedIndividual , db:PhysicalRegion .
+
+		## Temporalised quality with change
+
+		:john-weight-quality a owl:NamedIndividual , db:PhysicalQuality ;
+			db:directQualityOf :John .
+
+		:temporalizedQuale-johnWeight-interval1 a owl:NamedIndividual , dn:RRelTempQualePRPQ ;
+			dn:rRelTime :time-interval-1 ;
+			dn:tempQualeQuality :john-weight-quality ;
+			dn:tempQualeRegion :weight-60kg-region .
+
+		:temporalizedQuale-johnWeight-interval2 a owl:NamedIndividual ,
+			dn:RRelTempQualePRPQ ;
+			dn:rRelTime :time-interval-2 ;
+			dn:tempQualeQuality :john-weight-quality ;
+			dn:tempQualeRegion :weight-57kg-region .
+
+		:time-interval-1 a owl:NamedIndividual , db:TimeInterval ;
+			owl:differentFrom :time-interval-2 .
+
+		:time-interval-2 a owl:NamedIndividual , db:TimeInterval .
+
+		:weight-57kg-region a owl:NamedIndividual , db:PhysicalRegion ;
+			owl:differentFrom :weight-60kg-region ;
+			db:partOf :weight-space .
+
+		:weight-60kg-region a owl:NamedIndividual , db:PhysicalRegion ;
+			db:partOf :weight-space .
+
+		:weight-space a owl:NamedIndividual , db:PhysicalRegion .
+
+	}
+}

@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#"
+     xml:base="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:DOLCEbasic="https://w3id.org/DOLCE/OWL/DOLCEbasic#"
+     xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#"
+     xmlns:DOLCEnaryRel="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#">
+    <owl:Ontology rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2">
+        <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel"/>
+        <terms:creator>Emilio Sanfilippo, Walter Terkaj</terms:creator>
+        <terms:license>https://creativecommons.org/licenses/by/4.0/</terms:license>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#John -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#John">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#JohnEyeLx -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#JohnEyeLx">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+        <DOLCEbasic:constantProperPartOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#John"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#JohnEyeRx -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#JohnEyeRx">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+        <DOLCEbasic:constantProperPartOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#John"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#color-region-blue -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#color-region-blue">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+        <DOLCEbasic:constantQualeOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-eyeLx-color"/>
+        <DOLCEbasic:constantQualeOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-eyeRx-color"/>
+        <DOLCEbasic:partOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#color-space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#color-space -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#color-space">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-eyeLx-color -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-eyeLx-color">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+        <DOLCEbasic:directQualityOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#JohnEyeLx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-eyeRx-color -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-eyeRx-color">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+        <DOLCEbasic:directQualityOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#JohnEyeRx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-weight-quality -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-weight-quality">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalQuality"/>
+        <DOLCEbasic:directQualityOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#John"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#temporalizedQuale-johnWeight-interval1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#temporalizedQuale-johnWeight-interval1">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualePRPQ"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#time-interval-1"/>
+        <DOLCEnaryRel:tempQualeQuality rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-weight-quality"/>
+        <DOLCEnaryRel:tempQualeRegion rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-60kg-region"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#temporalizedQuale-johnWeight-interval2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#temporalizedQuale-johnWeight-interval2">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualePRPQ"/>
+        <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#time-interval-2"/>
+        <DOLCEnaryRel:tempQualeQuality rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#john-weight-quality"/>
+        <DOLCEnaryRel:tempQualeRegion rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-57kg-region"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#time-interval-1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#time-interval-1">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+        <owl:differentFrom rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#time-interval-2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#time-interval-2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#time-interval-2">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-57kg-region -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-57kg-region">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+        <owl:differentFrom rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-60kg-region"/>
+        <DOLCEbasic:partOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-60kg-region -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-60kg-region">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+        <DOLCEbasic:partOf rdf:resource="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-space -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/Tutorial/FOIS2024/uc2#weight-space">
+        <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalRegion"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
