@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/DOLCE/OWL/DOLCEtweaks#"
+     xml:base="https://w3id.org/DOLCE/OWL/DOLCEtweaks"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
+    <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/DOLCEtweaks">
+        <owl:versionIRI rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEtweaks/0.1"/>
+        <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel"/>
+        <terms:contributor>Stefano Borgo, Claudio Masolo, Emilio M. Sanfilippo, Walter Terkaj</terms:contributor>
+        <terms:creator>Laure Vieu and Daniele Porello</terms:creator>
+        <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+        <vann:preferredNamespacePrefix>dt</vann:preferredNamespacePrefix>
+        <rdfs:comment>DOLCE-tweaks in OWL. OWL version engineered by Laure Vieu and Daniele Porello. This module aims at adding definitions of entities and axioms that are not directly derived from Wonderweb Deliverable D18, but still they are aligned with its philosophical approach.
+		</rdfs:comment>
+        <owl:versionInfo>0.1 --- added constantlySpatiallyLocatedAt
+Beta version. 
+We seek feedback especially regarding whether users understand or not what are the classes and the relations and how to use them.
+Feedback regarding possible incoherences would be extremely useful as well.
+Annotation of the axioms is very patchy, we are still working on it, so we do not currently seek feedback on these annotations.</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl -->
+
+    <owl:AnnotationProperty rdf:about="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+    
+
+
+    <!-- http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg -->
+
+    <owl:AnnotationProperty rdf:about="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+    
+
+
+    <!-- http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl -->
+
+    <owl:AnnotationProperty rdf:about="http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl"/>
+    
+
+
+    <!-- http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg -->
+
+    <owl:AnnotationProperty rdf:about="http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg"/>
+    
+
+
+    <!-- http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg -->
+
+    <owl:AnnotationProperty rdf:about="http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt">
+        <rdfs:domain rdf:nodeID="genid1"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        </owl:propertyChainAxiom>
+        <ace_lexicon:TV_pl>are constantly spatially located at</ace_lexicon:TV_pl>
+        <ace_lexicon:TV_sg>is constantly spatially located at</ace_lexicon:TV_sg>
+        <ace_lexicon:TV_vbg>the value of the constant spatial location taken</ace_lexicon:TV_vbg>
+        <rdfs:comment>constantlySpatiallyLocatedAt is a binary relation between a physical endurant or a perdurant and the unique space region it is constantly located in.</rdfs:comment>
+        <rdfs:label>constantly spatially located at</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:Class rdf:nodeID="genid1">
+        <owl:unionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalEndurant"/>
+        </owl:unionOf>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>If X is constantly constituted by something that is constantly spatially located at Y then X is constantly spatially located at Y.</rdfs:comment>
+        <rdfs:comment>K(x,y,t)∧SLC(x,s,t)∧SLC(y,r,t) → s = r</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+        <owl:annotatedTarget rdf:nodeID="genid1"/>
+        <rdfs:comment>Everything that is constantly spatially located at something is something that is a perdurant or that is a physical endurant.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#SpaceRegion"/>
+        <rdfs:comment>Everything that is the value of the constant spatial location is a space region.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#constantConstituentOf"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEtweaks#constantlySpatiallyLocatedAt"/>
+        </owl:annotatedTarget>
+        <rdfs:comment>If X is constant constituent of something that is constantly spatially located at Y then X is constantly spatially located at Y.</rdfs:comment>
+        <rdfs:comment>K(x,y,t)∧SLC(x,s,t)∧SLC(y,r,t) → s = r</rdfs:comment>
+    </owl:Axiom>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
