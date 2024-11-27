@@ -16,7 +16,7 @@
         <terms:contributor>Laure Vieu, Daniele Porello, Stefano Borgo, Claudio Masolo, Emilio M. Sanfilippo</terms:contributor>
         <terms:creator>Walter Terkaj, Emilio Sanfilippo</terms:creator>
         <terms:license>https://creativecommons.org/licenses/by/4.0/</terms:license>
-        <vann:preferredNamespacePrefix>cc01</vann:preferredNamespacePrefix>
+        <vann:preferredNamespacePrefix>c01</vann:preferredNamespacePrefix>
     </owl:Ontology>
     
 
