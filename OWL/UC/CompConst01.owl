@@ -153,9 +153,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP01 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp01 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP01">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp01">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t0"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg1"/>
@@ -164,9 +164,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP02 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp02 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP02">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp02">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t1"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg1"/>
@@ -175,9 +175,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP03 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp03 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP03">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp03">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t0"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg2"/>
@@ -186,9 +186,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP04 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp04 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP04">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp04">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t1"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg2"/>
@@ -197,9 +197,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP05 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp05 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP05">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp05">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t0"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg3"/>
@@ -208,9 +208,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP06 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp06 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP06">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp06">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t1"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg3"/>
@@ -219,9 +219,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP07 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp07 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP07">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp07">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t0"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg4"/>
@@ -230,9 +230,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP08 -->
+    <!-- https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp08 -->
 
-    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RelTempPP08">
+    <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/CompConst01#RRTpp08">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <DOLCEnaryRel:rRelTime rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#t1"/>
         <DOLCEnaryRel:tempPart rdf:resource="https://w3id.org/DOLCE/OWL/UC/CompConst01#Leg4new"/>
