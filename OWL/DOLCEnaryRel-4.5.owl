@@ -312,6 +312,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </rdf:Description>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
         </owl:propertyChainAxiom>
+        <rdfs:comment>x is atomAt t if x is a mereologica atom part of some whole at time t</rdfs:comment>
         <rdfs:label>temporary atom</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
@@ -338,6 +339,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:range rdf:nodeID="genid49"/>
         <rdfs:comment>second argument of the constant sum relation</rdfs:comment>
         <rdfs:comment>see Dd26</rdfs:comment>
+        <rdfs:label>first addend argument in constant sum relation</rdfs:label>
     </owl:ObjectProperty>
     <owl:Restriction rdf:nodeID="genid49">
         <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
@@ -362,6 +364,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:range rdf:nodeID="genid51"/>
         <rdfs:comment>see Dd26</rdfs:comment>
         <rdfs:comment>third argument of the constant sum relation</rdfs:comment>
+        <rdfs:label>second addend argument in constant sum relation</rdfs:label>
     </owl:ObjectProperty>
     <owl:Restriction rdf:nodeID="genid51">
         <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
@@ -386,6 +389,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:range rdf:nodeID="genid53"/>
         <rdfs:comment>first argument of the constant sum relation, this is the sum of the second and the third argument</rdfs:comment>
         <rdfs:comment>see Dd26</rdfs:comment>
+        <rdfs:label>sum argument of constant sum relation</rdfs:label>
     </owl:ObjectProperty>
     <owl:Restriction rdf:nodeID="genid53">
         <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt"/>
@@ -417,6 +421,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
         <rdfs:comment>Time index of all time-dependant relationships.</rdfs:comment>
+        <rdfs:label>time index of time-dependent relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -436,6 +441,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </owl:Class>
         </rdfs:range>
         <rdfs:comment>second argument of the sum relation</rdfs:comment>
+        <rdfs:label>first addend argument in sum relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -455,6 +461,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </owl:Class>
         </rdfs:range>
         <rdfs:comment>third argument of the sum relation</rdfs:comment>
+        <rdfs:label>second addend argument in sum relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -474,6 +481,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </owl:Class>
         </rdfs:range>
         <rdfs:comment>first argument of the sum relation, this is the sum of the second and the third argument</rdfs:comment>
+        <rdfs:label>sum argument in sum relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -486,6 +494,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempAtomicPart"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>first argument of the temporary atomic part relation (RRelTempAtomicPart)</rdfs:comment>
+        <rdfs:label>part argument in temporary atomic part relationship</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicPart"/>
@@ -504,6 +513,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempAtomicPart"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>second argument of the temporary atomic part relation (RRelTempAtomicPart)</rdfs:comment>
+        <rdfs:label>whole argument in temporary atomic part relationship</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempAtomicWhole"/>
@@ -530,6 +540,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </owl:Class>
         </rdfs:range>
         <rdfs:comment>first argument of the constitution relation</rdfs:comment>
+        <rdfs:label>constituent argument in constitution relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -550,6 +561,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </owl:Class>
         </rdfs:range>
         <rdfs:comment>second argument of the constitution relation</rdfs:comment>
+        <rdfs:label>constituted argument in constitution relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -562,6 +574,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>first argument of the temporary overlap relation</rdfs:comment>
+        <rdfs:label>first argument in temporary overlap relationship</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempOverlapArg1"/>
@@ -580,6 +593,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempOverlap"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>second argument of the temporary overlap relation</rdfs:comment>
+        <rdfs:label>second argument in temporary overlap relationship</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -599,6 +613,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>first argument of the temporary part relationship defining the part</rdfs:comment>
+        <rdfs:label>part argument in temporary part relationship</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -611,6 +626,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>first argument of the participation relation</rdfs:comment>
+        <rdfs:label>participant argument in participation relationship</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationParticipant"/>
@@ -629,6 +645,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempParticipation"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant"/>
         <rdfs:comment>second argument of the participation relation</rdfs:comment>
+        <rdfs:label>perdurant argument in participation relation</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempParticipationPerdurant"/>
@@ -654,6 +671,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </owl:Class>
         </rdfs:range>
         <rdfs:comment>second argument of the temporary quale relation</rdfs:comment>
+        <rdfs:label>quality argument in temporary quale relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -673,6 +691,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             </owl:Class>
         </rdfs:range>
         <rdfs:comment>first argument of the temporary quale relation</rdfs:comment>
+        <rdfs:label>region argument in temporary quale relation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -685,6 +704,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>second argument of the temporary sum relation</rdfs:comment>
+        <rdfs:label>first addend argument in temporary sum relation</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend1"/>
@@ -703,6 +723,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>third argument of the temporary sum relation</rdfs:comment>
+        <rdfs:label>second addend argument in temporary sum relation</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumAddend2"/>
@@ -721,6 +742,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>first argument of the temporary sum relation, this is the sum of the second and the third argument</rdfs:comment>
+        <rdfs:label>sum argument in temporary sum relation</rdfs:label>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#tempSumResult"/>
@@ -746,6 +768,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
         <rdfs:comment>second argument of the temporary part relationship defining the whole</rdfs:comment>
+        <rdfs:label>whole argument in temporary part relationship</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -822,6 +845,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSum"/>
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:comment>identifier for a constant sum relation</rdfs:comment>
         <rdfs:label>Reified relationship for constant sum</rdfs:label>
     </owl:Class>
     
@@ -882,6 +906,7 @@ E.g. for the temporalised parthood relation between two endurants at a time, the
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSumAB"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelSumPD"/>
         </owl:disjointUnionOf>
+        <rdfs:comment>Identifier for a sum relation</rdfs:comment>
         <rdfs:label>Reified relationship for sum</rdfs:label>
     </owl:Class>
     
@@ -1069,6 +1094,7 @@ If you do add this axioms, don&apos;t forget to add the corresponding inclusion 
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPD"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempConstitutionPED"/>
         </owl:disjointUnionOf>
+        <rdfs:comment>Identifier for a constitution relation</rdfs:comment>
         <rdfs:label>Reified temporalised relationship for constitution</rdfs:label>
     </owl:Class>
     
@@ -1204,6 +1230,7 @@ If you do add this axioms, don&apos;t forget to add the corresponding inclusion 
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:comment>Identifier for a ternary overlap relation</rdfs:comment>
         <rdfs:label>Reified temporalised relationship for overlap</rdfs:label>
     </owl:Class>
     
@@ -1272,6 +1299,7 @@ If you do add this axioms, don&apos;t forget to add the corresponding inclusion 
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempProperPart"/>
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQuale"/>
         <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempSum"/>
+        <rdfs:comment>Identifier for a participation relation</rdfs:comment>
         <rdfs:label>Reified temporalised relationship for participation</rdfs:label>
     </owl:Class>
     
@@ -1352,6 +1380,7 @@ We do not include it here to avoid committment on the ontological nature of rela
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualeARAQ"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#RRelTempQualePRPQ"/>
         </owl:disjointUnionOf>
+        <rdfs:comment>Identifier for a quale relation</rdfs:comment>
         <rdfs:label>Reified temporalised relationship for quale</rdfs:label>
     </owl:Class>
     
@@ -1454,6 +1483,7 @@ We do not include it here to avoid committment on the ontological nature of rela
                 <owl:onClass rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment>Identifier for a temporary sum relation</rdfs:comment>
         <rdfs:label>Reified temporalised relationship for sum</rdfs:label>
     </owl:Class>
     
@@ -1485,5 +1515,5 @@ We do not include it here to avoid committment on the ontological nature of rela
 
 
 
-<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
 
