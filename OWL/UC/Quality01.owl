@@ -101,6 +101,7 @@
 
     <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Quality01#building01">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Quality01#Building"/>
+        <DOLCEbasic:presentAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Quality01#t"/>
     </owl:NamedIndividual>
     
 
@@ -118,7 +119,6 @@
     <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Quality01#colorQuality01">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/UC/Quality01#ColorQuality"/>
         <DOLCEbasic:directQualityOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Quality01#facade01"/>
-        <DOLCEbasic:temporallyLocatedAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Quality01#t"/>
     </owl:NamedIndividual>
     
 
@@ -154,7 +154,6 @@
     <owl:NamedIndividual rdf:about="https://w3id.org/DOLCE/OWL/UC/Quality01#spatialLoc01">
         <rdf:type rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#SpatialLocation"/>
         <DOLCEbasic:directQualityOf rdf:resource="https://w3id.org/DOLCE/OWL/UC/Quality01#building01"/>
-        <DOLCEbasic:temporallyLocatedAt rdf:resource="https://w3id.org/DOLCE/OWL/UC/Quality01#t"/>
     </owl:NamedIndividual>
     
 
