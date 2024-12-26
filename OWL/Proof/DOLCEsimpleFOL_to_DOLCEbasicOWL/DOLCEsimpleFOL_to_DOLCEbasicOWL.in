@@ -10,13 +10,23 @@
 %
 %General simplifications of DOLCE SIMPLE with respect to DOLCE D18
 %
-%1. Instead of a General Extensional Mereology, we have only a weak mereology. So (Ad9) and (Ad15) are weakened assuming only the existence of binary sums and (Ad8) (strong supplementation) is replaced by assuming the existence of binary differences.
+%1. Instead of a General Extensional Mereology, we have only a weak mereology. So (Ad9) and (Ad15) are weakened assuming only the existence of binary sums. Also (Ad8) (strong supplementation) is replaced by assuming the existence of binary differences.
 %2. The predicate PRE (being present) defined in D18 by means of the mereological fusion is here introduced as a primitive relation.
 %3. The ''spatial inclusion'' relation is not defined here (originally it needs fusion) therefore axioms (Ad19),(Ad28), and (Ad68) are not expressed.
 %4. The quality relation (qt) is simplified considering only ''direct qualities''(dQt).
 %5.	Axioms (Ad56),(Ad57),(Ad63), and (Ad64) are instantiated only by temporal and spatial locations (TL and SL) and by Time intervals (T) and Space Regions (S), i.e. all the leaves present in DOLCE D18.
 %6. There are no modalities in DOLCE SIMPLE. D18 was in fact a first-order modal theory (in modal logic QS5 with constant domain). Here we omit the modal structure and accordingly the definitions of the ''dependencies'', besides "specific dependence" (sd).
-%7. To obtain more populated models, we omit the existence of sums and (Ad29).
+%7. To obtain more populated models by means of MACE4, we omit the existence of sums and (Ad29).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Proof that DOLCESimpleFOL entails each axiom of DOLCEBasicOWL
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 set(prolog_style_variables).
 
@@ -119,18 +129,24 @@ formulas(assumptions).
 
 %Temporary_parthood%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 (all X all Y all T (tp(X,Y,T) -> (ed(X) & ed(Y) & t(T)))) # label(temporary_parthood_argument_restrictions_Ad10).
-(all X all Y all T (tp(X,Y,T) -> (ped(X) <-> ped(Y)))) # label(temporary_parthood_argument_restrictions_Ad11).
-(all X all Y all T (tp(X,Y,T) -> (nped(X) <-> nped(Y)))) # label(temporary_parthood_argument_restrictions_Ad12).
+
+(all X all Y all T (tp(X,Y,T) & ped(Y) -> ped(X))) # label(temporary_parthood_argument_restrictions_Ad11_revised).
+(all X all Y all T (tp(X,Y,T) & nped(Y) -> nped(X))) # label(temporary_parthood_argument_restrictions_Ad12_revised).
+
 (all X all Y all Z all T ((tp(X,Y,T) & tp(Y,Z,T)) -> tp(X,Z,T))) # label(temporary_parthood_transitivity_Ad13).
 (all X all T ((ed(X) & pre(X,T)) -> tp(X,X,T))) # label(temporary_parthood_reflexivity_Ad16).
 (all X all Y all T (tov(X,Y,T) <-> (exists Z (tp(Z,X,T) & tp(Z,Y,T))))) # label(temporary_overlap_definition_Dd21).
 
-(all X all Y all T (tpp(X,Y,T) <-> (tp(X,Y,T) & -(tp(Y,X,T))))) # label(temporary_proper_part_definition_Dd20).
+%(all X all Y all T (tpp(X,Y,T) <-> (tp(X,Y,T) & (-tp(Y,X,T))))) # label(temporary_proper_part_definition_Dd20).
 
-%(all X all Y all T (tpp(X,Y,T) <-> (tp(X,Y,T) & -(X=Y)))) # label(temporary_proper_part_definition_alternative_to_Dd20).
+(all X all Y all T (tpp(X,Y,T) <-> (tp(X,Y,T) & -(X=Y)))) # label(temporary_proper_part_definition_weaker_than_Dd20).
 
-(all X all Y all T ((ed(X) & ed(Y) & pre(X,T) & pre(Y,T) & -tp(X,Y,T)) -> (exists Z (tp(Z,X,T) & -tov(Z,Y,T))))) # label(temporary_proper_part_supplementation_Ad14).
+
+(all X all Y all T ((ped(X) & ped(Y) & pre(X,T) & pre(Y,T) & (-tp(X,Y,T))) -> (exists Z (ped(Z) & tp(Z,X,T) & (-tov(Z,Y,T)))))) # label(temporary_proper_part_supplementation_Ad14).
+(all X all Y all T ((nped(X) & nped(Y) & pre(X,T) & pre(Y,T) & (-tp(X,Y,T))) -> (exists Z (nped(Z) & tp(Z,X,T) & (-tov(Z,Y,T)))))) # label(temporary_proper_part_supplementation_Ad14).
+%Check_without_it_for_larger_models
 
 (all X all Y all T (tp(X,Y,T) -> (pre(X,T) & pre(Y,T)))) # label(temporary_parthood_Ad17).
 (all X all Y all T (tp(X,Y,T) -> (all S (p(S,T) -> tp(X,Y,S))))) # label(temporary_parthood_Ad18).
@@ -139,16 +155,9 @@ formulas(assumptions).
 (all X all T (tat(X,T) <-> (ed(X) & t(T) & -(exists Y (tpp(Y,X,T)))))) # label(temporary_proper_part_definition_Dd22_corrected).
 (all X all Y all T (tatp(X,Y,T) <-> (tp(X,Y,T) & tat(X,T)))) # label(temporary_atomic_part_definition_Dd23).
 
-(all X all Y all Z (tsum(Z,X,Y) <-> (((ped(Z) & ped(X) & ped(Y)) | (nped(Z) & nped(X) & nped(Y))) & (all W all T (tov(W,Z,T) <-> (tov(W,X,T) | tov(W,Y,T))))))) # label(temporary_sum_definition_from_Dd26).
 
 
-%Check without this for larger models:
-%(all X all Y ((ped(X) & ped(Y)) -> (exists Z (tsum(Z,X,Y))))) # label(temporary_sum_existence_from_Dd26).
-%(all X all Y ((nped(X) & nped(Y)) -> (exists Z (tsum(Z,X,Y))))) # label(temporary_sum_existence_from_Dd26).
-
-
-
-%(all X all Y all Z all T (sumt(Z,X,Y,T) <-> (((ped(Z) & ped(X) & ped(Y)) | (nped(Z) & nped(X) & nped(Y))) & (all W (tov(W,Z,T) <-> (tov(W,X,T) | tov(W,Y,T))))))) # label(temporary_sum_definition_from_Dd26).
+(all X all Y all Z all T (sumt(Z,X,Y,T) <-> (pre(Z,T) & pre(X,T) & pre(Y,T) & ed(Z) & ed(X) & ed(Y) & (all W (tov(W,Z,T) <-> (tov(W,X,T) | tov(W,Y,T))))))) # label(temporary_sum_definition_from_Dd26).
 
 %Temporal_parthood_on_PD%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -264,8 +273,10 @@ formulas(assumptions).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Definitions required for proving DOLCEsimple_FOL |= DOLCEbasic_OWL
+%Definitions required for proving DOLCESimple_FOL |= DOLCEBasic_OWL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 (all X(pt(X) -> thing(X))) # label(owl). %The automatic translation from OWL to FOL that we used includes the owl:thing Class, not present in DOLCE. We add it.
 
@@ -278,9 +289,12 @@ formulas(assumptions).
 (all X all Y (cpp(X,Y) <-> (ed(X) & ed(Y) & (exists T1 (pre(Y,T1))) & all T (pre(Y,T) -> (tp(X,Y,T) & -tp(Y,X,T)))))) # label(constant_proper_part_definition). %[Version to help proving the transitivity of cpp]
 (all X all Y (cov(X,Y) <-> (ed(X) & ed(Y) & (exists T1 (pre(X,T1) & pre(Y,T1))) & (exists Z (cp(Z,X) & cp(Z,Y))))))  # label(constant_overlap_definition).
 
+(all X all Y all Z (csum(Z,X,Y) <-> (ed(Z) & ed(X) & ed(Y) & (all W all T ((tov(W,Z,T) <-> (tov(W,X,T) | tov(W,Y,T)))))))) # label(temporary_sum_definition_from_Dd26).
 
 
-%Definitions of constantParticipantOf, constantConstituentOf, constantQualeOf, constantlySpatiallyLocatedAt, temporallyLocatedAt
+
+
+%Definitions of constantParticipantOf, constantConstituentOf, constantQualeOf, temporallyLocatedAt
 
 
 %Constant Participant of
@@ -297,10 +311,7 @@ formulas(assumptions).
 
 (all X all Y (constantQualeOf(X,Y) <-> (((pr(X) & pq(Y)) | (tr(X) & tq(Y)) | (ar(X) & aq(Y))) & all T (pre(Y,T) -> tql(X,Y,T))))) # label(definition_constant_quale_of).
 
-%Constantly Spatially Located At
-
-(all X all Y (constantlySpatiallyLocatedAt(X,Y) <-> ((ped(X) | nped(X) | pd(X) | pq(X)) & s(Y) & (all T (pre(X,T) -> tql(X,Y,T)))))) # label(definition_constantlySpatiallyLocatedAt).
-
+%Constantly Spatially Located At (omitteed from this version)
 
 
 
@@ -333,7 +344,295 @@ end_of_list.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 formulas(goals).
-%Insert axiom of DOLCEbasic_OWL to prove
-(all X0 all X1 ((exists X2 (pre(X2,X0) & temporallyLocatedAt(X2,X1))) -> p(X0,X1))). %[PROVED, with definition of temporallyLocatedAt]
+%Insert axiom of DOLCEBasic_OWL to prove:
+
+
+
+%(all X0 all X1 (cov(X0,X1) -> ed(X0))) # label(axiom16) # label(axiom). %[PROVED, with definition of cov.]
+%(all X0 (at(X0) -> ab(X0) | pd(X0))) # label(axiom17) # label(axiom). %[PROVED]
+%(all X0 (nped(X0) -> (all X1 (cp(X1,X0) -> nped(X1))))) # label(axiom18) # label(axiom). %[PROVED, with definition of cp.]
+%(all X all Y (sd(X,Y) -> thing(X))) # label(axiom20) # label(axiom). %[PROVED]
+%(all X all Y (sd(X,Y) -> thing(Y))) # label(axiom21) # label(axiom). %[PROVED]
+%(all X0 (pd(X0) -> (all X1 (dqt(X1,X0) -> tq(X1))))) # label(axiom22) # label(axiom). %[PROVED]
+%(all X (ab(X) -> thing(X))) # label(axiom23) # label(axiom). %[PROVED]
+%(all X0 (pq(X0) -> (all X1 (dqt(X0,X1) -> ped(X1))))) # label(axiom25) # label(axiom). %[PROVED]
+%(all X0 all X1 (ov(X0,X1) -> ab(X1) | pd(X1))) # label(axiom26) # label(axiom). %[PROVED]
+%(all X0 (pq(X0) -> q(X0))) # label(axiom27) # label(axiom). %[PROVED]
+%(all X0 all X1 (temporalPart(X0,X1) -> pd(X0))) # label(axiom28) # label(axiom). %[PROVED]
+%(all X all Y (temporallyLocatedAt(X,Y) -> thing(X))) # label(axiom29) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]
+%(all X all Y (temporallyLocatedAt(X,Y) -> thing(Y))) # label(axiom30) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]
+%(all X0 (pd(X0) -> (exists X1 (dqt(X1,X0) & tl(X1))))) # label(axiom31) # label(axiom). %[PROVED]
+%(all X0 (f(X0) -> ped(X0))) # label(axiom32) # label(axiom). %[PROVED]
+%(all X0 all X1 (catp(X0,X1) -> cp(X0,X1))) # label(axiom33) # label(axiom). %[PROVED, with definitions of catp, cp]
+%(all X0 all X1 ((exists X2 (catp(X0,X2) & pre(X2,X1))) -> pre(X0,X1))).  %[PROVED, with definitions of catp, cp]
+%(all X0 -(ab(X0) & pd(X0))) # label(axiom34) # label(axiom). %[PROVED]
+
+%(all X (t(X) -> thing(X))) # label(axiom36) # label(axiom). %[PROVED]
+%(all X0 -(ab(X0) & ed(X0))) # label(axiom37) # label(axiom). %[PROVED]
+%(all X0 (q(X0) -> (exists X1 (dqt(X0,X1) & pt(X1))))) # label(axiom39) # label(axiom). %[PROVED]
+%(all X0 -(pd(X0) & q(X0))) # label(axiom40) # label(axiom). %[PROVED]
+%(all X (s(X) -> thing(X))) # label(axiom41) # label(axiom). %[PROVED]
+%(all X0 (ar(X0) -> (all X1 (p(X0,X1) -> ar(X1))))) # label(axiom42) # label(axiom). %[PROVED]
+%(all X0 all X1 (ql(X0,X1) -> tq(X1))) # label(axiom43) # label(axiom). %[PROVED]
+%(all X0 (ab(X0) -> (all X1 (p(X0,X1) -> ab(X1))))) # label(axiom44) # label(axiom). %[PROVED]
+%(all X (stv(X) -> thing(X))) # label(axiom45) # label(axiom). %[PROVED]
+%(all X0 all X1 (constantConstituentOf(X0,X1) -> nped(X1) | pd(X1) | ped(X1))) # label(axiom46) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X0 all X1 (atp(X0,X1) -> at(X0))) # label(axiom47) # label(axiom). %[PROVED]
+%(all X0 (npob(X0) -> nped(X0))) # label(axiom48) # label(axiom). %[PROVED]
+%(all X0 all X1 (constantParticipantOf(X0,X1) -> sd(X1,X0))) # label(axiom49) # label(axiom). %[PROVED, with definition of constantParticipantOf.]
+%(all X0 all X1 ((exists X2 (dqt(X2,X0) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom50) # label(axiom). %[PROVED]
+%(all X0 all X1 (sd(X0,X1) -> ed(X0) | pd(X0) | q(X0))) # label(axiom51) # label(axiom).  %[PROVED]
+%(all X (r(X) -> thing(X))) # label(axiom52) # label(axiom).  %[PROVED]
+%(all X0 -(pro(X0) & st(X0))) # label(axiom53) # label(axiom).  %[PROVED]
+%(all X (napo(X) -> thing(X))) # label(axiom54) # label(axiom).  %[PROVED]
+%(all X0 -(ab(X0) & q(X0))) # label(axiom55) # label(axiom).  %[PROVED]
+%(all X0 (acc(X0) -> (exists X1 (temporallyLocatedAt(X0,X1) & -(at(X1)))))) # label(axiom56) # label(axiom). %[PROVED, with defintion of temporallyLocatedAt.]
+%(all X0 (pt(X0) <-> ab(X0) | ed(X0) | pd(X0) | q(X0))) # label(axiom57) # label(axiom). %[PROVED]
+%(all X1 -(ab(X1) & ed(X1))) # label(axiom58) # label(axiom). %[PROVED]
+%(all X2 -(ab(X2) & pd(X2))) # label(axiom59) # label(axiom). %[PROVED]
+%(all X3 -(ab(X3) & q(X3))) # label(axiom60) # label(axiom). %[PROVED]
+%(all X4 -(ed(X4) & pd(X4))) # label(axiom61) # label(axiom). %[PROVED]
+%(all X5 -(ed(X5) & q(X5))) # label(axiom62) # label(axiom). %[PROVED]
+%(all X6 -(pd(X6) & q(X6))) # label(axiom63) # label(axiom). %[PROVED]
+%(all X0 (pro(X0) -> stv(X0))) # label(axiom64) # label(axiom). %[PROVED]
+%(all X0 (pd(X0) -> (all X1 (p(X1,X0) -> pd(X1))))) # label(axiom65) # label(axiom). %[PROVED]
+%(all X0 (st(X0) -> stv(X0))) # label(axiom66) # label(axiom). %[PROVED]
+%(all X0 (t(X0) -> (all X1 (p(X1,X0) -> t(X1))))) # label(axiom67) # label(axiom). %[PROVED]
+%(all X0 (naso(X0) -> sob(X0))) # label(axiom68) # label(axiom). %[PROVED]
+%(all X0 (pd(X0) -> (all X1 (constantConstituentOf(X0,X1) -> pd(X1))))) # label(axiom69) # label(axiom).  %[PROVED, with definition of constantConstituentOf.]
+%(all X0 (st(X0) -> (all X1 (p(X1,X0) -> st(X1))))) # label(axiom70) # label(axiom). %[PROVED]
+%(all X (q(X) -> thing(X))) # label(axiom71) # label(axiom). %[PROVED]
+%(all X0 (tr(X0) -> r(X0))) # label(axiom72) # label(axiom). %[PROVED]
+%(all X0 all X1 all X2 (dqt(X0,X1) & dqt(X0,X2) -> X1 = X2)) # label(axiom73) # label(axiom). %[PROVED]
+%(all X0 (tq(X0) -> (all X1 (dqt(X0,X1) -> pd(X1))))) # label(axiom74) # label(axiom). %[PROVED]
+%(all X0 all X1 (p(X0,X1) -> ab(X1) | pd(X1))) # label(axiom75) # label(axiom). %[PROVED]
+
+%(all X0 all X1 ((exists X2 (constantParticipantOf(X0,X2) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom77) # label(axiom). %[PROVED, with definition of constantConstantParticipantOf.]
+%(all X (tr(X) -> thing(X))) # label(axiom79) # label(axiom). %[PROVED]
+%(all X0 -(f(X0) & pob(X0))) # label(axiom80) # label(axiom). %[PROVED]
+%(all X all Y (catp(X,Y) -> thing(X))) # label(axiom81) # label(axiom). %[PROVED, with definition of catp.]
+%(all X all Y (catp(X,Y) -> thing(Y))) # label(axiom82) # label(axiom). %[PROVED, with definition of catp.]
+%(all X0 (r(X0) <-> ar(X0) | pr(X0) | tr(X0))) # label(axiom83) # label(axiom). %[PROVED]
+%(all X1 -(ar(X1) & pr(X1))) # label(axiom84) # label(axiom). %[PROVED]
+%(all X2 -(ar(X2) & tr(X2))) # label(axiom85) # label(axiom). %[PROVED]
+%(all X3 -(pr(X3) & tr(X3))) # label(axiom86) # label(axiom). %[PROVED]
+%(all X (pd(X) -> thing(X))) # label(axiom87) # label(axiom). %[PROVED]
+%(all X0 (ab(X0) -> (all X1 (ov(X1,X0) -> ab(X1))))) # label(axiom88) # label(axiom). %[PROVED]
+%(all X (st(X) -> thing(X))) # label(axiom89) # label(axiom). %[PROVED]
+%(all X (tq(X) -> thing(X))) # label(axiom90) # label(axiom). %[PROVED]
+%(all X0 (ab(X0) -> pt(X0))) # label(axiom91) # label(axiom). %[PROVED]
+%(all X0 all X1 (catp(X0,X1) -> cat(X0))) # label(axiom92) # label(axiom). %[PROVED, with definition of catp e cat.]
+%(all X0 -(nped(X0) & ped(X0))) # label(axiom93) # label(axiom). %[PROVED]
+%(all X (cat(X) -> thing(X))) # label(axiom94) # label(axiom). %[PROVED, with definition of cat.]
+%(all X0 (pd(X0) -> (all X1 (p(X0,X1) -> pd(X1))))) # label(axiom95) # label(axiom). %[PROVED]
+%(all X0 all X1 ((exists X2 (p(X2,X0) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom96) # label(axiom). %[PROVED]
+%(all X0 -(ar(X0) & tr(X0))) # label(axiom97) # label(axiom). %[PROVED]
+%(all X0 all X1 (dqt(X0,X1) -> q(X0))) # label(axiom98) # label(axiom). %[PROVED]
+%(all X0 all X1 (temporallyLocatedAt(X0,X1) -> t(X1))) # label(axiom99) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]
+%(all X0 all X1 (pre(X0,X1) -> t(X1))) # label(axiom100) # label(axiom). %[PROVED]
+%(all X0 all X1 (p(X0,X1) -> ab(X0) | pd(X0))) # label(axiom101) # label(axiom). %[PROVED]
+%(all X0 (acc(X0) -> ev(X0))) # label(axiom102) # label(axiom). %[PROVED]
+%(all X0 all X1 (constantQualeOf(X0,X1) -> ar(X0) | pr(X0))) # label(axiom103) # label(axiom). %[PROVED, with definition of constantQualeOf]
+%(all X0 -(as(X0) & ped(X0))) # label(axiom104) # label(axiom).  %[PROVED]
+%(all X0 all X1 ((exists X2 (sd(X2,X0) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom105) # label(axiom). %[PROVED]
+%(all X all Y (constantParticipantOf(X,Y) -> thing(X))) # label(axiom106) # label(axiom). %[PROVED, with definition of constantParticipantOf.]
+%(all X all Y (constantParticipantOf(X,Y) -> thing(Y))) # label(axiom107) # label(axiom). %[PROVED, with definition of constantParticipantOf.]
+%(all X0 all X1 ((exists X2 (constantConstituentOf(X0,X2) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom108) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X0 -(aso(X0) & naso(X0))) # label(axiom109) # label(axiom). %[PROVED]
+%(all X0 (sob(X0) <-> aso(X0) | naso(X0))) # label(axiom110) # label(axiom). %[PROVED]
+%(all X1 -(aso(X1) & naso(X1))) # label(axiom111) # label(axiom). %[PROVED]
+%(all X0 (ach(X0) -> (exists X1 (temporallyLocatedAt(X0,X1) & at(X1))))) # label(axiom112) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]
+%(all X0 (tl(X0) -> tq(X0))) # label(axiom113) # label(axiom). %[PROVED]
+%(all X0 (sag(X0) -> aso(X0))) # label(axiom114) # label(axiom). %[PROVED]
+%(all X0 (ped(X0) -> (all X1 (constantConstituentOf(X0,X1) -> ped(X1))))) # label(axiom115) # label(axiom). %[PROVED, with definition of constantConstituentOf]
+%(all X0 (nped(X0) -> ed(X0))) # label(axiom116) # label(axiom). %[PROVED]
+%(all X0 -(pr(X0) & tr(X0))) # label(axiom117) # label(axiom). %[PROVED]
+%(all X (m(X) -> thing(X))) # label(axiom118) # label(axiom). %[PROVED]
+%(all X0 (pr(X0) -> (all X1 (constantQualeOf(X0,X1) -> pq(X1))))) # label(axiom119) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X0 all X1 (cov(X0,X1) -> ed(X1))) # label(axiom120) # label(axiom). %[PROVED]
+%(all X0 (ped(X0) -> (all X1 (dqt(X1,X0) -> pq(X1))))) # label(axiom121) # label(axiom).  %[PROVED]
+%(all X (sag(X) -> thing(X))) # label(axiom122) # label(axiom). %[PROVED]
+%(all X (apo(X) -> thing(X))) # label(axiom123) # label(axiom). %[PROVED]
+%(all X0 all X1 (constantParticipantOf(X0,X1) -> ed(X0))) # label(axiom124) # label(axiom). %[PROVED, with defintion of constantParticipantOf.]
+%(all X0 all X1 (constantQualeOf(X0,X1) -> aq(X1) | pq(X1))) # label(axiom125) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X all Y (p(X,Y) -> thing(X))) # label(axiom126) # label(axiom). %[PROVED]
+%(all X all Y (p(X,Y) -> thing(Y))) # label(axiom127) # label(axiom). %[PROVED]
+%(all X0 -(acc(X0) & ach(X0))) # label(axiom128) # label(axiom). %[PROVED]
+%(all X0 (apo(X0) -> pob(X0))) # label(axiom129) # label(axiom). %[PROVED]
+%(all X0 all X1 (cov(X0,X1) -> cov(X1,X0))) # label(axiom130) # label(axiom). %[PROVED, with definition of cov.]
+%(all X0 (nped(X0) -> (all X1 (constantConstituentOf(X0,X1) -> nped(X1))))) # label(axiom131) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X0 (cat(X0) -> -(exists X1 (cpp(X1,X0) & pt(X1) & thing(X0))))) # label(axiom132) # label(axiom).  %[PROVED, with definitions of cat, cpp.]
+%(all X0 (pob(X0) -> ped(X0))) # label(axiom133) # label(axiom).   %[PROVED]
+%(all X0 -(m(X0) & pob(X0))) # label(axiom134) # label(axiom).  %[PROVED]
+%(all X0 (ab(X0) -> (all X1 (ov(X0,X1) -> ab(X1))))) # label(axiom135) # label(axiom).  %[PROVED]
+%(all X0 (t(X0) -> (all X1 (p(X0,X1) -> t(X1))))) # label(axiom136) # label(axiom).  %[PROVED]
+%(all X (tl(X) -> thing(X))) # label(axiom137) # label(axiom).  %[PROVED]
+%(all X (acc(X) -> thing(X))) # label(axiom138) # label(axiom). %[PROVED]
+%(all X (at(X) -> thing(X))) # label(axiom139) # label(axiom). %[PROVED]
+%(all X0 all X1 all X2 (temporallyLocatedAt(X0,X1) & temporallyLocatedAt(X0,X2) -> X1 = X2)) # label(axiom140) # label(axiom). %[PROVED, with definition of temporallyLocatedAt.]
+%(all X all Y (temporalPart(X,Y) -> thing(X))) # label(axiom141) # label(axiom).  %[PROVED]
+%(all X all Y (temporalPart(X,Y) -> thing(Y))) # label(axiom142) # label(axiom). %[PROVED]
+%(all X0 all X1 (ov(X0,X1) -> ab(X0) | pd(X0))) # label(axiom143) # label(axiom). %[PROVED]
+%(all X0 all X1 all X2 (constantConstituentOf(X0,X1) & constantConstituentOf(X1,X2) -> constantConstituentOf(X0,X2))) # label(axiom144) # label(axiom). %[PROVED, with definitino of constantConstituentOf][circa 10 minutes]
+%(all X0 all X1 (constantConstituentOf(X0,X1) -> nped(X0) | pd(X0) | ped(X0))) # label(axiom145) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X (as(X) -> thing(X))) # label(axiom146) # label(axiom). %[PROVED]
+%(all X (pro(X) -> thing(X))) # label(axiom147) # label(axiom). %[PROVED]
+%(all X all Y (cp(X,Y) -> thing(X))) # label(axiom148) # label(axiom). %[PROVED, with definition of cp.]
+%(all X all Y (cp(X,Y) -> thing(Y))) # label(axiom149) # label(axiom). %[PROVED, with definition of cp.]
+%(all X (mob(X) -> thing(X))) # label(axiom150) # label(axiom). %[PROVED]
+%(all X0 all X1 (dqt(X0,X1) -> sd(X0,X1))) # label(axiom152) # label(axiom). %[PROVED]
+%(all X0 -(ed(X0) & q(X0))) # label(axiom153) # label(axiom). %[PROVED]
+%(all X0 all X1 (temporalPart(X0,X1) -> p(X0,X1))) # label(axiom154) # label(axiom). %[PROVED]
+%(all X0 (q(X0) <-> aq(X0) | pq(X0) | tq(X0))) # label(axiom155) # label(axiom). %[PROVED]
+%(all X1 -(aq(X1) & pq(X1))) # label(axiom156) # label(axiom). %[PROVED]
+%(all X2 -(aq(X2) & tq(X2))) # label(axiom157) # label(axiom). %[PROVED]
+%(all X3 -(pq(X3) & tq(X3))) # label(axiom158) # label(axiom). %[PROVED]
+%(all X (ar(X) -> thing(X))) # label(axiom159) # label(axiom).%[PROVED]
+%(all X0 (s(X0) -> (all X1 (p(X0,X1) -> s(X1))))) # label(axiom160) # label(axiom). %[PROVED]
+%(all X0 (ed(X0) -> pt(X0))) # label(axiom161) # label(axiom). %[PROVED]
+%(all X (ped(X) -> thing(X))) # label(axiom162) # label(axiom). %[PROVED]
+%(all X0 all X1 ((exists X2 (pre(X0,X2) & p(X1,X2))) -> pre(X0,X1))) # label(axiom163) # label(axiom). %[PROVED]
+%(all X (aq(X) -> thing(X))) # label(axiom164) # label(axiom). %[PROVED]
+%(all X (ed(X) -> thing(X))) # label(axiom165) # label(axiom). %[PROVED]
+%(all X0 (mob(X0) -> (exists X1 (sd(X0,X1) & apo(X1))))) # label(axiom166) # label(axiom). %[PROVED]
+%(all X0 all X1 (atp(X0,X1) -> p(X0,X1))) # label(axiom167) # label(axiom). %[PROVED]
+%(all X0 all X1 (pp(X0,X1) -> ab(X0) | pd(X0))) # label(axiom168) # label(axiom). %[PROVED]
+%(all X0 all X1 (constantConstituentOf(X0,X1) -> sd(X1,X0))) # label(axiom169) # label(axiom). %[PROVED, with definition of constantConstituentOf]
+%(all X0 -(pq(X0) & tq(X0))) # label(axiom171) # label(axiom). %[PROVED]
+%(all X0 (pob(X0) <-> apo(X0) | napo(X0))) # label(axiom172) # label(axiom). %[PROVED]
+%(all X1 -(apo(X1) & napo(X1))) # label(axiom173) # label(axiom). %[PROVED]
+%(all X0 (ev(X0) -> pd(X0))) # label(axiom174) # label(axiom). %[PROVED]
+%(all X0 all X1 (ov(X0,X1) -> ov(X1,X0))) # label(axiom175) # label(axiom). %[PROVED]
+%(all X0 all X1 (cp(X0,X1) -> ed(X0))) # label(axiom176) # label(axiom). %[PROVED, with definition of cp.]
+%(all X0 all X1 (cpp(X0,X1) -> cp(X0,X1))) # label(axiom177) # label(axiom). %[PROVED, with definition of cpp.]
+%(all X (naso(X) -> thing(X))) # label(axiom178) # label(axiom). %[PROVED]
+%(all X (sl(X) -> thing(X))) # label(axiom179) # label(axiom). %[PROVED]
+%(all X0 (s(X0) -> (all X1 (p(X1,X0) -> s(X1))))) # label(axiom180) # label(axiom).  %[PROVED]
+%(all X (ach(X) -> thing(X))) # label(axiom181) # label(axiom). %[PROVED]
+%(all X0 (tl(X0) -> (exists X1 (ql(X1,X0) & t(X1))))) # label(axiom182) # label(axiom). %[PROVED]
+%(all X0 (ped(X0) -> (all X1 (constantConstituentOf(X1,X0) -> ped(X1))))) # label(axiom183) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X0 -(mob(X0) & sob(X0))) # label(axiom184) # label(axiom). %[PROVED]
+%(all X0 all X1 (constantParticipantOf(X0,X1) -> pd(X1))) # label(axiom185) # label(axiom). %[PROVED, with definition of constantParticipantOf.]
+%(all X (f(X) -> thing(X))) # label(axiom186) # label(axiom). %[PROVED]
+%(all X0 (t(X0) -> tr(X0))) # label(axiom187) # label(axiom). %[PROVED]
+%(all X0 (at(X0) -> pt(X0))) # label(axiom188) # label(axiom). %[PROVED]
+%(all X (npob(X) -> thing(X))) # label(axiom189) # label(axiom). %[PROVED]
+%(all X0 (nped(X0) -> (all X1 (dqt(X1,X0) -> aq(X1))))) # label(axiom190) # label(axiom). %[PROVED]
+%(all X0 (ar(X0) -> r(X0))) # label(axiom191) # label(axiom). %[PROVED]
+%(all X (pt(X) -> thing(X))) # label(axiom192) # label(axiom). %[PROVED]
+%(all X0 (aq(X0) -> q(X0))) # label(axiom193) # label(axiom). %[PROVED]
+%(all X0 all X1 all X2 (cpp(X0,X1) & cpp(X1,X2) -> cpp(X0,X2))) # label(axiom194) # label(axiom). %[PROVED, with definition of cpp]
+%(all X0 (ar(X0) -> (all X1 (p(X1,X0) -> ar(X1))))) # label(axiom195) # label(axiom). %[PROVED]
+%(all X0 (pd(X0) -> (all X1 (ov(X0,X1) -> pd(X1))))) # label(axiom196) # label(axiom). %[PROVED]
+%(all X0 all X1 ((all X2 (cp(X2,X0) & cp(X2,X1))) -> cov(X0,X1))) # label(axiom197) # label(axiom). %[PROVED, with definition of cp, cov]
+%(all X (pob(X) -> thing(X))) # label(axiom198) # label(axiom). %[PROVED]
+%(all X0 (m(X0) -> ped(X0))) # label(axiom199) # label(axiom). %[PROVED]
+%(all X0 (ed(X0) <-> as(X0) | nped(X0) | ped(X0))) # label(axiom200) # label(axiom). %[PROVED]
+%(all X1 -(as(X1) & nped(X1))) # label(axiom201) # label(axiom). %[PROVED]
+%(all X2 -(as(X2) & ped(X2))) # label(axiom202) # label(axiom). %[PROVED]
+%(all X3 -(nped(X3) & ped(X3))) # label(axiom203) # label(axiom). %[PROVED]
+%(all X (pr(X) -> thing(X))) # label(axiom204) # label(axiom). %[PROVED]
+%(all X0 all X1 (catp(X0,X1) -> ed(X1))) # label(axiom205) # label(axiom). %[PROVED, with definition of catp.]
+%(all X0 (sl(X0) -> pq(X0))) # label(axiom206) # label(axiom). %[PROVED]
+%(all X0 all X1 (temporallyLocatedAt(X0,X1) -> ed(X0) | pd(X0) | q(X0))) # label(axiom207) # label(axiom). %[PROVED]
+%(all X0 all X1 ((exists X2 (cp(X0,X2) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom208) # label(axiom). %[PROVED, with definition of cp.]
+%(all X0 (as(X0) -> ed(X0))) # label(axiom209) # label(axiom). %[PROVED]
+%(all X0 all X1 all X2 (sd(X0,X1) & sd(X1,X2) -> sd(X0,X2))) # label(axiom210) # label(axiom). %[PROVED]
+%(all X0 -(as(X0) & nped(X0))) # label(axiom211) # label(axiom).%[PROVED]
+%(all X (pq(X) -> thing(X))) # label(axiom212) # label(axiom). %[PROVED]
+%(all X0 all X1 (temporallyLocatedAt(X0,X1) -> pre(X0,X1))) # label(axiom213) # label(axiom). %[PROVED, with definition of temporallyLocatedAt-]
+%(all X0 all X1 (cpp(X0,X1) -> ed(X0))) # label(axiom214) # label(axiom). %[PROVED, with definition of cpp.]
+%(all X0 (s(X0) -> (all X1 (constantQualeOf(X0,X1) -> sl(X1))))) # label(axiom215) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X all Y (cpp(X,Y) -> thing(X))) # label(axiom216) # label(axiom). %[PROVED, with definition of cpp.]
+%(all X all Y (cpp(X,Y) -> thing(Y))) # label(axiom217) # label(axiom). %[PROVED, with definition of cpp.]
+%(all X0 -(ev(X0) & stv(X0))) # label(axiom218) # label(axiom). %[PROVED]
+%(all X0 all X1 ((exists X2 (cpp(X0,X2) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom219) # label(axiom). %[PROVED, with definition of cpp.]
+%(all X all Y (dqt(X,Y) -> thing(X))) # label(axiom220) # label(axiom). %[PROVED]
+%(all X all Y (dqt(X,Y) -> thing(Y))) # label(axiom221) # label(axiom). %[PROVED]
+%(all X0 all X1 all X2 (pp(X0,X1) & pp(X1,X2) -> pp(X0,X2))) # label(axiom222) # label(axiom). %[PROVED]
+%(all X all Y (atp(X,Y) -> thing(X))) # label(axiom223) # label(axiom). %[PROVED]
+%(all X all Y (atp(X,Y) -> thing(Y))) # label(axiom224) # label(axiom). %[PROVED]
+%(all X0 (tq(X0) -> (exists X1 (ql(X1,X0) & pt(X1))))) # label(axiom225) # label(axiom). %[PROVED]
+%(all X0 all X1 (pp(X0,X1) -> ab(X1) | pd(X1))) # label(axiom226) # label(axiom). %[PROVED]
+%(all X0 (s(X0) -> pr(X0))) # label(axiom227) # label(axiom). %[PROVED]
+%(all X0 -(ar(X0) & pr(X0))) # label(axiom228) # label(axiom). %[PROVED]
+%(all X0 (ped(X0) -> (exists X1 (dqt(X1,X0) & sl(X1))))) # label(axiom229) # label(axiom). %[PROVED]
+%(all X all Y (constantConstituentOf(X,Y) -> thing(X))) # label(axiom230) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X all Y (constantConstituentOf(X,Y) -> thing(Y))) # label(axiom231) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X0 all X1 (p(X0,X1) -> ov(X0,X1))) # label(axiom232) # label(axiom). %[PROVED]
+%(all X0 all X1 (temporalPart(X0,X1) -> pd(X1))) # label(axiom233) # label(axiom). %[PROVED]
+%(all X0 (sc(X0) -> aso(X0))) # label(axiom234) # label(axiom). %[PROVED]
+%(all X0 (aso(X0) -> sob(X0))) # label(axiom235) # label(axiom). %[PROVED]
+%(all X0 (ped(X0) -> (all X1 (cp(X1,X0) -> ped(X1))))) # label(axiom236) # label(axiom). %[PROVED, with definition of cp.]
+%(all X0 (mob(X0) -> npob(X0))) # label(axiom237) # label(axiom). %[PROVED]
+%(all X0 all X1 ((exists X2 (temporallyLocatedAt(X0,X2) & p(X1,X2))) -> pre(X0,X1))) # label(axiom238) # label(axiom). %[PROVED, with definition of temporallyLocatedAt.]
+%(all X0 (aq(X0) -> (all X1 (constantQualeOf(X1,X0) -> ar(X1))))) # label(axiom239) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X (aso(X) -> thing(X))) # label(axiom240) # label(axiom).  %[PROVED]
+%(all X0 all X1 (cp(X0,X1) -> cov(X0,X1))) # label(axiom241) # label(axiom).  %[PROVED, with definition of cp, cov]
+%(all X0 (ar(X0) -> (all X1 (constantQualeOf(X0,X1) -> aq(X1))))) # label(axiom242) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X0 all X1 all X2 (p(X0,X1) & p(X1,X2) -> p(X0,X2))) # label(axiom243) # label(axiom). %[PROVED]
+%(all X0 -(f(X0) & m(X0))) # label(axiom244) # label(axiom). %[PROVED]
+%(all X all Y (cov(X,Y) -> thing(X))) # label(axiom245) # label(axiom). %[PROVED, with definition of cov.]
+%(all X all Y (cov(X,Y) -> thing(Y))) # label(axiom246) # label(axiom). %[PROVED, with definition of cov.]
+%(all X0 (at(X0) -> -(exists X1 (pp(X1,X0))))) # label(axiom247) # label(axiom). %[PROVED]
+%(all X0 all X1 (atp(X0,X1) -> ab(X1) | pd(X1))) # label(axiom248) # label(axiom). %[PROVED]
+%(all X0 (ed(X0) -> (exists X1 (temporallyLocatedAt(X0,X1) & t(X1))))) # label(axiom249) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]
+%(all X0 all X1 all X2 (cp(X0,X1) & cp(X1,X2) -> cp(X0,X2))) # label(axiom250) # label(axiom). %[PROVED, with definition of cp.]
+%(all X all Y (ov(X,Y) -> thing(X))) # label(axiom251) # label(axiom). %[PROVED]
+%(all X all Y (ov(X,Y) -> thing(Y))) # label(axiom252) # label(axiom). %[PROVED]
+%(all X0 -(ed(X0) & pd(X0))) # label(axiom255) # label(axiom). %[PROVED]
+%(all X0 all X1 (ql(X0,X1) -> tr(X0))) # label(axiom256) # label(axiom). %[PROVED]
+%(all X0 all X1 all X2 (temporalPart(X0,X1) & temporalPart(X1,X2) -> temporalPart(X0,X2))) # label(axiom257) # label(axiom). %[PROVED]
+%(all X0 all X1 (sd(X0,X1) -> ed(X1) | pd(X1) | q(X1))) # label(axiom258) # label(axiom). %[PROVED]
+%(all X0 all X1 (cpp(X0,X1) -> ed(X1))) # label(axiom259) # label(axiom). %[PROVED, with definition of cpp.]
+%(all X0 all X1 (pre(X0,X1) -> ed(X0) | pd(X0) | q(X0))) # label(axiom260) # label(axiom). %[PROVED]
+%(all X0 (cat(X0) -> ed(X0))) # label(axiom261) # label(axiom). %[PROVED, with definition of cap.]
+%(all X0 (pr(X0) -> r(X0))) # label(axiom262) # label(axiom). %[PROVED]
+%(all X (sc(X) -> thing(X))) # label(axiom263) # label(axiom). %[PROVED]
+%(all X (ev(X) -> thing(X))) # label(axiom264) # label(axiom). %[PROVED]
+%(all X (sob(X) -> thing(X))) # label(axiom265) # label(axiom). %[PROVED]
+%(all X0 (q(X0) -> pt(X0))) # label(axiom266) # label(axiom). %[PROVED]
+%(all X0 (pd(X0) -> (exists X1 (temporallyLocatedAt(X0,X1) & t(X1))))) # label(axiom267) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]
+%(all X all Y (constantQualeOf(X,Y) -> thing(X))) # label(axiom268) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X all Y (constantQualeOf(X,Y) -> thing(Y))) # label(axiom269) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X0 all X1 ((exists X2 (p(X2,X0) & p(X2,X1))) -> ov(X0,X1))) # label(axiom270) # label(axiom). %[PROVED]
+%(all X0 all X1 (pp(X0,X1) -> p(X0,X1))) # label(axiom271) # label(axiom). %[PROVED]
+%(all X0 (pd(X0) -> pt(X0))) # label(axiom272) # label(axiom). %[PROVED]
+%(all X0 (pq(X0) -> (all X1 (constantQualeOf(X1,X0) -> pr(X1))))) # label(axiom273) # label(axiom). %[PROVED, with definition of constantQualeOf.]
+%(all X0 (ped(X0) -> ed(X0))) # label(axiom274) # label(axiom). %[PROVED]
+%(all X0 (stv(X0) -> pd(X0))) # label(axiom275) # label(axiom). %[PROVED]
+%(all X all Y (pp(X,Y) -> thing(X))) # label(axiom276) # label(axiom). %[PROVED]
+%(all X all Y (pp(X,Y) -> thing(Y))) # label(axiom277) # label(axiom). %[PROVED]
+%(all X0 -(sag(X0) & sc(X0))) # label(axiom278) # label(axiom). %[PROVED]
+%(all X0 (pd(X0) -> (all X1 (constantConstituentOf(X1,X0) -> pd(X1))))) # label(axiom279) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X0 (napo(X0) -> pob(X0))) # label(axiom280) # label(axiom). %[PROVED]
+%(all X0 (nped(X0) -> (all X1 (constantConstituentOf(X1,X0) -> nped(X1))))) # label(axiom281) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
+%(all X0 all X1 (cp(X0,X1) -> ed(X1))) # label(axiom282) # label(axiom). %[PROVED, with definition of cp.]
+%(all X0 (pd(X0) -> (all X1 (ov(X1,X0) -> pd(X1))))) # label(axiom283) # label(axiom). %[PROVED]
+%(all X0 (r(X0) -> ab(X0))) # label(axiom284) # label(axiom). %[PROVED]
+%(all X0 (tq(X0) -> q(X0))) # label(axiom285) # label(axiom). %[PROVED]
+%(all X0 -(aq(X0) & pq(X0))) # label(axiom286) # label(axiom). %[PROVED]
+%(all X0 (aq(X0) -> (all X1 (dqt(X0,X1) -> nped(X1))))) # label(axiom287) # label(axiom). %[PROVED]
+%(all X0 (ach(X0) -> ev(X0))) # label(axiom288) # label(axiom). %[PROVED]
+%(all X all Y (ql(X,Y) -> thing(X))) # label(axiom289) # label(axiom). %[PROVED]
+%(all X all Y (ql(X,Y) -> thing(Y))) # label(axiom290) # label(axiom). %[PROVED]
+%(all X0 (q(X0) -> (exists X1 (temporallyLocatedAt(X0,X1) & t(X1))))) # label(axiom291) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]NO: CHECK
+%(all X (nped(X) -> thing(X))) # label(axiom292) # label(axiom). %[PROVED]
+%(all X0 (ab(X0) -> (all X1 (p(X1,X0) -> ab(X1))))) # label(axiom293) # label(axiom). %[PROVED]
+%(all X0 all X1 (dqt(X0,X1) -> ed(X1) | pd(X1))) # label(axiom295) # label(axiom). %[PROVED]
+%(all X0 -(aq(X0) & tq(X0))) # label(axiom296) # label(axiom). %[PROVED]
+%(all X0 (sob(X0) -> npob(X0))) # label(axiom297) # label(a.xiom). %[PROVED]
+%(all X all Y (pre(X,Y) -> thing(X))) # label(axiom298) # label(axiom). %[PROVED]
+%(all X all Y (pre(X,Y) -> thing(Y))) # label(axiom299) # label(axiom). %[PROVED]
+
+%Proved by PROVER9 in FOL but not present DOLCEBasic_OWL because of problems with the OWL2 reasoners (Pellet).
+
+%(all T all T1 (exists X exists Y (temporallyLocatedAt(X,T) & cov(X,Y) & temporallyLocatedAt(Y,T1)) -> ov(T,T1))). %[PROVED, with definition of temporallyLocatedAt]
+%(all X0 all X1( exists X2 (pre(X2,X0) & temporallyLocatedAt(X2,X1) -> p(X2,X1)))). %[PROVED, with definition of temporallyLocatedAt]
+%(all X0 all X1 all X2 (ql(X1,X0) & ql(X2,X0) -> X1 = X2)).  %[PROVED]
+%(all T all T1 (exists X ((pre(X,T1) & temporallyLocatedAt(X,T1)) -> ov(T,T1)))). %[PROVED]
+%(all X0 all X1 ((exists X2 (pre(X2,X0) & temporallyLocatedAt(X2,X1))) -> p(X0,X1))). %[PROVED, with definition of temporallyLocatedAt]
+
+
 
 end_of_list.

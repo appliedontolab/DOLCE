@@ -1,24 +1,25 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Axioms Of DOLCEbasic_OWL transalted into first-order logic.
+%Axioms Of DOLCEBasic_OWL translated into first-order logic.
 %using https://github.com/gavel-tool/python-gavel-owl/blob/dev/README.rst
 
-%Proof that DOLCEsimple_FOL proves each axiom of DOLCEbasic_OWL.
+%Proof that DOLCESimple_FOL proves each axiom of DOLCEBasic_OWL
+%done with Prover9 https://www.cs.unm.edu/~mccune/prover9/
 
-%DOLCEbasic_OWL developed by Laure Vieu and Daniele Porello with contributions by
+%DOLCEBasic_OWL developed by Laure Vieu and Daniele Porello with contributions by
 %W. Terkaj, S. Borgo, C. Masolo, E. M. Sanfilippo, F. Compagno.
-%DOLCEbasic_OWL is available at https://github.com/appliedontolab/DOLCE/tree/main/OWL/
+%DOLCEBasic_OWL is available at https://github.com/appliedontolab/DOLCE/tree/main/OWL/
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Correspondences between the alphabet of DOLCEsimple_FOL and DOLCEbasic_WOL
+%Correspondences between the vocabulary of DOLCESimple_FOL and DOLCEBasic_OWL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %Classes
 
-%DOLCEsimple_FOL -- DOLCEbasic_OWL
+%DOLCEsimple_FOL -- DOLCEBasic_OWL
 
 ab -- Abstract
 acc -- Accomplishment
@@ -61,7 +62,7 @@ tq -- TemporalQuality
 tr -- TemporalRegion
 
 %Relations
-%DOLCEsimple_FOL -- DOLCEbasic_OWL
+%DOLCEsimple_FOL -- DOLCEBasic_OWL
 
 atp -- atomicPartOf
 catp -- constantAtomicPartOf
@@ -82,9 +83,9 @@ temporalPart -- temporalPartOf
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%List of axioms of DOLCEbasic_OWL version 3.2.
+%List of axioms of DOLCEBasic_OWL version 3.2.
 %Note: the class "thing" was automatically translated using https://github.com/gavel-tool/python-gavel-owl/blob/dev/README.rst
-%The class "thing" is not part of DOLCEsimple. Added axiom "all X (pt(X) -> thing(X))".
+%The class "thing" is not part of DOLCESimple. Added axiom "all X (pt(X) -> thing(X))".
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -108,7 +109,7 @@ temporalPart -- temporalPartOf
 (all X0 all X1 (catp(X0,X1) -> cp(X0,X1))) # label(axiom33) # label(axiom). %[PROVED, with definitions of catp, cp]
 (all X0 all X1 ((exists X2 (catp(X0,X2) & pre(X2,X1))) -> pre(X0,X1))).  %[PROVED, with definitions of catp, cp]
 (all X0 -(ab(X0) & pd(X0))) # label(axiom34) # label(axiom). %[PROVED]
-(all X0 (ped(X0) -> (all X1 (cp(X0,X1) -> ped(X1))))) # label(axiom35) # label(axiom). %[PROVED, with definintion of cp.]
+
 (all X (t(X) -> thing(X))) # label(axiom36) # label(axiom). %[PROVED]
 (all X0 -(ab(X0) & ed(X0))) # label(axiom37) # label(axiom). %[PROVED]
 (all X0 (q(X0) -> (exists X1 (dqt(X0,X1) & pt(X1))))) # label(axiom39) # label(axiom). %[PROVED]
@@ -148,7 +149,8 @@ temporalPart -- temporalPartOf
 (all X0 all X1 all X2 (dqt(X0,X1) & dqt(X0,X2) -> X1 = X2)) # label(axiom73) # label(axiom). %[PROVED]
 (all X0 (tq(X0) -> (all X1 (dqt(X0,X1) -> pd(X1))))) # label(axiom74) # label(axiom). %[PROVED]
 (all X0 all X1 (p(X0,X1) -> ab(X1) | pd(X1))) # label(axiom75) # label(axiom). %[PROVED]
-(all X0 (nped(X0) -> (all X1 (cp(X0,X1) -> nped(X1))))) # label(axiom76) # label(axiom). %[PROVED, with definition of cp.]
+
+
 (all X0 all X1 ((exists X2 (constantParticipantOf(X0,X2) & pre(X2,X1))) -> pre(X0,X1))) # label(axiom77) # label(axiom). %[PROVED, with definition of constantConstantParticipantOf.]
 (all X0 all X1 ((exists X2 (constantConstituentOf(X2,X0) & constantlySpatiallyLocatedAt(X2,X1))) -> constantlySpatiallyLocatedAt(X0,X1))) # label(axiom78) # label(axiom). %[PROVED, with definitions of constantConstantConstituentOf etc.]
 (all X (tr(X) -> thing(X))) # label(axiom79) # label(axiom). %[PROVED]
@@ -353,7 +355,7 @@ temporalPart -- temporalPartOf
 (all X0 -(sag(X0) & sc(X0))) # label(axiom278) # label(axiom). %[PROVED]
 (all X0 (pd(X0) -> (all X1 (constantConstituentOf(X1,X0) -> pd(X1))))) # label(axiom279) # label(axiom). %[PROVED, with definition of constantConstituentOf.]
 (all X0 (napo(X0) -> pob(X0))) # label(axiom280) # label(axiom). %[PROVED]
-(all X0 (nped(X0) -> (all X1 (constantConstituentOf(X1,X0) -> nped(X1))))) # label(axiom281) # label(axiom). %[No, add constantConstituentOf.]
+(all X0 (nped(X0) -> (all X1 (constantConstituentOf(X1,X0) -> nped(X1))))) # label(axiom281) # label(axiom). %[PROVE, with definition of constantConstituentOf.]
 (all X0 all X1 (cp(X0,X1) -> ed(X1))) # label(axiom282) # label(axiom). %[PROVED, with definition of cp.]
 (all X0 (pd(X0) -> (all X1 (ov(X1,X0) -> pd(X1))))) # label(axiom283) # label(axiom). %[PROVED]
 (all X0 (r(X0) -> ab(X0))) # label(axiom284) # label(axiom). %[PROVED]
@@ -363,7 +365,7 @@ temporalPart -- temporalPartOf
 (all X0 (ach(X0) -> ev(X0))) # label(axiom288) # label(axiom). %[PROVED]
 (all X all Y (ql(X,Y) -> thing(X))) # label(axiom289) # label(axiom). %[PROVED]
 (all X all Y (ql(X,Y) -> thing(Y))) # label(axiom290) # label(axiom). %[PROVED]
-(all X0 (q(X0) -> (exists X1 (temporallyLocatedAt(X0,X1) & t(X1))))) # label(axiom291) # label(axiom). %[No, add temporallyLocatedAt]NO: CHECK
+(all X0 (q(X0) -> (exists X1 (temporallyLocatedAt(X0,X1) & t(X1))))) # label(axiom291) # label(axiom). %[PROVED, with definition of temporallyLocatedAt]
 (all X (nped(X) -> thing(X))) # label(axiom292) # label(axiom). %[PROVED]
 (all X0 (ab(X0) -> (all X1 (p(X1,X0) -> ab(X1))))) # label(axiom293) # label(axiom). %[PROVED]
 (all X0 all X1 (constantlySpatiallyLocatedAt(X0,X1) -> s(X1))) # label(axiom294) # label(axiom). %[PROVED, with definition of constantlySpatiallyLocatedAt.]
@@ -373,13 +375,10 @@ temporalPart -- temporalPartOf
 (all X all Y (pre(X,Y) -> thing(X))) # label(axiom298) # label(axiom). %[PROVED]
 (all X all Y (pre(X,Y) -> thing(Y))) # label(axiom299) # label(axiom). %[PROVED]
 
-%Proved by PROVER9 in FOL but not present DOLCEbasic_OWL because of problems with the OWL2 reasoners (Pellet).
+%Proved by PROVER9 in FOL but not present DOLCEBasic_OWL because of problems with the OWL2 reasoners (Pellet).
 
 (all T all T1 (exists X exists Y (temporallyLocatedAt(X,T) & cov(X,Y) & temporallyLocatedAt(Y,T1)) -> ov(T,T1))). %[PROVED, with definition of temporallyLocatedAt]
 (all X0 all X1( exists X2 (pre(X2,X0) & temporallyLocatedAt(X2,X1) -> p(X2,X1)))). %[PROVED, with definition of temporallyLocatedAt]
 (all X0 all X1 all X2 (ql(X1,X0) & ql(X2,X0) -> X1 = X2)).  %[PROVED]
 (all T all T1 (exists X ((pre(X,T1) & temporallyLocatedAt(X,T1)) -> ov(T,T1)))). %[PROVED]
 (all X0 all X1 ((exists X2 (pre(X2,X0) & temporallyLocatedAt(X2,X1))) -> p(X0,X1))). %[PROVED, with definition of temporallyLocatedAt]
-
-
-

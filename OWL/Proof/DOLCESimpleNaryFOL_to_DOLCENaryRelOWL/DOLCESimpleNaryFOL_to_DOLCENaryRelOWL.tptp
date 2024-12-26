@@ -1,0 +1,577 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Proof that DOLCESimpleNAry_FOl enatails each axiom of DOLCEnaryRel_OWL
+
+%done with Vampire https://vprover.github.io
+
+%Axioms Of DOLCEBasic_OWL translated into first-order logic (tptp format)
+%using https://github.com/gavel-tool/python-gavel-owl/blob/dev/README.rst
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Axioms (DOLCESimpleNary_FOL)
+
+fof(sos,axiom,! [X3] : ((ab(X3) | (ed(X3) | (pd(X3) | q(X3)))) <=> pt(X3))).
+fof(sos,axiom,! [X4] : ((as(X4) | (nped(X4) | ped(X4))) <=> ed(X4))).
+fof(sos,axiom,! [X5] : ((pro(X5) | st(X5)) <=> stv(X5))).
+fof(sos,axiom,! [X6] : ((ev(X6) | stv(X6)) <=> pd(X6))).
+fof(sos,axiom,! [X7] : ((aq(X7) | (pq(X7) | tq(X7))) <=> q(X7))).
+fof(sos,axiom,! [X8] : ((acc(X8) | ach(X8)) <=> ev(X8))).
+fof(sos,axiom,! [X9] : ((apo(X9) | napo(X9)) <=> pob(X9))).
+fof(sos,axiom,! [X10] : ((sag(X10) | sc(X10)) <=> aso(X10))).
+fof(sos,axiom,! [X11] : ((aso(X11) | naso(X11)) <=> sob(X11))).
+fof(sos,axiom,! [X12] : ((sob(X12) | mob(X12)) <=> npob(X12))).
+fof(sos,axiom,! [X13] : ((ar(X13) | (pr(X13) | tr(X13))) <=> r(X13))).
+fof(sos,axiom,! [X14] : (r(X14) => ab(X14))).
+fof(sos,axiom,! [X15] : ((f(X15) | (m(X15) | pob(X15))) <=> ped(X15))).
+fof(sos,axiom,! [X16] : (npob(X16) => nped(X16))).
+fof(sos,axiom,! [X17] : (s(X17) => pr(X17))).
+fof(sos,axiom,! [X18] : (sl(X18) => pq(X18))).
+fof(sos,axiom,! [X19] : (t(X19) => tr(X19))).
+fof(sos,axiom,! [X20] : (tl(X20) => tq(X20))).
+fof(sos,axiom,~ (? [X21] : (ab(X21) & ed(X21)))).
+fof(sos,axiom,~ (? [X22] : (ab(X22) & pd(X22)))).
+fof(sos,axiom,~ (? [X23] : (ab(X23) & q(X23)))).
+fof(sos,axiom,~ (? [X24] : (ed(X24) & pd(X24)))).
+fof(sos,axiom,~ (? [X25] : (pd(X25) & q(X25)))).
+fof(sos,axiom,~ (? [X26] : (ed(X26) & q(X26)))).
+fof(sos,axiom,~ (? [X27] : (ped(X27) & nped(X27)))).
+fof(sos,axiom,~ (? [X28] : (ped(X28) & as(X28)))).
+fof(sos,axiom,~ (? [X29] : (nped(X29) & as(X29)))).
+fof(sos,axiom,~ (? [X30] : (m(X30) & f(X30)))).
+fof(sos,axiom,~ (? [X31] : (f(X31) & pob(X31)))).
+fof(sos,axiom,~ (? [X32] : (m(X32) & pob(X32)))).
+fof(sos,axiom,~ (? [X33] : (mob(X33) & sob(X33)))).
+fof(sos,axiom,~ (? [X34] : (aso(X34) & naso(X34)))).
+fof(sos,axiom,~ (? [X35] : (sag(X35) & sc(X35)))).
+fof(sos,axiom,~ (? [X36] : (apo(X36) & napo(X36)))).
+fof(sos,axiom,~ (? [X37] : (ev(X37) & stv(X37)))).
+fof(sos,axiom,~ (? [X38] : (ach(X38) & acc(X38)))).
+fof(sos,axiom,~ (? [X39] : (st(X39) & pro(X39)))).
+fof(sos,axiom,~ (? [X40] : (tq(X40) & pq(X40)))).
+fof(sos,axiom,~ (? [X41] : (pq(X41) & aq(X41)))).
+fof(sos,axiom,~ (? [X42] : (tq(X42) & aq(X42)))).
+fof(sos,axiom,~ (? [X43] : (tr(X43) & pr(X43)))).
+fof(sos,axiom,~ (? [X44] : (pr(X44) & ar(X44)))).
+fof(sos,axiom,~ (? [X45] : (tr(X45) & ar(X45)))).
+fof(sos,axiom,! [X46] : ! [X47] : (p(X46,X47) => ((ab(X46) | pd(X46)) & (ab(X47) | pd(X47))))).
+fof(sos,axiom,! [X48] : ! [X49] : (p(X48,X49) => (pd(X48) <=> pd(X49)))).
+fof(sos,axiom,! [X50] : ! [X51] : (p(X50,X51) => (ab(X50) <=> ab(X51)))).
+fof(sos,axiom,! [X52] : ! [X53] : (p(X52,X53) => (t(X52) <=> t(X53)))).
+fof(sos,axiom,! [X54] : ! [X55] : (p(X54,X55) => (s(X54) <=> s(X55)))).
+fof(sos,axiom,! [X56] : ! [X57] : (p(X56,X57) => (ar(X56) <=> ar(X57)))).
+fof(sos,axiom,! [X58] : ((ab(X58) | pd(X58)) => p(X58,X58))).
+fof(sos,axiom,! [X59] : ! [X60] : ((p(X59,X60) & p(X60,X59)) => X59 = X60)).
+fof(sos,axiom,! [X61] : ! [X62] : ! [X63] : ((p(X61,X62) & p(X62,X63)) => p(X61,X63))).
+fof(sos,axiom,! [X117] : ! [X118] : ((pd(X117) & (pd(X118) & ~ p(X117,X118)))) => ? [X120] : (pd(X120) & (p(X120,X117) & ~ tov(X120,X118)))).
+fof(sos,axiom,! [X117] : ! [X118] : ((ab(X117) & (ab(X118) & ~ p(X117,X118)))) => ? [X120] : (ab(X120) & (p(X120,X117) & ~ tov(X120,X118)))).
+fof(sos,axiom,! [X64] : ! [X65] : (pp(X64,X65) <=> (p(X64,X65) & ~ p(X65,X64)))).
+fof(sos,axiom,! [X66] : ! [X67] : (ov(X66,X67) <=> ? [X68] : (p(X68,X66) & p(X68,X67)))).
+fof(sos,axiom,! [X69] : (at(X69) <=> ((pd(X69) | ab(X69)) & ~ (? [X70] : pp(X70,X69))))).
+fof(sos,axiom,! [X71] : ! [X72] : (atp(X71,X72) <=> (p(X71,X72) & at(X71)))).
+fof(sos,axiom,! [X73] : ! [X74] : ! [X75] : (sum(X75,X73,X74) <=> (((ab(X75) & (ab(X73) & ab(X74))) | (pd(X75) & (pd(X73) & pd(X74)))) & ! [X76] : (ov(X76,X75) <=> (ov(X76,X73) | ov(X76,X74)))))).
+fof(sos,axiom,! [X77] : ! [X78] : ! [X79] : (dif(X79,X77,X78) <=> (((ab(X79) & (ab(X77) & ab(X78))) | (pd(X79) & (pd(X77) & pd(X78)))) & ! [X80] : (p(X80,X79) <=> (p(X80,X77) & ~ ov(X80,X78)))))).
+fof(sos,axiom,! [X81] : ! [X82] : ((ab(X81) & (ab(X82) & ~ p(X81,X82))) => ? [X83] : dif(X83,X81,X82))).
+fof(sos,axiom,! [X84] : ! [X85] : ((pd(X84) & (pd(X85) & ~ p(X84,X85))) => ? [X86] : dif(X86,X84,X85))).
+fof(sos,axiom,! [X87] : ! [X88] : (pre(X87,X88) => ((ed(X87) | (pd(X87) | q(X87))) & t(X88)))).
+fof(sos,axiom,! [X89] : ! [X90] : ! [X91] : ((pre(X89,X90) & p(X91,X90)) => pre(X89,X91))).
+fof(sos,axiom,! [X92] : ! [X93] : ! [X94] : ((pre(X92,X94) & p(X92,X93)) => pre(X93,X94))).
+fof(sos,axiom,! [X95] : ! [X96] : ! [X97] : (tp(X95,X96,X97) => (ed(X95) & (ed(X96) & t(X97))))).
+fof(sos,axiom,! [X98] : ! [X99] : ! [X100] : (tp(X98,X99,X100) & ped(X99) => ped(X98))).
+fof(sos,axiom,! [X101] : ! [X102] : ! [X103] : (tp(X101,X102,X103) & nped(X102) => nped(X101))).
+fof(sos,axiom,! [X104] : ! [X105] : ! [X106] : ! [X107] : ((tp(X104,X105,X107) & tp(X105,X106,X107)) => tp(X104,X106,X107))).
+fof(sos,axiom,! [X108] : ! [X109] : ((ed(X108) & pre(X108,X109)) => tp(X108,X108,X109))).
+fof(sos,axiom,! [X110] : ! [X111] : ! [X112] : (tov(X110,X111,X112) <=> ? [X113] : (tp(X113,X110,X112) & tp(X113,X111,X112)))).
+fof(sos,axiom,! [X114] : ! [X115] : ! [X116] : (tpp(X114,X115,X116) <=> (tp(X114,X115,X116) & ~ X114 = X115))).
+fof(sos,axiom,! [X117] : ! [X118] : ! [X119] : ((ped(X117) & (ped(X118) & (pre(X117,X119) & (pre(X118,X119) & ~ tp(X117,X118,X119))))) => ? [X120] : (ped(X120) & (tp(X120,X117,X119) & ~ tov(X120,X118,X119))))).
+fof(sos,axiom,! [X121] : ! [X122] : ! [X123] : ((nped(X121) & (nped(X122) & (pre(X121,X123) & (pre(X122,X123) & ~ tp(X121,X122,X123))))) => ? [X124] : (nped(X124) & (tp(X124,X121,X123) & ~ tov(X124,X122,X123))))).
+fof(sos,axiom,! [X125] : ! [X126] : ! [X127] : (tp(X125,X126,X127) => (pre(X125,X127) & pre(X126,X127)))).
+fof(sos,axiom,! [X128] : ! [X129] : ! [X130] : (tp(X128,X129,X130) => ! [X131] : (p(X131,X130) => tp(X128,X129,X131)))).
+fof(sos,axiom,! [X132] : ! [X133] : (tat(X132,X133) <=> (ed(X132) & (t(X133) & ~ (? [X134] : tpp(X134,X132,X133)))))).
+fof(sos,axiom,! [X135] : ! [X136] : ! [X137] : (tatp(X135,X136,X137) <=> (tp(X135,X136,X137) & tat(X135,X137)))).
+fof(sos,axiom,! [X138] : ! [X139] : ! [X140] : ! [X141] : (sumt(X140,X138,X139,X141) <=> (pre(X140,X141) & pre(X138,X141) & (pre(X139,X141) & ed(X140) & ed(X138) & ed(X139) & ! [X142] : (tov(X142,X140,X141) <=> (tov(X142,X138,X141) | tov(X142,X139,X141))))))).
+fof(sos,axiom,! [X143] : ! [X144] : (temporalPart(X143,X144) <=> (pd(X143) & (pd(X144) & (p(X143,X144) & ! [X145] : ((pd(X145) & (p(X145,X144) & ! [X146] : (pre(X145,X146) => pre(X143,X146)))) => p(X145,X143))))))).
+fof(sos,axiom,! [X147] : ! [X148] : ! [X149] : (k(X147,X148,X149) => ((ed(X147) | pd(X147)) & ((ed(X148) | pd(X148)) & t(X149))))).
+fof(sos,axiom,! [X150] : ! [X151] : ! [X152] : (k(X150,X151,X152) => (ped(X150) <=> ped(X151)))).
+fof(sos,axiom,! [X153] : ! [X154] : ! [X155] : (k(X153,X154,X155) => (nped(X153) <=> nped(X154)))).
+fof(sos,axiom,! [X156] : ! [X157] : ! [X158] : (k(X156,X157,X158) => (pd(X156) <=> pd(X157)))).
+fof(sos,axiom,! [X159] : ! [X160] : ! [X161] : (k(X159,X160,X161) => ~ k(X160,X159,X161))).
+fof(sos,axiom,! [X162] : ! [X163] : ! [X164] : ! [X165] : ((k(X162,X163,X165) & k(X163,X164,X165)) => k(X162,X164,X165))).
+fof(sos,axiom,! [X166] : ! [X167] : ! [X168] : (k(X166,X167,X168) => (pre(X166,X168) & pre(X167,X168)))).
+fof(sos,axiom,! [X169] : ! [X170] : ! [X171] : (k(X169,X170,X171) => ! [X172] : (p(X172,X171) => k(X169,X170,X172)))).
+fof(sos,axiom,! [X173] : ! [X174] : ! [X175] : (pc(X173,X174,X175) => (ed(X173) & (pd(X174) & t(X175))))).
+fof(sos,axiom,! [X176] : ! [X177] : ((pd(X176) & pre(X176,X177)) => ? [X178] : pc(X178,X176,X177))).
+fof(sos,axiom,! [X179] : (ed(X179) => ? [X180] : ? [X181] : pc(X179,X180,X181))).
+fof(sos,axiom,! [X182] : ! [X183] : ! [X184] : (pc(X182,X183,X184) => (pre(X182,X184) & pre(X183,X184)))).
+fof(sos,axiom,! [X185] : ! [X186] : ! [X187] : (pc(X185,X186,X187) => ! [X188] : (p(X188,X187) => pc(X185,X186,X188)))).
+fof(sos,axiom,! [X189] : ! [X190] : (dqt(X189,X190) => (q(X189) & (ed(X190) | pd(X190))))).
+fof(sos,axiom,! [X191] : ! [X192] : (dqt(X191,X192) => (tq(X191) <=> pd(X192)))).
+fof(sos,axiom,! [X193] : ! [X194] : (dqt(X193,X194) => (pq(X193) <=> ped(X194)))).
+fof(sos,axiom,! [X195] : ! [X196] : (dqt(X195,X196) => (aq(X195) <=> nped(X196)))).
+fof(sos,axiom,! [X197] : ! [X198] : ! [X199] : ((dqt(X197,X198) & dqt(X197,X199)) => X198 = X199)).
+fof(sos,axiom,! [X200] : ! [X201] : ! [X202] : ((dqt(X200,X202) & (dqt(X201,X202) & (tl(X200) & tl(X201)))) => X200 = X201)).
+fof(sos,axiom,! [X203] : ! [X204] : ! [X205] : ((dqt(X203,X205) & (dqt(X204,X205) & (sl(X203) & sl(X204)))) => X203 = X204)).
+fof(sos,axiom,! [X206] : (tq(X206) => ? [X207] : (dqt(X206,X207) & pd(X207)))).
+fof(sos,axiom,! [X208] : (pq(X208) => ? [X209] : (dqt(X208,X209) & ped(X209)))).
+fof(sos,axiom,! [X210] : (aq(X210) => ? [X211] : (dqt(X210,X211) & nped(X211)))).
+fof(sos,axiom,! [X212] : (pd(X212) => ? [X213] : (dqt(X213,X212) & tl(X213)))).
+fof(sos,axiom,! [X214] : (ped(X214) => ? [X215] : (dqt(X215,X214) & sl(X215)))).
+fof(sos,axiom,! [X216] : (nped(X216) => ? [X217] : (dqt(X217,X216) & aq(X217)))).
+fof(sos,axiom,! [X218] : ! [X219] : ! [X220] : ((dqt(X219,X218) & pre(X219,X220)) => pre(X218,X220))).
+fof(sos,axiom,! [X221] : ! [X222] : ! [X223] : ((dqt(X222,X221) & pre(X221,X223)) => pre(X222,X223))).
+fof(sos,axiom,! [X224] : ! [X225] : (ql(X224,X225) => (tr(X224) & tq(X225)))).
+fof(sos,axiom,! [X226] : ! [X227] : ((ql(X226,X227) & tl(X227)) => t(X226))).
+fof(sos,axiom,! [X228] : ! [X229] : ! [X230] : ((ql(X228,X229) & ql(X230,X229)) => X228 = X230)).
+fof(sos,axiom,! [X231] : (tq(X231) => ? [X232] : ql(X232,X231))).
+fof(sos,axiom,! [X233] : ! [X234] : ! [X235] : (tql(X233,X234,X235) => ((pr(X233) | ar(X233)) & ((pq(X234) | aq(X234)) & t(X235))))).
+fof(sos,axiom,! [X236] : ! [X237] : ! [X238] : (tql(X236,X237,X238) => (pr(X236) <=> pq(X237)))).
+fof(sos,axiom,! [X239] : ! [X240] : ! [X241] : (tql(X239,X240,X241) => (ar(X239) <=> aq(X240)))).
+fof(sos,axiom,! [X242] : ! [X243] : ! [X244] : ((tql(X242,X243,X244) & sl(X243)) => s(X242))).
+fof(sos,axiom,! [X245] : ! [X246] : ! [X247] : ((tql(X245,X246,X247) & s(X245)) => sl(X246))).
+fof(sos,axiom,! [X248] : ! [X249] : (((pq(X248) | aq(X248)) & pre(X248,X249)) => ? [X250] : tql(X250,X248,X249))).
+fof(sos,axiom,! [X251] : ! [X252] : ! [X253] : (tql(X251,X252,X253) => pre(X252,X253))).
+fof(sos,axiom,! [X254] : ! [X255] : ! [X256] : (tql(X254,X255,X256) => ! [X257] : (p(X257,X256) => tql(X254,X255,X257)))).
+fof(sos,axiom,! [X258] : ! [X259] : (sd(X258,X259) <=> (? [X260] : pre(X258,X260) & ! [X261] : (pre(X258,X261) => pre(X259,X261))))).
+fof(sos,axiom,! [X262] : ! [X263] : ((ach(X262) & temporallyLocatedAt(X262,X263)) => at(X263))).
+fof(sos,axiom,! [X264] : ! [X265] : ((acc(X264) & temporallyLocatedAt(X264,X265)) => ~ at(X265))).
+fof(sos,axiom,! [X266] : (st(X266) => ! [X267] : (p(X267,X266) => st(X267)))).
+fof(sos,axiom,! [X268] : (mob(X268) => ? [X269] : (sd(X268,X269) & apo(X269)))).
+fof(sos,axiom,! [X270] : (ed(X270) => ? [X271] : ? [X272] : pc(X270,X271,X272))).
+fof(sos,axiom,! [X273] : (pt(X273) => thing(X273))).
+fof(sos,axiom,! [X274] : (cat(X274) <=> (ed(X274) & (? [X275] : pre(X274,X275) & ! [X276] : (pre(X274,X276) => tat(X274,X276)))))).
+fof(sos,axiom,! [X277] : ! [X278] : (catp(X277,X278) <=> (ed(X277) & (ed(X278) & (? [X279] : pre(X277,X279) & ! [X280] : (pre(X278,X280) => tatp(X277,X278,X280))))))).
+fof(sos,axiom,! [X281] : ! [X282] : (cp(X281,X282) <=> (ed(X281) & (ed(X282) & (? [X283] : pre(X282,X283) & ! [X284] : (pre(X282,X284) => tp(X281,X282,X284))))))).
+fof(sos,axiom,! [X285] : ! [X286] : (cpp(X285,X286) <=> (ed(X285) & (ed(X286) & (? [X287] : pre(X286,X287) & ! [X288] : (pre(X286,X288) => (tp(X285,X286,X288) & ~ tp(X286,X285,X288)))))))).
+fof(sos,axiom,! [X289] : ! [X290] : (cov(X289,X290) <=> (ed(X289) & (ed(X290) & (? [X291] : (pre(X289,X291) & pre(X290,X291)) & ? [X292] : (cp(X292,X289) & cp(X292,X290))))))).
+fof(sos,axiom,! [X293] : ! [X294] : ! [X295] : (csum(X295,X293,X294) <=> (ed(X295) & ed(X293) & ed(X294) & ! [X296] : ! [X297] : (tov(X296,X295,X297) <=> (tov(X296,X293,X297) | tov(X296,X294,X297)))))).
+fof(sos,axiom,! [X298] : ! [X299] : (constantParticipantOf(X298,X299) <=> (ed(X298) & (pd(X299) & (? [X300] : pre(X299,X300) & ! [X301] : (pre(X299,X301) => pc(X298,X299,X301))))))).
+fof(sos,axiom,! [X302] : ! [X303] : (constantConstituentOf(X302,X303) <=> (((ped(X302) & ped(X303)) | ((nped(X302) & nped(X303)) | (pd(X302) & pd(X303)))) & (? [X304] : pre(X303,X304) & ! [X305] : (pre(X303,X305) => k(X302,X303,X305)))))).
+fof(sos,axiom,! [X306] : ! [X307] : (constantQualeOf(X306,X307) <=> (((pr(X306) & pq(X307)) | ((tr(X306) & tq(X307)) | (ar(X306) & aq(X307)))) & ! [X308] : (pre(X307,X308) => tql(X306,X307,X308))))).
+fof(sos,axiom,! [X312] : ! [X313] : (temporallyLocatedAt(X312,X313) => ((ed(X312) | (pd(X312) | q(X312))) & t(X313)))).
+fof(sos,axiom,! [X314] : ! [X315] : ! [X316] : ((temporallyLocatedAt(X314,X315) & temporallyLocatedAt(X314,X316)) => X315 = X316)).
+fof(sos,axiom,! [X317] : (ed(X317) => ? [X318] : temporallyLocatedAt(X317,X318))).
+fof(sos,axiom,! [X319] : (q(X319) => ? [X320] : temporallyLocatedAt(X319,X320))).
+fof(sos,axiom,! [X321] : (pd(X321) => ? [X322] : temporallyLocatedAt(X321,X322))).
+fof(sos,axiom,! [X323] : ! [X324] : (temporallyLocatedAt(X323,X324) => pre(X323,X324))).
+fof(sos,axiom,! [X325] : ! [X326] : ((tl(X325) & ql(X326,X325)) => temporallyLocatedAt(X325,X326))).
+fof(sos,axiom,! [X327] : ! [X328] : ! [X329] : ((pre(X327,X328) & temporallyLocatedAt(X327,X329)) => p(X328,X329))).
+
+%Axioms about Reified Relationships
+
+fof(sos,axiom,! [X330] : (reifiedRelationship(X330) => thing(X330))).
+fof(sos,axiom,~ (? [X331] : (reifiedRelationship(X331) & pt(X331)))).
+fof(sos,axiom,! [X332] : (reifiedTemporalisedRelationship(X332) => reifiedRelationship(X332))).
+fof(sos,axiom,! [X333] : (rRelConstantSum(X333) => reifiedRelationship(X333))).
+fof(sos,axiom,! [X334] : (rRelSum(X334) => reifiedRelationship(X334))).
+fof(sos,axiom,! [X335] : (reifiedRelationship(X335) => (reifiedTemporalisedRelationship(X335) | (rRelConstantSum(X335) | rRelSum(X335))))).
+fof(sos,axiom,! [X336] : ((rRelTempOverlap(X336) | (rRelTempPart(X336) | (rRelTempAtomicPart(X336) | (rRelTempProperPart(X336) | (rRelTempSum(X336) | (rRelTempParticipation(X336) | (rRelTempConstitution(X336) | rRelTempQuale(X336)))))))) <=> reifiedTemporalisedRelationship(X336))).
+fof(sos,axiom,! [X337] : (rRelTempOverlap(X337) => reifiedTemporalisedRelationship(X337))).
+fof(sos,axiom,! [X338] : (rRelTempPart(X338) => reifiedTemporalisedRelationship(X338))).
+fof(sos,axiom,! [X339] : (rRelTempAtomicPart(X339) => reifiedTemporalisedRelationship(X339))).
+fof(sos,axiom,! [X340] : (rRelTempProperPart(X340) => reifiedTemporalisedRelationship(X340))).
+fof(sos,axiom,! [X341] : (rRelTempSum(X341) => reifiedTemporalisedRelationship(X341))).
+fof(sos,axiom,! [X342] : (rRelTempParticipation(X342) => reifiedTemporalisedRelationship(X342))).
+fof(sos,axiom,! [X343] : (rRelTempConstitution(X343) => reifiedTemporalisedRelationship(X343))).
+fof(sos,axiom,! [X344] : (rRelTempQuale(X344) => reifiedTemporalisedRelationship(X344))).
+fof(sos,axiom,! [X345] : (rRelTempConstitutionNPED(X345) => rRelTempConstitution(X345))).
+fof(sos,axiom,! [X346] : (rRelTempConstitutionPD(X346) => rRelTempConstitution(X346))).
+fof(sos,axiom,! [X347] : (rRelTempConstitutionPD(X347) => rRelTempConstitution(X347))).
+fof(sos,axiom,! [X348] : (rRelTempQualePRPQ(X348) => rRelTempQuale(X348))).
+fof(sos,axiom,! [X349] : (rRelTempQualeARAQ(X349) => rRelTempQuale(X349))).
+fof(sos,axiom,! [X350] : (rRelSumAB(X350) => rRelSum(X350))).
+fof(sos,axiom,! [X351] : (rRelSumPD(X351) => rRelSum(X351))).
+fof(sos,axiom,~ (? [X352] : (reifiedTemporalisedRelationship(X352) & rRelSum(X352)))).
+fof(sos,axiom,~ (? [X353] : (reifiedTemporalisedRelationship(X353) & rRelConstantSum(X353)))).
+fof(sos,axiom,~ (? [X354] : (rRelSum(X354) & rRelConstantSum(X354)))).
+fof(sos,axiom,~ (? [X355] : (rRelTempAtomicPart(X355) & rRelTempConstitution(X355)))).
+fof(sos,axiom,~ (? [X356] : (rRelTempAtomicPart(X356) & rRelTempOverlap(X356)))).
+fof(sos,axiom,~ (? [X357] : (rRelTempAtomicPart(X357) & rRelTempPart(X357)))).
+fof(sos,axiom,~ (? [X358] : (rRelTempAtomicPart(X358) & rRelTempParticipation(X358)))).
+fof(sos,axiom,~ (? [X359] : (rRelTempAtomicPart(X359) & rRelTempProperPart(X359)))).
+fof(sos,axiom,~ (? [X360] : (rRelTempAtomicPart(X360) & rRelTempQuale(X360)))).
+fof(sos,axiom,~ (? [X361] : (rRelTempAtomicPart(X361) & rRelTempSum(X361)))).
+fof(sos,axiom,~ (? [X362] : (rRelTempConstitution(X362) & rRelTempOverlap(X362)))).
+fof(sos,axiom,~ (? [X363] : (rRelTempConstitution(X363) & rRelTempPart(X363)))).
+fof(sos,axiom,~ (? [X364] : (rRelTempConstitution(X364) & rRelTempParticipation(X364)))).
+fof(sos,axiom,~ (? [X365] : (rRelTempConstitution(X365) & rRelTempProperPart(X365)))).
+fof(sos,axiom,~ (? [X366] : (rRelTempConstitution(X366) & rRelTempQuale(X366)))).
+fof(sos,axiom,~ (? [X367] : (rRelTempConstitution(X367) & rRelTempSum(X367)))).
+fof(sos,axiom,~ (? [X368] : (rRelTempOverlap(X368) & rRelTempPart(X368)))).
+fof(sos,axiom,~ (? [X369] : (rRelTempOverlap(X369) & rRelTempParticipation(X369)))).
+fof(sos,axiom,~ (? [X370] : (rRelTempOverlap(X370) & rRelTempProperPart(X370)))).
+fof(sos,axiom,~ (? [X371] : (rRelTempOverlap(X371) & rRelTempQuale(X371)))).
+fof(sos,axiom,~ (? [X372] : (rRelTempOverlap(X372) & rRelTempSum(X372)))).
+fof(sos,axiom,~ (? [X373] : (rRelTempPart(X373) & rRelTempParticipation(X373)))).
+fof(sos,axiom,~ (? [X374] : (rRelTempPart(X374) & rRelTempProperPart(X374)))).
+fof(sos,axiom,~ (? [X375] : (rRelTempPart(X375) & rRelTempQuale(X375)))).
+fof(sos,axiom,~ (? [X376] : (rRelTempPart(X376) & rRelTempSum(X376)))).
+fof(sos,axiom,~ (? [X376] : (rRelTempParticipation(X376) & rRelTempProperPart(X376)))).
+fof(sos,axiom,~ (? [X376] : (rRelTempParticipation(X376) & rRelTempQuale(X376)))).
+fof(sos,axiom,~ (? [X376] : (rRelTempParticipation(X376) & rRelTempSum(X376)))).
+fof(sos,axiom,~ (? [X377] : (rRelTempProperPart(X377) & rRelTempParticipation(X377)))).
+fof(sos,axiom,~ (? [X378] : (rRelTempProperPart(X378) & rRelTempQuale(X378)))).
+fof(sos,axiom,~ (? [X379] : (rRelTempProperPart(X379) & rRelTempSum(X379)))).
+fof(sos,axiom,~ (? [X380] : (rRelTempQuale(X380) & rRelTempSum(X380)))).
+fof(sos,axiom,! [X381] : ((rRelTempConstitutionPED(X381) | (rRelTempConstitutionNPED(X381) | rRelTempConstitutionPD(X381))) <=> rRelTempConstitution(X381))).
+fof(sos,axiom,~ (? [X382] : (rRelTempConstitutionPED(X382) & rRelTempConstitutionNPED(X382)))).
+fof(sos,axiom,~ (? [X383] : (rRelTempConstitutionPD(X383) & rRelTempConstitutionNPED(X383)))).
+fof(sos,axiom,~ (? [X384] : (rrRelTempConstitutionPD(X384) & rRelTempConstitutionPED(X384)))).
+fof(sos,axiom,! [X385] : ((rRelTempQualeARAQ(X385) | rRelTempQualePRPQ(X385)) <=> rRelTempQuale(X385))).
+fof(sos,axiom,~ (? [X386] : (rRelTempQualeARAQ(X386) & rRelTempQualePRPQ(X386)))).
+fof(sos,axiom,! [X387] : ((rRelSumAB(X387) | rRelSumPD(X387)) <=> rRelSum(X387))).
+fof(sos,axiom,~ (? [X388] : (rRelSumAB(X388) & rRelSumPD(X388)))).
+fof(sos,axiom,! [X389] : ! [X390] : (rRelTime(X389,X390) => (reifiedTemporalisedRelationship(X389) & t(X390)))).
+fof(sos,axiom,! [X391] : ! [X392] : ! [X393] : ((rRelTime(X391,X392) & rRelTime(X391,X393)) => X392 = X393)).
+fof(sos,axiom,! [X394] : (rRelTempAtomicPart(X394) => ? [X395] : ? [X396] : ? [X397] : (tatp(X395,X396,X397) & (tempAtomicPart(X394,X395) & (tempAtomicWhole(X394,X396) & rRelTime(X394,X397)))))).
+fof(sos,axiom,! [X398] : ! [X399] : (tempAtomicPart(X398,X399) => (rRelTempAtomicPart(X398) & ed(X399)))).
+fof(sos,axiom,! [X400] : ! [X401] : (tempAtomicWhole(X400,X401) => (rRelTempAtomicPart(X400) & ed(X401)))).
+fof(sos,axiom,! [X402] : ! [X403] : ! [X404] : ((tempAtomicPart(X402,X403) & tempAtomicPart(X402,X404)) => X403 = X404)).
+fof(sos,axiom,! [X405] : ! [X406] : ! [X407] : ((tempAtomicWhole(X405,X406) & tempAtomicWhole(X405,X407)) => X406 = X407)).
+fof(sos,axiom,! [X408] : ! [X409] : (tempAtomicWhole(X408,X409) => ed(X409))).
+fof(sos,axiom,! [X410] : (rRelTempPart(X410) => ? [X411] : ? [X412] : ? [X413] : (tp(X411,X412,X413) & (tempPart(X410,X411) & (tempWhole(X410,X412) & rRelTime(X410,X413)))))).
+fof(sos,axiom,! [X414] : ! [X415] : (tempPart(X414,X415) => ((rRelTempPart(X414) | rRelTempProperPart(X414)) & ed(X415)))).
+fof(sos,axiom,! [X416] : ! [X417] : (tempWhole(X416,X417) => ((rRelTempPart(X416) | rRelTempProperPart(X416)) & ed(X417)))).
+fof(sos,axiom,! [X418] : ! [X419] : ! [X420] : ((rRelTempPart(X418) & (tempPart(X418,X419) & tempPart(X418,X420))) => X419 = X420)).
+fof(sos,axiom,! [X421] : ! [X422] : ! [X423] : ((rRelTempPart(X421) & (tempWhole(X421,X422) & tempWhole(X421,X423))) => X422 = X423)).
+fof(sos,axiom,! [X424] : (rRelTempProperPart(X424) => ? [X425] : ? [X426] : ? [X427] : (tpp(X425,X426,X427) & (tempPart(X424,X425) & (tempWhole(X424,X426) & rRelTime(X424,X427)))))).
+fof(sos,axiom,! [X428] : ! [X429] : ! [X430] : ((rRelTempProperPart(X428) & (tempPart(X428,X429) & tempPart(X428,X430))) => X429 = X430)).
+fof(sos,axiom,! [X431] : ! [X432] : ! [X433] : ((rRelTempProperPart(X431) & (tempWhole(X431,X432) & tempWhole(X431,X433))) => X432 = X433)).
+fof(sos,axiom,! [X434] : (rRelTempOverlap(X434) => ? [X435] : ? [X436] : ? [X437] : (tov(X435,X436,X437) & (tempOverlapArg1(X434,X435) & (tempOverlapArg2(X434,X436) & rRelTime(X434,X437)))))).
+fof(sos,axiom,! [X438] : ! [X439] : (tempOverlapArg1(X438,X439) => (rRelTempOverlap(X438) & ed(X439)))).
+fof(sos,axiom,! [X440] : ! [X441] : (tempOverlapArg2(X440,X441) => (rRelTempOverlap(X440) & ed(X441)))).
+fof(sos,axiom,! [X442] : ! [X443] : ! [X444] : ((tempOverlapArg1(X442,X443) & tempOverlapArg1(X442,X444)) => X443 = X444)).
+fof(sos,axiom,! [X445] : ! [X446] : ! [X447] : ((tempOverlapArg2(X445,X446) & tempOverlapArg2(X445,X447)) => X446 = X447)).
+fof(sos,axiom,! [X448] : (rRelTempSum(X448) => ? [X449] : ? [X450] : ? [X451] : ? [X452] : (sumt(X451,X449,X450,X452) & (tempSumResult(X448,X451) & (tempSumAddend1(X448,X449) & (tempSumAddend2(X448,X450) & rRelTime(X448,X452))))))).
+fof(sos,axiom,! [X453] : ! [X454] : (tempSumResult(X453,X454) => (rRelTempSum(X453) & ed(X454)))).
+fof(sos,axiom,! [X455] : ! [X456] : (tempSumAddend1(X455,X456) => (rRelTempSum(X455) & ed(X456)))).
+fof(sos,axiom,! [X457] : ! [X458] : (tempSumAddend2(X457,X458) => (rRelTempSum(X457) & ed(X458)))).
+fof(sos,axiom,! [X459] : ! [X460] : ! [X461] : ((tempSumResult(X459,X460) & tempSumResult(X459,X461)) => X460 = X461)).
+fof(sos,axiom,! [X462] : ! [X463] : ! [X464] : ((tempSumAddend1(X462,X463) & tempSumAddend1(X462,X464)) => X463 = X464)).
+fof(sos,axiom,! [X465] : ! [X466] : ! [X467] : ((tempSumAddend2(X465,X466) & tempSumAddend2(X465,X467)) => X466 = X467)).
+fof(sos,axiom,! [X468] : (rRelTempParticipation(X468) => ? [X469] : ? [X470] : ? [X471] : (pc(X469,X470,X471) & (tempParticipationParticipant(X468,X469) & (tempParticipationPerdurant(X468,X470) & rRelTime(X468,X471)))))).
+fof(sos,axiom,! [X472] : ! [X473] : ! [X474] : (pc(X472,X473,X474) => ? [X475] : (rRelTempParticipation(X475) & (tempParticipationParticipant(X475,X472) & (tempParticipationPerdurant(X475,X473) & rRelTime(X475,X474)))))).
+fof(sos,axiom,! [X476] : ! [X477] : (tempParticipationParticipant(X476,X477) => (rRelTempParticipation(X476) & ed(X477)))).
+fof(sos,axiom,! [X478] : ! [X479] : (tempParticipationPerdurant(X478,X479) => (rRelTempParticipation(X478) & pd(X479)))).
+fof(sos,axiom,! [X480] : ! [X481] : ! [X482] : ((tempParticipationParticipant(X480,X481) & tempParticipationParticipant(X480,X482)) => X481 = X482)).
+fof(sos,axiom,! [X483] : ! [X484] : ! [X485] : ((tempParticipationPerdurant(X483,X484) & tempParticipationPerdurant(X483,X485)) => X484 = X485)).
+fof(sos,axiom,! [X486] : (rRelTempConstitution(X486) => ? [X487] : ? [X488] : ? [X489] : (k(X487,X488,X489) & (tempConstitutionConstituent(X486,X487) & (tempConstitutionConstituted(X486,X488) & rRelTime(X486,X489)))))).
+fof(sos,axiom,! [X490] : ! [X491] : (tempConstitutionConstituent(X490,X491) => (rRelTempConstitution(X490) & (ped(X491) | (nped(X491) | pd(X491)))))).
+fof(sos,axiom,! [X492] : ! [X493] : (tempConstitutionConstituted(X492,X493) => (rRelTempConstitution(X492) & (ped(X493) | (nped(X493) | pd(X493)))))).
+fof(sos,axiom,! [X494] : ! [X495] : ! [X496] : ((rRelTempConstitutionNPED(X494) & (tempConstitutionConstituent(X494,X495) & tempConstitutionConstituent(X494,X496))) => X495 = X496)).
+fof(sos,axiom,! [X497] : ! [X498] : ! [X499] : ((rRelTempConstitutionNPED(X497) & (tempConstitutionConstituted(X497,X498) & tempConstitutionConstituted(X497,X499))) => X498 = X499)).
+fof(sos,axiom,! [X500] : ! [X501] : ! [X502] : ((rRelTempConstitutionPED(X500) & (tempConstitutionConstituent(X500,X501) & tempConstitutionConstituent(X500,X502))) => X501 = X502)).
+fof(sos,axiom,! [X503] : ! [X504] : ! [X505] : ((rRelTempConstitutionPED(X503) & (tempConstitutionConstituted(X503,X504) & tempConstitutionConstituted(X503,X505))) => X504 = X505)).
+fof(sos,axiom,! [X506] : ! [X507] : ! [X508] : ((rRelTempConstitutionPD(X506) & (tempConstitutionConstituent(X506,X507) & tempConstitutionConstituent(X506,X508))) => X507 = X508)).
+fof(sos,axiom,! [X509] : ! [X510] : ! [X511] : ((rRelTempConstitutionPD(X509) & (tempConstitutionConstituted(X509,X510) & tempConstitutionConstituted(X509,X511))) => X510 = X511)).
+fof(sos,axiom,! [X512] : (rRelTempConstitutionNPED(X512) => rRelTempConstitution(X512))).
+fof(sos,axiom,! [X513] : (rRelTempConstitutionPED(X513) => rRelTempConstitution(X513))).
+fof(sos,axiom,! [X514] : (rRelTempConstitutionPD(X514) => rRelTempConstitution(X514))).
+fof(sos,axiom,! [X515] : ! [X516] : ((rRelTempConstitutionNPED(X515) & tempConstitutionConstituent(X515,X516)) => nped(X516))).
+fof(sos,axiom,! [X517] : ! [X518] : ((rRelTempConstitutionPED(X517) & tempConstitutionConstituent(X517,X518)) => ped(X518))).
+fof(sos,axiom,! [X519] : ! [X520] : ((rRelTempConstitutionPD(X519) & tempConstitutionConstituent(X519,X520)) => pd(X520))).
+fof(sos,axiom,! [X521] : (rRelTempQuale(X521) => ? [X522] : ? [X523] : ? [X524] : (tql(X522,X523,X524) & (tempQualeQuality(X521,X523) & (tempQualeRegion(X521,X522) & rRelTime(X521,X524)))))).
+fof(sos,axiom,! [X525] : ! [X526] : (tempQualeQuality(X525,X526) => (rRelTempQuale(X525) & (pq(X526) | aq(X526))))).
+fof(sos,axiom,! [X527] : ! [X528] : (tempQualeRegion(X527,X528) => (rRelTempQuale(X527) & (ar(X528) | pr(X528))))).
+fof(sos,axiom,! [X529] : ! [X530] : ! [X531] : ((rRelTempQualeARAQ(X529) & (tempQualeQuality(X529,X530) & tempQualeQuality(X529,X531))) => X530 = X531)).
+fof(sos,axiom,! [X532] : ! [X533] : ! [X534] : ((rRelTempQualeARAQ(X532) & (tempQualeRegion(X532,X533) & tempQualeRegion(X532,X534))) => X533 = X534)).
+fof(sos,axiom,! [X535] : ! [X536] : ! [X537] : ((rRelTempQualePRPQ(X535) & (tempQualeQuality(X535,X536) & tempQualeQuality(X535,X537))) => X536 = X537)).
+fof(sos,axiom,! [X538] : ! [X539] : ! [X540] : ((rRelTempQualePRPQ(X538) & (tempQualeRegion(X538,X539) & tempQualeRegion(X538,X540))) => X539 = X540)).
+fof(sos,axiom,! [X541] : (rRelTempQualeARAQ(X541) => rRelTempQuale(X541))).
+fof(sos,axiom,! [X542] : (rRelTempQualePRPQ(X542) => rRelTempQuale(X542))).
+fof(sos,axiom,! [X543] : ! [X544] : ((rRelTempQualeARAQ(X543) & tempQualeQuality(X543,X544)) => aq(X544))).
+fof(sos,axiom,! [X545] : ! [X546] : ((rRelTempQualeARAQ(X545) & tempQualeRegion(X545,X546)) => ar(X546))).
+fof(sos,axiom,! [X547] : ! [X548] : ((rRelTempQualePRPQ(X547) & tempQualeQuality(X547,X548)) => pq(X548))).
+fof(sos,axiom,! [X549] : ! [X550] : ((rRelTempQualePRPQ(X549) & tempQualeRegion(X549,X550)) => pr(X550))).
+fof(sos,axiom,! [X551] : (rRelConstantSum(X551) => ? [X552] : ? [X553] : ? [X554] : (csum(X552,X553,X554) & (constantSumResult(X551,X552) & (constantSumAddend1(X551,X553) & constantSumAddend2(X551,X554)))))).
+fof(sos,axiom,! [X555] : ! [X556] : (constantSumResult(X555,X556) => (rRelConstantSum(X555) & ed(X556)))).
+fof(sos,axiom,! [X557] : ! [X558] : (constantSumAddend1(X557,X558) => (rRelConstantSum(X557) & ed(X558)))).
+fof(sos,axiom,! [X559] : ! [X560] : (constantSumAddend2(X559,X560) => (rRelConstantSum(X559) & ed(X560)))).
+fof(sos,axiom,! [X561] : ! [X562] : ! [X563] : ((constantSumResult(X561,X562) & constantSumResult(X561,X563)) => X562 = X563)).
+fof(sos,axiom,! [X564] : ! [X565] : ! [X566] : ((constantSumAddend1(X564,X565) & constantSumAddend1(X564,X566)) => X565 = X566)).
+fof(sos,axiom,! [X567] : ! [X568] : ! [X569] : ((constantSumAddend2(X567,X568) & constantSumAddend2(X567,X569)) => X568 = X569)).
+fof(sos,axiom,! [X570] : (rRelSum(X570) => ? [X571] : ? [X572] : ? [X573] : (sum(X571,X572,X573) & (sumResult(X570,X571) & (sumAddend1(X570,X572) & sumAddend2(X570,X573)))))).
+fof(sos,axiom,! [X574] : ! [X575] : (sumResult(X574,X575) => (rRelSum(X574) & (ab(X575) | pd(X575))))).
+fof(sos,axiom,! [X576] : ! [X577] : (sumAddend1(X576,X577) => (rRelSum(X576) & (ab(X577) | pd(X577))))).
+fof(sos,axiom,! [X578] : ! [X579] : (sumAddend2(X578,X579) => (rRelSum(X578) & (ab(X579) | pd(X579))))).
+fof(sos,axiom,! [X580] : ! [X581] : ! [X582] : ((sumResult(X580,X581) & sumResult(X580,X582)) => X581 = X582)).
+fof(sos,axiom,! [X583] : ! [X584] : ! [X585] : ((sumAddend1(X583,X584) & sumAddend1(X583,X585)) => X584 = X585)).
+fof(sos,axiom,! [X586] : ! [X587] : ! [X588] : ((sumAddend2(X586,X587) & sumAddend2(X586,X588)) => X587 = X588)).
+fof(sos,axiom,! [X589] : (rRelSumAB(X589) => rRelSum(X589))).
+fof(sos,axiom,! [X590] : (rRelSumPD(X590) => rRelSum(X590))).
+fof(sos,axiom,! [X591] : ! [X592] : ((rRelSumAB(X591) & sumResult(X591,X592)) => ab(X592))).
+fof(sos,axiom,! [X593] : ! [X594] : ((rRelSumAB(X593) & sumAddend1(X593,X594)) => ab(X594))).
+fof(sos,axiom,! [X595] : ! [X596] : ((rRelSumAB(X595) & sumAddend2(X595,X596)) => ab(X596))).
+fof(sos,axiom,! [X597] : ! [X598] : ((rRelSumPD(X597) & sumResult(X597,X598)) => pd(X598))).
+fof(sos,axiom,! [X599] : ! [X600] : ((rRelSumPD(X599) & sumAddend1(X599,X600)) => pd(X600))).
+fof(sos,axiom,! [X601] : ! [X602] : ((rRelSumPD(X601) & sumAddend2(X601,X602)) => pd(X602))).
+fof(sos, axiom,! [X603] : ! [X604] : (hasArgument(X603,X604) <=>
+(rRelTime(X603,X604) | constantSumAddend1(X603,X604) | constantSumAddend2(X603,X604) | constantSumResult(X603,X604) |
+tempPart(X603,X604) | tempWhole(X603,X604) | sumAddend1(X603,X604) | sumAddend2(X603,X604) | sumResult(X603,X604) | tempAtomicPart(X603,X604) | tempAtomicWhole(X603,X604) |
+tempConstitutionConstituent(X603,X604) | tempConstitutionConstituted(X603,X604) | tempOverlapArg1(X603,X604) | tempOverlapArg2(X603,X604)
+| tempParticipationParticipant(X603,X604) | tempParticipationPerdurant(X603,X604) | tempQualeQuality(X603,X604) | tempQualeRegion(X603,X604)
+| tempSumAddend1(X603,X604) | tempSumAddend2(X603,X604) | tempSumResult(X603,X604)))).
+
+
+%Theorems (axioms of DOLCEnaryRel_OWL)
+
+
+%fof(goals,conjecture,! [X3] : ! [X4] : (rRelTime(X3,X4) => reifiedTemporalisedRelationship(X3))). %[PROVED]
+%fof(goals,conjecture,! [X5] : ! [X6] : ! [X7] : ((rRelTime(X5,X6) & rRelTime(X5,X7)) => X6 = X7)). %[PROVED]
+%fof(goals,conjecture,! [X8] : (reifiedTemporalisedRelationship(X8) => thing(X8))). %[PROVED]
+%fof(goals,conjecture,! [X9] : (reifiedTemporalisedRelationship(X9) => reifiedRelationship(X9))). %[PROVED]
+%fof(goals,conjecture,! [X10] : (reifiedRelationship(X10) => thing(X10))). %[PROVED]
+%fof(goals,conjecture,! [X11] : ! [X12] : (rRelTime(X11,X12) => thing(X11))). %[PROVED]
+%fof(goals,conjecture,! [X13] : ! [X14] : (rRelTime(X13,X14) => thing(X14))). %[PROVED]
+%fof(goals,conjecture,! [X15] : ! [X16] : (rRelTime(X15,X16) => t(X16))). %[PROVED]
+%fof(goals,conjecture,! [X17] : (reifiedTemporalisedRelationship(X17) => ? [X18] : (rRelTime(X17,X18) & t(X18)))). %[PROVED]
+%fof(goals,conjecture,! [X19] : ! [X20] : (tempAtomicPart(X19,X20) => rRelTempAtomicPart(X19))). %[PROVED]
+%fof(goals,conjecture,! [X21] : ! [X22] : ! [X23] : ((tempAtomicPart(X21,X22) & tempAtomicPart(X21,X23)) => X22 = X23)). %[PROVED]
+%fof(goals,conjecture,! [X24] : (rRelTempAtomicPart(X24) => reifiedTemporalisedRelationship(X24))). %[PROVED]
+%fof(goals,conjecture,! [X25] : (rRelTempAtomicPart(X25) => ? [X26] : (tempAtomicWhole(X25,X26) & ed(X26)))). %[PROVED]
+%fof(goals,conjecture,! [X27] : (rRelTempAtomicPart(X27) => ? [X28] : (tempAtomicPart(X27,X28) & ed(X28)))). %[PROVED]
+%fof(goals,conjecture,! [X29] : ! [X30] : (tempAtomicWhole(X29,X30) => thing(X29))). %[PROVED]
+%fof(goals,conjecture,! [X31] : ! [X32] : (tempAtomicWhole(X31,X32) => thing(X32))). %[PROVED]
+%fof(goals,conjecture,! [X33] : ! [X34] : (tempAtomicPart(X33,X34) => thing(X33))). %[PROVED]
+%fof(goals,conjecture,! [X35] : ! [X36] : (tempAtomicPart(X35,X36) => thing(X36))). %[PROVED]
+%fof(goals,conjecture,! [X37] : ! [X38] : (tempAtomicPart(X37,X38) => ed(X38))). %[PROVED]
+%fof(goals,conjecture,! [X39] : ! [X40] : (tempAtomicWhole(X39,X40) => rRelTempAtomicPart(X39))). %[PROVED]
+%fof(goals,conjecture,! [X41] : ! [X42] : (tempWhole(X41,X42) => thing(X41))). %[PROVED]
+%fof(goals,conjecture,! [X43] : ! [X44] : (tempWhole(X43,X44) => thing(X44))). %[PROVED]
+%fof(goals,conjecture,! [X45] : (rRelTempAtomicPart(X45) => thing(X45))). %[PROVED]
+%fof(goals,conjecture,! [X46] : ! [X47] : (? [X48] : (tempAtomicPart(X48,X46) & rRelTime(X48,X47)) => tat(X46,X47))). %[PROVED]
+%fof(goals,conjecture,! [X49] : ! [X50] : (tempWhole(X49,X50) => (rRelTempPart(X49) | rRelTempProperPart(X49)))). %[PROVED]
+%fof(goals,conjecture,! [X51] : (rRelTempPart(X51) => ? [X52] : (tempPart(X51,X52) & ed(X52)))). %[PROVED]
+%fof(goals,conjecture,! [X53] : (rRelTempPart(X53) => ? [X54] : (tempWhole(X53,X54) & ed(X54)))). %[PROVED]
+%fof(goals,conjecture,! [X55] : ! [X56] : (tempPart(X55,X56) => thing(X55))). %[PROVED]
+%fof(goals,conjecture,! [X57] : ! [X58] : (tempPart(X57,X58) => thing(X58))). %[PROVED]
+%fof(goals,conjecture,! [X59] : ! [X60] : (tempPart(X59,X60) => ed(X60))). %[PROVED]
+%fof(goals,conjecture,! [X61] : ! [X62] : ! [X63] : ((tempPart(X61,X62) & tempPart(X61,X63)) => X62 = X63)). %[PROVED]
+%fof(goals,conjecture,! [X64] : ! [X65] : (tempPart(X64,X65) => (rRelTempPart(X64) | rRelTempProperPart(X64)))). %[PROVED]
+%fof(goals,conjecture,! [X66] : (rRelTempPart(X66) => reifiedTemporalisedRelationship(X66))). %[PROVED]
+%fof(goals,conjecture,! [X67] : ! [X68] : (? [X69] : (tempPart(X69,X67) & rRelTime(X69,X68)) => pre(X67,X68))). %[PROVED]
+%fof(goals,conjecture,! [X70] : ! [X71] : (? [X72] : (tempWhole(X72,X70) & rRelTime(X72,X71)) => pre(X70,X71))). %[PROVED]
+%fof(goals,conjecture,! [X73] : ! [X74] : ! [X75] : ((tempAtomicWhole(X73,X74) & tempAtomicWhole(X73,X75)) => X74 = X75)). %[PROVED]
+%fof(goals,conjecture,! [X76] : ! [X77] : ! [X78] : ((tempWhole(X76,X77) & tempWhole(X76,X78)) => X77 = X78)). %[PROVED]
+%fof(goals,conjecture,! [X79] : (rRelTempPart(X79) => thing(X79))). %[PROVED]
+%fof(goals,conjecture,! [X80] : (rRelTempProperPart(X80) => ? [X81] : (tempPart(X80,X81) & ed(X81)))). %[PROVED]
+%fof(goals,conjecture,! [X82] : (rRelTempProperPart(X82) => reifiedTemporalisedRelationship(X82))). %[PROVED]
+%fof(goals,conjecture,! [X83] : (rRelTempProperPart(X83) => thing(X83))). %[PROVED]
+%fof(goals,conjecture,! [X84] : (rRelTempProperPart(X84) => ? [X85] : (tempWhole(X84,X85) & ed(X85)))). %[PROVED]
+%fof(goals,conjecture,! [X86] : ! [X87] : (? [X88] : (tempOverlapArg2(X88,X86) & rRelTime(X88,X87)) => pre(X86,X87))). %[PROVED]
+%fof(goals,conjecture,! [X89] : ! [X90] : (? [X91] : (tempOverlapArg1(X91,X89) & rRelTime(X91,X90)) => pre(X89,X90))). %[PROVED]
+%fof(goals,conjecture,! [X92] : (rRelTempOverlap(X92) => ? [X93] : (tempOverlapArg2(X92,X93) & ed(X93)))). %[PROVED]
+%fof(goals,conjecture,! [X94] : ! [X95] : (tempOverlapArg2(X94,X95) => thing(X94))). %[PROVED]
+%fof(goals,conjecture,! [X96] : ! [X97] : (tempOverlapArg2(X96,X97) => thing(X97))). %[PROVED]
+%fof(goals,conjecture,! [X98] : ! [X99] : (tempOverlapArg1(X98,X99) => rRelTempOverlap(X98))). %[PROVED]
+%fof(goals,conjecture,! [X100] : ! [X101] : (tempOverlapArg1(X100,X101) => thing(X100))). %[PROVED]
+%fof(goals,conjecture,! [X102] : ! [X103] : (tempOverlapArg1(X102,X103) => thing(X103))). %[PROVED]
+%fof(goals,conjecture,! [X104] : ! [X105] : (tempOverlapArg1(X104,X105) => ed(X105))). %[PROVED]
+%fof(goals,conjecture,! [X106] : (rRelTempOverlap(X106) => thing(X106))). %[PROVED]
+%fof(goals,conjecture,! [X107] : (rRelTempOverlap(X107) => ? [X108] : (tempOverlapArg1(X107,X108) & ed(X108)))). %[PROVED]
+%fof(goals,conjecture,! [X109] : (rRelTempOverlap(X109) => reifiedTemporalisedRelationship(X109))). %[PROVED]
+%fof(goals,conjecture,! [X110] : ! [X111] : ! [X112] : ((tempOverlapArg1(X110,X111) & tempOverlapArg1(X110,X112)) => X111 = X112)). %[PROVED]
+%fof(goals,conjecture,! [X113] : ! [X114] : (tempOverlapArg2(X113,X114) => rRelTempOverlap(X113))). %[PROVED]
+%fof(goals,conjecture,! [X115] : ! [X116] : (tempOverlapArg2(X115,X116) => ed(X116))). %[PROVED]
+%fof(goals,conjecture,! [X117] : ! [X118] : ! [X119] : ((tempOverlapArg2(X117,X118) & tempOverlapArg2(X117,X119)) => X118 = X119)). %[PROVED]
+%fof(goals,conjecture,! [X120] : ! [X121] : ! [X122] : ((tempOverlapArg1(X120,X121) & tempOverlapArg1(X120,X122)) => X121 = X122)). %[PROVED]
+%fof(goals,conjecture,! [X123] : ! [X124] : (tempSumResult(X123,X124) => ed(X124))). %[PROVED]
+%fof(goals,conjecture,! [X125] : (rRelTempSum(X125) => ? [X126] : (tempSumAddend1(X125,X126) & ed(X126)))). %[PROVED]
+%fof(goals,conjecture,! [X127] : ! [X128] : (tempSumAddend2(X127,X128) => thing(X127))). %[PROVED]
+%fof(goals,conjecture,! [X129] : ! [X130] : (tempSumAddend2(X129,X130) => thing(X130))). %[PROVED]
+%fof(goals,conjecture,! [X131] : ! [X132] : (tempSumResult(X131,X132) => thing(X131))). %[PROVED]
+%fof(goals,conjecture,! [X133] : ! [X134] : (tempSumResult(X133,X134) => thing(X134))). %[PROVED]
+%fof(goals,conjecture,! [X135] : ! [X136] : ! [X137] : ((tempSumResult(X135,X136) & tempSumResult(X135,X137)) => X136 = X137)). %[PROVED]
+%fof(goals,conjecture,! [X138] : (rRelTempSum(X138) => ? [X139] : (tempSumResult(X138,X139) & ed(X139)))). %[PROVED]
+%fof(goals,conjecture,! [X140] : (rRelTempSum(X140) => thing(X140))). %[PROVED]
+%fof(goals,conjecture,! [X141] : ! [X142] : (tempSumAddend1(X141,X142) => thing(X141))). %[PROVED]
+%fof(goals,conjecture,! [X143] : ! [X144] : (tempSumAddend1(X143,X144) => thing(X144))). %[PROVED]
+%fof(goals,conjecture,! [X145] : ! [X146] : (tempSumAddend2(X145,X146) => ed(X146))). %[PROVED]
+%fof(goals,conjecture,! [X147] : ! [X148] : (tempSumAddend1(X147,X148) => rRelTempSum(X147))). %[PROVED]
+%fof(goals,conjecture,! [X149] : (rRelTempSum(X149) => ? [X150] : (tempSumAddend2(X149,X150) & ed(X150)))). %[PROVED]
+%fof(goals,conjecture,! [X151] : ! [X152] : (tempSumResult(X151,X152) => rRelTempSum(X151))). %[PROVED]
+%fof(goals,conjecture,! [X153] : ! [X154] : (tempSumAddend1(X153,X154) => ed(X154))). %[PROVED]
+%fof(goals,conjecture,! [X155] : ! [X156] : ! [X157] : ((tempSumAddend1(X155,X156) & tempSumAddend1(X155,X157)) => X156 = X157)). %[PROVED]
+%fof(goals,conjecture,! [X158] : ! [X159] : ! [X160] : ((tempSumAddend2(X158,X159) & tempSumAddend2(X158,X160)) => X159 = X160)). %[PROVED]
+%fof(goals,conjecture,! [X161] : (rRelTempSum(X161) => reifiedTemporalisedRelationship(X161))). %[PROVED]
+%fof(goals,conjecture,! [X162] : ! [X163] : (tempSumAddend2(X162,X163) => rRelTempSum(X162))). %[PROVED]
+%fof(goals,conjecture,! [X164] : ! [X165] : (tempParticipationPerdurant(X164,X165) => thing(X164))). %[PROVED]
+%fof(goals,conjecture,! [X166] : ! [X167] : (tempParticipationPerdurant(X166,X167) => thing(X167))). %[PROVED]
+%fof(goals,conjecture,! [X168] : ! [X169] : (tempParticipationParticipant(X168,X169) => ed(X169))). %[PROVED]
+%fof(goals,conjecture,! [X170] : ! [X171] : ! [X172] : ((tempParticipationParticipant(X170,X171) & tempParticipationParticipant(X170,X172)) => X171 = X172)). %[PROVED]
+%fof(goals,conjecture,! [X173] : ! [X174] : (tempParticipationPerdurant(X173,X174) => rRelTempParticipation(X173))). %[PROVED]
+%fof(goals,conjecture,! [X175] : ! [X176] : (tempParticipationParticipant(X175,X176) => rRelTempParticipation(X175))). %[PROVED]
+%fof(goals,conjecture,! [X177] : ! [X178] : (? [X179] : (tempParticipationPerdurant(X179,X177) & rRelTime(X179,X178)) => pre(X177,X178))). %[PROVED]
+%fof(goals,conjecture,! [X180] : ! [X181] : (? [X182] : (tempParticipationParticipant(X182,X180) & rRelTime(X182,X181)) => pre(X180,X181))). %[PROVED]
+%fof(goals,conjecture,! [X183] : ! [X184] : (tempParticipationPerdurant(X183,X184) => pd(X184))). %[PROVED]
+%fof(goals,conjecture,! [X185] : (rRelTempParticipation(X185) => ? [X186] : (tempParticipationPerdurant(X185,X186) & pd(X186)))). %[PROVED]
+%fof(goals,conjecture,! [X187] : ! [X188] : ! [X189] : ((tempParticipationPerdurant(X187,X188) & tempParticipationPerdurant(X187,X189)) => X188 = X189)). %[PROVED]
+%fof(goals,conjecture,! [X190] : ! [X191] : (tempParticipationParticipant(X190,X191) => thing(X190))). %[PROVED]
+%fof(goals,conjecture,! [X192] : ! [X193] : (tempParticipationParticipant(X192,X193) => thing(X193))). %[PROVED]
+%fof(goals,conjecture,! [X194] : (rRelTempParticipation(X194) => reifiedTemporalisedRelationship(X194))). %[PROVED]
+%fof(goals,conjecture,! [X195] : (rRelTempParticipation(X195) => ? [X196] : (tempParticipationParticipant(X195,X196) & ed(X196)))). %[PROVED]
+%fof(goals,conjecture,! [X197] : (ed(X197) => ? [X198] : (tempParticipationParticipant(X198,X197) & rRelTempParticipation(X198)))). %[PROVED]
+%fof(goals,conjecture,! [X199] : (rRelTempParticipation(X199) => thing(X199))). %[PROVED]
+%fof(goals,conjecture,! [X200] : (rRelTempParticipation(X200) => thing(X200))). %[PROVED]
+%fof(goals,conjecture,! [X201] : (rRelTempConstitutionNPED(X201) => ? [X202] : (tempConstitutionConstituent(X201,X202) & nped(X202)))). %[PROVED]
+%fof(goals,conjecture,! [X203] : (rRelTempConstitutionPED(X203) => ! [X204] : (tempConstitutionConstituent(X203,X204) => ped(X204)))). %[PROVED]
+%fof(goals,conjecture,! [X205] : (rRelTempConstitutionNPED(X205) => rRelTempConstitution(X205))). %[PROVED]
+%fof(goals,conjecture,! [X206] : (rRelTempConstitutionPED(X206) => ! [X207] : (tempConstitutionConstituted(X206,X207) => ped(X207)))). %[PROVED]
+%fof(goals,conjecture,! [X208] : (rRelTempConstitution(X208) => ? [X209] : (tempConstitutionConstituent(X208,X209) & (nped(X209) | (pd(X209) | ped(X209)))))). %[PROVED]
+%fof(goals,conjecture,! [X210] : (rRelTempConstitution(X210) => ? [X211] : (tempConstitutionConstituted(X210,X211) & (nped(X211) | (pd(X211) | ped(X211)))))). %[PROVED]
+%fof(goals,conjecture,! [X212] : (rRelTempConstitutionPD(X212) => ! [X213] : (tempConstitutionConstituted(X212,X213) => pd(X213)))). %[PROVED]
+%fof(goals,conjecture,! [X214] : (rRelTempConstitutionPD(X214) => rRelTempConstitution(X214))). %[PROVED]
+%fof(goals,conjecture,! [X215] : ! [X216] : ! [X217] : ((tempConstitutionConstituent(X215,X216) & tempConstitutionConstituent(X215,X217)) => X216 = X217)). %[PROVED]
+%fof(goals,conjecture,! [X218] : ! [X219] : (tempConstitutionConstituted(X218,X219) => thing(X218))). %[PROVED]
+%fof(goals,conjecture,! [X220] : ! [X221] : (tempConstitutionConstituted(X220,X221) => thing(X221))). %[PROVED]
+%fof(goals,conjecture,! [X222] : (rRelTempConstitutionPD(X222) => thing(X222))). %[PROVED]
+%fof(goals,conjecture,! [X223] : (rRelTempConstitutionPED(X223) => ? [X224] : (tempConstitutionConstituent(X223,X224) & ped(X224)))). %[PROVED]
+%fof(goals,conjecture,! [X225] : (rRelTempConstitution(X225) => thing(X225))). %[PROVED]
+%fof(goals,conjecture,! [X226] : (rRelTempConstitutionNPED(X226) => ! [X227] : (tempConstitutionConstituent(X226,X227) => nped(X227)))). %[PROVED]
+%fof(goals,conjecture,! [X228] : (rRelTempConstitutionPD(X228) => ? [X229] : (tempConstitutionConstituted(X228,X229) & pd(X229)))). %[PROVED]
+%fof(goals,conjecture,! [X230] : (rRelTempConstitutionPD(X230) => ? [X231] : (tempConstitutionConstituent(X230,X231) & pd(X231)))). %[PROVED]
+%fof(goals,conjecture,! [X232] : (rRelTempConstitutionPD(X232) => ! [X233] : (tempConstitutionConstituent(X232,X233) => pd(X233)))). %[PROVED]
+%fof(goals,conjecture,! [X234] : (rRelTempConstitutionNPED(X234) => ! [X235] : (tempConstitutionConstituted(X234,X235) => nped(X235)))). %[PROVED]
+%fof(goals,conjecture,! [X236] : ! [X237] : (tempConstitutionConstituent(X236,X237) => rRelTempConstitution(X236))). %[PROVED]
+%fof(goals,conjecture,! [X238] : (rRelTempConstitutionPED(X238) => thing(X238))). %[PROVED]
+%fof(goals,conjecture,! [X239] : ! [X240] : (tempConstitutionConstituted(X239,X240) => rRelTempConstitution(X239))). %[PROVED]
+%fof(goals,conjecture,! [X241] : (rRelTempConstitutionNPED(X241) => ? [X242] : (tempConstitutionConstituted(X241,X242) & nped(X242)))). %[PROVED]
+%fof(goals,conjecture,! [X243] : (rRelTempConstitutionPED(X243) => rRelTempConstitution(X243))). %[PROVED]
+%fof(goals,conjecture,! [X244] : ! [X245] : ! [X246] : ((tempConstitutionConstituted(X244,X245) & tempConstitutionConstituted(X244,X246)) => X245 = X246)). %[PROVED]
+%fof(goals,conjecture,! [X247] : ! [X248] : (? [X249] : (tempConstitutionConstituent(X249,X247) & rRelTime(X249,X248)) => pre(X247,X248))). %[PROVED]
+%fof(goals,conjecture,! [X250] : (rRelTempConstitutionPED(X250) => ? [X251] : (tempConstitutionConstituted(X250,X251) & ped(X251)))). %[PROVED]
+%fof(goals,conjecture,! [X252] : (rRelTempConstitutionNPED(X252) => thing(X252))). %[PROVED]
+%fof(goals,conjecture,! [X253] : (rRelTempConstitutionNPED(X253) => thing(X253))). %[PROVED]
+%fof(goals,conjecture,! [X254] : ! [X255] : (tempConstitutionConstituted(X254,X255) => (nped(X255) | (pd(X255) | ped(X255))))). %[PROVED]
+%fof(goals,conjecture,! [X256] : ! [X257] : (tempConstitutionConstituent(X256,X257) => thing(X256))). %[PROVED]
+%fof(goals,conjecture,! [X258] : ! [X259] : (tempConstitutionConstituent(X258,X259) => thing(X259))). %[PROVED]
+%fof(goals,conjecture,! [X260] : (rRelTempConstitution(X260) => reifiedTemporalisedRelationship(X260))). %[PROVED]
+%fof(goals,conjecture,! [X261] : ! [X262] : (tempConstitutionConstituent(X261,X262) => (nped(X262) | (pd(X262) | ped(X262))))). %[PROVED]
+%fof(goals,conjecture,! [X263] : ! [X264] : (? [X265] : (tempConstitutionConstituted(X265,X263) & rRelTime(X265,X264)) => pre(X263,X264))). %[PROVED]
+%fof(goals,conjecture,! [X266] : ! [X267] : (tempQualeQuality(X266,X267) => rRelTempQuale(X266))). %[PROVED]
+%fof(goals,conjecture,! [X268] : (rRelTempQualeARAQ(X268) => ? [X269] : (tempQualeQuality(X268,X269) & aq(X269)))). %[PROVED]
+%fof(goals,conjecture,! [X270] : (rRelTempQualeARAQ(X270) => rRelTempQuale(X270))). %[PROVED]
+%fof(goals,conjecture,! [X271] : (rRelTempQuale(X271) => thing(X271))). %[PROVED]
+%fof(goals,conjecture,! [X272] : (rRelTempQuale(X272) => ? [X273] : (tempQualeRegion(X272,X273) & (ar(X273) | pr(X273))))). %[PROVED]
+%fof(goals,conjecture,! [X274] : (rRelTempQualeARAQ(X274) => ? [X275] : (tempQualeRegion(X274,X275) & ar(X275)))). %[PROVED]
+%fof(goals,conjecture,! [X276] : ! [X277] : (tempQualeQuality(X276,X277) => thing(X276))). %[PROVED]
+%fof(goals,conjecture,! [X278] : ! [X279] : (tempQualeQuality(X278,X279) => thing(X279))). %[PROVED]
+%fof(goals,conjecture,! [X280] : ! [X281] : (? [X282] : (tempQualeQuality(X282,X280) & rRelTime(X282,X281)) => pre(X280,X281))). %[PROVED]
+%fof(goals,conjecture,! [X283] : ! [X284] : (tempQualeQuality(X283,X284) => (aq(X284) | pq(X284)))). %[PROVED]
+%fof(goals,conjecture,! [X285] : ! [X286] : (tempQualeRegion(X285,X286) => thing(X285))). %[PROVED]
+%fof(goals,conjecture,! [X287] : ! [X288] : (tempQualeRegion(X287,X288) => thing(X288))). %[PROVED]
+%fof(goals,conjecture,! [X289] : (rRelTempQuale(X289) => ? [X290] : (tempQualeQuality(X289,X290) & (aq(X290) | pq(X290))))). %[PROVED]
+%fof(goals,conjecture,! [X291] : ! [X292] : (tempQualeRegion(X291,X292) => rRelTempQuale(X291))). %[PROVED]
+%fof(goals,conjecture,! [X293] : (rRelTempQualePRPQ(X293) => ! [X294] : (tempQualeQuality(X293,X294) => pq(X294)))). %[PROVED]
+%fof(goals,conjecture,! [X295] : (rRelTempQuale(X295) => reifiedTemporalisedRelationship(X295))). %[PROVED]
+%fof(goals,conjecture,! [X296] : (rRelTempQualePRPQ(X296) => ! [X297] : (tempQualeRegion(X296,X297) => pr(X297)))). %[PROVED]
+%fof(goals,conjecture,! [X298] : ! [X299] : ! [X300] : ((tempQualeRegion(X298,X299) & tempQualeRegion(X298,X300)) => X299 = X300)). %[PROVED]
+%fof(goals,conjecture,! [X301] : (rRelTempQualePRPQ(X301) => ? [X302] : (tempQualeQuality(X301,X302) & pq(X302)))). %[PROVED]
+%fof(goals,conjecture,! [X303] : (rRelTempQualePRPQ(X303) => thing(X303))). %[PROVED]
+%fof(goals,conjecture,! [X304] : ! [X305] : ! [X306] : ((tempQualeQuality(X304,X305) & tempQualeQuality(X304,X306)) => X305 = X306)). %[PROVED]
+%fof(goals,conjecture,! [X307] : (rRelTempQualePRPQ(X307) => rRelTempQuale(X307))). %[PROVED]
+%fof(goals,conjecture,! [X308] : (rRelTempQualeARAQ(X308) => ! [X309] : (tempQualeQuality(X308,X309) => aq(X309)))). %[PROVED]
+%fof(goals,conjecture,! [X310] : (rRelTempQualeARAQ(X310) => thing(X310))). %[PROVED]
+%fof(goals,conjecture,! [X311] : (rRelTempQualeARAQ(X311) => ! [X312] : (tempQualeRegion(X311,X312) => ar(X312)))). %[PROVED]
+%fof(goals,conjecture,! [X313] : ! [X314] : (tempQualeRegion(X313,X314) => (ar(X314) | pr(X314)))). %[PROVED]
+%fof(goals,conjecture,! [X315] : (rRelTempQualePRPQ(X315) => ? [X316] : (tempQualeRegion(X315,X316) & pr(X316)))). %[PROVED]
+%fof(goals,conjecture,! [X317] : ! [X318] : (constantSumResult(X317,X318) => ed(X318))). %[PROVED]
+%fof(goals,conjecture,! [X319] : (rRelConstantSum(X319) => thing(X319))). %[PROVED]
+%fof(goals,conjecture,! [X320] : ! [X321] : (constantSumAddend1(X320,X321) => thing(X320))). %[PROVED]
+%fof(goals,conjecture,! [X322] : ! [X323] : (constantSumAddend1(X322,X323) => thing(X323))). %[PROVED]
+%fof(goals,conjecture,! [X324] : (rRelConstantSum(X324) => ? [X325] : (constantSumAddend2(X324,X325) & ed(X325)))). %[PROVED]
+%fof(goals,conjecture,! [X326] : ! [X327] : (constantSumAddend2(X326,X327) => ed(X327))). %[PROVED]
+%fof(goals,conjecture,! [X328] : ! [X329] : (constantSumAddend2(X328,X329) => rRelConstantSum(X328))). %[PROVED]
+%fof(goals,conjecture,! [X330] : ! [X331] : (constantSumAddend1(X330,X331) => ? [X332] : (pre(X331,X332) & t(X332)))). %[PROVED]
+%fof(goals,conjecture,! [X333] : ! [X334] : (constantSumAddend2(X333,X334) => thing(X333))). %[PROVED]
+%fof(goals,conjecture,! [X335] : ! [X336] : (constantSumAddend2(X335,X336) => thing(X336))). %[PROVED]
+%fof(goals,conjecture,! [X337] : ! [X338] : (constantSumAddend1(X337,X338) => rRelConstantSum(X337))). %[PROVED]
+%fof(goals,conjecture,! [X339] : ! [X340] : ! [X341] : ((constantSumAddend2(X339,X340) & constantSumAddend2(X339,X341)) => X340 = X341)). %[PROVED]
+%fof(goals,conjecture,! [X342] : (rRelConstantSum(X342) => ? [X343] : (constantSumAddend1(X342,X343) & ed(X343)))). %[PROVED]
+%fof(goals,conjecture,! [X344] : ! [X345] : (constantSumAddend2(X344,X345) => ? [X346] : (pre(X345,X346) & t(X346)))). %[PROVED]
+%fof(goals,conjecture,! [X347] : ! [X348] : (constantSumResult(X347,X348) => rRelConstantSum(X347))). %[PROVED]
+%fof(goals,conjecture,! [X349] : (rRelConstantSum(X349) => ? [X350] : (constantSumResult(X349,X350) & ed(X350)))). %[PROVED]
+%fof(goals,conjecture,! [X351] : ! [X352] : (constantSumResult(X351,X352) => thing(X351))). %[PROVED]
+%fof(goals,conjecture,! [X353] : ! [X354] : (constantSumResult(X353,X354) => thing(X354))). %[PROVED]
+%fof(goals,conjecture,! [X355] : ! [X356] : ! [X357] : ((constantSumAddend1(X355,X356) & constantSumAddend1(X355,X357)) => X356 = X357)). %[PROVED]
+%fof(goals,conjecture,! [X358] : (rRelConstantSum(X358) => reifiedRelationship(X358))). %[PROVED]
+%fof(goals,conjecture,! [X359] : ! [X360] : (constantSumAddend1(X359,X360) => ed(X360))). %[PROVED]
+%fof(goals,conjecture,! [X361] : ! [X362] : ! [X363] : ((constantSumResult(X361,X362) & constantSumResult(X361,X363)) => X362 = X363)). %[PROVED]
+%fof(goals,conjecture,! [X364] : ! [X365] : (constantSumResult(X364,X365) => ? [X366] : (pre(X365,X366) & t(X366)))). %[PROVED]
+%fof(goals,conjecture,! [X367] : (rRelSumPD(X367) => ! [X368] : (sumAddend1(X367,X368) => pd(X368)))). %[PROVED]
+%fof(goals,conjecture,! [X369] : (rRelSumPD(X369) => ! [X370] : (sumAddend1(X369,X370) => pd(X370)))). %[PROVED]
+%fof(goals,conjecture,! [X371] : (rRelSumPD(X371) => ! [X372] : (sumResult(X371,X372) => pd(X372)))). %[PROVED]
+%fof(goals,conjecture,! [X373] : ! [X374] : (sumAddend1(X373,X374) => (ab(X374) | pd(X374)))). %[PROVED]
+%fof(goals,conjecture,! [X375] : (rRelSumAB(X375) => ! [X376] : (sumAddend2(X375,X376) => ab(X376)))). %[PROVED]
+%fof(goals,conjecture,! [X377] : (rRelSumAB(X377) => ? [X378] : (sumAddend1(X377,X378) & ab(X378)))). %[PROVED]
+%fof(goals,conjecture,! [X379] : ! [X380] : (sumAddend2(X379,X380) => rRelSum(X379))). %[PROVED]
+%fof(goals,conjecture,! [X381] : (rRelSum(X381) => ? [X382] : (sumAddend1(X381,X382) & (ab(X382) | pd(X382))))). %[PROVED]
+%fof(goals,conjecture,! [X383] : (rRelSum(X383) => reifiedRelationship(X383))). %[PROVED]
+%fof(goals,conjecture,! [X384] : ! [X385] : ! [X386] : ((sumAddend1(X384,X385) & sumAddend1(X384,X386)) => X385 = X386)). %[PROVED]
+%fof(goals,conjecture,! [X387] : ! [X388] : ! [X389] : ((sumAddend2(X387,X388) & sumAddend2(X387,X389)) => X388 = X389)). %[PROVED]
+%fof(goals,conjecture,! [X390] : (rRelSumPD(X390) => rRelSum(X390))). %[PROVED]
+%fof(goals,conjecture,! [X391] : (rRelSum(X391) => ? [X392] : (sumResult(X391,X392) & (ab(X392) | pd(X392))))). %[PROVED]
+%fof(goals,conjecture,! [X393] : (rRelSum(X393) => ? [X394] : (sumAddend2(X393,X394) & (ab(X394) | pd(X394))))). %[PROVED]
+%fof(goals,conjecture,! [X395] : ! [X396] : (sumAddend2(X395,X396) => thing(X395))). %[PROVED]
+%fof(goals,conjecture,! [X397] : ! [X398] : (sumAddend2(X397,X398) => thing(X398))). %[PROVED]
+%fof(goals,conjecture,! [X399] : (rRelSum(X399) => thing(X399))). %[PROVED]
+%fof(goals,conjecture,! [X400] : (rRelSumPD(X400) => thing(X400))). %[PROVED]
+%fof(goals,conjecture,! [X401] : (rRelSumPD(X401) => ? [X402] : (sumAddend2(X401,X402) & pd(X402)))). %[PROVED]
+%fof(goals,conjecture,! [X403] : (rRelSumAB(X403) => ? [X404] : (sumAddend2(X403,X404) & ab(X404)))). %[PROVED]
+%fof(goals,conjecture,! [X405] : (rRelSumPD(X405) => ? [X406] : (sumResult(X405,X406) & pd(X406)))). %[PROVED]
+%fof(goals,conjecture,! [X407] : (rRelSumAB(X407) => ! [X408] : (sumAddend1(X407,X408) => ab(X408)))). %[PROVED]
+%fof(goals,conjecture,! [X409] : (rRelSumAB(X409) => ! [X410] : (sumResult(X409,X410) => ab(X410)))). %[PROVED]
+%fof(goals,conjecture,! [X413] : (rRelSumAB(X413) => thing(X413))). %[PROVED]
+%fof(goals,conjecture,! [X414] : (rRelSumPD(X414) => ! [X415] : (sumAddend2(X414,X415) => pd(X415)))). %[PROVED]
+%fof(goals,conjecture,! [X416] : (rRelSumPD(X416) => ? [X417] : (sumAddend1(X416,X417) & pd(X417)))). %[PROVED]
+%fof(goals,conjecture,! [X418] : ! [X419] : (sumAddend1(X418,X419) => rRelSum(X418))). %[PROVED]
+%fof(goals,conjecture,! [X420] : ! [X421] : (sumAddend2(X420,X421) => (ab(X421) | pd(X421)))). %[PROVED]
+%fof(goals,conjecture,! [X422] : (rRelSumAB(X422) => rRelSum(X422))). %[PROVED]
+%fof(goals,conjecture,! [X423] : (rRelSumAB(X423) => ? [X424] : (sumResult(X423,X424) & ab(X424)))). %[PROVED]
+%fof(goals,conjecture,! [X425] : ! [X426] : (? [X427] : (sumAddend1(X427,X425) & sumResult(X427,X426)) => p(X425,X426))). %[PROVED]
+%fof(goals,conjecture,! [X428] : ! [X429] : (? [X430] : (sumAddend2(X430,X428) & sumResult(X430,X429)) => p(X428,X429))). %[PROVED, adding strong supplementation of "p"]
+%fof(goals,conjecture,! [X431] : ! [X432] : (sumAddend1(X431,X432) => thing(X431))). %[PROVED]
+%fof(goals,conjecture,! [X433] : ! [X434] : (sumAddend1(X433,X434) => thing(X434))). %[PROVED]
+%fof(goals,conjecture,! [X435] : ! [X436] : (sumResult(X435,X436) => thing(X435))). %[PROVED]
+%fof(goals,conjecture,! [X437] : ! [X438] : (sumResult(X437,X438) => thing(X438))). %[PROVED]
+%fof(goals,conjecture,! [X439] : ! [X440] : (sumResult(X439,X440) => (ab(X440) | pd(X440)))). %[PROVED]
+%fof(goals,conjecture,! [X441] : ! [X442] : ! [X443] : ((sumResult(X441,X442) & sumResult(X441,X443)) => X442 = X443)). %[PROVED]
+%fof(goals,conjecture,! [X444] : ! [X445] : (sd(X444,X445) => thing(X444))). %[PROVED]
+%fof(goals,conjecture,! [X446] : ! [X447] : (sd(X446,X447) => thing(X447))). %[PROVED]
+%fof(goals,conjecture,! [X448] : ! [X449] : ! [X450] : ((p(X448,X449) & p(X449,X450)) => p(X448,X450))). %[PROVED]
+%fof(goals,conjecture,! [X451] : ! [X452] : (dqt(X451,X452) => thing(X451))). %[PROVED]
+%fof(goals,conjecture,! [X453] : ! [X454] : (dqt(X453,X454) => thing(X454))). %[PROVED]
+%fof(goals,conjecture,! [X455] : ! [X456] : (cpp(X455,X456) => thing(X455))). %[PROVED]
+%fof(goals,conjecture,! [X457] : ! [X458] : (cpp(X457,X458) => thing(X458))). %[PROVED]
+%fof(goals,conjecture,! [X459] : ! [X460] : (cov(X459,X460) => thing(X459))). %[PROVED]
+%fof(goals,conjecture,! [X461] : ! [X462] : (cov(X461,X462) => thing(X462))). %[PROVED]
+%fof(goals,conjecture,! [X463] : ! [X464] : (tat(X463,X464) => thing(X463))). %[PROVED]
+%fof(goals,conjecture,! [X465] : ! [X466] : (tat(X465,X466) => thing(X466))). %[PROVED]
+%fof(goals,conjecture,! [X467] : (ed(X467) => thing(X467))). %[PROVED]
+%fof(goals,conjecture,! [X468] : ! [X469] : ! [X470] : ((cp(X468,X469) & cp(X469,X470)) => cp(X468,X470))). %[PROVED]
+%fof(goals,conjecture,! [X471] : ! [X472] : (cov(X471,X472) => cov(X472,X471))). %[PROVED]
+%fof(goals,conjecture,! [X473] : ! [X474] : (pre(X473,X474) => thing(X473))). %[PROVED]
+%fof(goals,conjecture,! [X475] : ! [X476] : (pre(X475,X476) => thing(X476))). %[PROVED]
+%fof(goals,conjecture,! [X480] : ! [X481] : (cp(X480,X481) => thing(X480))).
+%fof(goals,conjecture,! [X482] : ! [X483] : (cp(X482,X483) => thing(X483))).
+%fof(goals,conjecture,! [X484] : ! [X485] : (tat(X484,X485) => t(X485))).
+%fof(goals,conjecture,! [X486] : ! [X487] : (tat(X486,X487) => ed(X486))).
+%fof(goals,conjecture,! [X488] : (pt(X488) => thing(X488))).
+%fof(goals,conjecture,! [X489] : ! [X490] : (p(X489,X490) => thing(X489))).
+%fof(goals,conjecture,! [X491] : (nped(X491) => ! [X492] : (cp(X492,X491) => nped(X492)))).
+%fof(goals,conjecture,! [X493] : (pd(X493) => p(X493,X493))).
+%fof(goals,conjecture, ! [X494] : ((rRelTempParticipation(X494) => (? [X495] : ? [X496] : ? [X497] : (hasArgument(X494,X495) & (hasArgument(X494,X496) & hasArgument(X494,X496) & ~ X495=X496 & ~ X496=X497 & ~ X495=X497)))))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelTempParticipation(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ((rRelTempPart(X494) => (? [X495] : ? [X496] : ? [X497] : (hasArgument(X494,X495) & (hasArgument(X494,X496) & hasArgument(X494,X496) & ~ X495=X496 & ~ X496=X497 & ~ X495=X497)))))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelTempPart(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ((rRelTempProperPart(X494) => (? [X495] : ? [X496] : ? [X497] : (hasArgument(X494,X495) & (hasArgument(X494,X496) & hasArgument(X494,X496) & ~ X495=X496 & ~ X496=X497 & ~ X495=X497)))))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelTempProperPart(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ((rRelTempAtomicPart(X494) => (? [X495] : ? [X496] : ? [X497] : (hasArgument(X494,X495) & (hasArgument(X494,X496) & hasArgument(X494,X496) & ~ X495=X496 & ~ X496=X497 & ~ X495=X497)))))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelTempAtomicPart(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelTempOverlap(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ((rRelTempConstitution(X494) => (? [X495] : ? [X496] : ? [X497] : (hasArgument(X494,X495) & (hasArgument(X494,X496) & hasArgument(X494,X496) & ~ X495=X496 & ~ X496=X497 & ~ X495=X497)))))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelTempConstitution(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ((rRelTempQuale(X494) => (? [X495] : ? [X496] : ? [X497] : (hasArgument(X494,X495) & (hasArgument(X494,X496) & hasArgument(X494,X496) & ~ X495=X496 & ~ X496=X497 & ~ X495=X497)))))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelTempQuale(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ! [X499] : ((rRelTempSum(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498) & hasArgument(X494,X499)) => ((X499=X495) | (X499=X496) | (X499=X497) | (X499=X498) | (X495=X496) | (X495=X497) | (X495=X498) | (X496=X497) | (X496=X498) | (X497=X498)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelSum(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
+%fof(goals,conjecture, ! [X494] : ! [X495] : ![X496] : ![X497] : ! [X498] : ((rRelConstantSum(X494) & hasArgument(X494,X495) & hasArgument(X494,X496) & hasArgument(X494,X497) & hasArgument(X494,X498)) => ( (X498=X495) | (X498=X496) | (X498=X497) | (X495=X496) | (X496=X497) | (X495=X497)))). %PROVED
