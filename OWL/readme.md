@@ -1,4 +1,4 @@
-Folder to contain files of versions of DOLCE serialized in the OWL language
+Folder to contain files of versions of DOLCE serialized in the OWL2 language
 
 Upload a file called DUMMY.owl to upload the most recent version of DUMMY ontology. Then requests to the address https://www.w3id.org/DOLCE/OWL/DUMMY and similar (e.g. https://www.w3id.org/DOLCE/OWL/DUMMY/, https://www.w3id.org/DOLCE/OWL/DUMMY.owl) will be answered with the file <NAME>.owl
 
