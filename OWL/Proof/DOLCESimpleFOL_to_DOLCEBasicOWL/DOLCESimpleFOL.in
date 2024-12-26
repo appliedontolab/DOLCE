@@ -1,0 +1,354 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DOLCE SIMPLE version for MACE4 / PROVER9 by D. Porello, L. Vieu, S. Borgo, C. Masolo.
+%
+%
+%Based on the axioms of DOLCE (D18) proved consistent in
+%(v. DolceSimple) https://github.com/spechub/Hets-lib/blob/master/Ontology/Dolce/DolceSimpl.dol
+%NOTE: The names of the axioms and theorems of DOLCE SIMPLE are those from DOLCE D18 for direct comparison.
+%(http://www.loa.istc.cnr.it/wp-content/uploads/2020/03/D18inv.31-12-03.pdf)
+%
+%General simplifications of DOLCE SIMPLE with respect to DOLCE D18
+%
+%1. Instead of a General Extensional Mereology, we have only a weak mereology. So (Ad9) and (Ad15) are weakened assuming only the existence of binary sums. (Ad8) (strong supplementation) is replaced by the existence of binary differences.
+%2. The predicate PRE (being present) defined in D18 by means of the mereological fusion is here introduced as a primitive relation.
+%3. The ''spatial inclusion'' relation is not defined here (originally it needs fusion) therefore axioms (Ad19),(Ad28), and (Ad68) are not expressed.
+%4. The quality relation (qt) is simplified considering only ''direct qualities''(dQt).
+%5.	Axioms (Ad56),(Ad57),(Ad63), and (Ad64) are instantiated only by temporal and spatial locations (TL and SL) and by Time intervals (T) and Space Regions (S), i.e. all the leaves present in DOLCE D18.
+%6. There are no modalities in DOLCE SIMPLE. D18 was in fact a first-order modal theory (in modal logic QS5 with constant domain). Here we omit the modal structure and accordingly the definitions of the ''dependencies'', besides "specific dependence" (sd).
+%7. To obtain more populated models, we omit the existence of sums and (Ad29).
+
+set(prolog_style_variables).
+
+assign(max_megs, 2000).  %%to use for lareger model.
+
+formulas(assumptions).
+
+
+%Taxonomy%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Taxonomy: inclusions
+(all X ((ab(X) | ed(X) | pd(X) | q(X)) <-> pt(X))).
+(all X ((as(X) | nped(X) | ped(X)) <-> ed(X))).
+(all X ((pro(X) | st(X)) <-> stv(X))).
+(all X ((ev(X) | stv(X)) <-> pd(X))).
+(all X ((aq(X) | pq(X) | tq(X)) <-> q(X))).
+(all X ((acc(X) | ach(X)) <-> ev(X))).
+(all X ((apo(X) | napo(X)) <-> pob(X))).
+(all X ((sag(X) | sc(X)) <-> aso(X))).
+(all X ((aso(X) | naso(X)) <-> sob(X))).
+(all X ((sob(X) | mob(X)) <-> npob(X))).
+(all X ((ar(X) | pr(X) | tr(X)) <-> r(X))).
+(all X (r(X) -> ab(X))).
+(all X ((f(X) | m(X) | pob(X)) <-> ped(X))).
+(all X (npob(X) -> nped(X))).
+(all X (s(X) -> pr(X))).
+(all X (sl(X) -> pq(X))).
+(all X (t(X) -> tr(X))).
+(all X (tl(X) -> tq(X))).
+
+%Taxonomy: disjoitness
+
+(-(exists X (ab(X) & ed(X)))).
+(-(exists X (ab(X) & pd(X)))).
+(-(exists X (ab(X) & q(X)))).
+(-(exists X (ed(X) & pd(X)))).
+(-(exists X (pd(X) & q(X)))).
+(-(exists X (ed(X) & q(X)))).
+(-(exists X (ped(X) & nped(X)))).
+(-(exists X (ped(X) & as(X)))).
+(-(exists X (nped(X) & as(X)))).
+(-(exists X (m(X) & f(X)))).
+(-(exists X (f(X) & pob(X)))).
+(-(exists X (m(X) & pob(X)))).
+(-(exists X (mob(X) & sob(X)))).
+(-(exists X (aso(X) & naso(X)))).
+(-(exists X (sag(X) & sc(X)))).
+(-(exists X (apo(X) & napo(X)))).
+(-(exists X (ev(X) & stv(X)))).
+(-(exists X (ach(X) & acc(X)))).
+(-(exists X (st(X) & pro(X)))).
+(-(exists X (tq(X) & pq(X)))).
+(-(exists X (pq(X) & aq(X)))).
+(-(exists X (tq(X) & aq(X)))).
+(-(exists X (tr(X) & pr(X)))).
+(-(exists X (pr(X) & ar(X)))).
+(-(exists X (tr(X) & ar(X)))).
+
+
+
+
+%Mereology%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+(all X all Y (p(X,Y) -> ((ab(X) | pd(X)) & (ab(Y) | pd(Y))))) # label(parthood_Argument_restrictions_Ad1).
+(all X all Y (p(X,Y) -> (pd(X) <-> pd(Y)))) # label(parthood_argument_restrictions_Ad2).
+(all X all Y (p(X,Y) -> (ab(X) <-> ab(Y)))) # label(parthood_argument_restrictions_Ad3).
+(all X all Y (p(X,Y) -> (t(X) <-> t(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_1).
+(all X all Y (p(X,Y) -> (s(X) <-> s(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_2).
+(all X all Y (p(X,Y) -> (ar(X) <-> ar(Y)))) # label(parthood_argument_restrictions_instance_of_Ad4_3).
+(all X ((ab(X) | pd(X)) -> p(X,X))) # label(parthood_reflexivity_Ad5).
+(all X all Y ((p(X,Y) & p(Y,X)) -> ((X)=(Y)))) # label(parthood_antysymmetry_Ad6).
+(all X all Y all Z((p(X,Y) & p(Y,Z)) -> p(X,Z))) # label(parthood_transitivity_Ad7).
+(all X all Y (pp(X,Y) <-> (p(X,Y) & (-(p(Y,X)))))) # label(proper_part_definition_Dd14).
+(all X all Y (ov(X,Y) <-> (exists Z (p(Z,X) & p(Z,Y))))) # label(overlap_definition_Dd15).
+(all X (at(X) <-> ((pd(X) | ab(X)) & -(exists Y (pp(Y,X)))))) # label(atom_definition_Dd16_corrected).
+(all X all Y (atp(X,Y) <-> (p(X,Y)& at(X)))) # label(atomic_part_definition_Dd17).
+
+(all X all Y all Z (sum(Z,X,Y) <-> (((ab(Z) & ab(X) & ab(Y)) | (pd(Z) & pd(X) & pd(Y))) & (all W (ov(W,Z) <-> (ov(W,X) | ov(W,Y))))))) # label(binary_sum_definition_Dd18).
+
+
+%Check without this for larger models:
+%(all X all Y ((ab(X) & ab(Y)) -> (exists Z (ab(Z) & sum(Z,X,Y))))) # label(binary_sum_existence_restriction_of_Ad9).
+%(all X all Y ((pd(X) & pd(Y)) -> (exists Z (pd(Z) & sum(Z,X,Y))))) # label(binary_sum_existence_restriction_of_Ad9).
+
+(all X all Y all Z (dif(Z,X,Y) <-> (((ab(Z) & ab(X) & ab(Y)) | (pd(Z) & pd(X) & pd(Y))) & (all W (p(W,Z) <-> (p(W,X) & -(ov(W,Y)))))))) # label(binary_difference_definition).
+
+(all X all Y ((ab(X) & ab(Y) & (-(p(X,Y)))) -> (exists Z (dif(Z,X,Y))))) # label(binary_difference_existence_from_Ad8_1).
+(all X all Y ((pd(X) & pd(Y) & (-(p(X,Y)))) -> (exists Z (dif(Z,X,Y))))) # label(binary_difference_existence_from_Ad8_2).
+
+
+%Present_at%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+(all X all T (pre(X,T) -> ((ed(X) | pd(X) | q(X)) & t(T)))) # label(present_at_partial_definition_Dd40).
+(all X all T all S ((pre(X,T) & p(S,T)) -> (pre(X,S)))) # label(present_at_dissectivity_Td17).
+(all X all Y all T ((pre(X,T) & p(X,Y)) -> pre(Y,T))) # label(present_at_part_of_Ad13).
+
+
+
+%Temporary_parthood%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(all X all Y all T (tp(X,Y,T) -> (ed(X) & ed(Y) & t(T)))) # label(temporary_parthood_argument_restrictions_Ad10).
+(all X all Y all T ((tp(X,Y,T) & ped(Y)) -> ped(X))) # label(temporary_parthood_argument_restrictions_Ad11_revised).
+(all X all Y all T ((tp(X,Y,T) & nped(Y)) -> nped(X))) # label(temporary_parthood_argument_restrictions_Ad12_revised).
+(all X all Y all Z all T ((tp(X,Y,T) & tp(Y,Z,T)) -> tp(X,Z,T))) # label(temporary_parthood_transitivity_Ad13).
+(all X all T ((ed(X) & pre(X,T)) -> tp(X,X,T))) # label(temporary_parthood_reflexivity_Ad16).
+(all X all Y all T (tov(X,Y,T) <-> (exists Z (tp(Z,X,T) & tp(Z,Y,T))))) # label(temporary_overlap_definition_Dd21).
+
+(all X all Y all T (tpp(X,Y,T) <-> (tp(X,Y,T) & (-(tp(Y,X,T)))))) # label(temporary_proper_part_definition_Dd20).
+
+%(all X all Y all T (tpp(X,Y,T) <-> (tp(X,Y,T) & (-(X=Y))))) # label(temporary_proper_part_definition_alternative_to_Dd20).
+
+(all X all Y all T ((ed(X) & ed(Y) & pre(X,T) & pre(Y,T) & (-tp(X,Y,T))) -> (exists Z (tp(Z,X,T) & -tov(Z,Y,T))))) # label(temporary_proper_part_supplementation_Ad14).
+
+(all X all Y all T (tp(X,Y,T) -> (pre(X,T) & pre(Y,T)))) # label(temporary_parthood_Ad17).
+(all X all Y all T (tp(X,Y,T) -> (all S (p(S,T) -> tp(X,Y,S))))) # label(temporary_parthood_Ad18).
+
+
+(all X all T (tat(X,T) <-> (ed(X) & t(T) & -(exists Y (tpp(Y,X,T)))))) # label(temporary_proper_part_definition_Dd22_corrected).
+(all X all Y all T (tatp(X,Y,T) <-> (tp(X,Y,T) & tat(X,T)))) # label(temporary_atomic_part_definition_Dd23).
+
+
+(all X all Y all Z all T (sumt(Z,X,Y,T) <-> (pre(Z,T) & pre(X,T) & pre(Y,T) & ed(Z) & ed(X) & ed(Y) & (all W (tov(W,Z,T) <-> (tov(W,X,T) | tov(W,Y,T))))))) # label(temporary_sum_definition_from_Dd26).
+
+
+
+%Temporal_parthood_on_PD%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(all X all Y (temporalPart(X,Y) <-> (pd(X) & pd(Y) & p(X,Y) & (all Z ((pd(Z) & p(Z,Y) & (all T (pre(Z,T) -> pre(X,T)))) -> p(Z,X)))))).
+%(all X all Y (temporalPart(X,Y) <-> (pd(X) & pd(Y) & p(X,Y)))). %[Note: add to prove transitivity of temporalPart quickly]
+
+%Constitution%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(all X all Y all T (k(X,Y,T) -> ((ed(X) | pd(X)) & (ed(Y) | pd(Y)) & t(T)))) # label(constitution_argument_restrictions_Ad20).
+
+(all X all Y all T (k(X,Y,T) -> (ped(X) <-> ped(Y)))) # label(constitution__argument_restrictions_Ad21).
+
+(all X all Y all T (k(X,Y,T) -> (nped(X) <-> nped(Y)))) # label(constitution__argument_restrictions_Ad22).
+
+(all X all Y all T (k(X,Y,T) -> (pd(X) <-> pd(Y)))) # label(constitution_argument_restrictions_Ad23).
+
+(all X all Y all T (k(X,Y,T) -> -(k(Y,X,T)))) # label(constitution__ground_axiom_Ad24).
+
+(all X all Y all Z all T ((k(X,Y,T) & k(Y,Z,T)) -> k(X,Z,T))) # label(constitution__ground_axiom_Ad25).
+
+(all X all Y all T (k(X,Y,T) -> (pre(X,T) & pre(Y,T)))) # label(constitution_Ad26).
+
+(all X all Y all T (k(X,Y,T) -> (all S (p(S,T) -> k(X,Y,S))))) # label(constitution_Ad27_weakened).
+
+%Check without for larger models:
+(all X all Y all V all T ((k(X,Y,T) & tp(V,Y,T)) -> (exists U (tp(U,X,T) & k(U,V,T))))) # label(constitution_Ad29).
+
+
+%Participation%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+(all X all Y all T (pc(X,Y,T) -> (ed(X) & pd(Y) & t(T)))) # label(participation_argument_restrictions_Ad33).
+
+(all X all T ((pd(X) & pre(X,T)) -> (exists Y (pc(Y,X,T))))) # label(participation_existential_Ad34).
+
+(all X (ed(X) -> (exists Y exists T (pc(X,Y,T))))) # label(participation_existential_Ad35_corrected).
+
+(all X all Y all T (pc(X,Y,T) -> (pre(X,T) & pre(Y,T)))) # label(participation_present_Ad36).
+
+(all X all Y all T (pc(X,Y,T) -> (all S (p(S,T) -> pc(X,Y,S))))) # label(participation_present_Ad37).
+
+
+%Direct_quality%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+(all X all Y (dqt(X,Y) -> (q(X) & (ed(Y) | pd(Y))))) # label(direct_quality_argument_restrictions_Ad38_simplified).
+(all X all Y (dqt(X,Y) -> (tq(X) <-> pd(Y)))) # label(direct_quality_argument_restrictions_Ad39_for_dqt).
+(all X all Y (dqt(X,Y) -> (pq(X) <-> ped(Y)))) # label(direct_quality_argument_restrictions_Ad40_for_dqt).
+(all X all Y (dqt(X,Y) -> (aq(X) <-> nped(Y)))) # label(direct_quality_argument_restrictions_Ad41_for_dqt).
+(all X all Y all V ((dqt(X,Y) & dqt(X,V)) -> ((Y)=(V)))) # label(direct_quality_Ad43).
+(all X all U all Y ((dqt(X,Y) & dqt(U,Y) & tl(X) & tl(U)) -> ((X)=(U)))) # label(direct_quality_unicity_Ad44_1).
+(all X all U all Y ((dqt(X,Y) & dqt(U,Y) & sl(X) & sl(U)) -> ((X)=(U)))) # label(direct_quality_unicity_Ad44_2).
+
+
+(all X (tq(X) -> (exists Y (dqt(X,Y) & pd(Y))))) # label(direct_quality_existential_Ad46).
+(all X (pq(X) -> (exists Y (dqt(X,Y) & ped(Y))))) # label(direct_quality_existential_Ad47).
+(all X (aq(X) -> (exists Y (dqt(X,Y) & nped(Y))))) # label(direct_quality_existential_Ad48).
+(all X (pd(X) -> (exists Y (dqt(Y,X) & tl(Y))))) # label(direct_quality_existential_Ad49).
+(all X (ped(X) -> (exists Y (dqt(Y,X) & sl(Y))))) # label(direct_quality_existential_Ad50).
+(all X (nped(X) -> (exists Y (dqt(Y,X) & aq(Y))))) # label(direct_quality_existential_Ad51).
+
+%Direct_quality_and_present_at
+
+(all X all Q all T (dqt(Q,X) & pre(Q,T) -> pre(X,T))) # label(direct_quality_present_at).
+(all X all Q all T (dqt(Q,X) & pre(X,T) -> pre(Q,T))) # label(direct_quality_present_at).
+
+
+
+%Immediate_quale%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(all X all Y (ql(X,Y) -> (tr(X) & tq(Y)))) # label(immediate_quale_argument_restrictions_Ad52).
+(all X all Y ((ql(X,Y) & tl(Y)) -> t(X))) # label(immediate_quale_argument_restrictions_Ad53).
+(all X all Y all U ((ql(X,Y) & ql(U,Y)) -> ((X)=(U)))) # label(immediate_quale_ground_Ad54).
+(all X (tq(X) -> (exists Y (ql(Y,X))))) # label(immediate_quale_existential_Ad55).
+
+%Temporary_quale%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(all X all Y all T (tql(X,Y,T) -> ((pr(X) | ar(X)) & (pq(Y) | aq(Y)) & t(T)))) # label(temporary_quale_argument_restrictions_Ad58).
+
+(all X all Y all T (tql(X,Y,T) -> (pr(X) <-> pq(Y)))) # label(temporary_quale_argument_restrictions_Ad59).
+(all X all Y all T (tql(X,Y,T) -> (ar(X) <-> aq(Y)))) # label(temporary_quale_argument_restrictions_Ad60).
+(all X all Y all T ((tql(X,Y,T) & sl(Y)) -> s(X))) # label(temporary_quale_argument_restrictions_Ad61).
+(all X all Y all T ((tql(X,Y,T) & s(X)) -> sl(Y))) # label(temporary_quale_argument_restrictions_Ad61).
+(all X all T (((pq(X) | aq(X)) & pre(X,T)) -> (exists Y (tql(Y,X,T))))) # label(temporary_quale_existential_Ad62).
+(all X all Y all T (tql(X,Y,T) -> pre(Y,T))) # label(temporary_quale_present_Ad65).
+(all X all Y all T (tql(X,Y,T) -> (all S (p(S,T) -> tql(X,Y,S))))) # label(temporary_quale_present_Ad66).
+
+
+%Specific_constant_dependence%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(all X all Y (sd(X,Y) <-> ((exists T (pre(X,T))) & (all T (pre(X,T) -> pre(Y,T)))))) # label(specific_dependence_Dd69).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Achievements
+(all X0 all X1 (ach(X0) & temporallyLocatedAt(X0,X1) -> at(X1))) # label(achievemants_atomic_Ad75).
+
+
+%Accomplishment
+(all X0 all X1 (acc(X0) & temporallyLocatedAt(X0,X1) -> (-at(X1)))) # label(achievemants_non_atomic_Ad76).
+
+%States
+(all X0 (st(X0) -> (all X1 (p(X1,X0) -> st(X1)))))  # label(states_parts_Ad77).
+
+%Mental objects
+(all X0 (mob(X0) -> (exists X1 ((sd(X0,X1) & apo(X1)))))) # label(mental_objects_agentive_Ad71).
+
+
+%Endurant and perdurant participation
+
+(all X (ed(X) -> exists Y (exists T pc(X,Y,T)))) # label(endurant_perdurant_participation_Ad35).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definitions required for proving DOLCEsimple_FOL |= DOLCEbasic_OWL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+(all X(pt(X) -> thing(X))) # label(owl). %The automatic translation from OWL to FOL that we used includes the owl:thing Class, not present in DOLCE. We add it.
+
+%Definitions of consantAtom (cat), constantAtomicPart (catp), consantPart(cp), constantProperPart(cpp), constantOverlap(cov)
+
+(all X (cat(X) <-> (ed(X) & (exists T1 (pre(X,T1))) & all T (pre(X,T) -> tat(X,T)))))  # label(constant_atom).
+(all X all Y (catp(X,Y) <-> (ed(X) & ed(Y) & (exists T1 (pre(X,T1))) & all T (pre(Y,T) -> tatp(X,Y,T)))))  # label(constant_atomic_part).
+(all X all Y (cp(X,Y) <-> (ed(X) & ed(Y) & (exists T1 (pre(Y,T1))) & all T (pre(Y,T) -> tp(X,Y,T))))) # label(constant_part_Dd25).
+%(all X all Y (cpp(X,Y) <-> (ed(X) & ed(Y) & (exists T1 (pre(Y,T1))) & all T (pre(Y,T) -> tpp(X,Y,T))))) # label(constant_proper_part_definition).
+(all X all Y (cpp(X,Y) <-> (ed(X) & ed(Y) & (exists T1 (pre(Y,T1))) & all T (pre(Y,T) -> (tp(X,Y,T) & -tp(Y,X,T)))))) # label(constant_proper_part_definition). %[Version to help proving the transitivity of cpp]
+(all X all Y (cov(X,Y) <-> (ed(X) & ed(Y) & (exists T1 (pre(X,T1) & pre(Y,T1))) & (exists Z (cp(Z,X) & cp(Z,Y))))))  # label(constant_overlap_definition).
+
+%(all X all Y all Z (csum(Z,X,Y) <-> (ed(Z) & ed(X) & ed(Y) & (all W all T ((tov(W,Z,T) <-> (tov(W,X,T) | tov(W,Y,T)))))))) # label(temporary_sum_definition_from_Dd26).
+
+(all X all Y all Z (csum(Z,X,Y) <-> (ed(Z) & ed(X) & ed(Y) & (exists T (pre(Z,T) & pre(X,T) & pre(Y,T))) & (all T ((pre(Z,T) & pre(X,T) & pre(Y,T) -> sumt(Z,X,Y,T))))))) # label(temporary_sum_definition_from_Dd26_revised_stronger).
+
+
+
+%Definitions of constantParticipantOf, constantConstituentOf, constantQualeOf, constantlySpatiallyLocatedAt, temporallyLocatedAt
+
+
+%Constant Participant of
+
+(all X all Y (constantParticipantOf(X,Y) <-> (ed(X) & pd(Y) & exists T (pre(Y,T)) & all T (pre(Y,T) -> pc(X,Y,T))))) # label(definition_constant_participant_of).
+
+
+%Constant Constituent Of
+
+(all X all Y (constantConstituentOf(X,Y) <-> (((ped(X) & ped(Y)) | (nped(X) & nped(Y)) | (pd(X) & pd(Y))) & exists T (pre(Y,T)) & all T (pre(Y,T) -> k(X,Y,T))))) # label(definition_constant_constituent_of).
+
+
+%Constant Quale Of
+
+(all X all Y (constantQualeOf(X,Y) <-> (((pr(X) & pq(Y)) | (tr(X) & tq(Y)) | (ar(X) & aq(Y))) & all T (pre(Y,T) -> tql(X,Y,T))))) # label(definition_constant_quale_of).
+
+
+
+
+
+%Temporally Located At
+%Axioms required beacuse temporallyLocatedAt is not defined in DOLCEsimple (cf. D18: Dd30 - Dd35).
+
+(all X all T (temporallyLocatedAt(X,T) -> ((ed(X) | pd(X) | q(X)) & t(T)))) # label(definition_partial_temporallyLocatedAt_Dd31).
+(all X0 all X1 all X2 (temporallyLocatedAt(X0,X1) & temporallyLocatedAt(X0,X2) -> X1 = X2)) # label(definition_unicity_from_Dd31).
+
+(all X (ed(X) -> exists T (temporallyLocatedAt(X,T)))) # label(endurant_temporal_location).
+(all X (q(X) -> exists T (temporallyLocatedAt(X,T)))) # label(quality_temporal_location).
+(all X (pd(X) -> exists T (temporallyLocatedAt(X,T)))) # label(perdurant_temporal_location).
+(all X all T (temporallyLocatedAt(X,T) -> pre(X,T))) # label(temporallyLocatedAt_and_presentAt_partially_Dd40_Ad5).
+(all X all Y (tl(X) & ql(Y,X) -> temporallyLocatedAt(X,Y))) # label(temporallyLocatedAt_ql_tl).
+
+(all X all T all T1 ((pre(X,T) & temporallyLocatedAt(X,T1)) -> p(T,T1))) # label(pre_temporallyLocatedAt_Dd40).
+
+%Additions not inlcuded in the OWL2 versions.
+%Added definition of pTemporalLocation to enhance OWL expressivity
+%(all X0 all X1 (pTemporalLocation(X0,X1) <-> ((X0=X1) & tl(X0)))) # label(pTemporalLocaton_definition).
+%Theorem:(all X all Y all Z (temporallyLocatedAt(X,Y) & p(Z,Y) -> pre(X,Z))).
+
+%Added definition of tlDirectQualityOf to enhance OWL expressivity.
+%(all X0 all X1 (tlDirectQualityOf(X0,X1) <-> (tl(X0) & dqt(X0,X1)))) # label(tlDirectQualityOf_definition).
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Assertions to populate classes and relations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Instantiated_classes:
+
+
+ped(iped1).
+nped(inped1).
+ev(ie1).
+tq(itq1).
+aq(iaq1).
+pq(ipq1).
+t(it1).
+r(ir1).
+ar(iar1).
+at(iatom).
+cat(icat).
+
+
+
+
+
+end_of_list.
