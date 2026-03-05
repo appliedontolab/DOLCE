@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/emiliosanfilippo/ontologies/2026/2/untitled-ontology-84/"
+     xml:base="http://www.semanticweb.org/emiliosanfilippo/ontologies/2026/2/untitled-ontology-84/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#">
+    <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/DOLCEconcept">
+        <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel/4.5"/>
+        <rdfs:comment>Module representing concepts and classification</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt -->
+
+    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#tempClassifiedParticular"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEconcept#constantClassification -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEconcept#constantClassification">
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#Concept"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>constantClassification is the constant version of Classification which is a ternary relation between a concept x, a particular y and time interval t at which y is present. The intended interpretation is that x classifies y as it exists at t.
+In this constant version, the concept x classifies y during the whole existence of y.</rdfs:comment>
+        <rdfs:label>constant classification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEconcept#tempClassificationConcept -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEconcept#tempClassificationConcept">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#hasArgument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#RRelTempClassification"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#Concept"/>
+        <rdfs:label>concept in temporary classification relation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEconcept#tempClassifiedParticular -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEconcept#tempClassifiedParticular">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#hasArgument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#RRelTempClassification"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#Concept"/>
+        <rdfs:label>classified particular in temporary classification relation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEconcept#Concept -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEconcept#Concept">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentiveSocialObject"/>
+        <ace_lexicon:CN_pl>concepts</ace_lexicon:CN_pl>
+        <ace_lexicon:CN_sg>concept</ace_lexicon:CN_sg>
+        <rdfs:comment>A concept is a non-agentive social object that classifies some other entity. For example, the concept (role) of Student classifies John as a particular student.</rdfs:comment>
+        <rdfs:label>Concept</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEconcept#RRelTempClassification -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEconcept#RRelTempClassification">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#tempClassificationConcept"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEconcept#tempClassifiedParticular"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#hasArgument"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Identifier for a classification relation</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for classification</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
