@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/emiliosanfilippo/ontologies/2026/2/untitled-ontology-84/"
-     xml:base="http://www.semanticweb.org/emiliosanfilippo/ontologies/2026/2/untitled-ontology-84/"
+<rdf:RDF xmlns="https://w3id.org/DOLCE/OWL/DOLCEconcept#"
+     xml:base="https://w3id.org/DOLCE/OWL/DOLCEconcept"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
