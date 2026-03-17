@@ -41,9 +41,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpConcept -->
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcConcept -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpConcept">
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcConcept">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#contentOrObservationRelated"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
@@ -52,9 +52,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpEndurant -->
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpEndurant">
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#contentOrObservationRelated"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
@@ -63,9 +63,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpRegion -->
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcRegion -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpRegion">
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcRegion">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#contentOrObservationRelated"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
@@ -74,9 +74,9 @@
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpTime -->
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpTime">
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#contentOrObservationRelated"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
@@ -260,19 +260,19 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpEndurant"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpRegion"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcRegion"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpTime"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -288,7 +288,7 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpRegion"/>
+                        <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcRegion"/>
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:unionOf rdf:parseType="Collection">
@@ -303,13 +303,13 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpEndurant"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpTime"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -323,19 +323,19 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpEndurant"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpRegion"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcRegion"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Region"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bcpTime"/>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
