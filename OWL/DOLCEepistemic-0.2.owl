@@ -1,0 +1,548 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/DOLCE/OWL/DOLCEepistemic"
+     xml:base="https://w3id.org/DOLCE/OWL/DOLCEepistemic"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:ace_lexicon="http://attempto.ifi.uzh.ch/ace_lexicon#"
+     xmlns:DOLCEnaryRel="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#">
+    <owl:Ontology rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic">
+        <owl:imports rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel/4.5"/>
+        <rdfs:comment>Module representing social and epistemic aspects of knowledge representation</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt -->
+
+    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#presentAt">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#tempClassifiedParticular"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#rRelTime"/>
+        </owl:propertyChainAxiom>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcProperty -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcProperty">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Region"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#constantClassification -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#constantClassification">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:comment>constantClassification is the constant version of Classification which is a ternary relation between a concept x, a particular y and time interval t at which y is present. The intended interpretation is that x classifies y as it exists at t.
+In this constant version, the concept x classifies y during the whole existence of y.</rdfs:comment>
+        <rdfs:label>constant classification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcConjunction -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcConjunction">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCConjunction"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcSupported -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcSupported">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCSupport"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcSupporting -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcSupporting">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCSupport"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsContent -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsContent">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsRelata"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsRelata -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsRelata">
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+        <rdfs:comment>This object property is used to collect all the object properties that have observations in their domain specification.
+It is not meant to be directly used in instantiations.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsSource -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsSource">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsRelata"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalObject"/>
+                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#pcRelata">
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+        <rdfs:comment>This object property is used to collect all the object properties that have propositional contents in their domain specification.
+It is not to be directly used in instantiations.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#tempClassificationConcept -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#tempClassificationConcept">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#hasArgument"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#RRelTempClassification"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept"/>
+        <rdfs:label>concept in temporary classification relation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#tempClassifiedParticular -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#tempClassifiedParticular">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#hasArgument"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#RRelTempClassification"/>
+        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+        <rdfs:label>classified particular in temporary classification relation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEbasic#Region -->
+
+    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#Region">
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#AssertionObs -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#AssertionObs">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#DenialObs"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCConcept -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCConcept">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcProperty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCProperty -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCProperty">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcProperty"/>
+                                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Region"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcProperty"/>
+                                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCQuality -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCQuality">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcEndurant"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcProperty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Region"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#bpcTime"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+        <rdfs:comment>Acronym: BPC</rdfs:comment>
+        <rdfs:label>Basic Propositional Content</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCConjunction -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCConjunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ComplexPropositionalContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcConjunction"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCSupport"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCSupport -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#CPCSupport">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ComplexPropositionalContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcSupported"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cpcSupporting"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#ComplexPropositionalContent -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ComplexPropositionalContent">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+        <rdfs:label>Complex Propositional Content</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentiveSocialObject"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+        <ace_lexicon:CN_pl>concepts</ace_lexicon:CN_pl>
+        <ace_lexicon:CN_sg>concept</ace_lexicon:CN_sg>
+        <rdfs:comment>A concept is a non-agentive social object that classifies some other entity. For example, the concept (role) of Student classifies John as a particular student.</rdfs:comment>
+        <rdfs:label>Concept</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#DenialObs -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#DenialObs">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonAgentiveSocialObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsContent"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsSource"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalObject"/>
+                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Observation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#PropositionalContent">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
+        <owl:disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicPropositionalContent"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ComplexPropositionalContent"/>
+        </owl:disjointUnionOf>
+        <rdfs:label>Propositional Content</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#RRelTempClassification -->
+
+    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#RRelTempClassification">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#ReifiedTemporalisedRelationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#tempClassificationConcept"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#tempClassifiedParticular"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEnaryRel#hasArgument"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Identifier for a classification relation</rdfs:comment>
+        <rdfs:label>Reified temporalised relationship for classification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCConcept"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCProperty"/>
+            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BPCQuality"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
