@@ -123,12 +123,7 @@ sosa:Sample rdfs:subClassOf [ rdf:type owl:Class ;
 
 
 ###  http://www.w3.org/ns/sosa/SampleCollection
-sosa:SampleCollection rdf:type owl:Class ;
-                      rdfs:subClassOf [ rdf:type owl:Class ;
-                                        owl:unionOf ( db:Endurant
-                                                      db:Perdurant
-                                                    )
-                                      ] .
+sosa:SampleCollection rdf:type owl:Class.
 
 
 ###  http://www.w3.org/ns/sosa/Sampler
