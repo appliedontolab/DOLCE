@@ -1,0 +1,172 @@
+@prefix : <http://www.w3.org/ns/sosa/dolce#> .
+@prefix db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.w3.org/ns/sosa/dolce#> .
+
+<http://www.w3.org/ns/sosa/dolce> rdf:type owl:Ontology ;
+                                   owl:imports sosa: ,
+                                               <https://w3id.org/DOLCE/OWL/DOLCEbasic> ;
+                                   dcterms:created "2026-05-15"^^xsd:date ;
+                                   dcterms:creator "Alessandro Mosca" ,
+                                                   "Claudio Masolo" ,
+                                                   "Emilio M. Sanfilippo" ,
+                                                   "Krzysztof Janowicz" ,
+                                                   "Stefano Borgo" ,
+                                                   "Walter Terkaj" ;
+                                   dcterms:license <http://creativecommons.org/licenses/by/4.0/> ,
+                                                   <http://www.opengeospatial.org/ogc/Software> ,
+                                                   <http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document> ;
+                                   dcterms:rights "Copyright 2026 W3C/OGC and the DOLCE Team." ;
+                                   rdfs:comment "Alignment of the the W3C/OGC SOSA Ontology with the DOLCE ontology in OWL, in particular with the DOLCEbasic module."@en ;
+                                   rdfs:label "Alignment of SOSA with DOLCE in OWL"@en ;
+                                   owl:versionInfo "beta version" .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/ns/sosa/Actuation
+sosa:Actuation rdfs:subClassOf sosa:Execution .
+
+
+###  http://www.w3.org/ns/sosa/Actuator
+sosa:Actuator rdfs:subClassOf sosa:System .
+
+
+###  http://www.w3.org/ns/sosa/Asset
+sosa:Asset rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Class ;
+                             owl:unionOf ( db:PhysicalObject
+                                           db:SocialObject
+                                         )
+                           ] .
+
+
+###  http://www.w3.org/ns/sosa/Deployment
+sosa:Deployment rdf:type owl:Class ;
+                rdfs:subClassOf db:Event ,
+                                [ rdf:type owl:Class ;
+                                  owl:unionOf ( db:Accomplishment
+                                                db:Achievement
+                                              )
+                                ] .
+
+
+###  http://www.w3.org/ns/sosa/Execution
+sosa:Execution rdf:type owl:Class ;
+               rdfs:subClassOf db:Event ,
+                               [ rdf:type owl:Class ;
+                                 owl:unionOf ( db:Accomplishment
+                                               db:Achievement
+                                             )
+                               ] .
+
+
+###  http://www.w3.org/ns/sosa/ExecutionCollection
+sosa:ExecutionCollection rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+sosa:FeatureOfInterest rdfs:subClassOf [ rdf:type owl:Class ;
+                                         owl:unionOf ( db:Endurant
+                                                       db:Perdurant
+                                                     )
+                                       ] .
+
+
+###  http://www.w3.org/ns/sosa/MaterialSample
+sosa:MaterialSample rdf:type owl:Class ;
+                    rdfs:subClassOf sosa:Sample ,
+                                    [ rdf:type owl:Class ;
+                                      owl:unionOf ( db:AmountOfMatter
+                                                    db:PhysicalObject
+                                                  )
+                                    ] .
+
+
+###  http://www.w3.org/ns/sosa/Observation
+sosa:Observation rdfs:subClassOf sosa:Execution .
+
+
+###  http://www.w3.org/ns/sosa/Platform
+sosa:Platform rdfs:subClassOf sosa:Asset .
+
+
+###  http://www.w3.org/ns/sosa/Procedure
+sosa:Procedure rdfs:subClassOf db:NonAgentiveSocialObject .
+
+
+###  http://www.w3.org/ns/sosa/Property
+sosa:Property rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Class ;
+                                owl:unionOf ( db:Quality
+                                              db:Region
+                                            )
+                              ] .
+
+
+###  http://www.w3.org/ns/sosa/Sample
+sosa:Sample rdfs:subClassOf [ rdf:type owl:Class ;
+                              owl:unionOf ( db:Endurant
+                                            db:Perdurant
+                                          )
+                            ] .
+
+
+###  http://www.w3.org/ns/sosa/SampleCollection
+sosa:SampleCollection rdf:type owl:Class ;
+                      rdfs:subClassOf [ rdf:type owl:Class ;
+                                        owl:unionOf ( db:Endurant
+                                                      db:Perdurant
+                                                    )
+                                      ] .
+
+
+###  http://www.w3.org/ns/sosa/Sampler
+sosa:Sampler rdfs:subClassOf sosa:System .
+
+
+###  http://www.w3.org/ns/sosa/Sampling
+sosa:Sampling rdfs:subClassOf sosa:Execution .
+
+
+###  http://www.w3.org/ns/sosa/Sensor
+sosa:Sensor rdfs:subClassOf sosa:System .
+
+
+###  http://www.w3.org/ns/sosa/SpatialSample
+sosa:SpatialSample rdf:type owl:Class ;
+                   rdfs:subClassOf sosa:Sample ,
+                                   db:Feature .
+
+
+###  http://www.w3.org/ns/sosa/StatisticalSample
+sosa:StatisticalSample rdf:type owl:Class ;
+                       rdfs:subClassOf sosa:Sample .
+
+
+###  http://www.w3.org/ns/sosa/Stimulus
+sosa:Stimulus rdf:type owl:Class ;
+              rdfs:subClassOf db:Event ,
+                              [ rdf:type owl:Class ;
+                                owl:unionOf ( db:Accomplishment
+                                              db:Achievement
+                                            )
+                              ] .
+
+
+###  http://www.w3.org/ns/sosa/System
+sosa:System rdf:type owl:Class ;
+            rdfs:subClassOf sosa:Asset .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
