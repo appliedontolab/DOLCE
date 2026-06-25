@@ -1,5 +1,18 @@
-Folder to contain files of versions of DOLCE serialized in the OWL2 language
+Folder to contain files of versions of DOLCE serialized in the OWL2 language.
 
+The main references for the ontologies here contained are:
+
+- Porello, D., Vieu, L., Terkaj, W., Borgo, S., Compagno, F., & Sanfilippo, E. M. (2024, July). DOLCE in OWL: The core theory. In 8th Workshop on Foundational Ontology (FOUST VIII)-Joint Ontology Workshops (JOWO)-Episode X: The Tukker Zomer of Ontology, and satellite events. CEUR Workshop Proceedings.
+  [https://doi.org/10.1177/15705838251401](https://doi.org/10.1177/15705838251401)
+  
+- Masolo, C., Porello, D. Borgo, S., Ferrario, R., Mosca, A., Sanfilippo, E.M., Stufano, R., Terkaj, W. (2026). Adding an Epistemic Layer to DOLCE. Proceedings of the 16th International Conference on Formal Ontology in Information Systems (to appear), IOS Press
+
+### Contents
+
+- [DOLCEbasic.owl](https://github.com/appliedontolab/DOLCE/blob/main/OWL/DOLCEbasic.owl): the DOLCEbasic module of DOLCE in OWL;
+- [DOLCEnaryRel.owl](https://github.com/appliedontolab/DOLCE/blob/main/OWL/DOLCEnaryRel.owl): the DOLCenaryRel module of DOLCE in OWL;
+- [DOLCEepistemic.owl](https://github.com/appliedontolab/DOLCE/blob/main/OWL/DOLCEepistemic.owl): the DOLCEepistemic module of DOLCE in OWL;
+- [DOLCEtweaks.owl](https://github.com/appliedontolab/DOLCE/blob/main/OWL/DOLCEtweaks.owl): the DOLCEtweaks module of DOLCE in OWL (an experimental module containing an object property that is not directly derivable from DOLCE, but it is still aligned with its philosophical approach.
 
 ### Versioning instructions
 
