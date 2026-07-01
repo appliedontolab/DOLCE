@@ -160,35 +160,6 @@ In this constant version, the concept x classifies y during the whole existence 
     
 
 
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#icnContent -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#icnContent">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cnRelata"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#IllocutionaryContent"/>
-        <rdfs:range rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Content"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#icnSource -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#icnSource">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#cnRelata"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#IllocutionaryContent"/>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalObject"/>
-                    <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsConjunction -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#obsConjunction">
@@ -384,6 +355,7 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
 
     <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicContent">
         <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Content"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ComplexContent"/>
         <rdfs:comment>Acronym: BCN</rdfs:comment>
         <rdfs:label>Basic Content</rdfs:label>
     </owl:Class>
@@ -442,19 +414,6 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ccnSupporting"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Content"/>
-                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Observation"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment>Acronym: CCN Support</rdfs:comment>
         <rdfs:label>Support</rdfs:label>
     </owl:Class>
@@ -489,56 +448,6 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
     <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Content">
         <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEbasic#Abstract"/>
         <rdfs:label>Content</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#ICNAssertion -->
-
-    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ICNAssertion">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#IllocutionaryContent"/>
-        <owl:disjointWith rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ICNDenial"/>
-        <rdfs:comment>Acronym: ASR</rdfs:comment>
-        <rdfs:label>Assertion Content</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#ICNDenial -->
-
-    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ICNDenial">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#IllocutionaryContent"/>
-        <rdfs:comment>Acronym: DNY</rdfs:comment>
-        <rdfs:label>Denial Content</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/DOLCE/OWL/DOLCEepistemic#IllocutionaryContent -->
-
-    <owl:Class rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#IllocutionaryContent">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Content"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#icnContent"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#Content"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/DOLCE/OWL/DOLCEepistemic#icnSource"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#NonPhysicalObject"/>
-                            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEbasic#PhysicalObject"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment>Acronym: ICN</rdfs:comment>
-        <rdfs:label>Illocutionary Content</rdfs:label>
     </owl:Class>
     
 
@@ -669,14 +578,6 @@ It is not meant to be directly used in instantiations.</rdfs:comment>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BCNConcept"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BCNProperty"/>
             <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BCNQuality"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#BasicContent"/>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#ComplexContent"/>
-            <rdf:Description rdf:about="https://w3id.org/DOLCE/OWL/DOLCEepistemic#IllocutionaryContent"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
